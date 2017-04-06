@@ -1,0 +1,74 @@
+{
+  "mustSave":false,
+  "form": [
+    {
+      "url": "/EnterpriseCultivate/EnterpriseCultivate/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "申请人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "phone"
+        },
+        {
+          "label": "E-Mail",
+          "name": "email"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label":"公司地址",
+          "size":"long",
+          "name":"companyAddress"
+        },
+        {
+          "label": "业务方向",
+          "name": "businessType"
+        },
+        {
+          "label": "培训描述",
+          "size": "long",
+          "name": "content"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        },
+        {
+          "label": "附件",
+          "size": "long",
+          "type":"file",
+          "name": "accessory"
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "textArea",
+          "name": "content"
+        }
+      ]
+    }
+  ]
+}

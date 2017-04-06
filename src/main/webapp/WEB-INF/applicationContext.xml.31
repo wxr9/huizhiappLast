@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd">
+
+    <context:annotation-config />
+    <mvc:default-servlet-handler />
+    <mvc:annotation-driven />
+    <!-- 激活@Controller模式 -->
+    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 需要更改 -->
+    <context:component-scan base-package="com.wiseonline" />
+    <bean id="mySQL"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <!--驱动程序 -->
+        <property name="driverClassName" value="com.mysql.jdbc.Driver">
+        </property>
+        <!-- JDBC URL -->
+        <!--<property name="url"-->
+                  <!--value="jdbc:mysql://10.1.1.129:3306/wsp">-->
+        <!--</property>-->
+        <!--<property name="url"-->
+                  <!--value="jdbc:mysql://localhost:3306/wsp">-->
+        <!--</property>-->
+        <property name="url"
+                  value="jdbc:mysql://172.22.11.114/wsp31">
+        </property>
+        <!--<property name="url"-->
+                  <!--value="jdbc:mysql://222.73.201.210:3306/wsp">-->
+        <!--</property>-->
+
+        <!--数据库用户名 -->
+        <property name="username" value="root">
+        </property>
+        <!--数据库密码 -->
+        <property name="password" value="root">
+        <!--<property name="password" value="123456">-->
+        <!--<property name="password" value="mysql">-->
+        </property>
+    </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="mySQL" />
+        </property>
+        <property name="packagesToScan">
+            <list>
+                <value>com.wiseonline.Domain*</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext
+                </prop>
+                <prop key="hibernate.event.merge.entity_copy_observer">allow</prop>
+                <prop key="hibernate.dialect">
+                    org.hibernate.dialect.MySQLDialect
+                    <!-- org.hibernate.dialect.SQLServer2008Dialect -->
+                </prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref local="sessionFactory" />
+        </property>
+    </bean>
+
+    <bean id="configProperties"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:/properties/*.properties</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+    <!-- 支持上传文件 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+    <bean id="passwordEncoder"
+          class="org.springframework.security.crypto.password.StandardPasswordEncoder" />
+
+    <!--<bean id="mySecurityFilter" class="com.wiseonline.Security.MySecurityFilter" />-->
+
+    <import resource="spring-security.xml" />
+   <import resource="quartz.xml" />
+    <import resource="rabbitMQ.xml"/>
+   <!--<import resource="/security/security-configuration.xml" />
+    <import resource="/security/authentication-managers.xml" />
+    <import resource="/security/endpoint-configuration.xml" />
+    <import resource="/oauth/oauth2-configuration.xml" />
+    <import resource="/oauth/token-store.xml" />
+    <import resource="/oauth/client-details.xml" />-->
+</beans>

@@ -1,0 +1,93 @@
+{
+  "mustSave":false,
+  "form": [
+    {
+      "url": "/Copyright/UserCopyright/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "申请人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "phone"
+        },
+        {
+          "label": "E-Mail",
+          "name": "email"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label":"软件名称",
+          "size":"long",
+          "name":"softName"
+        },
+        {
+          "label": "软件简称",
+          "name": "softAbbreviation"
+        },
+        {
+          "label": "软件版本",
+          "size": "long",
+          "name": "softVersion"
+        },
+        {
+          "label":"申请类别",
+          "size":"long",
+          "name":"copyrightType.name"
+        },
+        {
+          "label":"申请单位",
+          "size":"long",
+          "name":"copyrightUnit"
+        },
+        {
+          "label":"登记周期",
+          "name":"period.name"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        },
+        {
+          "label": "申请表",
+          "size": "long",
+          "type":"file",
+          "name": "applyForm"
+        },
+        {
+          "label":"其它材料",
+          "type":"file",
+          "name":"material"
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "textArea",
+          "name": "content"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "mustSave":true,
+  "form": [
+    {
+      "url": "/Setting/EnterApply/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "申请人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "contact"
+        },
+        {
+          "label": "E-Mail",
+          "name": "email"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label":"公司规模",
+          "size":"long",
+          "name":"sStaff.name"
+        },
+        {
+          "label": "产业类别",
+          "name": "sType.name"
+        },
+        {
+          "label": "园区",
+          "size": "long",
+          "name": "parkName.name"
+        },
+        {
+          "label":"需求面积",
+          "size":"long",
+          "name":"area"
+        },
+        {
+          "label":"需求说明",
+          "size":"long",
+          "name":"details"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        },
+        {
+          "label": "受理日期",
+          "name": "assignDate",
+          "type": "date"
+        },
+        {
+          "label": "洽谈日期",
+          "name": "discussDate",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "url": "/Setting/EnterApply/Edit/",
+      "action":"/Setting/EnterApply/Special/Update",
+      "item": [
+        {
+          "label": "流水号",
+          "type":"hidden",
+          "name": "objectid"
+        },
+        {
+          "label": "受理日期",
+          "name": "assignDate",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "textArea",
+          "name": "content"
+        }
+      ]
+    }
+  ]
+}

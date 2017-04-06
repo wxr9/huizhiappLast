@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/beans/spring-beans.xsd
+					  http://www.springframework.org/schema/security
+					  http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <!-- REST API Endpoints -->
+
+	<http pattern="/sns/**" create-session="stateless"	 entry-point-ref="oauthAuthenticationEntryPoint"
+		xmlns="http://www.springframework.org/schema/security" 
+		access-decision-manager-ref="accessDecisionManager">
+		<anonymous enabled="false" />
+		<intercept-url pattern="/sns/**" access="ROLE_USER,SCOPE_READ" />
+		<custom-filter ref="resourceServerFilter" before="PRE_AUTH_FILTER" />
+		<access-denied-handler ref="oauthAccessDeniedHandler" />
+	</http>
+
+
+
+</beans>

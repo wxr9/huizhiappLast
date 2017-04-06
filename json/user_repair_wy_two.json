@@ -1,0 +1,120 @@
+{
+  "form": [
+    {
+      "url": "/UserRepair/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "报修人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "contact"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label": "园区",
+          "name": "park.name"
+        },
+        {
+          "label": "楼宇",
+          "name": "building.name"
+        },
+        {
+          "label": "报修类型",
+          "size": "long",
+          "name": "repairTypeDetail.settingDict.name - repairTypeDetail.name"
+        },
+        {
+          "label": "报修地址",
+          "size": "long",
+          "name": "address"
+        },
+        {
+          "label": "照片",
+          "size": "long",
+          "type": "image",
+          "name": "photoUrl"
+        },
+        {
+          "label": "问题描述",
+          "size": "long",
+          "name": "description"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        },
+        {
+          "label": "受理日期",
+          "type": "date",
+          "name": "acceptDate"
+        },
+        {
+          "label": "问题类型确认",
+          "size": "long",
+          "name": "repairTypeConfmDetail.settingDict.name - repairTypeConfmDetail.name"
+        },
+        {
+          "label": "问题描述确认",
+          "size": "long",
+          "name": "descriptionConfm"
+        }
+      ]
+    },
+    {
+      "url": "/UserRepairAssign/Find/",
+      "action": "/UserRepairAssign/Update/",
+      "item": [
+        {
+          "label": "派工id",
+          "type": "hidden",
+          "name": "objectid"
+        },
+        {
+          "label": "报修id",
+          "type": "hidden",
+          "name": "repairId"
+        },
+        {
+          "label": "派工时间",
+          "readOnly": true,
+          "name": "assignTime",
+          "type": "date"
+        },
+        {
+          "label": "工程师",
+          "readOnly": true,
+          "name": "engineerDetail.name"
+        },
+        {
+          "label": "工程师id",
+          "type": "hidden",
+          "name": "engineer"
+        },
+        {
+          "label": "到达时间",
+          "type": "date",
+          "name": "arriveTime",
+          "valid": "require",
+          "validatorMsg": "请输入工程师到达时间！"
+        }
+      ]
+    }
+  ]
+}

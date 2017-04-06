@@ -1,0 +1,122 @@
+{
+  "mustSave": true,
+  "form": [
+    {
+      "url": "/Classroom/UserClassroom/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "申请人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "phone"
+        },
+        {
+          "label": "E-Mail",
+          "name": "email"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label": "需求说明",
+          "size": "long",
+          "name": "content"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        }
+      ]
+    },
+    {
+      "url": "/Classroom/UserClassroomApply/UserClassroom/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "教室名称",
+          "name": "classroom.name"
+        },
+        {
+          "label": "申请日期",
+          "name": "applyDate",
+          "multiple": true,
+          "type": "date",
+          "extOption": {
+            "type": "checkbox",
+            "name": "halfDay",
+            "area": {
+              "a": "上午",
+              "p": "下午"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "url": "/Classroom/UserClassroomVerify/UserClassroom/IsSave/Edit/",
+      "action": "/Classroom/UserClassroomVerify/Update/",
+      "item": [
+        {
+          "type": "hidden",
+          "name": "userClassroomId"
+        },
+        {
+          "type": "hidden",
+          "name": "classroomId"
+        },
+        {
+          "label": "申请日期",
+          "name": "applyDate",
+          "multiple": true,
+          "type": "date",
+          "del": true,
+          "check":{
+            "name":"isCheck"
+          },
+          "extOption": {
+            "type": "checkbox",
+            "name": "halfDay",
+            "only": true,
+            "area": [
+              {
+                "label": "a",
+                "value": "上午"
+              },
+              {
+                "label": "p",
+                "value": "下午"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "textArea",
+          "name": "content"
+        }
+        ]
+    }
+  ]
+}

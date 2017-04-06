@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	default-autowire="byName">
+	<!-- 集成方式：JobDetailFactoryBean，并且任务类需要继承QuartzJobBean -->
+
+	<!-- 定义设备状态jobDetail -->
+	<bean id="commentQuartz"
+		class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- durability 表示任务完成之后是否依然保留到数据库，默认false -->
+		<property name="durability" value="true" />
+		<!-- 目标类 -->
+		<property name="jobClass"
+			value="com.wiseonline.Quartz.CommentQuartz"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="userCommentService" value-ref="userCommentService" />
+				<entry key="userRepairService" value-ref="userRepairService" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 另一种触发器是CornTrigger -->
+	<bean id="cornTrigger_Comment"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="commentQuartz" />
+		<!-- <property name="cronExpression" value="0 * * * * ?" /> -->
+		<property name="cronExpression" value="0 3 * * * ?" />
+	</bean>
+
+	<!-- 定义untreatedQuartz -->
+	<bean id="untreatedQuartz"
+		  class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- durability 表示任务完成之后是否依然保留到数据库，默认false -->
+		<property name="durability" value="true" />
+		<!-- 目标类 -->
+		<property name="jobClass"
+				  value="com.wiseonline.Quartz.UntreatedQuartz"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="userService" value-ref="userService" />
+				<entry key="workflow_url" value="${WorkFlow.Url}" />
+				<entry key="message_send" value="${Message.Send}"/>
+				<entry key="message_url" value="${Message.Url}"/>
+				<entry key="message_key" value="${Message.Key}"/>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 另一种触发器是CornTrigger -->
+	<bean id="cornTrigger_Untreated"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="untreatedQuartz" />
+		<!-- <property name="cronExpression" value="0 0/3 * * * ?" /> -->
+		<property name="cronExpression" value="0 0 16 * * ?" />
+	</bean>
+
+	<!-- 定义金数据token刷新jobDetail -->
+	<bean id="jsjQuartz"
+		  class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- durability 表示任务完成之后是否依然保留到数据库，默认false -->
+		<property name="durability" value="true" />
+		<!-- 目标类 -->
+		<property name="jobClass"
+				  value="com.wiseonline.Quartz.JSJquartz"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="jsjtokenService" value-ref="jsjtokenService" />
+				<entry key="token_url" value="${JSJ.GetToken}" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 另一种触发器是CornTrigger -->
+	<bean id="cornTrigger_JSJ"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jsjQuartz" />
+		<!-- <property name="cronExpression" value="0 * * * * ?" /> -->
+		<property name="cronExpression" value="0 0 * * * ?" />
+	</bean>
+
+
+
+	<!-- 定义设备状态jobDetail -->
+	<bean id="autoCommentQuartz"
+		  class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- durability 表示任务完成之后是否依然保留到数据库，默认false -->
+		<property name="durability" value="true" />
+		<!-- 目标类 -->
+		<property name="jobClass"
+				  value="com.wiseonline.Quartz.AutoCommentQuartz"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="userCommentService" value-ref="userCommentService" />
+				<entry key="userAdvertisementService" value-ref="userAdvertisementService" />
+				<entry key="enterpriseCultivateService" value-ref="enterpriseCultivateService" />
+				<entry key="enterApplyService" value-ref="enterApplyService" />
+				<entry key="userClassroomService" value-ref="userClassroomService" />
+				<entry key="userCopyrightService" value-ref="userCopyrightService" />
+				<entry key="userHeadhuntingService" value-ref="userHeadhuntingService" />
+				<entry key="userMeetingroomService" value-ref="userMeetingroomService" />
+				<entry key="userTestApplyforService" value-ref="userTestApplyforService" />
+				<entry key="mainBusinessService" value-ref="mainBusinessService" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 另一种触发器是CornTrigger -->
+	<bean id="cornTrigger_AutoComment"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="autoCommentQuartz" />
+		<!-- <property name="cronExpression" value="0 * * * * ?" /> -->
+		<property name="cronExpression" value="0 * * * * ?" />
+	</bean>
+
+	<!-- 定义设备状态jobDetail -->
+	<bean id="enterpriseRegisterQuartz"
+		  class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- durability 表示任务完成之后是否依然保留到数据库，默认false -->
+		<property name="durability" value="true" />
+		<!-- 目标类 -->
+		<property name="jobClass"
+				  value="com.wiseonline.Quartz.EnterpriseRegisterQuartz"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="userIncubatorService" value-ref="userIncubatorService" />
+				<entry key="userService" value-ref="userService" />
+				<entry key="workFlowUtils" value-ref="workFlowUtils" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 另一种触发器是CornTrigger -->
+	<bean id="cornTrigger_EnterpriseRegister"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="enterpriseRegisterQuartz" />
+		<!-- <property name="cronExpression" value="0 * * * * ?" /> -->
+		<property name="cronExpression" value="0 0 15 ? * MON,WED" />
+	</bean>
+
+	<!-- 定义静态首页定时任务 -->
+	<bean id="indexQuartz"
+		  class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
+		<!-- durability 表示任务完成之后是否依然保留到数据库，默认false -->
+		<property name="durability" value="true" />
+		<!-- 目标类 -->
+		<property name="jobClass"
+				  value="com.wiseonline.Quartz.IndexQuartz"></property>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="indexCreateService" value-ref="indexCreateService" />
+				<entry key="path" value="/web/index.html" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- 另一种触发器是CornTrigger -->
+	<bean id="cornTrigger_IndexHtml"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="indexQuartz" />
+		<property name="cronExpression" value="0 0 1 * * ?" />
+	</bean>
+
+	<!-- 定义核心调度器 -->
+	<bean id="scheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="startupDelay" value="60"/>
+		<property name="triggers">
+			<list>
+				<!--<ref bean="cornTrigger_Comment" />-->
+				<!--<ref bean="cornTrigger_Untreated" />-->
+				<ref bean="cornTrigger_JSJ" />
+				<ref bean="cornTrigger_AutoComment"/>
+				<ref bean="cornTrigger_EnterpriseRegister"/>
+				<ref bean="cornTrigger_IndexHtml"/>
+			</list>
+		</property>
+	</bean>
+</beans>

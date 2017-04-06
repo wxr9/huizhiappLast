@@ -1,0 +1,241 @@
+{
+  "mustSave": true,
+  "form": [
+    {
+      "url": "/UserRepair/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "format":"yyyy/mm/dd HH:mm:ss",
+          "type": "date"
+        },
+        {
+          "label": "报修人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "contact"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label": "园区",
+          "name": "park.name"
+        },
+        {
+          "label": "楼宇",
+          "name": "building.name"
+        },
+        {
+          "label": "报修类型",
+          "size": "long",
+          "name": "repairTypeDetail.settingDict.name - repairTypeDetail.name"
+        },
+        {
+          "label": "报修地址",
+          "size": "long",
+          "name": "address"
+        },
+        {
+          "label": "照片",
+          "size": "long",
+          "type": "image",
+          "name": "photoUrl"
+        },
+        {
+          "label": "问题描述",
+          "size": "long",
+          "name": "description"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        }
+      ]
+    },
+    {
+      "url": "/UserRepair/EditForAdmin/",
+      "action": "/UserRepair/Update/",
+      "item": [
+        {
+          "label": "流水号",
+          "type": "hidden",
+          "name": "serialNumber"
+        },
+        {
+          "label": "报修id",
+          "type": "hidden",
+          "name": "objectid"
+        },
+        {
+          "label": "申请日期",
+          "display": "hidden",
+          "name": "createDate",
+          "format":"yyyy/mm/dd HH:mm:ss",
+          "type": "date"
+        },
+        {
+          "label": "报修人",
+          "type": "hidden",
+          "name": "applicant"
+        },
+        {
+          "label": "报修人中文",
+          "type": "hidden",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "type": "hidden",
+          "name": "contact"
+        },
+        {
+          "label": "报修类型",
+          "type": "hidden",
+          "name": "typeId"
+        },
+        {
+          "label": "公司",
+          "type": "hidden",
+          "name": "company"
+        },
+        {
+          "label": "园区",
+          "type": "hidden",
+          "name": "parkId"
+        },
+        {
+          "label": "楼宇",
+          "type": "hidden",
+          "name": "buildingId"
+        },
+        {
+          "label": "楼宇",
+          "type": "select",
+          "parent": "park.objectid",
+          "url": "/Setting/Building/BuildingByParkId/0/0/{{park.objectid}}",
+          "name": "buildingIdTypeConfm",
+          "valid": "require",
+          "notLinkwork": true,
+          "validatorMsg": "请确认楼宇"
+        },
+        {
+          "label": "问题类型",
+          "type": "hidden",
+          "name": "repairType"
+        },
+        {
+          "label": "报修地址",
+          "type": "hidden",
+          "name": "address"
+        },
+        {
+          "label": "照片",
+          "type": "hidden",
+          "name": "photoUrl"
+        },
+        {
+          "label": "问题描述",
+          "type": "hidden",
+          "name": "description"
+        },
+        {
+          "label": "备注",
+          "type": "hidden",
+          "name": "memo"
+        },
+        {
+          "label": "是否评论",
+          "type": "hidden",
+          "name": "commentFlag"
+        },
+        {
+          "label": "受理日期",
+          "type": "date",
+          "name": "acceptDate",
+          "format":"yyyy/mm/dd HH:mm:ss",
+          "default": "now",
+          "valid": "require",
+          "validatorMsg": "请填写受理日期！"
+        },
+        {
+          "label": "问题类型确认",
+          "type": "select",
+          "name": "repairTypeConfmParentId",
+          "url": "/Setting/SettingDict/ParentId/0/0/-1?type=repairsCommFlag"
+        },
+        {
+          "label": "",
+          "parent": "repairTypeConfmParentId",
+          "type": "select",
+          "url": "/Setting/SettingDict/ParentId/0/0/{{repairTypeConfmParentId}}",
+          "name": "repairTypeConfm",
+          "valid": "require",
+          "validatorMsg": "请确认报修类型"
+        },
+        {
+          "label": "问题描述确认",
+          "size": "long",
+          "type": "textArea",
+          "name": "descriptionConfm",
+          "valid": "require",
+          "validatorMsg": "请确认问题描述"
+        }
+      ]
+    },
+    {
+      "url": "/UserRepairAssign/Find/",
+      "action": "/UserRepairAssign/Update/",
+      "item": [
+        {
+          "label": "派工id",
+          "type": "hidden",
+          "name": "objectid"
+        },
+        {
+          "label": "维修id",
+          "type": "hidden",
+          "name": "repairId"
+        },
+        {
+          "label": "派工时间",
+          "type": "date",
+          "format":"yyyy/mm/dd HH:mm:ss",
+          "name": "assignTime",
+          "default": "now"
+        },
+        {
+          "label": "工程师",
+          "type": "select",
+          "url": "/Setting/SettingMaintainer/List/0/0?repairType=1",
+          "name": "engineer",
+          "valid": "require",
+          "validatorMsg": "请选择工程师"
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "text",
+          "name": "content"
+        }
+      ]
+    }
+  ]
+}

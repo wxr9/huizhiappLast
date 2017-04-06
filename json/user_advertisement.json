@@ -1,0 +1,74 @@
+{
+  "mustSave":false,
+  "form": [
+    {
+      "url": "/Commercialize/UserCommercialize/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "申请人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "phone"
+        },
+        {
+          "label": "E-Mail",
+          "name": "email"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label":"投放开始时间",
+          "size":"long",
+          "name":"beginDate"
+        },
+        {
+          "label": "投放结束时间",
+          "name": "endDate"
+        },
+        {
+          "label": "需求说明",
+          "size": "long",
+          "name": "content"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        },
+        {
+          "label": "附件",
+          "size": "long",
+          "type":"image",
+          "name": "accessory"
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "textArea",
+          "name": "content"
+        }
+      ]
+    }
+  ]
+}

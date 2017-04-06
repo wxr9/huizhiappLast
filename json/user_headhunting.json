@@ -1,0 +1,89 @@
+{
+  "mustSave":false,
+  "form": [
+    {
+      "url": "/Headhunting/UserHeadhunting/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "报修人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "phone"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label":"E-Mail",
+          "size":"long",
+          "name":"email"
+        },
+        {
+          "label":"附件",
+          "size":"long",
+          "type":"file",
+          "name":"accessory"
+        },
+        {
+          "label": "需求说明",
+          "size":"long",
+          "name": "content"
+        },
+        {
+          "label": "备注",
+          "size":"long",
+          "name": "memo"
+        }
+      ]
+    },
+    {
+      "url": "/Headhunting/HeadhuntingJobs/HeadhuntingJobs/Edit/",
+      "readOnly": true,
+      "multiple":true,
+      "item": [
+        {
+          "label": "职位名称",
+          "name": "name"
+        },
+        {
+          "label": "工作职责",
+          "name": "obligation"
+        },
+        {
+          "label": "任职条件",
+          "name": "conditions"
+        },
+        {
+          "label": "薪资描述",
+          "name": "money"
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "textArea",
+          "name": "content"
+        }
+      ]
+    }
+  ]
+}

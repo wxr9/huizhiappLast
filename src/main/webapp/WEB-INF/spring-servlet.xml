@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bean头部 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+            http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+            ">
+
+
+    <context:annotation-config />
+    <context:component-scan base-package="com.wiseonline">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <mvc:default-servlet-handler />
+
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper" ref="jacksonObjectMapper" />
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.wiseonline.Utils.SqlInjectInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+    <bean id="jacksonObjectMapper" class="com.wiseonline.Controller.MyJsonMapper" />
+    <!-- 激活@Controller模式 -->
+    <!-- 对包中的所有类进行扫描，以完成Bean创建和自动依赖注入的功能 需要更改 -->
+    <!--<context:component-scan base-package="com.wiseonline.Service" />-->
+    <!--<context:component-scan base-package="com.wiseonline.Service.Impl" />-->
+    <!--<context:component-scan base-package="com.wiseonline.Controller" />-->
+    <!--<context:component-scan base-package="com.wiseonline.Dao" />-->
+
+    <!--<bean
+            class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />-->
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix">
+            <value>/web/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+    </bean>
+    <bean id="templateLoader" class="de.neuland.jade4j.spring.template.SpringTemplateLoader">
+        <property name="basePath" value="/WEB-INF/views/" />
+    </bean>
+
+    <bean id="jadeConfiguration" class="de.neuland.jade4j.JadeConfiguration">
+        <property name="prettyPrint" value="false" />
+        <property name="caching" value="false" />
+        <property name="templateLoader" ref="templateLoader" />
+    </bean>
+
+    <bean id="jadeViewResolver" class="de.neuland.jade4j.spring.view.JadeViewResolver">
+        <property name="order" value="3" />
+        <property name="configuration" ref="jadeConfiguration" />
+        <property name="renderExceptions" value="true" />
+    </bean>
+
+    <bean id="payUtil" class="com.wiseonline.Controller.HuizhiCard.PayUtil" />
+</beans>

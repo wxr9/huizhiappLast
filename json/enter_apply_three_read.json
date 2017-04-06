@@ -1,0 +1,113 @@
+{
+  "mustSave":false,
+  "form": [
+    {
+      "url": "/Setting/EnterApply/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "申请人",
+          "name": "chineseName"
+        },
+        {
+          "label": "联系方式",
+          "name": "contact"
+        },
+        {
+          "label": "E-Mail",
+          "name": "email"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label":"公司规模",
+          "size":"long",
+          "name":"sStaff.name"
+        },
+        {
+          "label": "产业类别",
+          "name": "sType.name"
+        },
+        {
+          "label": "园区",
+          "size": "long",
+          "name": "park"
+        },
+        {
+          "label":"需求面积",
+          "size":"long",
+          "name":"area"
+        },
+        {
+          "label":"需求说明",
+          "size":"long",
+          "name":"details"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        }
+      ]
+    },
+    {
+      "url": "/Setting/EnterApplyBusiness/Edit/",
+      "readOnly":true,
+      "item": [
+        {
+          "label": "客户经理受理时间",
+          "name": "managerDealDate",
+          "type": "date"
+        },
+        {
+          "label": "客户经理受理备注",
+          "name": "managerMemo"
+        }
+      ]
+    },
+    {
+      "url": "/Setting/EnterApplyBusiness/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "安排洽谈受理时间",
+          "name": "discussDealDate",
+          "type": "date"
+        },
+        {
+          "label": "洽谈时间",
+          "name": "discussDate",
+          "type": "date"
+        },
+        {
+          "label": "安排洽谈备注",
+          "name": "discussMemo"
+        }
+      ]
+    },
+    {
+      "url":"/workflow/api/taskinstances/history/opinion/List/0/0/",
+      "action":"/workflow/api/taskinstances/",
+      "workflowData":true,
+      "item": [
+        {
+          "label":"审批意见",
+          "type": "textArea",
+          "name": "content"
+        }
+      ]
+    }
+  ]
+}

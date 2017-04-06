@@ -1,0 +1,60 @@
+html
+
+body
+    include  header
+    | 是否已经完善个人资料
+    = isUserInfoComplete
+    br
+    | 用户名
+    = user.username
+    br
+    | 性别
+    = user.sex
+    br
+    | 联系方式
+    = user.phone
+    br
+    | 邮箱
+    = user.email
+    br
+    | 学历
+    = user.settingDict.objectid
+    br
+    | 工作年限
+    = user.workYears
+    br
+    | 公司名称
+    = user.enterpriseInput
+    br
+    | 课程信息list数组读取
+    ol#courseList
+        for course in courseList
+            li #{course.name} ---------- #{course.pic}--------#{course.objectid}
+    br
+    | 等级list数组读取
+    ol#grade
+        for g in grade
+            li #{g.name} ------------------#{g.objectid}
+    br
+    | 学历list数组读取
+    ol#education
+        for ed in education
+            li #{ed.name} ------------------#{ed.objectid}
+    br
+    | 工作年限list数组读取
+    ol#workYears
+        for wy in workYears
+            li #{wy.name} ------------------#{wy.objectid}
+    br
+    | 目前职位list数组读取
+    ol#jobTitle
+        for jt in jobTitle
+            li #{jt.name} ------------------#{jt.objectid}
+    br
+    = users
+    br
+    br
+    | 数据字典list数组读取
+    ol#repairsCommFlag
+        for wk in repairsCommFlag
+            li #{wk.name} ------------------#{wk.objectid}
