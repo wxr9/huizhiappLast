@@ -1,0 +1,101 @@
+extends ./layout
+block head
+    title 会议室预订
+    link(rel="stylesheet", href="/admin/css/index.css")
+    //link(rel="stylesheet", href="/admin/css/manage.css")
+    link(rel="stylesheet", href="/admin/css/apply.css")
+    script(src="/admin/js/meetingRoomEdit.js")
+block body
+    .col-xs-9.content
+        .pagetitle 会议室预订
+        form.form-horizontal#form(name="form",role="form",method="POST")
+            div.form-group
+                label.col-sm-3.control-label(for='chineseName')
+                    span.star 姓名:
+                div.col-sm-7
+                    input.form-control#chineseName(type="text",name="chineseName")
+            div.form-group
+                label.col-sm-3.control-label
+                    span.star E-mail:
+                div.col-sm-7
+                    input.form-control(type="text",name="email",placeholder="请输入邮箱")
+            div.form-group
+                label.col-sm-3.control-label
+                    span.star 公司名称：
+                div.col-sm-7
+                    input.form-control(type="text",name="company")
+            div.form-group
+                label.col-sm-3.control-label
+                    span.star 联系方式:
+                div.col-sm-7
+                    input.form-control(type="text",name="phone")
+            div.form-group
+                label.col-sm-3.control-label
+                    span.star 会议室选择:
+                div.col-sm-7
+                    input.form-control#meetingroomId(type="hidden",name="meetingroomId",readonly)
+                    input.form-control#meetingroomName(type="text",name="meetingroomName",readonly)
+            div.form-group
+                label.col-sm-3.control-label
+                    span.star 时间选择：
+                div.col-sm-8
+                    .time.clearfix.bg_gray1
+                        div.fl
+                            span 日期:
+                                .input-append.date.form_datetime.dataPickerDay
+                                    input(size="16", type="text", name='dateTimeArray')
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                        div.fl
+                            span 开始时间:
+                                .input-append.date.form_datetime.dataPickerTime
+                                    input(size="16", type="text",value="09:00", name='beginTimeArray')
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                        div.fl
+                            span 结束时间:
+                                .input-append.date.form_datetime.dataPickerTime
+                                    input(size="16", type="text", value="22:00", name="endTimeArray")
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                        a.add2.fl(href='javascript:;')
+                            i.fa.fa-plus-circle(aria-hidden="true")
+                        a.delete.fl(href='javascript:;')
+                            i.fa.fa-minus-circle(aria-hidden="true")
+            div.form-group
+                label.col-sm-3.control-label
+                    span.star 会议主题：
+                div.col-sm-7
+                    input.form-control(type='text',name="topics")
+            div.clearfix
+                .form-group.col-sm-6
+                    label.col-sm-6.control-label
+                        span.star 是否需要茶歇：
+                    .col-sm-6.mt10
+                        label
+                            input(type="radio" name="teaReak",value="1")
+                            span.week  是
+                        label
+                            input(type="radio" name="teaReak",value="-1",checked)
+                            span.week  否
+                .form-group.col-sm-6#teaReak
+                    label.control-label 茶歇人均标准：
+                    span.style
+                        input.form-control(type='text',name="teaReakMoney")
+                    span 元/人
+            div.form-group
+                label.col-sm-3.control-label
+                    span.star 参会人数：
+                div.col-sm-7
+                    input.form-control(type='text',name='peoples')
+            div.form-group
+                label.col-sm-3.control-label 设备使用：
+                div.col-sm-7.mt10
+                    div#cont1
+            div.form-group
+                label.col-sm-3.control-label 备注：
+                div.col-sm-7
+                    textarea.form-control(type='text',name="memo")
+            div.form-group
+                div.col-sm-9.col-sm-offset-2.text-center
+                    button.btn.btn-blue.submit(type="submit") 提交

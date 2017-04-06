@@ -1,0 +1,27 @@
+doctype html
+html.no-js(lang="zh-cn")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='icon', type='image/png', href='/lib/images/favicon-32x32.png', sizes='32x32')
+    link(rel='icon', type='image/png', href='/lib/images/favicon-16x16.png', sizes='16x16')
+    meta(name="renderer", content="webkit")
+    mate(http-equiv="X-UA-Compatible", content="IE=Edge,chrome=1")
+    script(src="/lib/require.js")
+    script(src="/lib/main.js")
+    link(href='/lib/css/bootstrap.min.css', rel='stylesheet')
+    link(href='/lib/css/font-awesome.min.css', rel='stylesheet')
+    link(href='/lib/css/animate.css', rel='stylesheet')
+    link(href='/web/css/style.css', rel='stylesheet')
+    link(href='/web/css/common.css', rel='stylesheet')
+    script(src='/web/js/yoriki.js')
+    script(src='/web/js/login.js')
+    script(src='/web/js/register.js')
+    script(src='/web/js/forgetpsd.js')
+    block head
+  body
+    include include/header
+    - if (release === true)
+      script(src="/lib/js/statistics.js")
+    block body

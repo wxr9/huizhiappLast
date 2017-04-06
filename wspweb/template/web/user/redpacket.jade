@@ -1,0 +1,35 @@
+extends ../layout
+block head
+    title  红包管理
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 个人中心
+            hr.pageTitleLine
+    .container
+        .row
+            include ../include/sidebar
+            .col-xs-9.mainContent
+                .contentTitle 红包管理
+                ul.nav.nav-tabNew(role='tablist')
+                    li.active(role='presentation')
+                        a(href='#valid', aria-controls='base', role='tab', data-toggle='tab') 可用红包
+                    li(role='presentation')
+                        a(href='#overdue', aria-controls='two', role='tab', data-toggle='tab') 已用/过期红包
+                // Tab panes
+                .tab-content
+                    .tab-pane.fade.in.active#valid
+                        .empty-packet
+                            .tips 还没有红包，红包会在活动中发放哦
+                    .tab-pane.fade#overdue
+                        .empty-packet
+                            .tips 暂无已用/过期红包
+
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/redpacket.js')
+
+

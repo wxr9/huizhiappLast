@@ -1,0 +1,38 @@
+//
+   Created by Administrator on 2016/4/6.
+
+extends ../layout
+block head
+    title  汇智卡
+    link(href='/web/css/card.css', rel='stylesheet')
+    script(src="/web/js/cardQuery.js")
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 汇智卡
+            hr.pageTitleLine
+    .container.query
+        h4 汇智卡余额查询
+        .row.query_bg
+            .col-sm-6.col-sm-offset-3
+                h5 请输入您要查询的相关汇智卡卡号以及密码
+                form.form-horizontal#form(name="form",role="form",method="POST")
+                    p 卡号
+                    input.pw80.form-control(type='text' placeholder='请输入卡号',name='cardNo')
+                    p 密码
+                        span 初始密码为：身份证后6位
+                    input.pw80.form-control(type='password' placeholder='请输入密码',name='password')
+                    //p 验证码
+                    //p
+                    //    input.pw40.form-control.display_iBlock(type='text' placeholder='请输入验证码',name='authCode')
+                    //    img#vimg(title="点击更换" src="/WiseAuth/AuthImageServlet")
+                    p.text-center
+                        button.btn.btn-blue(type='submit') 查询
+                        button.btn.btn-gray(type='reset') 清空
+
+
+
+
+    include ../include/footer

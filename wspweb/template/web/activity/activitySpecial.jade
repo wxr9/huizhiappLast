@@ -1,0 +1,68 @@
+extends ../layout
+block head
+    title  活动中心
+    link(href='/web/css/activity.css', rel='stylesheet')
+    script(src="/web/js/activitySpecial.js")
+block body
+    .html-title.activity
+    .container
+        .row.sp-box
+            .col-xs-10.col-xs-offset-1
+                .row
+                    h1.sp-title
+                        |关注父母健康
+                        br
+                        |浦软孵化器中秋节福利
+                        span.big.red 大放送
+                .row.sp-text
+                    img(src="/web/images/sp_card.jpg" alt="免费体验卡")
+                    p 时至中秋佳节，善诊联合浦软孵化器中秋送福利，为园区小伙伴的孝心助力。
+                .row.sp-package
+                    .sp-package-title
+                        h3 中秋孝心体验
+                    img(src="/web/images/sp_taocan.jpg" alt="套餐详情")
+                    .sp-package-title
+                        h3 孝心套餐可使用城市
+                    h4.sub-title 目前服务覆盖全国160多个城市的三甲医院及品牌体验中心
+                    img(src="/web/images/sp_area1.jpg" alt="套餐使用城市")
+                    img(src="/web/images/sp_area2.jpg" alt="套餐使用城市")
+                    .sp-package-title
+                        h3 孝心套餐使用流程
+                    ul.use-box
+                        li
+                            img(src='/web/images/sp_step1.png' alt="第一步")
+                            .use
+                                p
+                                    |扫描右侧二维码，进入善诊活动页面，选择“兑换口令”，输入【
+                                    span#show
+                                        a 点我登录后可见
+                                    |】兑换成相应抵扣券。
+                                img(src='/web/images/sp_er.jpg' alt="二维码")
+                        li
+                            .use.use-two
+                                p 选择体检套餐，使用抵扣券，即可享受到相应优惠。
+                                img(src='/web/images/sp_step2.png' alt="第二步")
+                        li
+                            img(src='/web/images/sp_step3.png' alt="第三步")
+                            .use.use-three
+                                p 最后，下单成功后，关注“善诊”公众号，进入我的订单-预约体检，成功预约后即可前往体检。
+                    .sp-package-title
+                        h3 孝心套餐注意事项
+                    ol.attention
+                        li 体检人年龄需45周岁以上
+                        li 体检预约截止时间：2016年9月30日；体检截止时间：2016年10月30日
+                        li 使用机构：覆盖全国68个城市，美年大健康、爱康国宾177家门店
+                        li 善诊客服热线4006762960（服务时间07:30-20:00）
+                    .sp-detail
+                        img(src="/web/images/sp_shanzhen.png" alt="善诊")
+                        p 善诊，总部位于上海，领航中老年健康医养行业，致力于解决中老年人的健康问题，提供“似子女在侧”的健康管理服务。目前服务覆盖全国160多个城市的三甲医院及品牌体检中心。
+                    .sp-coop
+                        h3 中秋活动合作伙伴
+                        img(src="/web/images/sp_park.jpg" alt="浦东软件园")
+                        img(src="/web/images/sp_huizhi.png" alt="汇智软件")
+
+
+
+
+    include ../include/footer
+

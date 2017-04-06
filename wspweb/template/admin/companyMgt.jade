@@ -1,0 +1,180 @@
+extends ./layout
+block head
+    title  企业管理
+    link(rel="stylesheet",href="/admin/css/index.css")
+    script(src="/admin/js/companyMgt.js")
+block body
+    .col-xs-9.content
+        .pagetitle 企业管理
+        div.addUser
+            a.operate(data-toggle="modal" data-target="#addModal") +新增
+        table#companyTable(width="100%",cellspacing="0")
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#enableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定解除禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue(type="submit")#enableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 用户详情
+                    div.modal-body
+                        table(cellspacing="0",width="100%")
+                            tbody#companyInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#editModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content    
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 编辑企业
+                    div.modal-body
+                        form.form-horizontal.userform#companyEditForm(name="companyEditForm",role="form")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业用户名:
+                                div.col-sm-7
+                                    input.form-control.readonly(type="text",name="username",readonly="readonly")
+                                    input.form-control(type="hidden",name="objectid")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 联系人:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="contacts")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 联系方式:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="contactsinfo") 
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 联系地址:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="address")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    |企业简称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="abbreviation")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 入驻年份:
+                                div.col-sm-7
+                                    select.form-control#startYear(name="intake",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业规模:
+                                div.col-sm-7
+                                    select.form-control#scale(name="scale",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 所属行业:
+                                div.col-sm-7
+                                    select.form-control#industry(name="industry",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业性质:
+                                div.col-sm-7
+                                    select.form-control#type(name="type",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label clmId:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="clmId")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content    
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增企业
+                    div.modal-body
+                        form.form-horizontal.userform#addCompanyForm(method="post",name="addCompanyForm",role="form")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业用户名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="username")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 联系人:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="contacts")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 联系方式:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="contactsinfo") 
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 联系地址:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="address")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label 企业简称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="abbreviation")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 入驻年份:
+                                div.col-sm-7
+                                    select.form-control#startYear2(name="intake",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业规模:
+                                div.col-sm-7
+                                    select.form-control#scale2(name="scale",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 所属行业:
+                                div.col-sm-7
+                                    select.form-control#industry2(name="industry",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 企业性质:
+                                div.col-sm-7
+                                    select.form-control#type2(name="type",data-placeholder="请选择...")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star clmId:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="clmId")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消

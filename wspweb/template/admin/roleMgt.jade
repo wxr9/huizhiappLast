@@ -1,0 +1,115 @@
+//Created by iris on 16/2/29.
+extends ./layout
+block head
+    title 角色管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/roleMgt.js")
+block body
+    .col-xs-9.content
+        .pagetitle 角色管理
+        div.addUser
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+        table#roleTable(width="100%",cellspacing="0")
+        div.modal.fade#delModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        p(style="text-align:center;") 您确定删除吗?
+                    .modal-footer
+                        button.btn.btn-blue#delBtn(type="submit") 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#editModal(tabindex="-1")
+            div.modal-dialog.modal-default
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 编辑角色
+                    div.modal-body
+                        form.form-horizontal#editForm(name="editForm",role="form")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 角色英文名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="rolename")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 角色名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label 备注:
+                                div.col-sm-7
+                                    textarea.form-control(type="text",name="memo")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 是否后台管理角色:
+                                div.col-sm-7
+                                    label.radio-inline
+                                        input(type="radio",name="isShow",value="1")
+                                        |是
+                                    label.radio-inline
+                                        input(type="radio",name="isShow",value="2")
+                                        |否
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 角色权限:
+                                div.col-sm-7
+                                    select.form-control#permissionList(multiple="multiple",name="permissionArray")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增角色
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addUserForm")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 角色英文名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="rolename")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 角色名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label 备注:
+                                div.col-sm-7
+                                    textarea.form-control(type="text",name="memo")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 是否后台管理角色:
+                                div.col-sm-7
+                                    label.radio-inline
+                                        input(type="radio",name="isShow",value="1",checked='checked')
+                                        | 是
+                                    label.radio-inline
+                                        input(type="radio",name="isShow",value="2")
+                                        | 否
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 角色权限:
+                                div.col-sm-7
+                                    select.form-control#permissionList2(multiple="multiple",name="permissionArray")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+

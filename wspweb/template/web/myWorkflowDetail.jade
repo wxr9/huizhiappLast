@@ -1,0 +1,170 @@
+extends ./layout
+block head
+    title  业务详情
+block body
+    .html-title.service
+    .container
+      .bread-crumb
+        span.icon
+        a(href='/') 首页
+        span &gt;
+        a(href='/web/myWiz.html') 我的小智
+        span &gt;
+        a(href='javascript:void(0)') 报修详情
+    .container
+      .row
+        .col-xs-12
+          .workflowDetailForm
+            form#form.form-horizontal
+              .row
+                .col-xs-12
+                  p.workflowDetailFormTitle#serialNumber
+                .col-xs-2
+                  p.formRowTitle 基本信息
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='applicant') 报修人
+                    .col-xs-8
+                      p.form-control-static#applicant
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='contact') 联系方式
+                    .col-xs-8
+                      p.form-control-static#contact
+                .col-xs-offset-2.col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='createDate') 申请日期
+                    .col-xs-8
+                      p.form-control-static#createDate
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='mobile') 固定电话
+                    .col-xs-8
+                      p.form-control-static#mobile
+                .col-xs-offset-2.col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='company') 公司名称
+                    .col-xs-8
+                      p.form-control-static#company
+                .col-xs-12
+                  hr.formRowLine
+                .col-xs-2
+                  p.formRowTitle 区域信息
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='parkId') 园区
+                    .col-xs-8
+                      p.form-control-static#parkId
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='buildingId') 楼宇
+                    .col-xs-8
+                      p.form-control-static#buildingId
+                .col-xs-offset-2.col-xs-10
+                  .form-group
+                    label.col-xs-2.control-label(for='address') 报修地址
+                    .col-xs-8
+                      p.form-control-static#address
+                .col-xs-12
+                  hr.formRowLine
+                .col-xs-2
+                  p.formRowTitle 报修信息
+                .col-xs-10
+                  .form-group
+                    label.col-xs-2.control-label(for='repairType') 报修类别
+                    .col-xs-8
+                      p.form-control-static#repairType
+                .col-xs-offset-2.col-xs-10
+                  .form-group
+                    label.col-xs-2.control-label 报修时间
+                    .col-xs-8
+                      p.form-control-static#appointDate
+                .col-xs-offset-2.col-xs-10
+                  .form-group
+                    label.col-xs-2.control-label(for='photoUrl') 报修照片
+                    .col-xs-10#photoUrl
+                .col-xs-offset-2.col-xs-10
+                  .form-group
+                    label.col-xs-2.control-label(for='description') 报修描述
+                    .col-xs-8
+                      p.form-control-static#description
+                .col-xs-offset-2.col-xs-10
+                  .form-group
+                    label.col-xs-2.control-label(for='memo') 备注
+                    .col-xs-8
+                      p.form-control-static#memo
+              .row
+                .col-xs-12
+                  p.workflowDetailFormTitle 派工信息
+                .col-xs-2
+                  p.formRowTitle
+                    | 报修信息
+                    br
+                    | (修改后)
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='repairTypeConfm') 报修类别
+                    .col-xs-8
+                      p.form-control-static#repairTypeConfm
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='repairBuilding') 楼宇
+                    .col-xs-8
+                      p.form-control-static#repairBuilding
+                .col-xs-offset-2.col-xs-10
+                  .form-group
+                    label.col-xs-2.control-label(for='descriptionConfm') 报修描述
+                    .col-xs-8
+                      p.form-control-static#descriptionConfm
+                //.col-xs-12
+                //  hr.formRowLine
+                //.col-xs-2
+                //  p.formRowTitle 工程师信息
+                //.col-xs-5
+                //  .form-group
+                //    label.col-xs-4.control-label(for='engineerName') 工程师姓名
+                //    .col-xs-8
+                //      p.form-control-static#engineerName
+                //.col-xs-5
+                //  .form-group
+                //    label.col-xs-4.control-label(for='engineerMobile') 联系方式
+                //    .col-xs-8
+                //      p.form-control-static#engineerMobile
+                .col-xs-offset-2.col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='assignTime') 派工时间
+                    .col-xs-8
+                      p.form-control-static#assignTime
+              .row
+                .col-xs-12
+                  p.workflowDetailFormTitle 维修信息
+                .col-xs-2
+                  p.formRowTitle 节点信息
+                .col-xs-5
+                  .form-group
+                    label.col-xs-4.control-label(for='arriveTime') 抵达时间
+                    .col-xs-8
+                      p.form-control-static#arriveTime
+                .col-xs-12
+                  hr.formRowLine
+                .col-xs-2
+                  p.formRowTitle 维修记录
+                .col-xs-10
+                  ul.cbp_tmtimeline
+              .row
+                .col-xs-12
+                  p.workflowDetailFormTitle 评价信息
+                .col-xs-6
+                  p#comment
+                .col-xs-2.ratingScore.ratingScore-duration
+                  span#duration
+                  p.ratingText 服务速度
+                .col-xs-2.ratingScore.ratingScore-attitude
+                  span#attitude
+                  p.ratingText 服务态度
+                .col-xs-2.ratingScore.ratingScore-quality
+                  span#quality
+                  p.ratingText 服务质量
+
+    include include/footer
+    script(src="/web/js/myWorkflowDetail.js")

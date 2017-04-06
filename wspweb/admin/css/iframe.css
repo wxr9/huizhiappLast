@@ -1,0 +1,98 @@
+.form-group {
+    margin-bottom:0;
+}
+.singleForm{
+    padding-top:24px;
+}
+hr {
+    clear: both;
+    padding: 15px auto;
+}
+.workflowImg{
+    max-width: 75%;
+}
+.meetingRoom {
+    margin-left: 15%;
+    height: 40px;
+    clear: both;
+}
+
+.meetingRoom label {
+    float: left;
+}
+
+.meetingRoom-label {
+    display: inline-block;
+    line-height: 2.5;
+}
+
+.meetingRoom .form-label {
+    width: 150px;
+}
+
+.meetingRoom input {
+    float: left;
+    margin-right: 20px;
+}
+
+.meetingRoom .form-control {
+    width: 120px;
+}
+
+.classroom {
+    margin-left: 15%;
+    height: 40px;
+    clear: both;
+}
+
+.classroom label {
+    float: left;
+}
+
+.classroom {
+    display: inline-block;
+    line-height: 2.5;
+}
+
+.classroom .form-label {
+    width: 240px;
+    margin-left: 20px;
+}
+
+.classroom input {
+    float: left;
+    margin-right: 20px;
+}
+
+.classroom .form-control {
+    width: 150px;
+    margin-left: 20px;
+}
+
+.isCheck {
+    display: inline-block;
+    line-height: 2.5;
+}
+
+input[type="checkbox"] {
+    display: inline-block;
+    position: relative;
+    left:5px;
+    top: 5px;
+}
+.opinion{
+    clear:both;
+    position: relative;
+}
+.opinion-comment{
+    width: 320px;
+    /* line-height: 1.5; */
+    font-weight: normal;
+    text-indent: 2em;
+    margin-left:25%;
+}
+.opinion-date{
+    position: absolute;
+    top:10px;
+    right:80px;
+}

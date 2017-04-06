@@ -1,0 +1,84 @@
+//
+   Created by Administrator on 2016/4/6.
+
+extends ../layout
+block head
+    title  汇智卡余额查询
+    link(href='/web/css/card.css', rel='stylesheet')
+    script(src="/web/js/cardQueryDetail.js")
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 汇智卡
+            hr.pageTitleLine
+    .container.queryDetail
+        h4 汇智卡余额查询
+        .row.query_bg
+            .col-sm-8.col-sm-offset-2.mt30
+                p.cardNum.col-sm-4 汇智卡号：
+                    span#carNum 123****321
+                button.btn.btn-blue.ml20.mr20.mt40.col-sm-1(data-toggle="modal" data-target="#chongzhiModal") 充值
+                .col-sm-3
+                    | 电子钱包余额
+                    .balance.mt10#eWallet
+                        p 0
+                .col-sm-3
+                    | 主账户余额
+                    .balance.mt10#mainAccount
+                        p 0
+            .col-sm-10.col-sm-offset-1
+                ul.record(role='tablist')
+                    li.active(role='presentation')
+                        a(href='#one', aria-controls='base', role='tab', data-toggle='tab') 主账户交易记录
+                    li(role='presentation')
+                        a(href='#two', aria-controls='base', role='tab', data-toggle='tab') 电子钱包交易记录
+                .tab-content
+                    #one.tab-pane.fade.in.active(role='tabpanel')
+                    #two.tab-pane.fade(role='tabpanel')
+    div.modal.fade.pay#chongzhiModal(tabindex="-1")
+        div.modal-dialog.modal-sm
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title 汇智卡充值
+                div.modal-body
+                    dl.row
+                        dt.col-sm-4
+                            img.img(src='/web/images/card.png')
+                        dd.col-sm-8
+                            form.form-horizontal#formChong(name="form",role="form",method="POST")
+                                p 卡号
+                                input.pw80.form-control(type='text' placeholder='请输入用户名',name='memberNo')
+                                input.pw80.form-control(type='hidden' placeholder='请输入卡号',name='cardNo')
+                                p 充值金额
+                                ul#price
+                                    li.active
+                                        a ￥50
+                                    li
+                                        a ￥100
+                                    li
+                                        a ￥200
+                                    li
+                                        a ￥500
+                                input.pw80.form-control(type='text',name='orderAmtCount',style='display:none')
+                                input.pw80.form-control(type='text',name='orderAmt',style='display:none')
+                                p#orderAmtCount
+                                p 短信发送发票信息
+                                a#link(target='_blank')
+                    div.bind
+                        div.clearfix
+                            h4 绑定您的汇智卡
+                            button.close(type="button", data-dismiss="modal")
+                                span &times;
+                        p.tip 绑定后系统会自动填充您的汇智卡卡号和密码。
+                        a.btn 立即绑定
+
+                div.modal-footer
+                    button.btn.btn-blue#chongCfm(type='button') 确定充值
+                    button.btn.btn-grey(data-dismiss="modal") 取消
+
+
+    include ../include/footer

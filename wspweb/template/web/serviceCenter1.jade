@@ -1,0 +1,180 @@
+extends ./layout
+block head
+    title  服务中心
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    link(href='/web/css/card.css', rel='stylesheet')
+    script(src="/web/js/serviceCenter.js")
+block body
+    header.jumbotron-blue.center-vertically(role='banner')
+      .container
+        hr.pageTitleLine.addpageTitle
+        .pageTitleDiv
+          span.pageTitle 服务身边生活
+        hr.pageTitleLine
+        ul.cbp-ig-grid
+          li
+            img(src='/web/images/life.png')
+            i
+              span.cbp-ig-icon.fa.fa-book
+              h3.cbp-ig-title 报修服务
+              a(href='/web/applyForPropertyRepair.html').cbp-ig-category.BG 物业报修
+              a(href='/web/applyForITRepair.html').cbp-ig-category.BG IT网络报修
+          li
+            img(src='/web/images/life.png')
+            a#openWindow(data-toggle="modal" href='#')
+              span.cbp-ig-icon.fa.fa-credit-card
+              h3.cbp-ig-title 汇智卡充值
+          li
+            img(src='/web/images/life.png')
+            i
+              span.cbp-ig-icon.fa.fa-cny
+              h3.cbp-ig-title 汇智卡余额查询
+              a(href='/web/user/cardDetail.html').cbp-ig-category.BG 我的汇智卡
+              a(href='/web/user/cardQuery.html').cbp-ig-category.BG 其他汇智卡
+          li
+            img(src='/web/images/Business.png')
+            a(href='/web/services/meetingRoomList.html')
+              span.cbp-ig-icon.fa.fa-users
+              h3.cbp-ig-title 会议室预订
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/Business.png')
+            a(href='/web/services/commercial.html')
+              span.cbp-ig-icon.fa.fa-youtube-play
+              h3.cbp-ig-title 广告服务申请
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/Business.png')
+            a(href='/web/services/hatchApply.html')
+              span.cbp-ig-icon.fa.fa-building
+              h3.cbp-ig-title 入驻申请
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/Business.png')
+            a(href='/web/services/hatchForm.html')
+              span.cbp-ig-icon.fa.fa-pencil
+              h3.cbp-ig-title 孵化注册预约
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/Business.png')
+            a(href='/web/services/queryBill.html')
+              span.cbp-ig-icon.fa.fa-list-alt
+              h3.cbp-ig-title 综合账单查询
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/Business.png')
+            a(href='/web/services/parkList.html')
+              span.cbp-ig-icon.fa.fa-home
+                h3.cbp-ig-title 在线看房
+                //span
+          li
+            img(src='/web/images/personnel.png')
+            a(href='/web/services/huntApply.html')
+              span.cbp-ig-icon.fa.fa-user-secret
+              h3.cbp-ig-title 猎聘申请
+              //span.cbp-ig-category.BG 充值服务
+          li
+            img(src='/web/images/personnel.png')
+            a(href='/web/services/jobList.html')
+              span.cbp-ig-icon.fa.fa-briefcase
+              h3.cbp-ig-title 职位申请
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/personnel.png')
+            a(href='/web/services/classroomList.html')
+              span.cbp-ig-icon.fa.fa-bookmark
+              h3.cbp-ig-title 教室预订
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/personnel.png')
+            i
+              span.cbp-ig-icon.fa.fa-book
+              h3.cbp-ig-title 培训服务
+              a(href='/web/services/myCultivate.html').cbp-ig-category.BG 个人培训
+              a(href='/web/services/companyApply.html').cbp-ig-category.BG 企业培训
+          li
+            img(src='/web/images/hatchtop.png')
+            a(href='#')
+              span.cbp-ig-icon.fa.fa-building
+              h3.cbp-ig-title 入孵申请
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/Technologytop.png')
+            a(href='/web/services/testApply.html')
+              span.cbp-ig-icon.fa.fa-laptop
+              h3.cbp-ig-title 测试申请
+              //span.cbp-ig-category.BG
+          li
+            img(src='/web/images/Technologytop.png')
+            a(href='/web/services/copyrightApply.html')
+              span.cbp-ig-icon.fa.fa-pencil-square-o
+              h3.cbp-ig-title 著作权登记
+              //span.cbp-ig-category.BG
+        div.modal.fade.pay#chongzhiModal(tabindex="-1")
+          div.modal-dialog.modal-sm
+            div.modal-content
+              div.modal-header
+                button.close(type="button", data-dismiss="modal")
+                  span &times;
+                h4.modal-title 汇智卡充值
+              div.modal-body
+                dl.row
+                  dt.col-sm-4
+                    img.img(src='/web/images/card.png')
+                  dd.col-sm-8
+                    form.form-horizontal#formChong(name="form",role="form",method="POST")
+                      p 卡号
+                      input.pw80.form-control(type='text',name='cardNo')
+                      p 充值金额
+                      ul#price
+                        li.active
+                          a ￥50
+                        li
+                          a ￥100
+                        li
+                          a ￥200
+                        li
+                          a ￥500
+                      input.pw80.form-control(type='hidden',value='50',name='orderAmt')
+                      p 短信发送发票信息
+                      a#link(target='_blank')
+                div.bind
+                  div.clearfix
+                    h4 绑定您的汇智卡
+                    button.close#close
+                      span &times;
+                  p.tip 绑定后系统会自动填充您的汇智卡卡号和密码。
+                  a.btn(data-toggle="modal" data-target="#bindModal") 立即绑定
+
+              div.modal-footer
+                button.btn.btn-blue#chongCfm(type='button') 确定充值
+                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#bindModal(tabindex="-1")
+          div.modal-dialog.modal-sm
+            div.modal-content
+              div.modal-header
+                button.close(type="button", data-dismiss="modal")
+                  span &times;
+                h4.modal-title 绑定汇智卡
+              div.modal-body
+                form.form-horizontal#form.popul(name="form",role="form",method="POST")
+                  div.form-group
+                    label.col-sm-3.control-label 汇智卡号:
+                    div.col-sm-5
+                      input.form-control(type="text",name='cardNo')
+                    div.col-sm-4
+                  div.form-group
+                    label.col-sm-3.control-label 密码:
+                    div.col-sm-3
+                      input.form-control(type="password",name='password')
+                    div.col-sm-4
+                  div.form-group(hidden)
+                    label.col-sm-3.control-label :
+                    div.col-sm-3
+                      input.form-control(type="text",name='queryFlag',value='1')
+                    div.col-sm-4
+                  div.formFooter
+                    button.btn.btn-blue#bindCfm(type='submit') 绑定
+                    button.btn.btn-grey(data-dismiss="modal") 取消
+include include/footer
+

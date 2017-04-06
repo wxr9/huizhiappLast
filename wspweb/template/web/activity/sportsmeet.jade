@@ -1,0 +1,55 @@
+extends ../layout
+block head
+    title  活动中心
+    link(href='/web/css/activity.css', rel='stylesheet')
+    //script(src="/web/js/activitySpecial.js")
+block body
+    .html-title.activity
+    .sport
+        .sport-bg
+        h2.sport-title 两年一度的第五届浦软园区企业运动会即将拉开帷幕！
+        .sport-intro
+            |本届浦软园区运动会将以传统球赛竞技及田赛项目为主，同时现场还设有科技游艺互动区带你High翻全场。
+            |此外，今年浦软园区运动会将特别增设奖金丰厚的&quot;
+            span 团队奖
+            |&quot;、
+            span 方阵奖
+            |&quot;及&quot;
+            span 幸运观众奖
+            |&quot;等诸多奖项，奖金品总额达
+            span 五万
+            |！让我们一起重温学生时代的运动时光，顽强拼搏、赛出自我！
+        .sport-detail
+            table.sport-list
+                tr
+                    td 1.活动时间：
+                    td 10月29日（周六） 08:30-15:30
+                tr
+                    td 2.活动安排：
+                    td
+                        span 09:00-09:30 开幕式-企业方阵Show
+                        span 09:30-15:00 运动日项目（田径类、综合类、大球决赛）
+                        span 15:00-15:30 颁奖
+                tr
+                    td 3.活动地点：
+                    td 浦东华师大附属张江实验中学体育场 （江东路54号，地铁二号线广兰路站步行5分钟，详见右图）
+                tr
+                    td 4.报名方式：
+                    td
+                        |参赛企业下载
+                        a(href="/static/uploads/docs/20161011/20161011152728.xlsx" download) 《浦东软件园运动会报名表》
+                        |并填写附件电子表格，发送至邮箱：
+                        br
+                        |pengr@spsp.com.cn，
+                tr
+                    td 5.报名截止：
+                    td 即日起至10月20日
+                tr
+                    td 6.咨询电话：
+                    td 服务中心：400-676-1818；张先生：61821818-8606
+            img.sport-img(src="/web/images/sport-map.jpg" alt="map")
+
+    include ../include/footer
+
+
+

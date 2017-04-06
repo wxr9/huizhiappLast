@@ -1,0 +1,138 @@
+extends ../layout
+block head
+    title  测试申请
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 测试申请
+    .container.bg_white.huntApply
+        .col-xs-12
+            .da-notice#notice
+        .col-xs-12
+            form.form-horizontal#applyForm(name="form",method='POST')
+                .col-xs-12
+                    label.read.mt11
+                        input#mustRead(type='checkbox',name='mustRead')
+                        span 已阅读
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 申请人：
+                        .col-xs-8
+                            input.form-control(type='text',name='chineseName',readonly)
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label E-mail：
+                        .col-xs-8
+                            input.form-control(type='text',name='email')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.control-label 公司名称：
+                        .col-xs-8
+                            input.form-control(type='text',name='company')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.control-label 联系方式：
+                        .col-xs-8
+                            input.form-control(type='text',name='phone')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 软件名称：
+                        .col-xs-8
+                            input.form-control(type='text',name='softName')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 版本号：
+                        .col-xs-8
+                            input.form-control(type='text',name='softVersion')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.control-label 软件简称：
+                        .col-xs-8
+                            input.form-control(type='text',name='softAbbreviation')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 送测单位：
+                        .col-xs-8
+                            input.form-control(type='text',name='organizers')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 测试类别：
+                        .col-xs-5
+                            select.form-control#testType(name='testTypeId')
+                        .col-xs-3
+                            span.control-label#testPrice
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 需求说明：
+                        .col-xs-8
+                            textarea.textarea(name='content',rows='5')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 申请表：
+                        .col-xs-8
+                            input.form-control#apply(type='file',name='applyForm')
+                            p(style="letter-spacing:1px") 提示：文件格式为.doc/.docx/.pdf/.html/.zip/.rar/.7z/.iso，上限10M;
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.control-label 其它材料：
+                        .col-xs-8
+                            input.form-control#material(type='file',name='material')
+                            p 提示：附件大于20M请将材料发送至sptc@spsp.com.cn
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.control-label 备注：
+                        .col-xs-8
+                            textarea.textarea.form-control(name='memo',rows='5')
+                div.display_n#comment
+                    .col-xs-11.mt11
+                        .col-xs-3.text-right
+                            label.control-label 评价信息：
+                        .col-xs-9
+                            .col-xs-5
+                                p#comment1
+                            .col-xs-2.ratingScore.ratingScore-duration
+                                span#duration
+                                p.ratingText 响应速度
+                            .col-xs-2.ratingScore.ratingScore-attitude
+                                span#attitude
+                                p.ratingText 服务态度
+                            .col-xs-2.ratingScore.ratingScore-quality
+                                span#quality
+                                p.ratingText 服务质量
+                .form-group
+                    .col-xs-11.text-center
+                        button#testBtn.btn.btn-blue.submit(type='submit') 提交
+
+    include ../include/footer
+    script(src="/web/js/testApply.js")
+
+

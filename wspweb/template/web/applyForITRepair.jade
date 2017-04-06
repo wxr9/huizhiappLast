@@ -1,0 +1,103 @@
+extends ./layout
+block head
+    title  IT报修
+block body
+    .html-title.service
+    .container
+      .bread-crumb
+        span.icon
+        a(href='/') 首页
+        span &gt;
+        a(href='/web/serviceCenter.html') 服务中心
+        span &gt;
+        a(href='javascript:void(0)') IT报修
+    .container.se-bg
+      .row
+        .col-xs-offset-1.col-xs-10
+          .serviceForm
+            form#form.form-horizontal
+              .col-xs-2
+                p.formRowTitle 基本信息
+              .col-xs-5
+                .form-group
+                  input(type="hidden", name="applicant",id="applicant")
+                  label.col-xs-4.control-label(for='contact')
+                    span.star
+                    span 联系方式
+                  .col-xs-8
+                    input#contact.form-control(name='contact', type='text', placeholder='输入您的联系方式')
+              .col-xs-5
+                .form-group
+                  label.col-xs-4.control-label(for='company')
+                    span.star
+                    span 公司名称
+                  .col-xs-8
+                    input#company.form-control(name='company', type='text', placeholder='输入您的公司全称')
+              .col-xs-offset-2.col-xs-10
+                .form-group
+                  label.col-xs-2.control-label(for='mobile')
+                    span 固定电话
+                  .col-xs-4
+                    input#mobile.form-control(name='mobile', type='text', placeholder='输入您的固定电话')
+              .col-xs-12
+                hr.formRowLine
+              .col-xs-2
+                p.formRowTitle 区域信息
+              .col-xs-5
+                .form-group
+                  label.col-xs-4.control-label(for='parkId')
+                    span.star
+                    span 园区
+                  .col-xs-8
+                    select.form-control#parkId(name='parkId')
+              .col-xs-5
+                .form-group
+                  label.col-xs-4.control-label(for='buildingId')
+                    span.star
+                    span 楼宇
+                  .col-xs-8
+                    select.form-control#buildingId(name='buildingId')
+              .col-xs-offset-2.col-xs-10
+                .form-group
+                  label.col-xs-2.control-label(for='address')
+                    span.star
+                    span 报修地址
+                  .col-xs-8
+                    input#address.form-control(name='address', type='text', placeholder='输入您的报修地址')
+              .col-xs-12
+                hr.formRowLine
+              .col-xs-2
+                p.formRowTitle 报修信息
+              .col-xs-10
+                .form-group
+                  label.col-xs-2.control-label(for='repairTypeParent')
+                    span.star
+                    span 报修类别
+                  .col-xs-4
+                    select.form-control#repairTypeParent(name='repairTypeParent')
+                  .col-xs-4
+                    select.form-control#repairType(name='repairType')
+              .col-xs-offset-2.col-xs-10
+                .form-group
+                  label.col-xs-2.control-label#ces
+                    span 报修照片
+                  .col-xs-8
+                    input#photo_urlA(type="file",name="photoUrl")
+              .col-xs-offset-2.col-xs-10
+                .form-group
+                  label.col-xs-2.control-label(for='description')
+                    span.star
+                    span 报修描述
+                  .col-xs-8
+                    textarea#description.form-control(name='description', rows='3', placeholder='100字以内')
+              .col-xs-offset-2.col-xs-10
+                .form-group
+                  label.col-xs-2.control-label(for='memo') 备注
+                  .col-xs-8
+                    textarea#memo.form-control(name='memo', rows='3', placeholder='100字以内')
+          .col-xs-10.col-xs-offset-2.text-center
+            a.btn.btn-blue.submit#save(type='button') 提交
+            a.btn.btn-blue.submit#send(type='button') 提交Old
+    include include/footer
+    script(src='/web/js/bootstrapValidator-logic.js')
+    script(src='/web/js/bootstrapValidator-ITRepair.js')

@@ -1,0 +1,23 @@
+extends ./layout
+block head
+    title  网站数据
+    link(href='/admin/css/statistics.css', rel='stylesheet')
+    link(href="/lib/css/public.css", rel='stylesheet')
+block body
+    // 主内容区
+    .col-sm-9.content
+        .pagetitle 商户数据统计
+        .row
+            .rectangle.rectangle-green
+                span.statisticsTitle 商户数量统计
+                span.statisticsNum#sumNum 0
+        // 统计图
+        .chart-pane
+            #typeStatistics(style='width:100%;height:400px;')
+        .chart-pane
+            #saleStatistics(style='width:100%;height:400px;')
+        .chart-pane
+            #areaStatistics(style='width:100%;height:400px;')
+    script(src='/admin/js/echarts/echarts.js')
+    script(src='/admin/js/merchantStatistics.js')
+

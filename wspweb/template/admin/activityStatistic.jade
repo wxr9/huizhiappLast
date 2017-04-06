@@ -1,0 +1,28 @@
+//
+   Created by Administrator on 2016/5/4.activityStatistic
+extends ./layout
+block head
+    title  活动数据
+    link(href='/admin/css/statistics.css', rel='stylesheet')
+    link(href="/lib/css/public.css", rel='stylesheet')
+block body
+    // 主内容区
+    .col-sm-9.content
+        .pagetitle 活动数据统计
+        .row
+            .rectangle.rectangle-green
+                span.statisticsTitle 活动数量统计
+                span.statisticsNum#sumNum
+            .rectangle.rectangle-orange
+                span.statisticsTitle 活动人数统计
+                span.statisticsNum#peopleNum
+        // 统计图
+        .chart-pane
+            #typeStatistics(style='width:100%;height:400px;')
+        //.chart-pane
+        //    #saleStatistics(style='width:100%;height:400px;')
+        //.chart-pane
+        //    #areaStatistics(style='width:100%;height:400px;')
+    script(src='/admin/js/echarts/echarts.js')
+    script(src='/admin/js/activityStatistic.js')
+

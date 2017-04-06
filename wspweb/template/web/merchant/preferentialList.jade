@@ -1,0 +1,139 @@
+extends ../layout
+block head
+    title  商户中心
+    link(rel='stylesheet' href='/web/css/merchant.css')
+    style.
+        #businessTable>tbody>tr>td:nth-child(6){
+            text-align: left;
+        }
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 商户中心
+            hr.pageTitleLine
+    .container
+        .col-xs-3
+            nav
+                ul.left-nav
+                    li
+                        i.icon.fa.fa-user
+                        a(href="/web/merchant/merchantList.html") 商户信息管理
+                    li.active
+                        i.icon.fa.fa-home
+                        a(href="/web/merchant/preferentialList.html") 优惠信息管理
+                    li
+                        i.icon.fa.fa-credit-card-alt
+                        a(href="/web/merchant/reply.html") 商户互动记录
+        .col-xs-9
+            .row
+                h3.cont-title 优惠信息
+            .row
+                button.btn.btn-bg-blue(data-toggle='modal',data-target='#infoModal') 新增
+            .row
+                table#businessTable(width="100%",cellspacing="0")
+            div.modal.fade#infoModal(tabindex="-1")
+                div.modal-dialog.modal-lg
+                    div.modal-content
+                        div.modal-header
+                            button.close(type="button", data-dismiss="modal")
+                                span &times;
+                            h4.modal-title 新增优惠信息
+                        div.modal-body
+                            form.form.form-horizontal.mer-form#merchantInfo(name="merchantInfo")
+                                div.form-group
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |标题:
+                                    div.col-xs-8
+                                        input.form-control(type="hidden",name="companyId")
+                                        input.form-control(type="text",name="title")
+                                div.form-group
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |开始日期:
+                                    div.col-xs-6
+                                        .input-append.date.form_datetime
+                                            input(size="24", type="text", name='startTime', readOnly)
+                                            span.add-on
+                                                i.icon-th.fa.fa-table.blue
+                                div.form-group
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |截止日期:
+                                    div.col-xs-6
+                                        .input-append.date.form_datetime
+                                            input(size="24", type="text", name="endTime", readOnly)
+                                            span.add-on
+                                                i.icon-th.fa.fa-table.blue
+                                div.form-group
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |封面照片:
+                                    div.col-sm-7.upload-box
+                                        input.btn.input#input(type="file")
+                                        button.btn.btn-bg-blue.fakeInput#fakeInput(type="button")
+                                            | 选择图片
+                                        button.btn.btn-bg-orange.uploadImg.disabled#uploadImg(type='button')
+                                            | 上传图片
+                                        span.upload-tip 图片上传成功
+                                    div.col-sm-offset-3.col-sm-9
+                                        small *支持图片格式:"jpg,jpeg,png",建议图片宽高比为3:2,至少360px*240px；
+                                    div.col-sm-offset-3.col-sm-9
+                                        input#realInput(type='hidden',name='coverImg')
+                                div.form-group.image-box
+                                    div.col-xs-7.col-xs-offset-1
+                                        div(style="width:480px;height:320px;")
+                                            img#image.cropImage(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                                    div.col-xs-4
+                                        div.page-header
+                                            | 裁剪预览：
+                                        div.preview(style="width:230px;height:153px;background:#eee;")
+                                    //div.col-xs-8
+                                    //    input.form-control#coverImg(type="hidden",name="coverImg")
+                                    //div.col-sm-offset-3.col-sm-9
+                                    //    small *建议上传图片尺寸宽高比为2:1,至少360px*180px
+                                div.form-group
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |优惠类型:
+                                    div.col-xs-8
+                                        select#type.form-control(name="type")
+                                div.form-group.saleBox#discount
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |折扣:
+                                    div.col-xs-5
+                                        input.form-control(type="text",name="discount",value='0.00',placeholder="0.00")
+                                    div.col-xs-3
+                                        span(style="line-height: 32px;font-size: 16px;padding-left: 0;") 折(0~9.99)
+                                div.form-group.saleBox.discount2
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |原价:
+                                    div.col-sm-8
+                                        span.fa.fa-jpy
+                                        input.price.form-control(type="text",name="origin",value='0')
+                                div.form-group.saleBox.discount2
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |现价:
+                                    div.col-sm-8
+                                        span.fa.fa-jpy
+                                        input.price.form-control(type="text",name="current",value='0')
+                                div.form-group
+                                    label.col-xs-3.control-label
+                                        span.star
+                                        |内容摘要:
+                                    div.col-xs-8
+                                        textarea.form-control(name="shortIntro",rows='5')
+                                div.form-group.submit-box
+                                    div.col-sm-offset-3
+                                        button.btn.btn-bg-blue(type="submit") 提交
+                                        button.btn.btn-default(data-dismiss="modal") 取消
+    include ../include/footer
+    script(src="/web/js/merchantCenter/preferentialList.js")
+
+
+

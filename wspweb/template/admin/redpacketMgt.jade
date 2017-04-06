@@ -1,0 +1,238 @@
+//
+   Created by z on 2016/10/17.
+extends ./layout
+block head
+    title 红包管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/redpacketMgt.js")
+block body
+    .col-sm-9.content
+        .pagetitle 红包管理
+        div.addUser
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+        table#table(width="100%",cellspacing="0")
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        p#tips(style="text-align:center;") 您确定禁用此红包?
+                        form#ableForm(name="ableForm")
+                            input(type="hidden" name="objectId")
+                            input(type="hidden" name="isBan")
+                        .modal-footer
+                            button.btn.btn-blue#btn(type="submit") 确认
+                            button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#chartModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 红包统计
+                    div.modal-body
+                        #chart
+                        ul.chart-pane
+                            li
+                                span 发放总个数：
+                                span#totalNum
+                            li
+                                span 发放总金额：
+                                span#totalMoney
+                            li
+                                span 最高个数日：
+                                span#highNum
+                            li
+                                span 最高金额日：
+                                span#highMoney
+                        div.chart-group
+                            form#chartForm(name="chartForm")
+                                input(type="hidden", name="ruleId")
+                                span 开始时间:
+                                .input-append.date.form_datetime.chartStart
+                                    input(type="text", name="beginDate", readOnly)
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                                span 结束时间:
+                                .input-append.date.form_datetime.chartEnd
+                                    input(type="text", name="endDate", readOnly)
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                                div
+                                    button.btn.btn-blue#chartBtn(type="button") 确认
+                                    button.btn.btn-grey#resetChart(type="button") 重置
+
+        div.modal.fade#editModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 编辑红包
+                    div.modal-body
+                        form.form-horizontal.userform#editForm(name="editForm")
+                            input.form-control(type='hidden',name='type',value='1')
+                            input.form-control(type='hidden',name='id')
+                            input.form-control(type='hidden',name='enableRule')
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 红包名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 红包总金额(元):
+                                div.col-sm-4
+                                    input.form-control(type="text",name="totalSum")
+                                div.col-sm-5.red-tips
+                                    |已发放金额
+                                    i#sentSum
+                                    |元
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 开始时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.startTime
+                                        input(size="24", type="text", name="startDate", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 结束时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.endTime
+                                        input(size="24", type="text", name="endDate", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 有效期截止时间:
+                                div.col-sm-7
+                                    .input-append.date.form_datetime.endTime
+                                        input(size="24", type="text", name="validDate", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                                    span.red-tips 提示：有效期修改后，已发送的红包有效期不变
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 中奖概率(%):
+                                div.col-sm-7
+                                    input.form-control(type="text",name="hitPersent",value="90")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 金额小数点位数:
+                                div.col-sm-7
+                                    input(type="radio",name="dotEnable",value='0',checked)
+                                    | 0位
+                                    input(type="radio",name="dotEnable",value='1')
+                                    | 1位
+                                    input(type="radio",name="dotEnable",value='2')
+                                    | 2位
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 最小金额(元):
+                                div.col-sm-7
+                                    input.form-control(type="number",name="minSum",value='0')
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 最大金额(元):
+                                div.col-sm-7
+                                    input.form-control(type="number",name="maxSum",value='50')
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增红包
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addUserForm")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 红包名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 红包总金额(元):
+                                div.col-sm-7
+                                    input.form-control(type="text",name="totalSum")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 开始时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.startTime
+                                        input(size="24", type="text", name="startDate", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 结束时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.endTime
+                                        input(size="24", type="text", name="endDate", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 有效期截止时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.endTime
+                                        input(size="24", type="text", name="validDate", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 中奖概率(%):
+                                div.col-sm-7
+                                    input.form-control(type="text",name="hitPersent",value="90")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 金额小数点位数:
+                                div.col-sm-7
+                                    input(type="radio",name="dotEnable",value='0',checked)
+                                    |0位
+                                    input(type="radio",name="dotEnable",value='1')
+                                    |1位
+                                    input(type="radio",name="dotEnable",value='2')
+                                    |2位
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 最小金额(元):
+                                div.col-sm-7
+                                    input.form-control(type="number",name="minSum",value='0')
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 最大金额(元):
+                                div.col-sm-7
+                                    input.form-control(type="number",name="maxSum",value='50')
+                                    input.form-control(type='hidden',name='type',value='1')
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+
+    script(src='/admin/js/echarts/echarts.js')

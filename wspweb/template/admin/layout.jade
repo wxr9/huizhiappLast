@@ -1,0 +1,23 @@
+doctype html
+html.no-js(lang="zh-cn")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(http-equiv="x-UA-Compatible", content='IE=EmulateIE9')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='icon', type='image/png', href='/lib/images/favicon-32x32.png', sizes='32x32')
+    link(rel='icon', type='image/png', href='/lib/images/favicon-16x16.png', sizes='16x16')
+    script(src="/lib/require.js")
+    script(src="/lib/main.js")
+    link(href='/lib/css/bootstrap.min.css', rel='stylesheet',type="text/css")
+    link(href='/lib/css/bootstrap-responsive.min.css', rel='stylesheet',type="text/css")
+    link(href='/lib/css/font-awesome.min.css', rel='stylesheet',type="text/css")
+    link(href='/admin/css/style_Yoriki.css', rel='stylesheet',type="text/css")
+    link(href='/admin/css/common.css', rel='stylesheet',type="text/css")
+    script(src="/admin/js/sidebar.js")
+    script(src="/admin/js/yoriki.js")
+    block head
+  body
+    include include/header
+    include include/sidebar
+    block body

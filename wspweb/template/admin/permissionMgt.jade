@@ -1,0 +1,81 @@
+//Created by iris on 16/2/29.
+extends ./layout
+block head
+    title 权限管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/permissionMgt.js")
+block body
+    .col-xs-9.content
+        .pagetitle 权限管理
+        div.addUser
+            a.operate(data-toggle="modal" data-target="#addModal") +新增
+        table#permissionTable(width="100%",cellspacing="0")
+        div.modal.fade#deleteModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定删除吗？
+                    div.modal-footer
+                        button.btn.btn-blue#deleteBtn 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#editModal(tabindex="-1")
+            div.modal-dialog.modal-default
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 编辑权限
+                    div.modal-body
+                        form.form-horizontal#editForm(name="editForm",role="form")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 权限名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                                    input.form-control(type="hidden",name="objectid")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span URL地址:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="url")
+                            div.form-group
+                                label.col-sm-3.control-label 备注:
+                                div.col-sm-7
+                                    textarea.form-control(type="text",name="memo")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增角色
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addUserForm")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 权限名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span URL地址:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="url")
+                            div.form-group
+                                label.col-sm-3.control-label 备注:
+                                div.col-sm-7
+                                    textarea.form-control(type="text",name="memo")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消

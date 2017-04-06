@@ -1,0 +1,23 @@
+extends ../layout
+block head
+    title  培训详情
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src="/web/js/myCultivateDetail.js")
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/myCultivate.html') 个人培训
+            span &gt;
+            a(href='javascript:void(0)') 培训详情
+    .container#cont
+
+    include ../include/footer
+    script(src="/web/js/serviceCenter.js")
+    //Created by Administrator on 2016/3/21.
+

@@ -1,0 +1,127 @@
+.rectangleGrid1 {
+    margin: 0 auto;
+}
+.rectangleGrid2 {
+    max-width: 1070px;
+    margin: 0 auto;
+}
+.rectangle {
+    display: inline-block;
+    padding: 0 2%;
+    width:25%;
+    text-align: center;
+}
+.rect{
+    border-radius: 5px;
+    padding: 15px 0 5px;
+}
+.rectangle-green {
+    background: #9fd468;
+}
+.rectangle-orange {
+    background: #ffce54;
+}
+.rectangle-blue {
+    background: #49b3d9;
+}
+.rectangle-pink {
+    background: #ffa7d0;
+}
+.statisticsTitle {
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+}
+.statisticsNum {
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    display: block;
+}
+.chartFilter1 {
+    max-width: 600px;
+    margin: 60px auto;
+}
+.chartFilter2 {
+    /*max-width: 910px;*/
+    margin: 60px auto;
+}
+.chartFilter1 > .form-group,
+.chartFilter2 > .form-group {
+    display: inline-block;
+    margin-right: 30px;
+}
+.chartFilterBtn {
+    max-width: 53px;
+    margin: 20px auto;
+}
+.chart-pane{
+    background:#eee;
+    box-shadow: 2px 2px 4px #d8d8d8;
+    margin-top:30px;
+    padding:15px 40px 10px 10px;
+}
+.buttonNew{
+    border:1px solid #f7ab2f;
+    border-radius: 4px;
+    background-color: #f7ab2f;
+    color: #ffffff;
+    padding: 4px 0px;
+    width: 115px;
+    font-size: 14px;
+    letter-spacing: 2.4px;
+    margin-right: 16px;
+    margin-bottom: 12px;
+}
+.serviceText .active{
+    background-color: #ffffff;
+    color: #f7ab2f;
+}
+.serviceText{
+    color: #979797;
+    line-height: 28px;
+}
+.pl0{
+    padding-left: 0px;
+}
+.hl{
+    font-weight: bold;
+    letter-spacing: 2.8px;
+}
+.fl{float:left;}
+.serviceText label{
+    font-weight: normal;
+    margin:0 5px 0 15px;
+}
+.serviceText input[type=radio]{margin-top:8px;}
+.clearfix>.rectangle{margin:0 20px;display: block;float: left;}
+.navNew>li>a {
+    font-size: 14px;
+    color: #999999;
+}
+.navNew>li.active>a {
+    font-size: 16px;
+    color: #4a4a4a;
+}
+
+/**********************服务次数统计饼图************************/
+.panel-all{
+    position:relative;
+}
+.panel-all .rectangle{
+    cursor:default;
+}
+.panel-chart{
+    position: absolute;
+    top: 175px;
+    width: 750px;
+    z-index: 20;
+    background: #fff;
+    box-shadow:1px 2px 4px #999;
+    display:none;
+}
+.charts{
+    height:500px;
+    width:750px;
+}

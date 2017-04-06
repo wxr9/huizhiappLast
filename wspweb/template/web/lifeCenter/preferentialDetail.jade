@@ -1,0 +1,20 @@
+extends ../layout
+block head
+    title  生活中心
+    link(rel='stylesheet' href='/web/css/lifeCenter.css')
+block body
+    //header.blur-bg(role='banner')
+    .merchant
+        .container
+            .bread-crumb
+                span.icon
+                a(href='/') 首页
+                span &gt;
+                a(href='/web/lifeCenter/lifeCenter.html') 生活中心
+                span &gt;
+                a(href='/web/lifeCenter/preferentialList.html') 优惠广场
+                span &gt;
+                a(href='javascript:void(0)') 优惠详情
+        #preferentialDetail
+    include ../include/footer
+    script(src="/web/js/lifeCenter/preferentialDetail.js")

@@ -1,0 +1,141 @@
+extends ../layout
+block head
+    title  著作权登记申请
+    link(href='/web/css/apply.css', rel='stylesheet')
+    script(src="/web/js/copyrightApply.js")
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 著作权登记申请
+    .container.huntApply
+        .col-xs-12
+            p.msg#notice
+        .col-xs-12
+            form.form-horizontal#form(name="form",role="form",method="POST")
+                .col-xs-12
+                    label.read
+                        input#mustRead(type='checkbox',name='mustRead')
+                        span 已阅读
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label 申请人：
+                    .col-xs-7
+                        input.form-control(type='text',name='chineseName',readonly)
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span E-mail：
+                    .col-xs-7
+                        input.form-control(type='text', placeholder='请输入邮箱',name='email')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label 公司名称：
+                    .col-xs-7
+                        input.form-control(type='text',placeholder='请输入公司名称',name='company')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label 联系方式：
+                    .col-xs-7
+                        input.form-control(type='text',name='phone')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span 软件名称：
+                    .col-xs-7
+                        input.form-control(type='text',name='softName')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span 版本号：
+                    .col-xs-7
+                        input.form-control(type='text',name='softVersion')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label 软件简称：
+                    .col-xs-7
+                        input.form-control(type='text',name='softAbbreviation')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span 业务类型：
+                    .col-xs-7
+                        select.form-control#copyrightBusinessTypeId(type='text',name='copyrightBusinessTypeId')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span 申请类别：
+                    .col-xs-7
+                        select#copyrightTypeId.form-control(type='text',name='copyrightTypeId')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span 登记周期：
+                    .col-xs-7
+                        select#periodId.form-control(type='text',name='periodId')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span 申请单位：
+                    .col-xs-7
+                        textarea.form-control(type='text',name='copyrightUnit')
+                        p 提示：多个申请单位以“；”分割
+
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span.star
+                            span 申请表：
+                    .col-xs-7
+                        input.form-control#applyForm(type='file',name='applyForm')
+                        p(style="letter-spacing:1px") 提示：文件格式为.doc/.docx/.pdf/.html/.zip/.rar/.7z/.iso，上限30M;
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label
+                            span 其他材料：
+                    .col-xs-7
+                        input.form-control#material(type='file',name='material')
+                        p 提示：附件大于20M请将材料发送至sptc@spsp.com.cn
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label 需求说明：
+                    .col-xs-7
+                        textarea.form-control(type='text',name='content')
+                .form-group
+                    .col-xs-3.text-right.control-sm-label
+                        label 备注：
+                    .col-xs-7
+                        textarea.form-control(type='text',name='memo')
+                div.display_n#comment
+                    .col-xs-11.mt10
+                        .col-xs-3.text-right
+                            label.control-label 评价信息：
+                        .col-xs-9
+                            .col-xs-5
+                                p#comment1
+                            .col-xs-2.ratingScore.ratingScore-duration
+                                span#duration
+                                p.ratingText 响应速度
+                            .col-xs-2.ratingScore.ratingScore-attitude
+                                span#attitude
+                                p.ratingText 服务态度
+                            .col-xs-2.ratingScore.ratingScore-quality
+                                span#quality
+                                p.ratingText 服务质量
+                .form-group
+                    .col-xs-7.col-xs-offset-3.text-center
+                        button.btn.btn-blue.submit(type="submit") 提交
+
+    include ../include/footer

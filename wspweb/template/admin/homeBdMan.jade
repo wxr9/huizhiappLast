@@ -1,0 +1,58 @@
+//
+   Created by Administrator on 2016/6/17.homeBdMan
+extends ./layout
+block head
+    title 首页广告管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/homeBdMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 首页广告管理
+        div#adman
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+            a.operate.right#publish 首页发布
+        table#memberTable(width="100%",cellspacing="0")
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 发布广告
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                input.objectid(type='hidden', name='objectid')
+                                input(type='hidden', name='isBan')
+                                label.col-sm-3.control-label
+                                    span.star 标题:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="title")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 排序:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="orderA")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 图片:
+                                div.col-sm-7
+                                    input#fileUpload.form-control(type="file", name='imgUrl')
+
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 保存
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#deleteModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定删除吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+
+

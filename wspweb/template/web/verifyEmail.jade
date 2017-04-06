@@ -1,0 +1,39 @@
+extends ./layout
+block head
+    title  验证邮箱
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 个人中心
+            hr.pageTitleLine
+    .container
+        .row
+            .verify-box
+                .verify-cont#successBox
+                    img.verify-img(src='/web/images/successe.png')
+                    p.verify-title 恭喜,验证成功!
+                    p.verify-success
+                        |您的邮箱
+                        span.verify-email XXX@aa.com
+                        |已验证成功!
+                    u.time
+                    a.btn.btn-green(href='/web/myWiz.html') 返回首页
+                .verify-cont#faileBox
+                    img.verify-img(src='/web/images/failee.png')
+                    p.verify-title 验证失败!
+                    p.verify-success
+                        |您的邮箱
+                        span.verify-email XXX@aa.com
+                        |验证失败!
+                    u.time
+                    a.btn.btn-green(href='/web/user/bindEmail.html') 重新验证
+
+    include include/footer
+    script(src='/web/js/verifyEmail.js')
+
+
+
+
+

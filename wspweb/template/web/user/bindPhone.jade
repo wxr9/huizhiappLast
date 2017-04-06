@@ -1,0 +1,38 @@
+extends ../layout
+block head
+    title  绑定手机
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 绑定手机
+          form#formYoriki.form-horizontal.personalCenterForm
+            input(type='text', name='username', hidden='true')
+            .col-sm-10
+              .form-group
+                label.col-sm-3.control-label(for='phone') 新手机号
+                .col-sm-9
+                  input#phone.form-control(name='phone', type='text', placeholder='输入您的新手机号')
+            .col-sm-10
+              .form-group
+                label.col-sm-3.control-label(for='code') 校验码
+                .col-sm-6
+                  input#code.form-control(name='code', type='text', placeholder='输入6位校验码')
+                .col-sm-3
+                  button.btn.btn-grey(type='button', id='getPhoneCodeBtn', disabled='true') 获取校验码
+            .col-sm-12
+              hr.formRowLine
+            .form-group
+              .formEndingBtn
+                button.btn.btn-blue(type='submit') 确认
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/bootstrapValidator-logic.js')
+    script(src='/web/js/bootstrapValidator-bindPhone.js')

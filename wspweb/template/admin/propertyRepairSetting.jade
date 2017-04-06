@@ -1,0 +1,204 @@
+extends ./layout
+block head
+    title  物业报修设置
+    script(src="/admin/js/propertyRepairSetting.js")
+    //script(src="/admin/js/engineerValidator.js")
+    link(href='/admin/css/index.css', rel='stylesheet')
+    link(href='/admin/css/setting.css', rel='stylesheet')
+block body
+        .col-sm-8.content
+          .pagetitle 物业报修设置
+          div
+            //物业保修的repairType=1,objectId一样
+            input(type="hidden", value="1", name="repairType",id="repairType")
+            // Nav tabs
+            ul.nav.nav-tabs(role='tablist')
+              li.active(role='presentation')
+                a(href='#one', aria-controls='base', role='tab', data-toggle='tab') 基本设置
+              li(role='presentation')
+                a(href='#two', aria-controls='two', role='tab', data-toggle='tab') 有效期设置
+              li(role='presentation')
+                a(href='#three', aria-controls='three', role='tab', data-toggle='tab') 评价设置
+              li(role='presentation')
+                a(href='#four', aria-controls='four', role='tab', data-toggle='tab') 自动分配设置
+              li(role='presentation')
+                a(href='#five', aria-controls='five', role='tab', data-toggle='tab') 维修工程师设置
+            // Tab panes
+            .tab-content
+              // 服务状态
+              #one.tab-pane.fade.in.active(role='tabpanel')
+                form.form-horizontal
+                  .form-group
+                    label.col-sm-2.control-label 服务状态
+                    .col-sm-10
+                      label.radio-inline
+                        input#serviceStatus1(type='radio', name='baseEnable', value='1', checked='')
+                        | 启用
+                      label.radio-inline
+                        input#serviceStatus2(type='radio', name='baseEnable', value='0')
+                        | 禁用
+                  .form-group
+                    label.col-sm-2.control-label(for='serviceNeed') 服务须知
+                    .col-sm-4
+                      input#serviceNeed.selectRich.form-control(type='text', readOnly)
+                    a.btn.btn-orange#selectRich 选择富文本
+                    span &nbsp;&nbsp;
+                    a.btn.btn-orange#viewRich 预览
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      a.btn.btn-blue#saveRich 保存
+              // 有效期设置
+              #two.tab-pane.fade(role='tabpanel')
+                form.form-horizontal#tabpanelYX
+                  //input(type="hidden", name="repairType")
+                  //input(type="hidden", name="objectid")
+                  .form-group
+                    label.col-sm-3.control-label(for='workStartTime') 工作日开始时间
+                    input.form_daytime.col-sm-3.form-control#workStartTime(name="workStartTime",readOnly)
+                  .form-group
+                    label.col-sm-3.control-label(for='workEndTime') 工作日结束时间
+                    input.form_daytime.col-sm-3.form-control#workEndTime(name='workEndTime',readOnly)
+                  .form-group
+                    label.col-sm-3.control-label(for='nonWorkStartTime') 非工作日开始时间
+                    input.form_daytime.col-sm-3.form-control#nonWorkStartTime(name="nonWorkStartTime",readOnly)
+                  .form-group
+                    label.col-sm-3.control-label(for='nonWorkEndTime') 非工作日结束时间
+                    input.form_daytime.col-sm-3.form-control#nonWorkEndTime(name="nonWorkEndTime",readOnly)
+                  .form-group
+                    label.col-sm-3.control-label(for='YXalertInfo') 无效提示
+                    textarea.form-control#YXalertInfo(name="alertInfo",rows='3', placeholder='限100字以内')
+                  .form-group
+                    .col-sm-offset-4.col-sm-10
+                      button.btn.btn-blue#saveEffective(type="button") 保存
+              // 评价设置
+              #three.tab-pane.fade(role='tabpanel')
+                form.form-horizontal#ratyForm
+                  input#autoCommentDeadline(type="hidden", name="autoCommentDeadline")
+                  //input(type="hidden", name="objectid",value="1")
+                  .form-group
+                    label.col-sm-2.control-label 自动评价期限
+                    .col-sm-2
+                      select.form-control#dayTime
+                        option 请选择天
+                    .col-sm-2
+                      select.form-control#hourTime
+                        option 请选择小时
+                    .col-sm-2
+                      select.form-control#minTime
+                        option 请选择分钟
+                  .form-group
+                    label.col-sm-2.control-label 自动评价星级
+                    .col-sm-8.offset2
+                      .row.form-group
+                        label.col-sm-4 响应速度:
+                        .ratyRating.col-sm-5#autoCommentSpeed
+                      .row.form-group
+                        label.col-sm-4 服务态度:
+                        .ratyRating.col-sm-5#autoCommentAttitude
+                      .row.form-group
+                        label.col-sm-4 服务质量:
+                        .ratyRating.col-sm-5#autoCommentQuality
+                  .form-group
+                    label.col-sm-2.control-label(for='autoCommentInfo') 系统评价信息
+                    .col-sm-4
+                      textarea#autoCommentInfo.form-control(name="autoCommentInfo", rows='3', placeholder='限100字以内')
+                  .form-group
+                    .col-sm-offset-2.col-sm-10
+                      a.btn.btn-blue#saveEvaluate 保存
+              // 自动分配设置
+              #four.tab-pane.fade(role='tabpanel')
+                table#autoDistribute
+              // 维修工程师设置
+              #five.tab-pane.fade(role='tabpanel')
+                div.addUser
+                  a.operate(data-toggle="modal" data-target="#addModal") +新增
+                table#engineer
+                div.modal.fade#disableModal(tabindex="-1")
+                  div.modal-dialog.modal-sm
+                      div.modal-content
+                          div.modal-header
+                              button.close(type="button", data-dismiss="modal")
+                                  span &times;
+                              h4.modal-title 提示
+                          div.modal-body
+                              div.statusTip 您确定删除吗？
+                          div.modal-footer
+                              button.btn.btn-blue#disableCfm 确认
+                              button.btn.btn-grey(data-dismiss="modal") 取消
+                //新增工程师
+                div.modal.fade#addModal(tabindex="-1")
+                  div.modal-dialog
+                      div.modal-content
+                          div.modal-header
+                              button.close(type="button", data-dismiss="modal")
+                                  span &times;
+                              h4.modal-title 新增维修工程师
+                          div.modal-body
+                              form.form-horizontal.userform#addEngineerForm(name="addEngineerForm")
+                                  //物业保修的repairType=1,objectId一样,需要修改，靠王科解决
+                                  input(type="hidden", name="repairType",value='1')
+                                  div.form-group
+                                      label.col-sm-3.control-label
+                                          span.star
+                                          |姓名:
+                                      div.col-sm-8
+                                          input.form-control(type="text",name="name")
+                                  div.form-group
+                                      label.col-sm-3.control-label
+                                          span.star
+                                          | 手机:
+                                      div.col-sm-8
+                                          input.form-control(type="text",name="mobile")
+                                  div.form-group
+                                      label.col-sm-3.control-label
+                                          span.star
+                                          |工种:
+                                      div.col-sm-8
+                                          select.form-control#jobType(multiple="multiple",name="jobType",data-placeholder="点击添加工种")
+                                  div.form-group
+                                      label.col-sm-3.control-label
+                                          span.star
+                                          |角色:
+                                      div.col-sm-8
+                                          select.form-control#roleType(multiple="multiple",name="department",data-placeholder="点击添加角色")
+                                  div.form-group.submitBtn
+                                      button.btn.btn-blue(type="submit") 确认
+                                      button.btn.btn-grey(data-dismiss="modal") 取消
+                div.modal.fade#editModal(tabindex="-1")
+                    div.modal-dialog
+                        div.modal-content
+                            div.modal-header
+                                button.close(type="button", data-dismiss="modal")
+                                    span &times;
+                                h4.modal-title 编辑维修工程师
+                            div.modal-body
+                                form.form-horizontal.userform#editEngineerForm(name="addEngineerForm")
+                                    input(type="hidden", name="repairType")
+                                    input(type="hidden", name="objectid")
+                                    div.form-group
+                                        label.col-sm-3.control-label
+                                            span.star
+                                            |姓名:
+                                        div.col-sm-8
+                                            input.form-control(type="text",name="name")
+                                    div.form-group
+                                        label.col-sm-3.control-label
+                                            span.star
+                                            |手机:
+                                        div.col-sm-8
+                                            input.form-control(type="text",name="mobile")
+                                    div.form-group
+                                        label.col-sm-3.control-label
+                                            span.star
+                                            |工种:
+                                        div.col-sm-8
+                                            select.form-control#jobType2(multiple="multiple",name="jobType",data-placeholder="点击添加工种")
+                                    div.form-group
+                                        label.col-sm-3.control-label
+                                            span.star
+                                            |角色:
+                                        div.col-sm-8
+                                            select.form-control#roleType2(multiple="multiple",name="department",data-placeholder="点击添加角色")
+                                    div.form-group.submitBtn
+                                        button.btn.btn-blue#editSubmit(type="submit") 确认
+                                        button.btn.btn-grey(data-dismiss="modal") 取消

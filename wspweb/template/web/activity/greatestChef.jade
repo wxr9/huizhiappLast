@@ -1,0 +1,53 @@
+//
+   Created by z on 2016/12/14.
+extends ../layout
+block head
+    title  活动中心
+    link(href='/web/css/activity.css', rel='stylesheet')
+block body
+    .html-title.activity
+    .act-content.gc
+        h2.act-title 2016第五届浦软园区餐厅厨王争霸赛活动邀请
+        .act-info
+            p 浦软伙食监督委员会一年一度的压轴活动——“2016第五届浦软园区餐厅厨王争霸赛”将于2016年12月22日正式打响啦！
+            p
+                |今年比赛赛制上，我们设定了
+                strong “老克勒风味上海菜”
+                |的主题，相信我们主厨们又将打破传统食堂饮食文化，带给我们新一轮的惊喜与温暖！此外我们也期望通过本届精彩比赛，
+                |能让一直以来在园区餐饮工作上给予支持和帮助的诸位伙委会成员感受到我们园区餐饮的用心与进步。
+            p 具体的活动安排，如下所示：
+        article
+            h4.act-sub-title
+                i.glyphicon.glyphicon-fire
+                |活动流程：
+            table.gc-table
+                tr
+                    td 17:15-17:30
+                    td 签到
+                tr
+                    td 17:30-18:45  
+                    td 厨王pk赛：“老上海点心秀”——“主厨风味上海菜”
+                tr
+                    td 18:15-18:40  
+                    td 现场就如何开展2017年度园区活动进行探讨交流(“主厨风味上海菜”烹饪环节期间）
+                tr
+                    td 18:45-19:00  
+                    td 最终评分及颁奖
+
+            h4.act-sub-title
+                i.glyphicon.glyphicon-fire
+                |活动时间：
+            p 2016年12月22日（周四）   17：30-19：30
+            h4.act-sub-title
+                i.glyphicon.glyphicon-fire
+                |活动地点：
+            p 博云路2号十层餐厅（祖冲之园浦软大厦）
+            .tip
+                i.glyphicon.glyphicon-asterisk
+                |注：比赛活动现场我们也将为大家提供小食、简餐。
+            .button#apply 点击报名
+            div.text-center(style="margin-top:30px")
+                img(src="/web/images/sp_gcf.jpg" width="90%")
+
+    script(src="/web/js/activitycom.js")
+    include ../include/footer

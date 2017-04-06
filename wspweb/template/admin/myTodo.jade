@@ -1,0 +1,16 @@
+extends ./layout
+block head
+    title 经办事项
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/myTodo.js")
+block body
+    .col-xs-9.content
+        .pagetitle 经办事项
+        #searchForm.select-time
+            .form-group
+                .username
+                    span 流水号
+                    input(name='sn__contains' ,size='20', aria-controls="table")
+                    button.btn.btn-blue#searchBtn(type="button") 查询
+                    button.btn.btn-blue#clearBtn(type="button") 清除查询
+        table#businessTable(width="100%",cellspacing="0")

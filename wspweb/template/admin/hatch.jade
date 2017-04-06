@@ -1,0 +1,95 @@
+//
+   Created by Administrator on 2016/3/29.
+
+extends ./layout
+block head
+    title  入驻申请须知配置
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/hatch.js")
+block body
+    // 主内容区
+    .col-sm-8.content
+        .pagetitle 入驻申请须知配置
+        ul.nav.nav-tabs(role='tablist')
+            li.active(role='presentation')
+                a(href='#one', aria-controls='base', role='tab', data-toggle='tab') 基本设置
+            li(role='presentation')
+                a(href='#two', aria-controls='three', role='tab', data-toggle='tab') 评价设置
+        // Tab panes
+        .tab-content
+            // 服务状态
+            #one.tab-pane.fade.in.active(role='tabpanel')
+                form.form-horizontal#form(type="post")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 是否禁用:
+                        div.col-sm-10
+                            input.form-control(type='text',name="deleteflag",width="100%")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 是否弹窗:
+                        div.col-sm-10
+                            input.form-control(type='text',name="isPopup",width="100%")
+                    div.form-group
+                        label.col-sm-2.control-label
+                            span.star 是否已读:
+                        div.col-sm-10
+                            label
+                                input(type='radio',name="isRead",width="100%",value='1')
+                                span.week  是
+                            label
+                                input(type='radio',name="isRead",width="100%",value='-1')
+                                span.week  否
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 须知标题:
+                        div.col-sm-10
+                            input.form-control(type='text',name="name",width="100%")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 主键id:
+                        div.col-sm-10
+                            input.form-control(type='text',name="objectid",width="100%")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 类型:
+                        div.col-sm-10
+                            input.form-control(type='text',name="type",width="100%")
+                    div.form-group
+                        label.col-sm-2.control-label
+                            span.star 内容:
+                        div.col-sm-10
+                            textarea#editor.form-control(rows="10",name="content",width="100%")
+                    .form-groupa
+                        .col-sm-offset-2.col-sm-10
+                            a.btn.btn-blue#saveRich(type='submit') 保存
+            // 评价设置
+            #two.tab-pane.fade(role='tabpanel')
+                form.form-horizontal#ratyForm
+                    input#autoCommentDeadline(type="hidden", name="autoCommentDeadline")
+                    input(type="hidden", name="objectid")
+                    .form-group
+                        label.col-sm-2.control-label 自动评价期限
+                        .col-sm-2
+                            select.form-control#dayTime
+                                option 请选择天
+                        .col-sm-2
+                            select.form-control#hourTime
+                                option 请选择小时
+                        .col-sm-2
+                            select.form-control#minTime
+                                option 请选择分钟
+                    .form-group
+                        label.col-sm-2.control-label 自动评价星级
+                        .col-sm-8.offset2
+                            .row.form-group
+                                label.col-sm-4 响应速度:
+                                .ratyRating.col-sm-5#autoCommentSpeed
+                            .row.form-group
+                                label.col-sm-4 服务态度:
+                                .ratyRating.col-sm-5#autoCommentAttitude
+                            .row.form-group
+                                label.col-sm-4 服务质量:
+                                .ratyRating.col-sm-5#autoCommentQuality
+                    .form-group
+                        label.col-sm-2.control-label(for='content') 系统评价信息
+                        .col-sm-4
+                            textarea#content.form-control(name="content", rows='3', placeholder='限100字以内')
+                    .form-group
+                        .col-sm-offset-2.col-sm-10
+                            a.btn.btn-blue#saveEvaluate 保存

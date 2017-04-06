@@ -1,0 +1,9 @@
+**/*/.DS_Store
+node_modules
+npm-debug.log
+.vscode
+admin/**/*.html
+web/**/*.html
+.DS_Store
+.idea
+abc

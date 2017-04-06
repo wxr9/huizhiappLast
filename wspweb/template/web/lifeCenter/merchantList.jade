@@ -1,0 +1,94 @@
+extends ../layout
+block head
+    title  生活中心
+    link(rel='stylesheet' href='/web/css/lifeCenter.css')
+block body
+    .html-title.life
+    .container
+        .row.life-header
+            input.searchBox#searchName(placeholder="请输入要查询的商户名称",name='name')
+            span.searchBtn.fa.fa-search
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/lifeCenter/lifeCenter.html') 生活中心
+            span &gt;
+            a(href='javascript:void(0)') 商户广场
+        .row.saleSelect#saleSelect
+            //.col-md-12.select-item
+            //    .head
+            //        span.title 优惠:
+            //    .body
+            //        a.item.active(href="#") 不限
+            //        a.item(href="#") 折扣
+            //        a.item(href="#") 代金券
+            //        a.item(href="#") 汇智卡优惠
+            //.col-md-12.select-item
+            //    .head
+            //        span.title 商圈:
+            //    .body
+            //        a.item.active(href="#") 不限
+            //        a.item(href="#") 汇智商业中心
+            //        a.item(href="#") 郭守敬园
+            //        a.item(href="#") 祖冲之园
+            //.col-md-12.select-item
+            //    .head
+            //        span.title 类别:
+            //    .body
+            //        a.item.active(href="#") 不限
+            //        a.item(href="#") 美食
+            //        a.item(href="#") 娱乐
+            //        a.item(href="#") 亲子
+            //        a.item(href="#") 购物
+            //        a.item(href="#") 生活
+            //.col-md-12.select-item
+            //    .head
+            //        span.title
+            //            |汇智卡
+            //            br
+            //            |特约商户:
+            //    .body
+            //        a.item.active(href="#") 不限
+            //        a.item(href="#") 是
+            //        a.item(href="#") 否
+        .row#saleOrder
+            .sale-order
+                span.sort 排序
+                a.sort#hit(title='降序',param='false')
+                    |点击量
+                    span.fa.fa-sort-amount-desc
+        .row#sale-list
+            //.col-md-12.sale-list
+            //    .row
+            //        .col-md-4.sale-img
+            //            img(width='230',height='150',src="/web/images/thumbnail1.png")
+            //            .label-left
+            //            .label-right
+            //        .col-md-8
+            //            ul.sale-detail
+            //                li
+            //                    h4.sale-title
+            //                        a(href="/web/lifeCenter/preferentialDetail.html") 韩膳宫料理
+            //                    .rating
+            //                        span.now-price 口味 9.0
+            //                        span.now-price 环境 9.0
+            //                        span.now-price 服务 9.0
+            //                li.type
+            //                    span 餐饮
+            //                li.address
+            //                    span 张江 祖冲之路xxx号
+            //                li.phone
+            //                    span 021-00000000
+            //            .discount
+            //                span.label 优惠
+            //                span.body
+            //                    |仅售598元,价值1448元养生4人超值套餐迎春优惠3-4人套餐,满足你的味蕾~~
+            //                    br
+            //                    |仅售598元,价值1448元养生4人超值套餐迎春优惠3-4人套餐,满足你的味蕾~~
+            //                span.more#moreSale
+            //                    |更多2条优惠
+            //                    .fa.fa-angle-down
+        .paginator#pagination
+    include ../include/footer
+        script(src="/web/js/lifeCenter/merchantList.js")

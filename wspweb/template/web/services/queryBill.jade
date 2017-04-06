@@ -1,0 +1,36 @@
+extends ../layout
+block head
+    title  综合账单查询
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+    script(src='/web/js/queryBill.js')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 综合账单查询
+    .container.huntApply
+        .top0.minTabelHeight
+            // Nav tabs
+            ul.nav.nav-tabs.nav-tabs-queryBill(role='tablist')
+                li.active#yue(role='presentation')
+                    a(href='#rent', aria-controls='base', role='tab', data-toggle='tab') 月租金
+                li#wu(role='presentation')
+                    a(href='#manage', aria-controls='two', role='tab', data-toggle='tab') 物业管理费
+                .rightUpBill.clearfix
+                    span 日期筛选
+                    select#year.select
+                    select.select#month
+            .tab-content.query-tab
+                #rent.tab-pane.fade.in.active(role='tabpanel')
+                    table.queryBillTabe#rentTable(width="100%",cellspacing="0")
+        p.memop *测试数据，仅供参考
+
+
+    include ../include/footer
+    //Created by Administrator on 2016/3/17.

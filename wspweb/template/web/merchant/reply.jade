@@ -1,0 +1,66 @@
+extends ../layout
+block head
+    title  商户中心
+    link(rel='stylesheet' href='../../web/css/merchant.css')
+    style.
+        #businessTable>tbody>tr>td:nth-child(3) {
+            text-align:left;
+        }
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 商户中心
+            hr.pageTitleLine
+    .container
+        .col-md-3
+            nav
+                ul.left-nav
+                    li
+                        i.icon.fa.fa-user
+                        a(href="/web/merchant/merchantList.html") 商户信息管理
+                    li
+                        i.icon.fa.fa-home
+                        a(href="/web/merchant/preferentialList.html") 优惠信息管理
+                    li.active
+                        i.icon.fa.fa-credit-card-alt
+                        a(href="/web/merchant/reply.html") 商户互动记录
+        .col-md-9
+            .row
+                h3.cont-title 商户互动
+            .row
+                table#businessTable(width="100%",cellspacing="0")
+            div.modal.fade#infoModal(tabindex="-1")
+                div.modal-dialog
+                    div.modal-content
+                        div.modal-header
+                            button.close(type="button", data-dismiss="modal")
+                                span &times;
+                            h4.modal-title 回复评论
+                        div.modal-body
+                            form.form.form-horizontal#replyForm(name="replyForm")
+                                div.form-group
+                                    label.col-md-3.control-label 评论用户:
+                                    div.col-md-8
+                                        input.form-control#customer(type="text" readonly)
+                                        input.form-control(type="hidden",name="eid")
+                                        input.form-control(type="hidden",name="merchant")
+                                div.form-group
+                                    label.col-md-3.control-label 评论内容:
+                                    div.col-md-8
+                                        textarea.form-control#comment(rows='5' readonly)
+                                div.form-group
+                                    label.col-md-3.control-label 回复:
+                                    div.col-md-8
+                                        textarea.form-control(name="content",rows='5')
+                                div.form-group.submit-box
+                                    div.col-sm-offset-3
+                                        button.btn.btn-blue(type="submit") 提交
+                                        button.btn.btn-default(data-dismiss="modal") 取消
+    include ../include/footer
+    script(src="/web/js/merchantCenter/reply.js")
+
+
+
+

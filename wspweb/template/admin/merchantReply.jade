@@ -1,0 +1,35 @@
+//Created by iris on 16/4/6.
+extends ./layout
+block head
+    title 商户管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/merchantReply.js")
+block body
+    .col-xs-9.content
+        .pagetitle 商户回复管理
+        form#searchForm.select-time(method='', action='')
+            .form-group
+                span 回复时间
+                .input-append.date.form_datetime
+                    input#startTime(size="16", type="text", name='startTime', readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                span 到
+                .input-append.date.form_datetime
+                    input#endTime(size="16", type="text", name="endTime", readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                .username
+                    button.btn.btn-blue#searchBtn(type="button") 查询
+                    button.btn.btn-blue#clearBtn(type="button") 清除查询
+            .form-group.set-reply
+                span 禁用回复后所显示文字:
+                input.form-control(type='test' name='content' value='该评论已被删除!')
+                button.btn.btn-blue#setBtn(type='button') 设置
+
+
+
+        table#replyTable(width="100%",cellspacing="0")
+
+
+

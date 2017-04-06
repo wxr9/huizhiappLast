@@ -1,0 +1,44 @@
+//
+   Created by Administrator on 2016/5/3.
+
+extends ./layout
+block head
+    title 素材管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/materialMan.js")
+    style.
+        .tipsHBox>span>span{
+            white-space: normal !important;
+            font-size: 12px;
+            width: 150px;
+            line-height: 15px;
+            letter-spacing: 0px;
+        }
+block body
+    .col-xs-9.content
+        .pagetitle 素材管理
+        div.pageBox
+            a.operate(data-toggle="modal" data-target="#addModal") +上传
+            //.searchBox
+            //    label
+            //        | 搜索：
+            //        input#searchBox(type="search" placeholder="标题/作者/摘要")
+            //        i.fa.fa-search
+        div#materialList
+        div#pagination.paginator.col-md-12
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 上传素材
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                label.col-sm-4.control-label 选择素材:
+                                div.col-sm-7
+                                    input.form-control#pic(type="file",name="file")
+
+

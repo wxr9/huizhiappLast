@@ -1,0 +1,30 @@
+extends ../layout
+block head
+    title  绑定邮箱
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 个人中心
+            hr.pageTitleLine
+    .container
+        .row
+            include ../include/sidebar
+            .col-sm-9.mainContent
+                .contentTitle 邮箱绑定
+                form#bindEmailForm.form-horizontal.personalCenterForm(method="POST")
+                    input(type="text" name="username" hidden="true")
+                    .col-sm-6.col-sm-offset-3
+                        .form-group.text-center
+                            .span.email-icon
+                                i.fa.fa-envelope
+                            input.form-control#bindEmail(name="email" type="text" placeholder="输入您的电子邮箱地址")
+                    .col-sm-6.col-sm-offset-3
+                        .form-group.text-center
+                            button.btn.btn-bg-blue#bindBtn(type="submit") 绑定
+                    </div>
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/bindEmail.js')
+

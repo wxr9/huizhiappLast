@@ -1,0 +1,36 @@
+//
+   Created by z on 2016/11/30.
+extends ../layout
+block head
+    title  智慧餐厅
+    link(href='/web/css/apply.css', rel='stylesheet')
+
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 智慧餐厅
+    .container.bg_white.huntApply
+        .row
+            .col-xs-12
+                h3.res-title 祖冲之园
+            .col-xs-5
+                h4.res-sub-title 第四餐厅
+                div.radio-box
+                    video.video#video
+            .col-xs-offset-1.col-xs-5
+                h4.res-sub-title 第五餐厅
+                div.radio-box
+                    video.video#video5
+            .col-xs-5
+                h4.res-sub-title 第六餐厅
+                div.radio-box
+                    video.video#video6
+
+    include ../include/footer
+    script(src="/web/js/restaurant.js")

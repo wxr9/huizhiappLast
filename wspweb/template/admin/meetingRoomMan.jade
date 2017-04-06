@@ -1,0 +1,138 @@
+extends ./layout
+block head
+    title 会议室管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/meetingRoomMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 会议室管理
+        div
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+            a.operate#date(href='/admin/meetingRoomLog.html')  日程
+        table#meetingRoomTable(width="100%",cellspacing="0")
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#enableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定启用吗？
+                    div.modal-footer
+                        button.btn.btn-blue(type="submit")#enableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 会议室详情
+                    div.modal-body
+                        table(cellspacing="0")
+                            tbody#meetingRoomInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 会议室添加
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group(hidden)
+                                label.col-sm-3.control-label
+                                    span.star id:
+                                div.col-sm-7
+                                    input.form-control#objectid(type="text",name="objectid")
+                            div.form-group(hidden)
+                                label.col-sm-3.control-label
+                                    span.star 是否禁用:
+                                div.col-sm-7
+                                    input.form-control(type="text",name='deleteFlag',value='-1')
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 封面图片:
+                                div.col-sm-7
+                                    input.form-control#pic(type="file",name="pic")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 会议室位置:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="location")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 可容纳大小:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="peoples")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 需要已读确认:
+                                div.col-sm-7
+                                    label.mr10
+                                        input(type="radio",value="1",name='isRead',checked)
+                                        |  是
+                                    label
+                                        input(type="radio",value="-1",name='isRead')
+                                        |  否
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 面积:
+                                div.col-sm-7
+                                    input.form-control(type="text",name='area')
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span 配套设施:
+                                div.col-sm-7
+                                    label.mr10
+                                        input(type="checkbox",value="-1",name='projector')
+                                        |  投影仪
+                                    label.mr10
+                                        input(type="checkbox",value="-1",name='microphone')
+                                        |  麦克风
+                                    label
+                                        input(type="checkbox",value="-1",name='vsx')
+                                        |  视频会议
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 参考价格:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="price")
+                            div.form-group
+                                label.col-sm-3.control-label 内容:
+                                div.col-sm-7
+                                    textarea.form-control#editor(type="text",name="content",rows='5')
+                            div.form-group
+                                label.col-sm-3.control-label 须知:
+                                div.col-sm-7
+                                    textarea.form-control#editor1(type="text",name="readme",rows='5')
+                            div.form-group.submitBtn
+                                button.btn.btn-blue#submit(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+
+
+
+
+
+

@@ -1,0 +1,35 @@
+//
+   Created by z on 2016/11/22.
+extends ../layout
+block head
+    title  活动中心
+    link(href='/web/css/activity.css', rel='stylesheet')
+block body
+    .html-title.activity
+    .act-content
+        .jialebao
+            h2.act-title 注册汇智e站送家乐宝优惠券
+            .detail
+                dl
+                    dt 兑换时间：
+                    dd 即日起至2016年12月31日
+                    dt 家乐宝优惠券使用步骤：
+                    dd 扫描二维码，进入家乐宝商城，选择“我要买菜-个人中心”进入“我家账户”点击“家元卡充值”输入密码即可充值成功。
+                    dt
+                        img(src='/web/images/icon_jia.png' width="126" height="122")
+                    dd.special
+                        span.glyphicon.glyphicon-heart
+                        span.text-muted 注意事项：
+                        p 1. 家元是家乐宝商城推出的一种1:1兑换使用虚拟货币，1家元=1人民币，可在商城购买任意物品。
+                        p 2. 电子券不记名，不挂失，不兑现，请妥善保管。
+                        p 3. 电子券有效期至2016年12月31日。
+                        p 4. 家元充值后长期有效，电子券即失效。
+                        p 5. 所有解释权归家乐宝电子商务有限公司所有。
+            .text-center
+                img(src="/web/images/icon_jia_logo.png")
+                img(src="/web/images/jia_info2.jpg" width="100%")
+                img(src="/web/images/jia_info.jpg" width="100%")
+
+
+    include ../include/footer
+

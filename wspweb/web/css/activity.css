@@ -1,0 +1,598 @@
+/**********************activity special****************************/
+body{
+    font-family:"Heiti SC","Microsoft Yahei","华文细黑";
+}
+.act-content ul{list-style:none;padding-left:0;}
+.act-content{
+    margin:-30px auto 0;
+    list-style:none;
+    width:1200px;
+    padding: 10px 0 50px;
+    letter-spacing:1.2px;
+    font-size:16px;
+    color:#333;
+    line-height:24px;
+}
+.tips{
+    color:#aaa;
+    font-size:12px;
+}
+.red{
+    color:#f35c5c;
+}
+
+.act-title{
+    font-size:24px;
+    line-height:30px;
+    padding:20px 0 30px;
+    text-align:center;
+}
+
+.sp-box{
+    background:#fff url(/web/images/sp_heart.jpg) no-repeat top right;
+    text-align:center;
+    margin-top:-30px;
+    letter-spacing:1.2px;
+    font-weight:bold;
+    color:#363636;
+}
+.sp-title{
+    text-align:center;
+    font-size:48px;
+    line-height:60px;
+    padding-top:80px;
+    padding-bottom:74px;
+}
+.sp-title .big{
+    font-size:60px;
+}
+.sp-text>img{
+    width:276px;
+    height:157px;
+    display:inline-block;
+}
+.sp-text>p{
+    width:288px;
+    padding:12px 0 12px 30px;
+    color:#363636;
+    font-size:22px;
+    line-height:33px;
+    letter-spacing:1px;
+    display:inline-block;
+    text-indent:2em;
+    vertical-align:bottom;
+    margin-bottom:0;
+    text-align:left;
+}
+.sp-package-title{
+    height:26px;
+    width:680px;
+    margin:100px auto 10px;
+    border-top:2px solid #f35c5c;
+    position: relative;
+}
+.sp-package-title>h3{
+    color:#f35c5c;
+    font-size:36px;
+    line-height:24px;
+    background:#fff;
+    position:relative;
+    top:-20px;
+    display:inline;
+    text-align:center;
+    padding:0 20px;
+}
+.sp-package .sub-title{
+    text-align:left;
+    font-weight:600;
+    padding-left:95px;
+    padding-bottom:15px;
+}
+.sub-title~img{
+    margin-right:20px;
+}
+.use-box{
+    width:720px;
+    margin:0 auto;
+    list-style:none;
+}
+.use-box>li>img{
+    float:left;
+}
+.use-box .use{
+    width:577px;
+    padding:20px 20px 20px 50px;
+    margin-left:60px;
+    background-color:#FFF0F0;
+    border-radius:20px;
+    margin-bottom:39px;
+}
+.use-box .use:first-child{
+    padding-right:20px;
+}
+.use-box .use>img{
+    width:97px;
+    float:right;
+    position: relative;
+    top:-81px;
+}
+.use-box .use>p{
+    width:395px;
+    text-indent:2em;
+    font-size:16px;
+    color:#363636;
+    line-height:22px;
+    text-align:left;
+    font-weight:bold;
+    margin-bottom:0;
+}
+.use-box .use.use-two{
+    margin-left:0;
+}
+.use-box .use.use-two>p{
+    width:100%;
+}
+.use-box .use.use-two>img{
+    width:79px;
+    position: relative;
+    left: 69px;
+    top: -57px;
+}
+.use-box .use.use-three>p{
+    width:450px;
+}
+.attention{
+    padding:25px 60px 20px 59px;
+    background-color:#eee;
+    text-align:left;
+    width:680px;
+    margin:0 auto 50px;
+    font-size:16px;
+    line-height:30px;
+}
+.sp-detail{
+    width:530px;
+    line-height:30px;
+    font-size:16px;
+    margin:20px auto;
+}
+.sp-coop>h3{
+    font-size:34px;
+    padding-top:50px;
+}
+.sp-coop>img{
+    margin:30px 30px 50px;
+}
+
+/*tuanbuding*/
+.tuan{
+    background:#fff;
+    margin:-30px auto 0;
+    list-style:none;
+    width:1300px;
+    padding:50px 100px;
+    letter-spacing:1.2px;
+    font-size:16px;
+    color:#666;
+    line-height:24px;
+}
+.tuan-banner{
+    text-align:center;
+    margin-bottom:50px;
+}
+.tuan-title>img{
+    width:1000px;
+}
+.tuan-cont{
+    overflow:hidden;
+}
+
+.tuan-cont .poster{
+    width:600px;
+    height:820px;
+    padding-right:25px;
+    float:left;
+}
+.tuan-cont .act{
+    width:495px;
+    height:295px;
+    margin-top:90px;
+}
+.tuan-cont .intro{
+    float:left;
+    font-size:20px;
+    line-height:30px;
+    width:415px;
+    color:#666;
+    padding:0 24px 40px;
+}
+.tuan-title{
+    font-size:30px;
+    color:#333;
+    font-weight:bold;
+    font-family:"Microsoft Yahei";
+    margin:0;
+}
+.tuan-cont .intro>p{
+    padding-top: 60px;
+}
+.t-title{
+    font-size:24px;
+    color:#333;
+    font-weight:bold;
+    margin-bottom:24px;
+}
+.t-black{
+    color:#333;
+    font-weight: 600;
+}
+.t-detail>dt{
+    font-size:16px;
+    color:#333;
+    width: 100px;
+    display: inline-block;
+}
+.t-detail>dd{
+    display: inline-block;
+    width: 1000px;
+    vertical-align: top;
+}
+.erwei-box{
+    text-align:center;
+    width:300px;
+    float:right;
+    padding-top:20px;
+}
+.erwei-box .erwei-img{
+    display:inline-block;
+    width:100px;
+    height:100px;
+    background-color:#B4B4B4;
+}
+.erwei-box .erwei-img>img{
+    width:100%;
+}
+.erwei-box>p{
+    color:#666;
+    padding:6px;
+    font-size:18px;
+}
+.tuan-apply>.t-detail{
+    width:700px;
+}
+.tuan-apply>.t-detail>dd{
+    width:600px;
+}
+.tuan-line .t-detail>dd{
+    padding-left:130px;
+    position: relative;
+    top:-22px;
+}
+.tuan-line .t-detail{
+    margin-bottom:0;
+}
+.tuan-line .t-detail>dt{
+    width:132px;
+}
+.tuan-line .images{
+    display:inline-block;
+    width:370px;
+    height:249px;
+    margin-right:9px;
+    padding-top:9px;
+}
+.tuan-line .images:last-child{
+    margin-right:0;
+}
+.t-table{
+    margin:0 0 15px;
+    width:1100px;
+}
+.t-red{
+    color:#FE0101;
+    font-size:18px;
+}
+.tuan-fee ol{
+    padding-top:24px;
+    padding-bottom:24px;
+}
+.tuan-fee .images2{
+    width:545px;
+    margin-right:9px;
+    padding-bottom:29px;
+}
+.tuan-fee .images2:last-child{
+    margin-right:0;
+}
+.tuan-link{
+    width:500px;
+    display:inline-block;
+}
+.tuan-link>a{
+    color:#0073F2;
+    padding:12px 0 14px;
+    text-decoration:underline;
+    display:block;
+    width:100px;
+}
+.t-intro>p{
+    text-indent:2em;
+    margin-bottom:0;
+}
+.tuan-coop{
+    text-align:center;
+    margin-top:70px;
+}
+.tuan-coop>img{
+    margin:20px;
+}
+.sport{
+    letter-spacing:1px;
+    color:#333;
+    width:1100px;
+    margin:auto;
+}
+.sport-bg{
+    width:1100px;
+    height:440px;
+    background:url('/web/images/sport-post.jpg') no-repeat center;
+    margin-top:-10px;
+}
+.sport-title{
+    padding:26px 0;
+    text-align:center;
+    color:#ff3135;
+    font-size:26px;
+}
+.sport-intro{
+    width:890px;
+    text-indent:2em;
+    text-align:left;
+    font-size:16px;
+    line-height:28px
+}
+.sport-intro>span{
+    color:#ff3135;
+}
+.sport-img{
+    width:337px;
+    position:absolute;
+    bottom:0;
+    right:0;
+}
+.sport-detail{
+    padding-top:5px;
+    position: relative;
+    margin-bottom:100px;
+}
+.sport-list{
+    width:740px;
+    margin-top:50px;
+}
+.sport-list tr>td{
+    font-size:14px;
+    padding-top:8px;
+    vertical-align:top;
+}
+.sport-list tr>td:first-child{
+    color:#666;
+    width:90px;
+}
+.sport-list tr>td>span{
+    display:block;
+    padding:4px;
+}
+.sport-list a{
+    cursor:pointer;
+}
+.sport-coop{
+    clear:both;
+    text-align:center;
+    padding:50px 0 20px;
+}
+/*************** tiantian garden *************/
+.act-content .tiantian{
+    padding:0 150px 50px;
+    line-height:1.5;
+    color:#000;
+}
+.tiantian .act-title{
+    color:#64a031;
+    width:470px;
+    margin-right:auto;
+    margin-left:auto;
+    line-height:1.5;
+}
+.tiantian .info>p{
+    text-indent:2em;
+    margin-bottom:0;
+}
+.tiantian .info .red{
+    font-size:20px;
+}
+.tiantian .detail{
+    font-size:16px;
+    margin-top:30px;
+}
+.tiantian .detail ul li{
+    line-height:26px;
+}
+.tiantian .detail-img{
+    margin-top:50px;
+}
+.tiantian .detail-img .text-muted{
+    font-size:14px;
+    float:right;
+    margin-right:30px;
+}
+.tiantian .g-img:first-child{
+    margin-top:30px;
+ }
+.tiantian .g-img:first-child>div{
+    height:70px;
+}
+.tiantian .g-img .tips{
+    dispaly:none;
+}
+.tiantian .g-img{
+    display:inline-block;
+    width:450px;
+    vertical-align:top;
+    text-align:left;
+}
+.tiantian .g-img>p{
+    /*padding-bottom:25px;*/
+    overflow:hidden;
+}
+.tiantian .g-img img{
+    padding-bottom:10px;
+}
+/***********jialebao**************/
+.jialebao .detail{
+    width:820px;
+    margin:0 auto;
+}
+.jalebao .detail .special{
+    margin-left:200px;
+}
+dl>dt{
+    color:#555;
+    font-weight:normal;
+    display:inline-block;
+    vertical-align:top;
+    padding-bottom:15px;
+    text-align:right;
+}
+dl>dd{
+    padding-left:30px;
+    color:#333;
+    display:inline-block;
+    vertical-align:top;
+    padding-bottom:15px;
+    text-align:left;
+}
+.jialebao .detail dl>dt{
+    width:200px;
+}
+.jialebao .detail dl>dd{
+    width:600px;
+}
+.jialebao .glyphicon-heart{
+    margin-bottom:15px;
+}
+.jialebao .act-title{
+    color:#e60012;
+    font-size:26px;
+    letter-spacing:2px;
+}
+.didi{
+    width:740px;
+    height:500px;
+    background-color:#f4f4f4;
+    margin: 32px auto;
+}
+.didi .img{
+    padding:35px 0 0 45px;
+    text-align:left;
+}
+.didi>h3{
+    color:#f7bb31;
+    font-weight: normal;
+    text-align: center;
+}
+.didi>h3>span{
+    display:inline-block;
+    width: 180px;
+    height: 70px;
+    background-image: linear-gradient(284deg, #f49c01 27%, #f7bb31), linear-gradient(#ff8905, #ff8905);
+    font-size: 58px;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.didi>.title-tab{
+    width:100%;
+    line-height:44px;
+    background:url(/web/images/didi_bg.png) repeat center center;
+    padding-left:45px;
+    color:#fff;
+    font-size:26px;
+    text-align:left;
+}
+.didi>dl{
+    margin-top:35px;
+ }
+.didi>dl>dt{
+    width:220px;
+}
+.didi>dl>dd{
+    width:500px;
+    padding-left:15px;
+    padding-bottom:20px;
+}
+.didi .discount{
+    color: #f49c02;
+    font-size:24px;
+    position: relative;
+    top: -37px;
+    right: -220px;
+    cursor:pointer;
+}
+/**************** greatestChef.html************/
+.gc{
+    padding-left:100px;
+    padding-right:100px;
+    font-size:14px;
+}
+.mark{
+    color:#eb2f2f;
+}
+.gc .act-title{
+    color:#ff655f;
+}
+.gc p{
+    text-indent:2em;
+}
+.act-sub-title{
+    font-size: 16px;
+    line-height: 26px;
+    color: #eb2f2f;
+}
+.gc article{
+    margin-left: 36px;
+    margin-right: 75px;
+    font-size: 14px;
+    background-color: #fff3f3;
+    padding: 12px 20px 50px 30px;
+}
+.gc table tr td{
+    padding:2px 10px;
+}
+.gc .tip{
+    font-size:12px;
+}
+.gc .glyphicon{
+    color:#eb2f2f;
+    padding-right:5px;
+}
+.gc .button{
+    margin:10px auto;
+    width:120px;
+    line-height:34px;
+    background-color:#fe5f6b;
+    text-align: center;
+    color:#fff;
+    cursor:pointer;
+    border-radius: 6px;
+    border: 1px solid #f67474;
+}
+.gc .button:hover{
+    background-color: #fcfcfc;
+    color: #fe5f6b;
+}
+.gc .button.disabled, .gc .button.disabled:hover{
+    background-color: #c2bcbc;
+    cursor: not-allowed;
+    color:#fff;
+    border-color:#ccc;
+}

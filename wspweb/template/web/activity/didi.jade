@@ -1,0 +1,30 @@
+//
+   Created by z on 2016/11/22.
+extends ../layout
+block head
+    title  活动中心
+    link(href='/web/css/activity.css', rel='stylesheet')
+    script(src="/web/js/didi.js")
+block body
+    .html-title.activity
+    .act-content
+        .didi
+            .img
+                img(src="/web/images/didi_logo.png" width="147" alt="didi logo")
+            h3
+                span 优惠券
+                #didi.discount 点击领取>
+            h5.title-tab 使用说明：
+            dl
+                dt 换购方式：
+                dd
+                    |至
+                    a(href="http://t.cn/RVXgHkc" target="_blank") http://t.cn/RVXgHkc
+                    |填写兑换码进行兑换。
+                dt 兑换时间：
+                dd 即日起-2016年12月31日。
+                dt 优惠方式：
+                dd 新用户13元红包，老用户8折折扣，最高抵扣5元。
+                dt 注意事项：
+                dd 兑换码的有效期2016年12月31日前。
+    include ../include/footer

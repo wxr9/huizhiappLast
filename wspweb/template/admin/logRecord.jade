@@ -1,0 +1,32 @@
+//
+   Created by Administrator on 2016/4/18.
+extends ./layout
+block head
+    title 汇智卡操作日志管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/logRecord.js")
+block body
+    .col-xs-9.content
+        .pagetitle 汇智卡操作日志管理
+        form#searchForm.select-time(method='', action='')
+            .form-group
+                span 操作时间
+                .input-append.date.form_datetime
+                    input#startDate(size="10", type="text", name='startDate', readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                span 到
+                .input-append.date.form_datetime
+                    input#endDate(size="10", type="text", name="endDate", readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                .username
+                    span 汇智卡号
+                    input(type='search', name='cardNo' ,size='14', aria-controls="recordTable")
+                    span   手机号
+                    input(type='search', name='phone', size='14', aria-controls="recordTable")
+                    button.btn.btn-blue#searchBtn(type="button") 查询
+                    button.btn.btn-blue#clearBtn(type="button") 清除查询
+        table#recordTable(width="100%",cellspacing="0")
+

@@ -1,0 +1,20 @@
+extends ../layout
+block head
+    title  会议室详情
+    link(href='/web/css/apply.css', rel='stylesheet')
+    script(src="/web/js/meetingRoomDetail.js")
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/meetingRoomList.html') 会议室
+            span &gt;
+            a(href='javascript:void(0)') 会议室详情
+    .container.classromDetail#cont1
+
+    include ../include/footer

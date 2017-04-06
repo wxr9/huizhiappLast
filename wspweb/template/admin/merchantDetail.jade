@@ -1,0 +1,38 @@
+extends ./layout
+block head
+  title  商户管理 - 详情
+  link(rel="stylesheet",href="/admin/css/index.css")
+  //script(src="/admin/js/addRichText.js")
+block body
+  .col-xs-9.content
+    .pagetitle 商户详情
+    form.form-horizontal#editForm(name="editForm",role="form",enctype="multipart/form-data")
+      div.form-group
+        label.col-sm-2.control-label 商户名称:
+        div.col-sm-7
+          span 汇智软件
+      div.form-group
+        label.col-sm-2.control-label 营业时间：
+        div.col-sm-7
+          span 上午9:00-下午22:00
+      div.form-group
+        label.col-sm-2.control-label 商户分类：
+        div.col-sm-7
+          span 餐饮
+      div.form-group
+        label.col-sm-2.control-label 商户照片:
+        div.col-sm-7
+          span
+            img(src="/admin/images/serviceSettingImg.png")
+      div.form-group
+        label.col-sm-2.control-label 商户地址:
+        div.col-sm-7
+          span 上海xx路xx号xx楼xxF
+      div.form-group
+        label.col-sm-2.control-label 商户电话:
+        div.col-sm-10
+          span 021-00000000
+      div.form-group
+        label.col-sm-2.control-label 内容摘要:
+        div.col-sm-10
+          span 021-00000000

@@ -1,0 +1,71 @@
+extends ../layout
+block head
+    title  企业成员管理
+    script(src='/web/js/enterpriseMember.js')
+block body
+    div.modal.fade.table#passModal(tabindex="-1")
+        div.modal-dialog.modal-sm
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title 提示
+                div.modal-body
+                    div.statusTip 您确定通过审核吗？
+                div.modal-footer
+                    button.btn.btn-blue#passBtn 确认
+                    button.btn.btn-grey(data-dismiss="modal") 取消
+    div.modal.fade.table#ignoreModal(tabindex="-1")
+        div.modal-dialog.modal-sm
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title 提示
+                div.modal-body
+                    div.statusTip 您确定忽略此申请吗？
+                div.modal-footer
+
+                    button.btn.btn-blue(type="submit")#ignoreBtn 确认
+                    button.btn.btn-grey(data-dismiss="modal") 取消
+    div.modal.fade.table#delModal(tabindex="-1")
+        div.modal-dialog.modal-sm
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title 提示
+                div.modal-body
+                    div.statusTip 您确定删除该成员吗？
+                div.modal-footer
+                    button.btn.btn-blue#delBtn 确认
+                    button.btn.btn-grey(data-dismiss="modal") 取消
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 企业成员管理
+          // Nav tabs
+          ul.nav.nav-tabs(role='tablist')
+            li.active(role='presentation')
+              a(href='#one', aria-controls='base', role='tab', data-toggle='tab') 申请列表
+            li(role='presentation')
+              a(href='#two', aria-controls='two', role='tab', data-toggle='tab') 成员列表
+          // Tab panes
+          .tab-content
+            // 申请列表
+            #one.tab-pane.fade.in.active(role='tabpanel')
+              table#applyTable(width="100%",cellspacing="0")
+
+              // 成员列表
+            #two.tab-pane.fade(role='tabpanel')
+              table#memberTable(width="100%",cellspacing="0")
+
+    include ../include/footer
+    script(src='/web/js/sidebar.js')

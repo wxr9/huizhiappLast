@@ -1,0 +1,15 @@
+extends ./layout
+block head
+    title  帮助中心
+block body
+    header.jumbotron-blue1-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle
+        hr.pageTitleLine
+    .container
+      .article
+        p#content
+    include include/footer
+    script(src='/web/js/viewRich.js')

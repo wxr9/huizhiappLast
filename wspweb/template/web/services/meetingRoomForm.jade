@@ -1,0 +1,154 @@
+extends ../layout
+block head
+    title  会议室预订
+    link(href='/web/css/apply.css', rel='stylesheet')
+
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/meetingRoomList.html') 会议室
+            span &gt;
+            a(href='javascript:void(0)') 会议室预订
+    .container.bg_white.huntApply
+            .col-xs-12
+                p.msg#notice
+            form.form-horizontal#form(name="form",role="form",method="POST")
+                .col-xs-12
+                    label.read
+                        input#mustRead(type='checkbox',name='mustRead')
+                        span 已阅读
+                div.form-group
+                    label.col-xs-3.control-label(for='chineseName')
+                        span.star
+                        span 姓名:
+                    div.col-xs-7
+                        input.form-control#chineseName(type="text",name="chineseName")
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span E-mail:
+                    div.col-xs-7
+                        input.form-control(type="text",name="email",placeholder="请输入邮箱")
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        |公司名称：
+                    div.col-xs-7
+                        input.form-control(type="text",name="company",placeholder='请输入公司名称')
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        |联系方式:
+                    div.col-xs-7
+                        input.form-control(type="text",name="phone")
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 会议室选择:
+                    div.col-xs-7
+                        input.form-control#meetingRoomName(type="text",name="meetingRoomName",readonly)
+                        input.form-control#meetingRoomId(type="hidden",name="meetingroomId")
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 时间选择：
+                    div.col-xs-7#cont
+                        .time.clearfix.bg_gray1
+                            div.fl
+                                span 日期:
+                                    .input-append.date.form_datetime.dataPickerDay
+                                        input(size="14", type="text", name='dateTimeArray',readonly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.fl
+                                span 开始时间:
+                                    .input-append.date.form_datetime.dataPickerTime
+                                        input(size="10", type="text",value="09:00", name='beginTimeArray',readonly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.fl
+                                span 结束时间:
+                                    .input-append.date.form_datetime.dataPickerTime
+                                        input(size="10", type="text", value="22:00", name="endTimeArray",readonly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            a.add2.fl(href='javascript:;')
+                                i.fa.fa-plus-circle(aria-hidden="true")
+                            a.delete.fl(href='javascript:;')
+                                i.fa.fa-minus-circle(aria-hidden="true")
+                    div.col-xs-9.col-xs-offset-3
+                        p 提示：日间：9:00-17:00  晚间：18:00-21:00
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 会议主题：
+                    div.col-xs-7
+                        input.form-control(type='text',name="topics")
+                div.clearfix
+                    .form-group.col-xs-6
+                        label.col-xs-6.control-label
+                            span.star
+                            span 是否需要茶歇：
+                        .col-xs-6.mt10
+                            label
+                                input(type="radio" name="teaReak",value="1")
+                                span.week  是
+                            label
+                                input(type="radio" name="teaReak",value="-1",checked)
+                                span.week  否
+                    .form-group.col-xs-6#teaReak
+                        label.control-label 茶歇人均标准：
+                        span.style
+                            input.form-control(type='text',name="teaReakMoney")
+                        span 元/人
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 参会人数：
+                    div.col-xs-7
+                        input.form-control(type='text',name='peoples')
+                div.form-group
+                    label.col-xs-3.control-label 设备使用：
+                    div.col-xs-7.mt10#cont1
+                        label
+                            input(type="checkbox",name='projector',value="-1")
+                            span.week  投影仪
+                        label
+                            input(type="checkbox",name='microphone',value="-1")
+                            span.week  麦克风
+                        label
+                            input(type="checkbox",name='vsx',value="-1")
+                            span.week  视频会议
+                div.form-group
+                    label.col-xs-3.control-label 备注：
+                    div.col-xs-7
+                        textarea.form-control(type='text',name="memo")
+                div.display_n#comment
+                    .col-xs-3.text-right
+                        label.control-label 评价信息：
+                    .col-xs-8
+                        .col-xs-5
+                            p#comment1
+                        .col-xs-2.ratingScore.ratingScore-duration
+                            span#duration
+                            p.ratingText 响应速度
+                        .col-xs-2.ratingScore.ratingScore-attitude
+                            span#attitude
+                            p.ratingText 服务态度
+                        .col-xs-2.ratingScore.ratingScore-quality
+                            span#quality
+                            p.ratingText 服务质量
+                div.form-group
+                    div.col-xs-9.col-xs-offset-2.text-center
+                        button.btn.btn-blue.submit(type="submit") 提交
+
+    include ../include/footer
+    script(src="/web/js/meetingRoomForm.js")
+
+

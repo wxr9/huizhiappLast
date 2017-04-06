@@ -1,0 +1,85 @@
+extends ./layout
+block head
+    title  网站地图
+    link(href='/web/css/apply.css', rel='stylesheet')
+    script(src='/web/js/siteMap.js')
+block body
+    header.jumbotron-blue1-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 网站地图
+            hr.pageTitleLine
+    .container.bgMap
+        h3 欢迎来到汇智e站
+        .row
+            .col-sm-2.col-sm-offset-1
+                h4 首页
+            .col-sm-9
+                a(href='/web/index.html') 汇智e站首页
+        .row
+            .col-sm-2.col-sm-offset-1
+                h4 我的小智
+            .col-sm-9
+                a(href='/web/myWiz.html') 我的服务
+                a(href='/web/myWiz.html?title=apply') 我的申请
+        .row
+            .col-sm-2.col-sm-offset-1
+                h4 服务中心
+            .col-sm-9
+                .row
+                    .col-sm-2
+                        h5 生活基础
+                    .col-sm-10
+                        a(href='/web/applyForPropertyRepair.html') 物业报修
+                        a#decideIT IT网络报修
+                        a(href='/web/user/cardDetail.html') 汇智卡交易查询
+                        a(href='http://www.zj-talentapt.com/' target='-blank') 人才公寓
+                .row
+                    .col-sm-2
+                        h5 企业运营
+                    .col-sm-10
+                        a(href='/web/services/hatchApply.html') 入驻申请
+                        a(href='/web/services/hatchForm.html') 企业注册预约
+                        a(href='/web/services/parkList.html') 在线看房
+                        a(href='/web/services/queryBill.html') 综合账单查询
+                        a(href='/web/services/meetingRoomList.html') 会议室预订
+                        a(href='/web/services/classroomList.html') 教室预订
+                        a(href='/web/services/commercial.html') 广告服务申请
+                        a(href='http://policy.zj-hui.com/' target="_blank") 政务中心
+                .row
+                    .col-sm-2
+                        h5 人才服务
+                    .col-sm-10
+                        a(href='/web/services/huntApply.html') 猎聘申请
+                        a(href='/web/services/jobList.html') 职位申请
+                        a(href='/web/services/myCultivate.html') 个人培训
+                        a(href='/web/services/companyApply.html') 企业培训
+                .row
+                    .col-sm-2
+                        h5 企业孵化
+                    .col-sm-10
+                        a(href='http://efuhua.spspvc.com.cn/') 入孵申请
+                .row
+                    .col-sm-2
+                        h5 技术网络
+                    .col-sm-10
+                        a(href='/web/services/testApply.html') 测试申请
+                        a(href='/web/services/copyrightApply.html') 著作权登记
+                        a(href='https://www.wizcloud.com.cn/' target="_blank") 汇智云
+        .row
+            .col-sm-2.col-sm-offset-1
+                h4 生活中心
+            .col-sm-9#lifeCenter
+                a(href='/web/lifeCenter/merchantList.html') 美食
+                a(href='/web/lifeCenter/merchantList.html') 娱乐
+                a(href='/web/lifeCenter/merchantList.html') 亲子
+                a(href='/web/lifeCenter/merchantList.html') 购物
+        .row
+            .col-sm-2.col-sm-offset-1
+                h4 活动中心
+            .col-sm-9
+                a(href='/web/activity/activityCenter.html') 活动中心
+
+
+    include include/footer

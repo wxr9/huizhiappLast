@@ -1,0 +1,145 @@
+extends ./layout
+block head
+    title  我的小智
+    link(href='/web/css/mywise.css', rel='stylesheet')
+    link(href='/web/css/card.css', rel='stylesheet')
+block body
+    .html-title.mywiz
+    .container
+        .card-box-bg
+            include include/wizCard
+        .nav-box
+            ul
+                li
+                    a.nav-item(href='/web/applyForPropertyRepair.html')
+                        span.icon
+                        span 物业报修
+                li
+                    a.nav-item(href='/web/applyForITRepair.html')
+                        span.icon.icon-it
+                        span IT网络报修
+                li
+                    a.nav-item(href='/web/user/cardDetail.html')
+                        span.icon.icon-zd
+                        span 汇智卡余额查询
+                li
+                    a.nav-item(href='/web/services/myCultivate.html')
+                        span.icon.icon-px
+                        span 个人培训报名
+                li
+                    a.nav-item(href='/web/services/classroomList.html')
+                        span.icon.icon-js
+                        span 教室预订
+                li
+                    a.nav-item(href='/web/services/meetingRoomList.html')
+                        span.icon.icon-hy
+                        span 会议室预订
+    div.modal.table.fade#ratyModal(tabindex="-1")
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title 服务评价
+                div.modal-body
+                    form.form-horizontal#ratyForm(name="editForm",role="form")
+                        .col-lg-offset-1
+                            input(type="hidden",name="businessId")
+                            input(type="hidden",name="businessType")
+                            input(type="hidden",name="serialNumber")
+                            ul.raty-wiz
+                                li  响应速度:
+                                    span.ratyStar.ratyStar1
+                                li  服务态度:
+                                    span.ratyStar.ratyStar2
+                                li  服务质量:
+                                    span.ratyStar.ratyStar3
+                        div.form-group
+                            label.col-xs-3.control-label 评价:
+                            div.col-xs-7
+                                textarea.form-control(type="text",name="content",rows=5,cols=20)
+                        div.modal-footer
+                            button.btn.btn-bg-blue#ratyBtn(type='submit') 确认
+                            button.btn.btn-default(data-dismiss="modal") 取消
+    .container
+        .pageContent.fade.pageContent1
+            div
+                ul.myRecord(role='tablist')
+                    li.active(role='presentation')
+                        a(href='#one', aria-controls='base', role='tab', data-toggle='tab') 我的服务
+                    li(role='presentation')
+                        a(href='#two', aria-controls='base', role='tab', data-toggle='tab') 我的申请
+                    //li(role='presentation')
+                    //  a(href='#three', aria-controls='base', role='tab', data-toggle='tab') 我的活动
+                .tab-content
+                    #one.tab-pane.fade.in.active(role='tabpanel')
+                        ul.myRecord2(role='tablist')
+                            li.active(role='presentation')
+                                a(href='#change1', aria-controls='base', role='tab', data-toggle='tab') 全部
+                            li(role='presentation')
+                                a(href='#change2', aria-controls='base', role='tab', data-toggle='tab') 未评价
+                            li(role='presentation')
+                                a(href='#change3', aria-controls='base', role='tab', data-toggle='tab') 已完成
+                        .tab-content
+                            #change1.tab-pane.fade.in.active(role='tabpanel')
+                                table#changeTabel1(width="100%",cellspacing="0")
+                            #change2.tab-pane.fade.in(role='tabpanel')
+                                table#changeTabel2(width="100%",cellspacing="0")
+                            #change3.tab-pane.fade.in(role='tabpanel')
+                                table#changeTabel3(width="100%",cellspacing="0")
+                        table#businessTable(width="100%",cellspacing="0")
+                    #two.tab-pane.fade(role='tabpanel')
+                        ul.myRecord2(role='tablist')
+                            li.active(role='presentation')
+                                a(href='#aaa', aria-controls='base', role='tab', data-toggle='tab') 职位申请
+                            li(role='presentation')
+                                a(href='#bbb', aria-controls='base', role='tab', data-toggle='tab') 个人培训报名
+                            li(role='presentation')
+                                a(href='#ccc', aria-controls='base', role='tab', data-toggle='tab') 企业集中登记
+                            li(role='presentation')
+                                a(href='#ddd', aria-controls='base', role='tab', data-toggle='tab') 企业汇智卡申请
+                        .tab-content
+                            #aaa.tab-pane.fade.in.active(role='tabpanel')
+                                table#recordTablea(width="100%",cellspacing="0")
+                            #bbb.tab-pane.fade.in(role='tabpanel')
+                                table#recordTableb(width="100%",cellspacing="0")
+                            #ccc.tab-pane.fade.in(role='tabpanel')
+                                table#recordTablec(width="100%",cellspacing="0")
+                            #ddd.tab-pane.fade.in(role='tabpanel')
+                                table#recordTabled(width="100%",cellspacing="0")
+    div.modal.fade#disableModal(tabindex="-1")
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title 提示
+                div.modal-body
+                    div.statusTip 您确定要撤回吗？
+                div.modal-footer
+                    button.btn.btn-bg-blue#disableCfm 确认
+                    button.btn.btn-default(data-dismiss="modal") 取消
+    div.modal.fade#deleteModal(tabindex="-1")
+        div.modal-dialog
+            div.modal-content
+                div.modal-header
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title 提示
+                div.modal-body
+                    div.statusTip 您确定要取消预约吗？
+                div.modal-footer
+                    button.btn.btn-bg-blue#disableCfm1 确认
+                    button.btn.btn-default(data-dismiss="modal") 取消
+
+    include include/footer
+    script(src="/web/js/wizCard.js")
+    script(src="/web/js/myWiz.js")
+    script(src="/web/js/myWizTable1.js")
+    script(src="/web/js/myWizTable2.js")
+    script(src="/web/js/myWizTable3.js")
+    script(src="/web/js/changeTabel1.js")
+    script(src="/web/js/changeTabel2.js")
+    script(src="/web/js/changeTabel3.js")
+    script(src="/web/js/changeTable.js")
+

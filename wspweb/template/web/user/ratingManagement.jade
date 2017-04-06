@@ -1,0 +1,53 @@
+extends ../layout
+block head
+    title  评价管理
+    script(src="/web/js/ratingMgt.js")
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 评价管理
+          // Nav tabs
+          ul.nav.nav-tabNew(role='tablist')
+            li.active(role='presentation')
+                a(href='#server', aria-controls='base', role='tab', data-toggle='tab') 服务评价
+            li(role='presentation')
+                a(href='#business', aria-controls='two', role='tab', data-toggle='tab') 商户评价
+          // Tab panes
+          .tab-content
+            // 服务评价
+            #server.tab-pane.fade.in.active(role='tabpanel')
+                table#ratingMgt(width="100%",cellpadding="0")
+
+            // 商户评价
+            #business.tab-pane.fade(role='tabpanel')
+                table#merchantEva(width="100%",cellpadding="0")
+                    //tr.tabDetail
+                    //    td EJ2015010101
+                    //    td 物业报修
+                    //    td 2015/01/12 12:12
+                    //    td.evaluate#eval aa
+                    //        .box#box
+                    //            .triangle
+                    //            p 我认为这次服务非常好，从响应速度，服务态度，服务质量各方面都非常满意。好评！
+                    //
+                    //    td
+                    //        a 查看
+                    //tr.tabDetail
+                    //    td EJ2015010101
+                    //    td 物业报修
+                    //    td 2015/01/12 12:12
+                    //    td.evaluate aa
+                    //    td
+                    //        a 查看
+    script(src="/web/js/merchantEvaluate.js")
+    include ../include/footer
+    script(src='/web/js/sidebar.js')

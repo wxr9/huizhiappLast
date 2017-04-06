@@ -1,0 +1,109 @@
+//
+   Created by z on 2016/9/21.
+extends ../layout
+block head
+    title  活动中心
+    link(href='/web/css/activity.css', rel='stylesheet')
+    script(src="/web/js/activitySpecial.js")
+block body
+    .html-title.activity
+    .tuan
+        .row
+            .tuan-banner
+                img(src="/web/images/tuan_title.png" alt="团布丁带你1元体验铁人三项")
+            .tuan-cont
+                img.poster(src="/web/images/tuan_poster.jpg" alt="海报")
+                .intro
+                    h3.tuan-title 赛事介绍
+                    p
+                        |2016中国千岛湖威坪“金石生物”杯逐浪者第二届户外三项赛是由上海、杭州、南京等地户外俱乐部联合打造的户外赛事，旨在为户外运动爱好者提供一个交流分享的平台，展示一个不一样的千岛湖；比赛由开放水域自行车（20公里）、越野跑步（7公里）、皮划艇（8公里）三个项目组成。
+                        |相对于封闭场地的比赛，充满了挑战性和趣味性，同时也是对参赛选手体能、技能以及心理的挑战。
+                    img.act(src="/web/images/tuan_act.jpg" alt="合照")
+            .tuan-line
+                h3.t-title 比赛线路描述
+                p.t-word “我们既能手刃各项具有挑战的工作任务，也能游荡在美丽的千岛湖水中”！
+                p.t-word.t-black 赛道全程35公里，其中：骑行20公里、跑步7公里、皮划艇8公里。
+                dl.t-detail
+                    dt 比赛线路说明：
+                    dd 自行车赛道由柏油路面、乡村道路、隧道组成；
+                    dd 跑步赛道由柏油路面、台阶路及土路组成；
+                    dd 皮划艇赛道为威坪镇开放水域，水质清澈，总体竞赛强度适中。
+                img(src="/web/images/tuan_map.jpg" alt="地图" width="100%")
+                img.images(src="/web/images/tuan_lake.jpg" alt="划船")
+                img.images(src="/web/images/tuan_bike.jpg" alt="自行车")
+                img.images(src="/web/images/tuan_run.jpg" alt="跑步")
+            h3.t-title 赛事安排
+            dl.t-detail
+                    dt 比赛时间：
+                    dd 2016年10月15日—16日
+                    dt 比赛地点：
+                    dd 淳安县 威坪镇
+                    dt 比赛分为：
+                    dd 男子专业组、女子专业组、接力组（每组3人，必须有一名异性）
+                    dt 适合人群：
+                    dd 18-55周岁
+            img.t-table(src="/web/images/tuan_big.jpg" alt="活动流程表")
+            .tuan-apply
+                h3.t-title 报名流程
+                .erwei-box
+                    .erwei-img
+                    p
+                        | 扫描二维码报名（
+                        a.tuanbuding(href="javascript:void(0);") 登录
+                        | 后可见）
+                dl.t-detail
+                    dt 报名时间：
+                    dd 2016年8月20~10月10日（额满提前截止）
+                    dt 参赛人数：
+                    dd
+                        |男子专业组：100人（18岁—55岁）
+                        br
+                        |女子专业组：50人（18岁—55岁）
+                        br
+                        |接力组：80组（18岁—55岁）每组3人，必须有一名异性
+                    dt 报名方式：
+                    dd 扫描二维码，完成报名。
+                p.t-red
+                    |原价150元/人的报名费
+                    br
+                    |通过汇智e站报名，享受花式优惠
+                img.t-table(src="/web/images/tuan_small.jpg" alt="价格表")
+                p.t-red * 团体参赛，请联系我们进行咨询
+            .tuan-fee
+                h3.t-title 费用说明
+                p.t-black 费用包含
+                ol.fee
+                    li 活动赛手包1个
+                    li 赛事T恤1件
+                    li 完赛奖牌1块
+                    li 赛事个人意外险
+                    li 赛事组织费
+                    li 赛事补给
+                p.t-black 费用不含
+                ol.fee
+                    li 出发地往返千岛湖威坪镇交通费（请参考“赛事小助手”）
+                    li 活动全程住宿及用餐费（请参考“赛事小助手”）
+                    li 自行车租赁费（40元/辆）
+                h3.t-title 比赛奖项设置
+                img.t-table(src="/web/images/tuan_mid.jpg" alt="奖品说明")
+                img.images2(src="/web/images/tuan_medal.jpg" alt="奖牌")
+                img.images2(src="/web/images/tuan_people.jpg" alt="拥抱")
+            .tuan-link
+                p.t-red 如果您已报名，请务必阅读：
+                a(href="/static/uploads/docs/20160921/20160921145046.docx",download) 赛事说明
+                a(href="/static/uploads/docs/20160921/20160921145201.docx",download) 赛事小助手
+            .erwei-box
+                .erwei-img
+                p
+                    |扫描二维码报名（
+                    a.tuanbuding(href="javascript:void(0)") 登录
+                    |后可见）
+            h3.t-title 关于团布丁
+            .t-intro
+                p 团布丁为中国2200万的大型和中小企业提供团队建设活动解决方案，也为不计其数的社会团体和组织提供活动方案。在团布丁的平台上，我们汇集丰富和优质的团队活动内容。
+                p 我们的名字取自“team building”的谐音。敬请关注我们的微信公众号“团布丁”或访问 tuanbuding.com 了解更多。
+            .tuan-coop
+                h3.t-title 合作伙伴
+                img(src="/web/images/sp_park.jpg" alt="浦东软件园")
+                img(src="/web/images/sp_huizhi.png" alt="汇智软件")
+    include ../include/footer

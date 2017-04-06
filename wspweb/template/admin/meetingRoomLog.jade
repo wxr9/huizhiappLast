@@ -1,0 +1,47 @@
+//Created by iris on 16/4/29.
+extends ./layout
+block head
+    title 会议室日程
+    link(rel="stylesheet", href="/admin/css/index.css")
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/meetingRoomLog.js")
+block body
+    .col-xs-9.content
+        .pagetitle 查看会议室日程
+        #pre.pre.week-btn.active
+            .fa.fa-arrow-left
+            |上一周
+        #next.next.week-btn
+            |下一周
+            .fa.fa-arrow-right
+        a(target='_blank').print-btn#print
+            |打印
+            .fa.fa-print
+        #roomTable
+            table.room-table(border='1',style="min-width:950px;")
+                thead
+                    tr#week
+                        th
+                            span 星期/会议室
+                        th
+                            span 星期一
+                            span 2016-01-12
+                        th
+                            span 星期二
+                            span 2016-01-12
+                        th
+                            span 星期三
+                            span 2016-01-12
+                        th
+                            span 星期四
+                            span 2016-01-12
+                        th
+                            span 星期五
+                            span 2016-01-12
+                        th
+                            span 星期六
+                            span 2016-01-12
+                        th
+                            span 星期日
+                            span 2016-01-12
+                tbody#classroom

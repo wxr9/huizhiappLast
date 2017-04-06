@@ -1,0 +1,158 @@
+//
+   Created by Administrator on 2016/3/21.
+extends ../layout
+block head
+    title  教室预订
+    link(href='/web/css/apply.css', rel='stylesheet')
+    script(src="/web/js/classroomForm.js")
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/classroomList.html') 教室
+            span &gt;
+            a(href='javascript:void(0)') 教室预订
+    .container.bg_white.huntApply
+        .col-xs-12
+            .col-xs-12
+                p.msg#notice
+            form.form-horizontal#form(name="form",role="form",method="POST")
+                .col-xs-12
+                    label.read
+                        input#mustRead(type='checkbox',name='mustRead')
+                        span 已阅读
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 姓名:
+                    div.col-xs-7
+                        input.form-control(type="text",name="chineseName")
+                div.form-group
+                    label.col-xs-3.control-label E-mail:
+                    div.col-xs-7
+                        input.form-control(type="text",name="email")
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 公司名称:
+                    div.col-xs-7
+                        input.form-control(type="text",name="company",placeholder="请输入公司名称")
+                div.form-group
+                    label.col-xs-3.control-label 联系方式:
+                    div.col-xs-7
+                        input.form-control(type="text",name="phone")
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 教室选择:
+                    div.col-xs-7
+                        input.form-control#classroomName(type="text",name="classroomName",readonly)
+                        input.form-control#classroomId(type="hidden",name="classroomId")
+                div.form-group
+                    label.col-xs-3.control-label
+                        span.star
+                        span 时间选择:
+                    div.col-xs-7
+                        a.yellow#selectTitle(href="javascript:;") 智能筛选&gt;&gt;
+                        div.bg_gray1.display_n#selectShow
+                            div.clearfix
+                                .input-append.date.form_datetime.fl
+                                    input(size="16", type="text", readOnly,time='startTime')
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                                lable.col-xs-1.fl
+                                    span.lh30 到
+                                .input-append.date.form_datetime.fl
+                                    input(size="16", type="text", readOnly,time='endTime')
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                            p.mt10
+                                label
+                                    input(type="checkbox",value='1')
+                                    span.week  星期一
+                                label
+                                    input(type="checkbox",value='2')
+                                    span.week  星期二
+                                label
+                                    input(type="checkbox",value='3')
+                                    span.week  星期三
+                                label
+                                    input(type="checkbox",value='4')
+                                    span.week  星期四
+                                label
+                                    input(type="checkbox",value='5')
+                                    span.week  星期五
+                                label
+                                    input(type="checkbox",value='6')
+                                    span.week  星期六
+                                label
+                                    input(type="checkbox",value='0')
+                                    span.week  星期日
+                            p.clearfix
+                                label.fl.mt5
+                                    input(type="radio",checked="checked",value="a",name="asdf")
+                                    span.week  上午9:00-12:00
+                                label.fl.mt5
+                                    input(type="radio",value="p",name="asdf")
+                                    span.week  下午13:00-15:00
+                                label.fl
+                                    span.f_gray 预约次数：
+                                    input.input.pw60#count(type="text" name='count')
+                            .row
+                                .col-xs-12.mt10
+                                    .col-xs-2.col-xs-offset-5
+                                        a.produce#create(href='javascript:;') 生成
+                        div#cont
+                            .clearfix.bg_gray1.radios
+                                .input-append.date.form_datetime.fl
+                                    input(type="text" size="16" name="dateTimeArray" readonly="")
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                                label.fl.ml20
+                                    input(type="radio" name="halfDayArray0" value="a" checked="checked")
+                                    span.week  上午9:00-12:00
+                                label.fl
+                                    input(type="radio" name="halfDayArray0" value="p")
+                                    span.week  下午13:00-15:00
+                                a.add3.fl(href='javascript:;')
+                                    i.fa.fa-plus-circle(aria-hidden="true")
+                                a.delete1.fl(href='javascript:;')
+                                    i.fa.fa-minus-circle(aria-hidden="true")
+                        span#contNum
+
+
+                div.form-group
+                    label.col-xs-3.control-label 需求说明:
+                    div.col-xs-7
+                        textarea.form-control(type="text",name="content")
+                div.form-group
+                    label.col-xs-3.control-label 备注:
+                    div.col-xs-7
+                        textarea.form-control(type="text",name="memo")
+                div.display_n#comment
+                    .col-xs-3.text-right
+                        label.control-label 评价信息：
+                    .col-xs-8
+                        .col-xs-5
+                            p#comment1
+                        .col-xs-2.ratingScore.ratingScore-duration
+                            span#duration
+                            p.ratingText 响应速度
+                        .col-xs-2.ratingScore.ratingScore-attitude
+                            span#attitude
+                            p.ratingText 服务态度
+                        .col-xs-2.ratingScore.ratingScore-quality
+                            span#quality
+                            p.ratingText 服务质量
+                div.form-group
+                    div.col-xs-9.col-xs-offset-2.text-center
+                        button.btn.btn-blue.submit(type="submit") 提交
+
+
+    include ../include/footer
+

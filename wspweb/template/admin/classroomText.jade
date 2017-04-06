@@ -1,0 +1,45 @@
+//
+   Created by Administrator on 2016/4/20.
+
+extends ./layout
+block head
+    title  教室申请评价配置
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/classroomText.js")
+block body
+    // 主内容区
+    .col-sm-8.content
+        .pagetitle 教室申请评价配置
+        form.form-horizontal#ratyForm
+            input#autoCommentDeadline(type="hidden", name="autoCommentDeadline")
+            input(type="hidden", name="objectid")
+            .form-group
+                label.col-sm-2.control-label 自动评价期限
+                .col-sm-2
+                    select.form-control#dayTime
+                        option 请选择天
+                .col-sm-2
+                    select.form-control#hourTime
+                        option 请选择小时
+                .col-sm-2
+                    select.form-control#minTime
+                        option 请选择分钟
+            .form-group
+                label.col-sm-2.control-label 自动评价星级
+                .col-sm-8.offset2
+                    .row.form-group
+                        label.col-sm-4 响应速度:
+                        .ratyRating.col-sm-5#autoCommentSpeed
+                    .row.form-group
+                        label.col-sm-4 服务态度:
+                        .ratyRating.col-sm-5#autoCommentAttitude
+                    .row.form-group
+                        label.col-sm-4 服务质量:
+                        .ratyRating.col-sm-5#autoCommentQuality
+            .form-group
+                label.col-sm-2.control-label(for='content') 系统评价信息
+                .col-sm-4
+                    textarea#content.form-control(name="content", rows='3', placeholder='限100字以内')
+            .form-group
+                .col-sm-offset-2.col-sm-10
+                    a.btn.btn-blue#saveEvaluate 保存

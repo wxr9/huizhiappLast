@@ -1,0 +1,13 @@
+extends ./layout
+block head
+  title  数据字典详情
+  link(href='/admin/css/index.css', rel='stylesheet')
+  link(href='/admin/css/setting.css', rel='stylesheet')
+  script(src="/admin/js/dictDetail.js")
+block body
+  // 主内容区
+  .col-sm-8.content
+    .pagetitle 数据字典详情
+    .row
+      .btn.btn-success.col-md-offset-1#add 添加
+    ul#uldatatable

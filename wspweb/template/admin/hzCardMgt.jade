@@ -1,0 +1,161 @@
+extends ./layout
+block head
+    title 汇智卡管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/hzCardMgt.js")
+block body
+    .col-xs-10.content.flowTrack
+        .pagetitle 汇智卡管理
+        ul.nav.nav-tabs
+            li.active
+                a(href="#person", data-toggle="tab") 个人
+            li
+                a(href="#enter",data-toggle="tab") 企业
+        div.tab-content
+            .tab-pane.active#person
+                table#table1(width="100%",cellspacing="0")
+            .tab-pane#enter
+                table#table2(width="100%",cellspacing="0")
+        div.modal.fade#modal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 汇智卡管理
+                    div.modal-body
+                        form.form-horizontal#personForm(name="personForm",role="form",method="POST")
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 申请人：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='username',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span E-mail：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='email', readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 公司名称：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='company',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 联系方式：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='contact',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 真实姓名：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='realname',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 身份证：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='idcard',readonly)
+                        form.form-horizontal(name="companyForm",role="form",method="POST")
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 申请人：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='username',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span E-mail：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='email',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 公司名称：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='company',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 联系方式：
+                                    .col-xs-8
+                                        input.form-control(type='text',name='contact',readonly)
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 附件：
+                                    .col-xs-8#attachmentBox
+                                        input.form-control#attachment(type='file' name="attachment")
+                        hr
+                        form.form.form-horizontal(name="stepOne",method="POST")
+                            input.form-control(type="hidden",name="id")
+                            input.form-control(type='hidden',name='status',value='2')
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 领取时间：
+                                    .col-xs-8
+                                        .input-append.date.form_datetime
+                                            input(size="30", type="text", name='getTime', readOnly)
+                                            span.add-on
+                                                i.icon-th.fa.fa-table.blue
+                            div.form-group.submitBtn
+                                a.btn.btn-blue(type='submit')#submit1 通过
+                                button.btn.btn-grey(type='button')#nextStep 不通过
+                                button.btn.btn-grey(type='button')#stop 终止
+                        form.form.form-horizontal.mer-form(name="stepTwo",method='POST')
+                            input.form-control(type="hidden",name="id")
+                            input.form-control(type='hidden',name='status',value='3')
+                            .form-group
+                                .col-xs-12
+                                    .col-xs-3.text-right
+                                        label.control-label
+                                            span.star
+                                            span 审核意见：
+                                    .col-xs-8
+                                        textarea.form-control(col=20, row=5, name='mark')
+                            div.form-group.submitBtn
+                                a.btn.btn-blue(type='submit')#submit2 确认
+                                button.btn.btn-grey(type='button')#preStep 返回
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 汇智卡详情
+                    div.modal-body
+                        table(cellspacing="0", width="100%",min-height="300px")
+                            tbody#infoTable.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭

@@ -1,0 +1,15 @@
+extends ./layout
+block head
+    title  关于我们
+block body
+    header.jumbotron-blue1-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 关于我们
+        hr.pageTitleLine
+    .container
+      .article.aboutUs
+        p#content
+    include include/footer
+    script(src='/web/js/aboutUs.js')

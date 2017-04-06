@@ -1,0 +1,132 @@
+nav.navbar.navbar-default.navbar-fixed-top
+    .container
+        .navbar-header
+            a.navbar-brand(href='/web/index.html')
+                img(src='/web/images/logo.png',height="44px")
+        #navbar.nprogress
+            ul.nav.nav-bar
+                li#nav-index
+                    a(href='/web/index.html') 首页
+                li#nav-myWiz
+                    a(href="/web/myWiz.html") 我的小智
+                li#nav-serviceCenter
+                    a(href='/web/serviceCenter.html') 服务中心
+                li#nav-lifeCenter
+                    a(href='/web/lifeCenter/lifeCenter.html') 生活中心
+                li#nav-activityCenteractivityCenter
+                    a(href='/web/activity/activityCenter.html') 活动中心
+        ul.loginAndRegister.fade.nprogress
+            li
+                a#login.loginBtn(data-toggle="modal", data-target="#loginModal") 登录
+            li
+                a.loginBtn(data-toggle="modal", data-target="#registerModal") 注册
+div.modal.fade.loginModal.header-modal#loginModal(tabindex="-1")
+    div.modal-dialog.modal-sm
+        div.modal-content
+            div.modal-header
+                button.close(type="button", data-dismiss="modal")
+                    span &times;
+            div.modal-body
+                form.form.form-horizontal#loginForm(name="loginForm",method="POST",action="/j_spring_security_check")
+                    input(type='text', name='lgtp', value='front', hidden='true')
+                    h4.modal-title 登录
+                    div.form-group
+                        div.col-xs-10.col-xs-offset-1
+                            i.fa.fa-user
+                            input.form-control#user(type="text",name="j_username",placeholder="手机/用户名")
+                    div.form-group
+                        div.col-xs-10.col-xs-offset-1
+                            i.fa.fa-lock
+                            input.form-control#psd(type="password",autocomplete="off")
+                            input.form-control#psd2(type="hidden",name="j_password",autocomplete="off")
+                    div.form-group
+                        div.col-xs-10.col-xs-offset-1
+                            a.forget-psd#forgetpsdLink 忘记密码?
+                            //div.remember-psd
+                            //    label
+                            //        input#rmbUser(type="checkbox",name="remember")
+                            //        |记住密码
+                    div.form-group
+                        div.col-xs-10.col-xs-offset-1
+                            input.form-control.login-btn#loginBtn(type="button",value="登录")
+                    div.register
+                        a#registerLink 免费注册
+div.modal.fade.header-modal#registerModal(tabindex="-1")
+    div.modal-dialog
+        div.modal-content
+            div.modal-header
+                button.close(type="button", data-dismiss="modal")
+                    span &times;
+                h4.modal-title 注册
+            div.modal-body
+                form.form-horizontal#registerForm(name="registerForm")
+                    div.form-group
+                        label.col-xs-3.col-xs-offset-1.control-label 用户名
+                        div.col-xs-6
+                            input.form-control(type="text",name="username")
+                    div.form-group
+                        label.col-xs-3.col-xs-offset-1.control-label 密码
+                        div.col-xs-6
+                            input.form-control#registerpsd(type="password",name="password",autocomplete="off")
+                            //input.form-control#registerpsd2(type="hidden",autocomplete="off")
+                    div.form-group
+                        label.col-xs-3.col-xs-offset-1.control-label 确认密码
+                        div.col-xs-6
+                            input.form-control#registerCfmpsd(type="password",name="confirmpassword",autocomplete="off")
+                            //input.form-control#registerCfmpsd2(type="hidden",autocomplete="off")
+                    div.form-group
+                        label.col-xs-3.col-xs-offset-1.control-label 手机号
+                        div.col-xs-6
+                            input.form-control#phonenum(type="text",name="phone",placeholder="请输入手机号")
+                    div.form-group
+                        label.col-xs-3.col-xs-offset-1.control-label 验证码
+                        div.col-xs-6.code-box
+                            input.form-control.code#code(type="text",name="code")
+                            a.btn-default.getCode#getCode 免费获取验证码
+                    div.form-group
+                        label.col-xs-3.col-xs-offset-1.control-label
+                        div.col-xs-6
+                            input.form-control.login-btn#registerBtn(type="submit",value="提交")
+div.modal.fade.header-modal#forgetpsdModal(tabindex="-1")
+    div.modal-dialog
+        div.modal-content.modal-sm
+            div.modal-header
+                button.close(type="button", data-dismiss="modal")
+                    span &times;
+                h4.modal-title 找回密码
+            div.modal-body
+                form.form-horizontal#forgetpsdForm(method="post",name="forgetForm")
+                    .step#stepOne
+                        div.form-group.user-group
+                            label.col-xs-3.control-label 用户名/手机号
+                            div.col-xs-8
+                                input.form-control#username(type="text",name="username",placeholder="请填写用户名/手机号")
+                        div.form-group
+                            label.col-xs-3.control-label 验证码
+                            div.col-xs-8.code-box
+                                input.form-control.code#code2(type="text",name="code")
+                                input.btn-default.getCode#getCodeBtn(type='text' readonly="readonly" value='免费获取验证码')
+                        div.form-group
+                            div.col-xs-3
+                            div.col-xs-8
+                                small.help-block.user-tip 用户名或密码填写错误
+                                input.form-control.login-btn#next-step(type="submit",value="下一步")
+                form.form-horizontal#forgetpsdForm2(method="post",name="forgetForm2",autocomplete="off")
+                    .step#stepTwo
+                        div.form-group
+                            label.col-xs-3.control-label 新密码
+                            div.col-xs-8
+                                input.form-control#newpsd(type="password",name="password")
+                                input.form-control#username2(type="hidden",name="username")
+                                input#codeCopy(type="hidden",name="vcode")
+                        div.form-group
+                            label.col-xs-3.control-label 确认新密码
+                            div.col-xs-8
+                                input.form-control#newCfmPsd(type="password",name="confirmpassword")
+                        div.form-group
+                            div.col-xs-3
+                            div.col-xs-8
+                                input.form-control.login-btn(type="submit",value="提交")
+
+
+

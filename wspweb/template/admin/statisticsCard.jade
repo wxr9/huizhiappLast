@@ -1,0 +1,59 @@
+//
+   Created by Administrator on 2016/4/27.
+extends ./layout
+block head
+    title 汇智卡数据统计
+    link(href='/admin/css/statistics.css', rel='stylesheet')
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/statisticsCard.js")
+block body
+    .col-xs-9.content
+        .pagetitle 汇智卡数据统计
+        .panel
+            .panel-body
+                .rectangle1.rectangle-green
+                    span.statisticsTitle 汇智卡总数
+                    span.statisticsNum#cardCount 0
+        form.chartFilter2.clearfix#form
+            span.fl 时间：
+            label.control-label.fl(for='startTime')  开始时间
+            .input-append.date.fl.form_datetime
+                input#startTime(size="16", type="text",name='startTime',readOnly)
+                span.add-on
+                    i.icon-th.fa.fa-table.blue
+
+            label.control-label.fl(for='endTime')  结束时间
+            .input-append.date.form_datetime.fl
+                input#endTime(size="16",name='endTime', type="text" readOnly)
+                span.add-on
+                    i.icon-th.fa.fa-table.blue
+            button.searchBtn.btn.btn-blue.fl.ml20#searchBtn(type="button") 查询
+            button.searchBtn.btn.btn-blue.fl.ml20#clearBtn(type="button") 清除查询
+        .panel
+            .panel-body
+                .rectangleGrid1
+                    .rectangle.rectangle-orange
+                        span.statisticsTitle 在线充值次数
+                        span.statisticsNum#num1 0
+                    .rectangle.rectangle-blue
+                        span.statisticsTitle 在线充值金额
+                        span.statisticsNum#num2 0
+                    .rectangle.rectangle-pink
+                        span.statisticsTitle 电子钱包消费次数
+                        span.statisticsNum#num3 0
+                    .rectangle.rectangle-purple
+                        span.statisticsTitle 电子钱包消费金额
+                        span.statisticsNum#num4 0
+                    .rectangle.rectangle-orange
+                        span.statisticsTitle 正常卡数
+                        span.statisticsNum#num5 0
+                    .rectangle.rectangle-blue
+                        span.statisticsTitle 活跃卡数
+                        span.statisticsNum#num6 0
+                    .rectangle.rectangle-pink
+                        span.statisticsTitle 非活跃卡数
+                        span.statisticsNum#num7 0
+                    .rectangle.rectangle-purple
+                        span.statisticsTitle 沉寂卡数
+                        span.statisticsNum#num8 0
+

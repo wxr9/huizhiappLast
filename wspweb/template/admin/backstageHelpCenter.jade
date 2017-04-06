@@ -1,0 +1,19 @@
+extends ./layout
+block head
+    title  帮助中心设置
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/backstageHelpCenter.js")
+block body
+    // 主内容区
+    .col-sm-8.content
+        .pagetitle
+            #title 前台帮助中心设置
+            #container(role='main')
+                #addFile.btn.btn-info.add-file
+                    i.fa.fa-folder
+                    |新增文件夹
+                #fileBox.file-box
+                .save-btn
+                    #saveBtn.btn.btn-success 保存设置
+
+

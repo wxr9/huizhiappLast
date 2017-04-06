@@ -1,0 +1,77 @@
+extends ../layout
+block head
+    title  生活中心
+    link(rel='stylesheet' href='/web/css/lifeCenter.css')
+block body
+    //header.jumbotron-orange-sm(role='banner')
+    //    .page-title
+    //        span.pageTitle 优惠信息
+    .html-title.life
+    .container
+        .row.life-header
+            input.searchBox#searchName(placeholder="请输入要查询的商户名称",name='name')
+            span.searchBtn.fa.fa-search
+        .row
+            .bread-crumb
+                span.icon
+                a(href='/') 首页
+                span &gt;
+                a(href='/web/lifeCenter/lifeCenter.html') 生活中心
+                span &gt;
+                a(href='javascript:void(0)') 优惠广场
+        .row.saleSelect#saleSelect
+            //.col-md-12.select-item
+            //    .head
+            //        span.title 优惠:
+            //    .body
+            //        .items
+            //            a.item.active(href="#") 不限
+            //            a.item(href="#") 折扣
+            //            a.item(href="#") 代金券
+            //.col-md-12.select-item
+            //    .head
+            //        span.title 商圈:
+            //    .body
+            //        .items
+            //            a.item.active(href="#") 不限
+            //            a.item(href="#") 汇智商业中心
+            //            a.item(href="#") 郭守敬园
+            //            a.item(href="#") 祖冲之园
+            //.col-md-12.select-item
+            //    .head
+            //        span.title 类别:
+            //    .body
+            //        .items
+            //            a.item.active(href="#") 不限
+            //            a.item(href="#") 美食
+            //            a.item(href="#") 娱乐
+            //            a.item(href="#") 亲子
+            //            a.item(href="#") 购物
+            //            a.item(href="#") 生活
+        .row#prefer-info
+            //.col-lg-4
+            //    .product-item
+            //        .product-img
+            //        .product-detail
+            //            .row
+            //                .col-sm-8
+            //                    span.product 秘制烤牛肉套餐1
+            //                .col-sm-4
+            //                    span.now-price &yen;80
+            //                    del &yen;100
+            //            .row
+            //                .col-sm-6
+            //                    span.shop 韩膳宫
+            //                .col-sm-6
+            //                    a(href="#").product-more-btn 查看详情
+
+        .row
+            .col-md-12#pagination.paginator
+
+
+
+
+    include ../include/footer
+        script(src="/web/js/lifeCenter/preferentialList.js")
+
+

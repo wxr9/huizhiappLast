@@ -1,0 +1,28 @@
+//
+   Created by Administrator on 2016/4/19.
+
+extends ./layout
+block head
+    title 汇智卡在线充值记录管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/payRecord.js")
+block body
+    .col-xs-9.content
+        .pagetitle 汇智卡在线充值记录管理
+
+        table#recordTable(width="100%",cellspacing="0")
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定领发票吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+
+

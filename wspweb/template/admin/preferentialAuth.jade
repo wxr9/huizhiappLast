@@ -1,0 +1,85 @@
+extends ./layout
+block head
+    title 审核
+    link(rel="stylesheet", href="/admin/css/index.css")
+block body
+    .col-xs-9.content
+        .pagetitle 优惠审核
+        table#merchantTable(width="100%",cellspacing="0")
+        div.modal.fade#editModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 优惠审核
+                    div.modal-body
+                        form.form.form-horizontal.mer-form#merchantDetail
+                            div.form-group
+                                label.col-sm-3.control-label 标题:
+                                div.col-sm-8
+                                    input.form-control(type="text",name="title" readonly)
+                            div.form-group
+                                label.col-md-3.control-label 开始日期:
+                                div.col-md-6
+                                    .input-append.date.form_datetime
+                                        input(size="16", type="text", name='startTime', readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-md-3.control-label 截止日期:
+                                div.col-md-6
+                                    .input-append.date.form_datetime
+                                        input(size="16", type="text", name="endTime", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label 封面照片:
+                                div.col-sm-8
+                                    img#image(src='',width='250',height='150')
+                            div.form-group
+                                label.col-md-3.control-label 优惠类型:
+                                div.col-md-8
+                                    select#type.form-control(name="type")
+                            div.form-group.saleBox#discount
+                                label.col-md-3.control-label 折扣:
+                                div.col-md-8
+                                    input.sale.form-control(type="text",name="discount" readonly)
+                            div.form-group.saleBox.discount2
+                                label.col-md-3.control-label 原价:
+                                div.col-sm-8
+                                    span.fa.fa-jpy
+                                    input.price.form-control(type="text",name="origin" readonly)
+                            div.form-group.saleBox.discount2
+                                label.col-md-3.control-label 现价:
+                                div.col-sm-8
+                                    span.fa.fa-jpy
+                                    input.price.form-control(type="text",name="current" readonly)
+                            div.form-group
+                                label.col-md-3.control-label 内容摘要:
+                                div.col-md-8
+                                    textarea.form-control(name="shortIntro",rows='5' readonly)
+                        form.form.form-horizontal.mer-form#merchantInfo(name="merhcantInfo",method="POST")
+                            input.form-control(type="hidden",name="objectid")
+                            input.form-control(type='hidden',name='bCheck',value='2')
+                            div.form-group.submitBtn
+                                a.btn.btn-blue#submit1 通过
+                                button.btn.btn-grey(type='button')#nextStep 不通过
+                        form.form.form-horizontal.mer-form#merchantInfo2(name="merhcantInfo2",method='POST')
+                            input.form-control(type="hidden",name="objectid")
+                            input.form-control(type='hidden',name='bCheck',value='3')
+                            div.form-group
+                                label.col-sm-3.control-label 不通过理由:
+                                div.col-sm-8
+                                    textarea.form-control#memo(name="memo",rows='5')
+                                    small.help-block 请填写不通过的理由
+                            div.form-group.submitBtn
+                                a.btn.btn-blue#submit2 确认
+                                button.btn.btn-grey(type='button')#preStep 返回
+    script(src='/admin/js/preferentialAuth.js')
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+//Created by iris on 16/4/6.
+extends ../layout
+block head
+    title  服务中心
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+block body
+    .container.huntApply
+        .col-sm-12
+            h4  广告服务申请须知
+            .row
+                .col-sm-10
+                    .da-notice1#noticeContent
+                .col-sm-2
+                    a(href='/web/services/commercialApply.html').btn.btn-orange.da-apply 立即申请
+
+    include ../include/footer
+    script(src="/web/js/commercial.js")
+
+
+

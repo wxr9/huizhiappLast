@@ -1,0 +1,47 @@
+extends ../layout
+block head
+    title  通知管理
+    script(src="/web/js/notificationMgt.js")
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 通知管理
+          // Nav tabs
+          ul.nav.nav-tabNew(role='tablist')
+            li#numCount.active(role='presentation')
+              span#notRead
+              a(href='#notice', aria-controls='base', role='tab', data-toggle='tab') 通知
+            //li(role='presentation')
+            //  a(href='#two', aria-controls='two', role='tab', data-toggle='tab') 订阅
+            //li(role='presentation')
+            //  a(href='#three', aria-controls='three', role='tab', data-toggle='tab') 赞
+            li(role='presentation')
+              span#notRead1
+              a(href='#four', aria-controls='four', role='tab', data-toggle='tab') 回应
+          // Tab panes
+          .tab-content
+            // 通知
+            #notice.tab-pane.fade.in.active(role='tabpanel')
+              #noticeContent
+              #noticePagination.paginator
+            // 订阅
+            //#two.tab-pane.fade(role='tabpanel')
+            //  | 建设中...
+            //// 赞
+            //#three.tab-pane.fade(role='tabpanel')
+            //  | 建设中...
+            // 回应
+            #four.tab-pane.fade(role='tabpanel')
+              div#respond-list
+              #pagination.paginator
+    include ../include/footer
+    script(src='/web/js/sidebar.js')

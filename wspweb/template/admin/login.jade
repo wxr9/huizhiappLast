@@ -1,0 +1,38 @@
+doctype html
+html.no-js(lang="zh-cn")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        link(rel='icon', type='image/png', href='/favicon-32x32.png', sizes='32x32')
+        link(rel='icon', type='image/png', href='/favicon-16x16.png', sizes='16x16')
+        script(src="/lib/require.js")
+        script(src="/lib/main.js")
+        link(href='/lib/css/bootstrap.min.css', rel='stylesheet',type="text/css")
+        link(href='/lib/css/bootstrap-responsive.min.css', rel='stylesheet',type="text/css")
+        link(href='/lib/css/font-awesome.min.css', rel='stylesheet',type="text/css")
+        link(href='/admin/css/style_Yoriki.css', rel='stylesheet',type="text/css")
+        link(href='/admin/css/common.css', rel='stylesheet',type="text/css")
+        script(src="/admin/js/sidebar.js")
+        script(src="/admin/js/yoriki.js")
+        script(src='/admin/js/login.js')
+        block head
+    body
+        block body
+            .login-bg
+                .col-sm-6.col-sm-offset-3
+                    h2.login-title 汇智e站后台管理
+                    form.form-horizontal.login-form#loginForm(name="loginForm",method="POST",action="/j_spring_security_check",autocomplete="off")
+                        input(type='text', name='lgtp', value='back', hidden='true')
+                        div.login-box
+                            label.login-label 账号:
+                            input.form-control#username(type="text",name="j_username",placeholder="手机/用户名")
+                        div.login-box
+                            label.login-label 密码:
+                            input.form-control#password(type="password", autocomplete="off")
+                            input.form-control#password2(type="hidden",name="j_password")
+                        div.login-box
+                            label.login-label
+                            input.form-control.login-btn#submitBtn(type="button",value="登录")
+                            input(type="reset" style="display:none;")
+

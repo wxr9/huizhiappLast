@@ -1,0 +1,98 @@
+//Created by iris on 16/2/25.
+extends ./layout
+block head
+    title 汇智卡公告管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/hzCardNotice.js")
+block body
+    .col-xs-9.content
+        .pagetitle 汇智卡公告管理
+        div
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增汇智卡公告
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 公告内容:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="content")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 开始时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.startTime
+                                        input(size="24", type="text", name="startTime", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 结束时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.endTime
+                                        input(size="24", type="text", name="endTime", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#editModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增汇智卡公告
+                    div.modal-body
+                        form.form-horizontal.userform#editForm(name="addForm")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 公告内容:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="content")
+                                    input.form-control(type="hidden",name="objectid")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 开始时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.startTime
+                                        input(size="24", type="text", name="startTime", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 结束时间:
+                                div.col-sm-6
+                                    .input-append.date.form_datetime.endTime
+                                        input(size="24", type="text", name="endTime", readOnly)
+                                        span.add-on
+                                            i.icon-th.fa.fa-table.blue
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#deleteModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div(style="text-align:center") 您确定删除吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        table#table(width="100%",cellspacing="0")
+

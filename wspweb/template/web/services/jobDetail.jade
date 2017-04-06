@@ -1,0 +1,23 @@
+extends ../layout
+block head
+    title  职位详情
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src="/web/js/jobDetail.js")
+block body
+    .jobBanner
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/jobList.html') 职位
+            span &gt;
+            a(href='javascript:void(0)') 职位详情
+    .container
+        #cont
+
+    include ../include/footer
+    script(src="/web/js/serviceCenter.js")
+

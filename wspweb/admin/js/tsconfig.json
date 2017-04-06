@@ -1,0 +1,155 @@
+{
+  "form": [
+    {
+      "url": "/UserRepair/Edit/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "流水号",
+          "name": "serialNumber"
+        },
+        {
+          "label": "申请日期",
+          "name": "createDate",
+          "type": "date"
+        },
+        {
+          "label": "报修人",
+          "name": "applicant"
+        },
+        {
+          "label": "联系方式",
+          "name": "contact"
+        },
+        {
+          "label": "公司",
+          "size": "long",
+          "name": "company"
+        },
+        {
+          "label": "园区",
+          "name": "park.name"
+        },
+        {
+          "label": "楼宇",
+          "name": "building.name"
+        },
+        {
+          "label": "报修类型",
+          "size": "long",
+          "name": "repairTypeDetail.settingDict.name - repairTypeDetail.name"
+        },
+        {
+          "label": "报修地址",
+          "size": "long",
+          "name": "address"
+        },
+        {
+          "label": "照片",
+          "size": "long",
+          "type": "image",
+          "name": "photoUrl"
+        },
+        {
+          "label": "问题描述",
+          "size": "long",
+          "name": "description"
+        },
+        {
+          "label": "备注",
+          "size": "long",
+          "name": "memo"
+        },
+        {
+          "label": "受理日期",
+          "type": "date",
+          "name": "acceptDate"
+        },
+        {
+          "label": "问题类型确认",
+          "size": "long",
+          "name": "repairTypeConfmDetail.settingDict.name - repairTypeConfmDetail.name"
+        },
+        {
+          "label": "问题描述确认",
+          "size": "long",
+          "name": "descriptionConfm"
+        }
+      ]
+    },
+    {
+      "url": "/UserRepairAssign/Find/",
+      "readOnly": true,
+      "item": [
+        {
+          "label": "派工时间",
+          "name": "assignTime",
+          "type": "date"
+        },
+        {
+          "label": "工程师",
+          "name": "engineerDetail.name"
+        },
+        {
+          "label": "到达时间",
+          "name": "arriveTime",
+          "type": "date"
+        }
+      ]
+    },
+    {
+      "url": "/UserRepairRecode/0/0?repairId=",
+      "readOnly": true,
+      "multiple": true,
+      "item": [
+        {
+          "label": "维修时间",
+          "name": "createTime",
+          "type": "date"
+        },
+        {
+          "label": "维修期限",
+          "name": "deadline",
+          "type": "date"
+        },
+        {
+          "label": "维修内容",
+          "name": "memo"
+        }
+      ]
+    },
+    {
+      "url": "/UserRepairRecode/Bid/",
+      "action": "/UserRepairRecode/Add/",
+      "add": true,
+      "item": [
+        {
+          "label": "维修Id",
+          "type": "hidden",
+          "name": "repairId"
+        },
+        {
+          "label": "维修时间",
+          "type": "date",
+          "name": "createTime",
+          "valid": "require",
+          "validatorMsg": "请输入维修时间！"
+        },
+        {
+          "label": "维修期限",
+          "type": "date",
+          "name": "deadline",
+          "valid": "require",
+          "validatorMsg": "请输入维修期限！"
+        },
+        {
+          "label": "维修内容",
+          "type": "text",
+          "name": "memo",
+          "valid": "require",
+          "validatorMsg": "请输入维修期限！"
+        }
+      ]
+    }
+  ]
+}

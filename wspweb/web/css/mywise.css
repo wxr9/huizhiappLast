@@ -1,0 +1,375 @@
+.sectionRed-bg {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    background-color:#ff5c5c;
+    background-image:  radial-gradient(circle at 50% 0,#ffb86b 4%, #ff9b66 13%, #ff7861 40%, #ff5c5c);
+}
+.header-box{
+    color:#fff;
+    font-size:14px;
+    width:800px;
+    padding-top:85px;
+    margin-left:auto;
+    margin-right:auto;
+}
+.header-box h3{
+    width: 100%;
+    height: 70px;
+    line-height:70px;
+    font-size: 36px;
+    font-weight: 100;
+    letter-spacing: 7.2px;
+    text-align: center;
+    color: #ffffff;
+    border-top:2px solid rgba(255, 255, 255, 0.31);
+    border-bottom:2px solid rgba(255, 255, 255, 0.41);
+    margin:0;
+}
+.header-title{
+    position: relative;
+}
+.nav-box>ul{
+    list-style:none;
+    padding:0;
+    overflow:hidden;
+    width:450px;
+    margin:auto;
+}
+.nav-box>ul>li{
+    float:left;
+    padding-bottom:40px;
+    width:150px;
+    text-align:center;
+    border-right: 1px solid #eee;
+}
+.nav-box>ul>li:nth-child(3n){
+    border-right:none;
+}
+.nav-box>ul>li:nth-child(4),
+.nav-box>ul>li:nth-child(5),
+.nav-box>ul>li:nth-child(6){
+    padding-bottom:0;
+}
+.nav-box>ul>li>.nav-item{
+    display:inline-block;
+    color:#333;
+    font-size:14px;
+    text-align:center;
+}
+.nav-box>ul>li .nav-item:hover{
+    color:#ff5c5c;
+}
+.nav-box>ul>li>.nav-item span:last-child{
+    display:block;
+    text-align:center;
+}
+.nav-item .icon{
+    width:30px;
+    height:30px;
+    margin-top:5px;
+    display:inline-block;
+    text-align:center;
+    background:url(/web/images/mywiseicon.png) no-repeat 0 0;
+}
+.nav-item:hover .icon{
+    background:url(/web/images/mywiseicon.png) no-repeat 0 -100px;
+    transition: background 500ms cubic-bezier(0.7, 0, 0.3, 1);
+}
+.nav-item .icon.icon-it{
+    background:url(/web/images/mywiseicon.png) no-repeat -125px 0;
+}
+.nav-item:hover .icon.icon-it{
+    background:url(/web/images/mywiseicon.png) no-repeat -125px -100px;
+}
+.nav-item .icon.icon-zd{
+    background:url(/web/images/mywiseicon.png) no-repeat -249px 0;
+}
+.nav-item:hover .icon.icon-zd{
+    background:url(/web/images/mywiseicon.png) no-repeat -249px -100px;
+}
+.nav-item .icon.icon-px{
+    background:url(/web/images/mywiseicon.png) no-repeat -372px 0;
+}
+.nav-item:hover .icon.icon-px{
+    background:url(/web/images/mywiseicon.png) no-repeat -372px -100px;
+}
+.nav-item .icon.icon-js{
+    background:url(/web/images/mywiseicon.png) no-repeat -495px 0;
+}
+.nav-item:hover .icon.icon-js{
+    background:url(/web/images/mywiseicon.png) no-repeat -495px -100px;
+}
+.nav-item .icon.icon-hy{
+    background:url(/web/images/mywiseicon.png) no-repeat -619px 0;
+}
+.nav-item:hover .icon.icon-hy{
+    background:url(/web/images/mywiseicon.png) no-repeat -619px -100px;
+}
+.nav-item .icon.icon-rz{
+    background:url(/web/images/mywiseicon.png) no-repeat -745px 0;
+}
+.nav-item:hover .icon.icon-rz{
+    background:url(/web/images/mywiseicon.png) no-repeat -745px -100px;
+}
+.nav-item .icon.icon-rf{
+    background:url(/web/images/mywiseicon.png) no-repeat -868px 0;
+}
+.nav-item:hover .icon.icon-rf{
+    background:url(/web/images/mywiseicon.png) no-repeat -868px -100px;
+}
+
+/***************tab面板************/
+.pageContent1{
+    position: relative;
+}
+.pageContent1 .flag{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 35px;
+    height: 87px;
+    background: url(/web/images/sprite_icon.png) no-repeat -420px -52px;
+}
+.myRecord{
+    list-style: none;
+    height: 42px;
+    padding-left:32%;
+    clear: both;
+    margin-bottom:0;
+    background:#f5f5f5;
+}
+.myRecord li{
+    line-height: 40px;
+    width:20%;
+    text-align: center;
+    font-size: 16px;
+    letter-spacing: 3.2px;
+    cursor: pointer;
+    float: left;
+}
+.myRecord li a{
+    font-weight: bold;
+    color: #333333;
+}
+.myRecord li a:hover,.myRecord li a:active {
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 2px solid #ff5c5c;
+    color: #ff5c5c;
+}
+.myRecord li.active a{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 3.2px;
+    color: #ff5c5c;
+    border-bottom: 2px solid #ff5c5c;
+}
+.myRecord2{
+    margin-top: 10px;
+    list-style: none;
+    height: 42px;
+    padding-left:30px;
+    clear: both;
+    margin-bottom:0;
+}
+.myRecord2 li>a{
+    display:inline-blocK;
+    height: 30px;
+    line-height: 30px;
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 2.8px;
+    padding:0 8px;
+    margin-left: 20px;
+    cursor: pointer;
+    float: left;
+    border:1px solid #aaa;
+    border-radius:4px;
+}
+.myRecord2 li a{
+    font-size: 14px;
+    color: #333;
+}
+.myRecord2 li a:hover,.myRecord2 li a:active,.myRecord2 li a:visited {
+    display: inline-block;
+    text-decoration: none;
+    color: #ff5c5c;
+    border:1px solid #ff5c5c;
+}
+.myRecord2 li.active a{
+    text-decoration: none;
+    color: #ff5c5c;
+    font-size: 14px;
+    letter-spacing: 3.2px;
+    border:1px solid #ff5c5c;
+}
+.aunserline{
+    text-decoration: underline;
+}
+.myRecord1{
+    margin-top: 10px;
+    list-style: none;
+    height: 42px;
+    padding-left:10px;
+    clear: both;
+    margin-bottom:0;
+}
+.myRecord1 li{
+    height: 30px;
+    color: #333333;
+    line-height: 24px;
+    /*color: #ffffff;*/
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 1.8px;
+    padding:0 4px;
+    /*margin-left: 20px;*/
+    cursor: pointer;
+    float: left;
+}
+.myRecord1 li a{
+    font-size: 16px;
+    font-weight: bold;
+    color: #666666;
+}
+.myRecord1 li a:hover,.myRecord2 li a:active,.myRecord2 li a:visited {
+    display: inline-block;
+    text-decoration: none;
+    /*color: #ff5c5c;*/
+}
+.myRecord1 li.active a{
+    text-decoration: none;
+    font-size: 16px;
+    letter-spacing: 2.2px;
+    /*color: #ff5c5c;*/
+}
+/*广告服务申请*/
+.ad-title{
+    padding-bottom:60px;
+}
+.ad-title1{
+    padding-bottom:20px;
+}
+.control-label{
+    font-size:16px;
+    color:#666;
+}
+.input-append.form_datetime{
+    height:35px;
+}
+.input-append.form_datetime input{
+    border-bottom-left-radius:5px;
+    border-top-left-radius:5px;
+    height:35px;
+    float:left;
+}
+.input-append .add-on{
+    border-bottom-right-radius:5px;
+    border-top-right-radius:5px;
+    height:35px;
+    line-height:35px;
+    width:35px;
+    float:left;
+    top:0px;
+}
+.input-append .add-on .fa{
+    font-size:24px;
+    line-height:35px;
+}
+.da-notice{
+    border:1px dashed #78bad3;
+    border-radius:4px;
+    padding:20px;
+    max-height: 200px;
+    overflow: auto;
+}
+.da-notice1{
+    border:1px dashed #78bad3;
+    border-radius:4px;
+    padding:20px;
+}
+.da-apply{
+    font-size:24px;
+    color:#fff;
+}
+/*回应列表*/
+.respondContent{
+    word-wrap: break-word;
+    word-break: normal;
+    width:700px;
+    overflow: hidden;
+    line-height: 24px;
+}
+.show{
+    text-align: right;
+
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+.tab-pane{min-height:400px;}
+.tab-pane .dataTables_wrapper{
+    padding-left:20px;
+    padding-right:20px;
+}
+/*表单样式调整*/
+.control-sm-label{
+    font-size: 16px;
+}
+/*title*/
+.pageTitleLine{margin: 0px auto;}
+.pageTitleDiv{padding: 10px 0;}
+/*通知管理-通知*/
+.mr20{margin-right:20px;}
+.mt10{margin-top:10px;}
+.alert>.disline{
+    display: inline-block;
+}
+/*.respond .ft20{*/
+/*font-size: 20px;*/
+/*}*/
+.close{
+    opacity: 0.6;
+    font-size: 26px;
+    color: #fff;
+}
+.respond .ft20{
+    font-size: 20px;
+}
+.jiacu{
+    font-weight: bold;
+}
+#notRead{
+    width:20px;
+    height:20px;
+    background-color: #ff5c5c;
+    color:#fff;
+    font-size:12px;
+    display: block;
+    position: absolute;
+    top:5px;
+    right:32px;
+    z-index:222;
+    border-radius: 50%;
+    line-height: 18px;
+    letter-spacing: 0.1em;
+    padding: 1px;
+    text-align: center;
+}
+#numCount{
+    position: relative;
+}
+
+.formFooter{
+    text-align:right;
+}
+.formFooter .btn{
+    margin-right:10px;
+}
+.tip{
+    padding-top:10px;
+    font-size:12px;
+    color:#999;
+}

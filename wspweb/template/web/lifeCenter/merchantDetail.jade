@@ -1,0 +1,96 @@
+extends ../layout
+block head
+    title  生活中心
+    link(rel='stylesheet' href='../../web/css/lifeCenter.css')
+
+block body
+    //header.blur-bg(role='banner')
+    .merchant
+        .container
+            .bread-crumb
+                span.icon
+                a(href='/') 首页
+                span &gt;
+                a(href='/web/lifeCenter/lifeCenter.html') 生活中心
+                span &gt;
+                a(href='/web/lifeCenter/merchantList.html') 商户广场
+                span &gt;
+                a(href='javascript:void(0)') 商户详情
+        #merchantDetail
+        div.modal.fade#imageModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 图片详情
+                    div.modal-body
+    .container
+        .row
+            .col-lg-10
+                .detail-tab
+                    a.active(href="#product-info")
+                        |优惠信息(
+                        span.sale-msg
+                        |条)
+                    a(href="#mapBox") 地图
+                    a(href="#commentBox")
+                        |评价(
+                        span.sale-comment
+                        |条)
+        div.modal.fade#ratyModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 点评商户
+                    div.modal-body
+                        form#ratyForm.form-horizontal.merchant-from(name="ratyForm")
+                            input(type='hidden' name='customer')
+                            input(type='hidden' name='merchant')
+                            div.form-group#taste
+                                label.col-sm-3.control-label
+                                    span.star
+                                    |口味:
+                                div.col-sm-7
+                                    .ratyStar#ratyStar1
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    |环境:
+                                div.col-sm-7
+                                    .ratyStar#ratyStar2
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    |服务:
+                                div.col-sm-7
+                                    .ratyStar#ratyStar3
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    |评价:
+                                div.col-sm-8
+                                    textarea.form-control(name="comment",rows=5,cols=20)
+                            div.modal-footer
+                                button.btn.btn-bg-blue#ratyBtn(type='submit') 提交
+                                button.btn.btn-default(data-dismiss="modal") 返回
+        .row.product-info
+            #product-info
+        .row#mapBox
+            div#map(style='width:100%;height:300px;')
+        .row#commentBox
+            .col-xs-12.comment#comment
+                div.tab
+                    span 全部评论(1)
+                .comment-list
+
+            .col-xs-12#pagination.paginator
+
+    include ../include/footer
+    script(src="/web/js/lifeCenter/merchantDetail.js")
+    script(src="http://api.map.baidu.com/api?v=2.0&ak=rpiComjbspB8OBWrCnPzspXf")
+
+
+

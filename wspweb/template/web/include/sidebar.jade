@@ -1,0 +1,41 @@
+.col-sm-3
+  #sidebar
+    ul
+       li#nav-personalInfo.submenu
+         a(href='#')
+           i.fa.fa-user
+           span 个人信息
+           i.fa.fa-angle-down(style='float:right')
+         ul
+           li#nav-personalInfo-info
+             a(href='/web/user/personalInfo.html') 个人资料
+           li#nav-personalInfo-avatar
+             a(href='/web/user/avatarSetting.html') 头像设置
+           li#nav-personalInfo-safe
+             a(href='/web/user/accountSafe.html') 账户安全
+       li#nav-enterpriseInfo.submenu
+         a(href='#')
+           i.fa.fa-users
+           span 企业信息
+           i.fa.fa-angle-down(style='float:right')
+         ul
+           li#nav-enterpriseInfo-info
+             a(href='#') 基本信息
+           li#nav-enterpriseMemberMgt
+             a(href='/web/user/enterpriseMemberMgt.html') 成员管理
+       li#nav-cardDetail
+         a(href='/web/user/cardDetail.html')
+           i.fa.fa-credit-card
+           span 汇智卡
+       li#nav-redpacket
+         a(href='/web/user/redpacket.html')
+           i.fa-packet
+           span 红包管理
+       li#nav-ratingManagement
+         a(href='/web/user/ratingManagement.html')
+           i.fa.fa-star-half-o
+           span 评价管理
+       li#nav-notificationManagement
+         a(href='/web/user/notificationManagement.html')
+           i.fa.fa-bell
+           span 通知管理

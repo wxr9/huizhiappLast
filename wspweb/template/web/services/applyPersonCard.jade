@@ -1,0 +1,101 @@
+//
+   Created by z on 2016/10/27.
+extends ../layout
+block head
+    title  个人汇智卡申请
+    link(href='/web/css/apply.css', rel='stylesheet')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 个人汇智卡申请
+    .container.bg_white.huntApply
+        .col-xs-12
+            p.msg#notice
+        .col-xs-12
+            form.form-horizontal#form(name="form",role="form",method="POST")
+                .col-xs-12
+                    label.read
+                        input#mustRead(type='checkbox',name='mustRead')
+                        span 同意
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 申请人：
+                        .col-xs-8
+                            input.form-control(type='text',name='username')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span E-mail：
+                        .col-xs-8
+                            input.form-control(type='text',name='email', placeholder='请输入邮箱')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 公司名称：
+                        .col-xs-8
+                            input.form-control(type='text',name='company',placeholder='请输入公司名称')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 联系方式：
+                        .col-xs-8
+                            input.form-control(type='text',name='contact')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 真实姓名：
+                        .col-xs-8
+                            input.form-control(type='text',name='realname')
+                            p.form-tip 提示：真实姓名需与身份证上一致
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 身份证：
+                        .col-xs-8
+                            input.form-control(type='text',name='idcard')
+                .form-group.check
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span 审核意见：
+                        .col-xs-8
+                            textarea#suggest.form-control(col=20, row=5,readonly)
+                .form-group.check
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span 领取时间：
+                        .col-xs-8
+                            input.form-control#getTime(type='text',readonly)
+                .form-group
+                    .col-xs-12.text-center.submitBtn
+                        button.btn.btn-blue#submit(type="submit") 提交
+                        button.btn.btn-blue#stop(type="button") 中止
+
+
+    include ../include/footer
+    script(src="/web/js/applyPersonCard.js")
+
+//
+   Created by z on 2016/10/27.
+
+

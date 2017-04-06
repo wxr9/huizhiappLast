@@ -1,0 +1,15 @@
+extends ./layout
+block head
+    title 服务评价列表
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/serviceEvaluation.js")
+block body
+    .col-xs-9.content
+        .pagetitle 服务评价
+        div.select-time
+            .username
+                span 查询服务类别
+                select#type.form-control.select-type
+                //button.btn.btn-blue#searchBtn(type="button") 查询
+                //button.btn.btn-blue#clearBtn(type="button") 清除查询
+        table#businessTable(width="100%",cellspacing="0")

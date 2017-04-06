@@ -1,0 +1,20 @@
+//
+   Created by Administrator on 2016/5/12.
+
+extends ./layout
+block head
+    title  页面建设中
+block body
+    header.jumbotron-blue-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 在线看房
+            hr.pageTitleLine
+    .container
+        dl.build
+            dt.buildImg
+            dd
+                p 页面建设中…
+                a.btn.btn-green(href='/web/index.html') 返回首页
+    include include/footer

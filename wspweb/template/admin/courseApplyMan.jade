@@ -1,0 +1,41 @@
+//
+   Created by Administrator on 2016/4/1.
+extends ./layout
+block head
+    title 课程报名情况
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/courseApplyMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 课程报名情况
+        div
+            a.operate.upload#add(href='/Cultivate/UserCultivate/Export/List', target="_blank") 导出
+            span.ml20 用户名
+            input#searchName(size='20', type="text",name='chineseName')
+            button.ml20.mt-4.btn.btn-blue#searchBtn(type="button") 查询
+            button.ml20.mt-4.btn.btn-blue#clearBtn(type="button") 清除查询
+        table#businessTable(width="100%",cellspacing="0")
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 课程报名情况
+                    div.modal-body
+                        table(cellspacing="0")
+                            tbody#parkInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#deleteModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定删除吗？
+                    div.modal-footer
+                        button.btn.btn-blue#deleteBtn 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消

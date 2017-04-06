@@ -1,0 +1,25 @@
+//
+   Created by Administrator on 2016/4/7.
+extends ./layout
+block head
+    title 应聘情况
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/postWorkMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 应聘情况
+        div
+            a.operate.upload#reset(href='javascript:;') 导出
+        table#businessTable(width="100%",cellspacing="0")
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 应聘情况
+                    div.modal-body
+                        table(cellspacing="0")
+                            tbody#parkInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭

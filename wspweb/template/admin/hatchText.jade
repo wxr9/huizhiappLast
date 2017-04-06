@@ -1,0 +1,51 @@
+//
+   Created by Administrator on 2016/4/7.
+
+extends ./layout
+block head
+    title  企业注册预约配置
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/hatchText.js")
+block body
+    // 主内容区
+    .col-sm-8.content
+        .pagetitle 企业注册预约配置
+        form.form-horizontal#form(type="post")
+            div.form-group(hidden='hidden')
+                label.col-sm-2.control-label 是否禁用:
+                div.col-sm-10
+                    input.form-control(type='text',name="deleteflag",width="100%")
+            div.form-group(hidden='hidden')
+                label.col-sm-2.control-label 是否弹窗:
+                div.col-sm-10
+                    input.form-control(type='text',name="isPopup",width="100%")
+            div.form-group
+                label.col-sm-2.control-label
+                    span.star 是否已读:
+                div.col-sm-10
+                    label
+                        input(type='radio',name="isRead",width="100%",value='1')
+                        span.week  是
+                    label
+                        input(type='radio',name="isRead",width="100%",value='-1')
+                        span.week  否
+            div.form-group(hidden='hidden')
+                label.col-sm-2.control-label 须知标题:
+                div.col-sm-10
+                    input.form-control(type='text',name="name",width="100%")
+            div.form-group(hidden='hidden')
+                label.col-sm-2.control-label 主键id:
+                div.col-sm-10
+                    input.form-control(type='text',name="objectid",width="100%")
+            div.form-group(hidden='hidden')
+                label.col-sm-2.control-label 类型:
+                div.col-sm-10
+                    input.form-control(type='text',name="type",width="100%")
+            div.form-group
+                label.col-sm-2.control-label
+                    span.star 内容:
+                div.col-sm-10
+                    textarea#editor.form-control(rows="10",name="content",width="100%")
+            .form-groupa
+                .col-sm-offset-2.col-sm-10
+                    a.btn.btn-blue#saveRich(type='submit') 保存

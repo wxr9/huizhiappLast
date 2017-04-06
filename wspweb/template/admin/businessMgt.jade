@@ -1,0 +1,134 @@
+extends ./layout
+block head
+    title 商户管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/businessMgt.js")
+block body
+    .col-xs-9.content
+        .pagetitle 商户管理
+        div
+            a.operate(data-toggle="modal" data-target="#addModal") +新增
+        table#businessTable(width="100%",cellspacing="0")
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 商户详情
+                    div.modal-body
+                        table(cellspacing="0" width="100%")
+                            tbody#businessInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增商户
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm" enctype="multipart/form-data")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 商户用户名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="username")
+                                    input.form-control(type="hidden",name="status", value='1')
+                                    input.form-control(type="hidden",name="isCheck",value='2')
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 商户名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 营业时间:
+                                div.col-sm-3
+                                    span 开始时间:
+                                        .input-append.date.form_datetime
+                                            input(size="16", type="text",value="09:00", name='workStartTime', readOnly)
+                                            span.add-on
+                                                i.icon-th.fa.fa-table.blue
+                                div.col-sm-3
+                                    span 结束时间:
+                                        .input-append.date.form_datetime
+                                            input(size="16", type="text", value="22:00", name="workEndTime", readOnly)
+                                            span.add-on
+                                                i.icon-th.fa.fa-table.blue
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 商户分类:
+                                div.col-sm-7
+                                    select#type.form-control(name="type")
+                            div.form-group#childBox
+                                label.col-sm-3.control-label
+                                    span.star 商户分类子类:
+                                div.col-sm-7
+                                    select#typeChild.form-control(name="childType")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 商户照片:
+                                div.col-sm-7.upload-box
+                                    input.btn.input#input(type="file")
+                                    button.btn.btn-blue.fakeInput#fakeInput(type="button")
+                                        |选择图片
+                                    button.btn.btn-orange.uploadImg.disabled#uploadImg(type='button')
+                                        |上传图片
+                                    span.upload-tip 图片上传成功
+                                div.col-sm-offset-3.col-sm-9
+                                    small *支持图片格式:"jpg,jpeg,png",建议图片宽高比为3:2,至少360px*240px；
+                                div.col-sm-offset-3.col-sm-9
+                                    input#realInput(type='hidden',name='avar')
+                            div.form-group.image-box
+                                div.col-xs-7.col-xs-offset-1
+                                    div(style="width:480px;height:320px;")
+                                        img#image.cropImage(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                                div.col-xs-4
+                                    div.page-header
+                                        |裁剪预览：
+                                    div.preview(style="width:230px;height:153px;background:#eee;")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 商户地址:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="address")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 所属园区:
+                                div.col-sm-7
+                                    select#park.form-control(name="park")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 商户类型标签:
+                                div.col-sm-7
+                                    select#label.form-control(name="parkType")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 是否特邀商户:
+                                div.col-sm-7
+                                    label(style="margin-right:20px;")
+                                        input(type='radio' name="isInvite" value='1')
+                                        |&nbsp;是
+                                    label
+                                        input(type='radio' name="isInvite" value = '0' checked)
+                                        |&nbsp;否
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 商户电话:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="phone")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 内容摘要:
+                                div.col-sm-7
+                                    textarea.form-control(name="shortIntro",rows='5')
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+
+
+
+
+

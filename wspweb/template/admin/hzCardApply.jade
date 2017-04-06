@@ -1,0 +1,58 @@
+//Created by z on 2016/10/28.
+extends ./layout
+block head
+    title  汇智卡申请配置
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/hzCardApply.js")
+block body
+    // 主内容区
+    .col-sm-8.content
+        #title.pagetitle 个人汇智卡申请须知配置
+        ul.nav.nav-tabs(role='tablist')
+            li.active(role='presentation')
+                a(href='#one', aria-controls='base', role='tab', data-toggle='tab') 基本设置
+        // Tab panes
+        .tab-content
+            // 服务状态
+            #one.tab-pane.fade.in.active(role='tabpanel')
+                form.form-horizontal#form(type="post")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 是否禁用:
+                        div.col-sm-10
+                            input.form-control(type='text',name="deleteflag",width="100%")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 是否弹窗:
+                        div.col-sm-10
+                            input.form-control(type='text',name="isPopup",width="100%")
+                    div.form-group
+                        label.col-sm-2.control-label
+                            span.star 是否同意:
+                        div.col-sm-10
+                            label
+                                input(type='radio',name="isRead",width="100%",value='1')
+                                span.week  是
+                            label
+                                input(type='radio',name="isRead",width="100%",value='-1')
+                                span.week  否
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 须知标题:
+                        div.col-sm-10
+                            input.form-control(type='text',name="name",width="100%")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 主键id:
+                        div.col-sm-10
+                            input.form-control(type='text',name="objectid",width="100%")
+                    div.form-group(hidden='hidden')
+                        label.col-sm-2.control-label 类型:
+                        div.col-sm-10
+                            input.form-control(type='text',name="type",width="100%")
+                    div.form-group
+                        label.col-sm-2.control-label
+                            span.star 内容:
+                        div.col-sm-10
+                            textarea#editor.form-control(rows="10",name="content",width="100%")
+                    .form-groupa
+                        .col-sm-offset-2.col-sm-10
+                            a.btn.btn-blue#saveRich(type='submit') 保存
+            // 评价设置
+            #two.tab-pane.fade(role='tabpanel')

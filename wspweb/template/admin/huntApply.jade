@@ -1,0 +1,13 @@
+extends ./layout
+block head
+    title 猎聘申请
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/huntApply.js")
+block body
+    .col-xs-9.content
+        .pagetitle 猎聘申请
+        div#addRepair.dropdown
+            button.btn.btn-default.dropdown-toggle(type=button, data-toggle="dropdown")
+                |新增
+                span.caret
+        table#businessTable(width="100%",cellspacing="0")

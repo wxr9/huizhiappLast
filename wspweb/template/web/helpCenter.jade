@@ -1,0 +1,36 @@
+extends ./layout
+block head
+    title  帮助中心
+block body
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4.modal-title
+          .modal-body
+            p
+    header.jumbotron-blue1-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 帮助中心
+        hr.pageTitleLine
+    .container
+      .row(style='min-height: 450px')
+        .col-xs-3.nav-help
+            ul.nav.nav-tabs#nav-help
+                li.active
+                    a(href='#card',data-toggle='tab') 汇智帮助中心
+        .col-xs-9
+            .tab-content#nav-content
+                .tab-pane.active#card
+
+                .tab-pane#card2
+
+                .tab-pane#card3
+
+
+    include include/footer
+    script(src='/web/js/helpCenter.js')

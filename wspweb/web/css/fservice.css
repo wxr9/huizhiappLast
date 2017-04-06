@@ -1,0 +1,285 @@
+/* General grid styles */
+
+.cbp-ig-grid {
+    list-style: none;
+    padding: 0 0 50px 0;
+    margin: 0;
+    margin-top: 30px;
+}
+
+/* Clear floats */
+
+.cbp-ig-grid:before,
+.cbp-ig-grid:after {
+    content: " ";
+    display: table;
+}
+.cbp-ig-grid:after {
+    clear: both;
+}
+
+/* grid item */
+
+.cbp-ig-grid li {
+    width: 25%;
+    float: left;
+    height: 240px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+
+/* we are using a combination of borders and box shadows to control the grid lines */
+
+.cbp-ig-grid li:nth-child(-n+4) {
+    border-top: none;
+}
+.cbp-ig-grid li:nth-child(4n+1),
+.cbp-ig-grid li:nth-child(4n+2),
+.cbp-ig-grid li:nth-child(4n+3) {
+    box-shadow: 1px 0 0 #ddd;
+}
+
+/* anchor style */
+
+.cbp-ig-grid li > a {
+    display: block;
+    height: 100%;
+    color: #47a3da;
+    -webkit-transition: background 0.2s;
+    transition: background 0.2s;
+}
+
+/* the icon with pseudo class for icon font */
+
+.cbp-ig-icon {
+    color: white;
+    padding: 30px 0 0 0;
+    display: block;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+}
+.cbp-ig-icon:before {
+    font-size: 120px;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* title element */
+
+.cbp-ig-grid .cbp-ig-title {
+    margin: 20px 0 10px 0;
+    padding: 20px 0 0 0;
+    font-size: 24px;
+    color: white;
+    position: relative;
+    -webkit-transition: -webkit-transform 0.2s;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+}
+.cbp-ig-grid .cbp-ig-title:before {
+    content: '';
+    position: absolute;
+    background: white;
+    width: 160px;
+    height: 6px;
+    top: 0px;
+    left: 50%;
+    margin: -10px 0 0 -80px;
+    -webkit-transition: margin-top 0.2s;
+    /* top or translate does not seem to work in Firefox */
+    transition: margin-top 0.2s;
+}
+.cbp-ig-grid .cbp-ig-category {
+    text-transform: uppercase;
+    display: inline-block;
+    font-size: 1em;
+    letter-spacing: 1px;
+    color: #fff;
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+    opacity: 0;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+    -webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+}
+.cbp-ig-grid li:hover .cbp-ig-category,
+.touch .cbp-ig-grid li .cbp-ig-category {
+    color: #03A9F4;
+    opacity: 1;
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+}
+
+/* Hover styles */
+
+.cbp-ig-grid li > a:hover {
+    background: #fff;
+}
+.cbp-ig-grid li > a:hover .cbp-ig-icon {
+    -webkit-transform: translateY(10px);
+    transform: translateY(10px);
+}
+.cbp-ig-grid li > a:hover .cbp-ig-icon:before,
+.cbp-ig-grid li > a:hover .cbp-ig-title {
+    color: #03A9F4;
+}
+.cbp-ig-grid li > a:hover .cbp-ig-title {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+}
+.cbp-ig-grid li > a:hover .cbp-ig-title:before {
+    background: #03A9F4;
+    margin-top: 55px;
+}
+@media screen and (max-width: 62.75em) {
+    .cbp-ig-grid li {
+        width: 50%;
+    }
+    /* reset the grid lines */
+    .cbp-ig-grid li:nth-child(-n+3) {
+        border-top: 1px solid #ddd;
+    }
+    .cbp-ig-grid li:nth-child(3n-1),
+    .cbp-ig-grid li:nth-child(3n-2) {
+        box-shadow: none;
+    }
+    .cbp-ig-grid li:nth-child(-n+2) {
+        border-top: none;
+    }
+    .cbp-ig-grid li:nth-child(2n-1) {
+        box-shadow: 1px 0 0 #ddd;
+    }
+}
+@media screen and (max-width: 41.6em) {
+    .cbp-ig-grid li {
+        width: 100%;
+    }
+    .cbp-ig-grid li:nth-child(-n+2) {
+        border-top: 1px solid #ddd;
+    }
+    .cbp-ig-grid li:nth-child(2n-1) {
+        box-shadow: none
+    }
+    .cbp-ig-grid li:first-child {
+        border-top: none;
+    }
+}
+@media screen and (max-width: 25em) {
+    .cbp-ig-grid {
+        font-size: 80%;
+    }
+    .cbp-ig-grid .cbp-ig-category {
+        margin-top: 20px;
+    }
+}
+
+/*可筛选Grid*/
+
+.filter-item {
+    padding: 1rem;
+    cursor:pointer;
+}
+.item-desc {
+    display: none;
+    background-color: rgba(3, 169, 244, 0.6);
+    color: white;
+    font-weight: bold;
+    position: absolute;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 1rem;
+    z-index: 1;
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+}
+
+/* Filter controls */
+.simplefilter{
+    display:inline-block;
+    padding:30px 0;
+}
+.simplefilter li {
+    color: #666;
+    font-size:16px;
+    cursor: pointer;
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    height: 32px;
+}
+.simplefilter li {
+    background-color: transparent;
+}
+.simplefilter li.active {
+    color: #fff;
+    border-radius: 8px;
+    padding-top: 5px;
+    background-color: rgb(3, 169, 244);
+}
+
+/* Search control */
+.filter-data{
+    text-align:center;
+}
+.filter-data ::-webkit-input-placeholder{
+    text-align:center;
+    letter-spacing:3px;
+}
+.filter-data ::-moz-placeholder{
+    text-align:center;
+    letter-spacing:3px;
+}
+.filter-data :-moz-placeholder{
+    text-align:center;
+    letter-spacing:3px;
+}
+.filter-data :-ms-input-placeholder{
+    text-align:center;
+    letter-spacing:3px;
+}
+.filter-search {
+    width:540px;
+    height:33px;
+    line-height:33px;
+    border:1px solid #eee;
+    border-right:none;
+    box-shadow:0 4px 8px #ddd;
+    text-indent:2em;
+}
+.filter-btn{
+    width:32px;
+    height:33px;
+    background:#02a9f4;
+    padding:9px;
+    box-shadow:0 4px 8px #ccc;
+    border-left:none;
+    font-size:16px;
+    color:#fff;
+    margin-bottom:8px;
+    cursor:pointer;
+    vertical-align:top;
+}
+.filter-btn:hover{
+    color:#fff;
+}
+.filter-search:focus {
+    outline: none;
+}
+.mt30{
+    margin-top: 30px;
+}
+.pr10{
+    padding-right: 10px;
+}
+.filter-container{
+    /*visibility:collapse;*/
+}
+#decideIT{cursor: pointer;}

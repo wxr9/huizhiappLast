@@ -1,0 +1,184 @@
+input[type=checkbox], input[type=radio]{vertical-align: middle;margin-top:0;}
+.form-control.time{width:40%;}
+.form-control.price{width:15%;display:inline-block;}
+.bg_gray1{background:#f5f5f5;border-radius:10px;padding:10px 10px 20px;margin-bottom:20px;width:120%;}
+.pw80{width:80%;}
+.b_1_s_gray{border:1px solid #96a0ad;border-radius: 5px;}
+.border_0{border:0;background: transparent}
+.week{ font-size: 14px;color: #333333;vertical-align: middle;margin-right:10px;}
+.fl{float:left;}
+.f_gray{font-size: 14px;letter-spacing: 2.5px;color: #4a4a4a;}
+.pw60{width:60%;}
+.yellow{font-size: 14px;letter-spacing: 2.5px;color: #ff9800;line-height:35px;}
+
+.submit{height:27px;line-height:27px;border-radius: 3px;background-color: #03a9f4;border: solid 1px #03a9f4;color:#fff;display: block;text-align: center;font-size: 12px;letter-spacing: 2.4px;}
+.cannle{height:27px;line-height:27px;border-radius: 3px;background-color: #ffffff;border: solid 1px #979797;display: block;text-align: center;font-size: 12px;letter-spacing: 2.4px;color: #333333;}
+.select{width:100%;height: 34px;padding: 6px 12px;font-size: 14px;line-height: 1.42857143;color: #555;background-color: #fff;background-image: none;border: 1px solid #ccc;border-radius: 4px;}
+/**/
+.col-sm-8 .time:first-child a:last-child{display: none}
+.gray{color:#9b9b9b;}
+.blue{color:#4085ba;}
+/*搜索*/
+.search{font-size:14px;width:240px;float: left;}
+.box{float:left;width: 30px;height: 30px;border-radius:0 5px 5px 0 ;background-color: #cbcbcb;display:block;margin-left: -20px;line-height: 30px;text-align: center;}
+.box i{color:#fff;}
+/*日程和导出的图标*/
+#date{background: url(/admin/images/date.png) no-repeat center left;padding-left:10px;margin-left:10px;}
+.upload{background: url(/admin/images/upload.png) no-repeat center left;padding-left:15px;}
+.mr10{margin-right: 10px;}
+/*教室日程*/
+.week-btn,.print-btn{
+    user-select: none;
+    -webkit-user-select: none;
+    width:90px;
+    height:35px;
+    line-height:35px;
+    color:#5b5b5b;
+    font-size:16px;
+    border-radius:4px;
+    text-align:center;
+    display:inline-block;
+    margin-right:10px;
+    letter-spacing:0;
+    cursor:pointer;
+}
+.fa{padding-left:5px}
+.pre .fa{padding-left:0;padding-right:5px;}
+.week-btn.active,.week-btn:hover,.print-btn:hover{
+    color:#4085ba;
+    background:#eee;
+}
+.room-table{
+    margin-top:15px;
+}
+.room-table span{
+    font-size:14px;
+    color:#333;
+    display:block;
+    letter-spacing:0;
+    text-align:center;
+}
+.room-table th td {
+    border: 1px solid #d0d0d0;
+}
+.room-table thead{
+    background:#f7f7f7;
+}
+.room-table thead tr th{
+    padding:10px 15px;
+}
+.room-table tbody span.cel{
+    padding:13px 18px;
+}
+.room-table tbody span.cel:first-child{
+    border-bottom:1px solid #d0d0d0;
+}
+.room-table tbody span.used{
+    background:#fff3df;
+}
+.room-table tbody td.room{
+    height:60px;
+}
+.meettingRoomDay p{
+    font-size:14px;
+    color:#333;
+    letter-spacing:0;
+    text-align: center;
+}
+.meettingRoomDay .meettingRoomTime{
+    margin:5px 10px 0px 0;
+}
+.meettingRoomDay .meettingRoomName{
+    margin:0px 10px 10px 0;
+}
+/*汇智卡统计*/
+.panel{margin-top:35px;background: transparent;border:0;box-shadow: 0 0 0 rgba(0,0,0,0);webkit-box-shadow: 0  0 0 rgba(0,0,0,0);}
+.rectangle1{display: inline-block;margin: 0 20px;width: 840px;height: 100px;border-radius: 5px;text-align: center;}
+.chartFilter2{margin:0;line-height: 28px;padding-left:38px;}
+.chartFilter2 label{font-weight: normal;margin:0 5px 0 20px;}
+.rectangleGrid1{max-width:860px !important;margin:0 0 0 20px;}
+.rectangle{margin:10px 15px 10px 0;width:199px;}
+.rectangle-purple{background:#a7abff;}
+.ml20{margin-left:20px;}
+/*素材管理*/
+.ulList{list-style: none;}
+.ulList li{margin-right:70px;float:left;border:1px solid #ccc;display: block;width:235px;position:relative;}
+.ulList li:nth-child(3n){margin-right:0px;}
+.ulList li img{width:100%;border-bottom:1px solid #ccc;height:233px;}
+.ulList li h4{font-size: 14px;color: #4a4a4a;font-weight: normal;margin-left: 10px;width:215px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+.ulList li .opp{text-align:center;}
+.ulList li .opp a{font-size: 14px;margin-right:10px;color:#fff;}
+.ulList li .opp a:hover{text-decoration: none;}
+.ulList li .author{background-color: #eeeeee;padding: 10px;border-top:1px solid #ccc;}
+.ulList li .author p{font-size: 14px;color: #000000;margin:0;line-height: 150%;}
+.ulList li .popup1{display:none;background:#fff;position:absolute;width:225px;padding:10px;z-index: 10;top:300px;left:-20px;border:1px solid #ccc;}
+.ulList li .popup1 label{font-weight:normal;}
+.ulList li .popup1 input{width: 130px;height: 26px;border-radius: 1px;background-color: #ffffff;border: solid 1px #d8d8d8;}
+.ulList li .popup1 p{text-align: center;}
+.ulList li .popup1 p a{margin:10px 10px 0 0;}
+.ulList li .triangle{position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 11px;
+    top: -11px;
+    left: 50%;
+    margin-left: -11px;
+    border-bottom-color: rgba(0,0,0,0.25);
+    border-top-width: 0;
+}
+.ulList li .triangle:after {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 10px;
+    content: "";
+     top: 1px;
+     margin-left: -10px;
+     border-bottom-color: #fff;
+     border-top-width: 0;
+     content: " ";}
+.ulList li .popup2{display:none;background:#fff;position:absolute;width:225px;padding:10px;z-index: 10;top:300px;left:20px;border:1px solid #ccc;}
+.ulList li .popup2 p{text-align: center;color:#000;font-size:14px;}
+.ulList li .popup2 p button{margin:10px 10px 0 0;}
+.btn-gray{background:#d8d8d8;color:#fff;}
+.btn-gray:hover{background:#d0d0d0;color:#fff;}
+/*翻页样式*/
+.paginator{list-style:none;text-align:center;padding-top:20px;padding-bottom:15px;}
+.paginator span,.paginator a{
+    font-size:14px;
+    color:#428bca;
+    display:inline-block;
+    width:36px;
+    height:36px;
+    line-height:36px;
+    text-align:center;
+    cursor:pointer;
+    text-decoration:none;
+    border:1px solid #ddd;
+    border-right:none;
+}
+.paginator .next{
+    border-right:1px solid #ddd;
+    border-top-right-radius:4px;
+    border-bottom-right-radius:4px;
+}
+.paginator .prev{
+    border-top-left-radius:4px;
+    border-bottom-left-radius:4px;
+}
+.paginator .current{
+    border:1px solid #428bca;
+    color:#fff;
+    background:#428bca;
+}
+.paginator .current.prev, .paginator .current.next{
+    border:1px solid #ddd;
+    color:#428bca;
+    background:none;
+}

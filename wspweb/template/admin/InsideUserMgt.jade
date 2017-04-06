@@ -1,0 +1,172 @@
+extends ./layout
+block head
+    title 内部用户管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/insideUserMgt.js")
+block body
+    .col-xs-9.content
+        .pagetitle 内部用户管理
+        div.addUser
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+        table#insideUserTable(width="100%",cellspacing="0")
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#enableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定解除禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#enableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 内部用户详情
+                    div.modal-body
+                        table(cellspacing="0",width='100%')
+                            tbody#insideUserInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#editModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 编辑内部用户
+                    div.modal-body
+                        form.form-horizontal.userform#editForm(name="editForm",role="form")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 用户名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="username")
+                                    input.form-control(type="hidden",name="name")
+                                    input.form-control(type="hidden",name="userFlag")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 姓名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="realName")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 性别:
+                                div.col-sm-7
+                                    label.radio-inline
+                                        input(type="radio",name="sex",value="1")
+                                        |男
+                                    label.radio-inline
+                                        input(type="radio",name="sex",value="2")
+                                        |女
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 手机:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="phone")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 单位:
+                                div.col-sm-7
+                                    select.form-control#company(value="enterprise.objectid",name="enterpriseId")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 部门:
+                                div.col-sm-7
+                                    select.form-control#department(value="settingDepartmentDict.objectid",name="department")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 默认角色:
+                                div.col-sm-7
+                                    select.form-control#role(multiple="",name="roleArray")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增内部用户
+                    div.modal-body
+                        form.form-horizontal.userform#addUserForm(name="addUserForm")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 用户名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="username")
+                                    input.form-control(type="hidden",name="name")
+                                    input.form-control(type="hidden",name="userFlag",value="1")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 姓名:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="realName")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 性别:
+                                div.col-sm-7
+                                    label.radio-inline
+                                        input(type="radio",name="sex",value="1" checked)
+                                        |男
+                                    label.radio-inline
+                                        input(type="radio",name="sex",value="2")
+                                        |女
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 手机:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="phone")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 单位:
+                                div.col-sm-7
+                                    select.form-control#company2(name="enterpriseId",data-placeholder="请选择单位")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 部门:
+                                div.col-sm-7
+                                    select.form-control#department2(name="department",data-placeholder="请选择部门")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star
+                                    span 默认角色:
+                                div.col-sm-7
+                                    select.form-control#role2(multiple="multiple",name="roleArray",data-placeholder="点击添加角色")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+
+
+

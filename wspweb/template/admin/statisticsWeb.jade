@@ -1,0 +1,59 @@
+extends ./layout
+block head
+    title  网站数据
+    link(href='/admin/css/statistics.css', rel='stylesheet')
+    link(href="/lib/css/public.css", rel='stylesheet')
+block body
+        // 主内容区
+        .col-sm-9.content
+          .pagetitle 网站数据
+          .panel.panel-default
+            .panel-heading
+              h3.panel-title 注册会员数量统计
+            .panel-body
+              .rectangleGrid1
+                .rectangle
+                  .rect.rectangle-green
+                    span.statisticsTitle 累计注册会员数
+                    span.statisticsNum#sumNum 0
+                .rectangle
+                  .rect.rectangle-pink
+                    span.statisticsTitle 移动端注册总人数
+                    span.statisticsNum#mobileNum 0
+                .rectangle
+                  .rect.rectangle-orange
+                    span.statisticsTitle 当月注册会员数
+                    span.statisticsNum#monthNum 0
+                .rectangle
+                  .rect.rectangle-blue
+                    span.statisticsTitle 当日注册会员数
+                    span.statisticsNum#todayNum 0
+          .chartFilter1
+            .form-group
+              label.control-label(style='margin-bottom:15px;', for='dayOrMonth1') 时间纬度
+              div
+                label.radio-inline
+                  input#dayOrMonth1(type='radio', name='dayOrMonth', value='d', checked='')
+                  | 日统计
+                label.radio-inline
+                  input#dayOrMonth2(type='radio', name='dayOrMonth', value='m')
+                  | 月统计
+            .form-group
+              label.control-label(style='display:block;margin-bottom:10px;', for='startTime') 开始时间
+              .input-append.date.form_datetime
+                input#startTime(size="16", type="text" readOnly)
+                span.add-on
+                  i.icon-th.fa.fa-table.blue
+            .form-group
+              label.control-label(style='display:block;margin-bottom:10px;', for='endTime') 结束时间
+              .input-append.date.form_datetime
+                input#endTime(size="16", type="text" readOnly)
+                span.add-on
+                  i.icon-th.fa.fa-table.blue
+            .chartFilterBtn
+              button#searchData.btn.btn-blue 查询
+          // 统计图
+          #statisticsWeb(style='width:100%;height:400px;letter-spacing:1px')
+        script(src='/admin/js/echarts/echarts.js')
+        //script(src='/admin/js/echarts/statisticsWeb.js')
+        script(src='/admin/js/statisticsWeb-logic.js')

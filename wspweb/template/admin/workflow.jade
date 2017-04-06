@@ -1,0 +1,18 @@
+extends ./layout
+block head
+    title  工作流
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/workflow.js")
+block body
+    .col-sm-8.content
+      .pagetitle 工作流
+      hr
+      .tools.list
+        button#send(type="button").btn.btn-success 发送
+        button#return(type="button").btn.btn-warning 退回
+        button#post(type="button").btn.btn-primary 传阅
+        button#print(type="button").btn.btn-info 打印
+        button#pause(type="button").btn.btn-default 暂停
+        button#end(type="button").btn.btn-danger 结束
+        //- button(type="button").btn.btn-link 链接
+      iframe#workflowIframe(src="http://www.baidu.com")

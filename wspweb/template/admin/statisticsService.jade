@@ -1,0 +1,122 @@
+extends ./layout
+block head
+    title  服务数据
+    script(src="/lib/js/jquery-1.11.1.min.js")
+    script(src="/lib/js/bootstrap.min.js")
+    script(src='/admin/js/echarts/echarts.js')
+    script(src='/admin/js/statisticsService-logic.js')
+    link(href='/admin/css/statistics.css', rel='stylesheet')
+    link(href="/lib/css/public.css", rel='stylesheet')
+block body
+        // 主内容区
+        .col-sm-9.content
+          .pagetitle 服务数据
+          div
+            // Nav tabs
+            ul.nav.nav-tabs.navNew(role='tablist')
+              li.active(role='presentation')
+                a#oneNav(href='#one', aria-controls='base', role='tab', data-toggle='tab') 服务次数统计
+              li(role='presentation')
+                a#twoNav(href='#two', aria-controls='two', role='tab', data-toggle='tab') 逾期次数统计
+              li(role='presentation')
+                a#threeNav(href='#three', aria-controls='three', role='tab', data-toggle='tab') 服务评价统计
+            // Tab panes
+            .tab-content
+              // 服务次数统计
+              #one.tab-pane.fade.in.active(role='tabpanel')
+                .panel.panel-default.panel-all
+                  .panel-heading
+                    h3.panel-title 服务次数统计
+                  .panel-body
+                    .rectangleGrid1
+                      .rectangle.rectangle-green
+                        span.statisticsTitle 累计服务次数
+                        span.statisticsNum#CS1
+                      .panel-chart
+                        .charts#chart1
+                      .rectangle.rectangle-orange
+                        span.statisticsTitle 当月服务次数
+                        span.statisticsNum#CS2
+                      .panel-chart
+                        .charts#chart2
+                      .rectangle.rectangle-blue
+                        span.statisticsTitle 当日服务次数
+                        span.statisticsNum#CS3
+                      .panel-chart
+                        .charts#chart3
+              // 逾期次数统计
+              #two.tab-pane.fade(role='tabpanel')
+                .panel.panel-default
+                  .panel-heading
+                    h3.panel-title 逾期次数统计
+                  .panel-body
+                    .rectangleGrid1
+                      .rectangle.rectangle-green
+                        span.statisticsTitle 累计逾期次数
+                        span.statisticsNum#YQ1 200
+                      .rectangle.rectangle-orange
+                        span.statisticsTitle 当月逾期次数
+                        span.statisticsNum#YQ2 20
+                      .rectangle.rectangle-blue
+                        span.statisticsTitle 当日逾期次数
+                        span.statisticsNum#YQ3 2
+              // 服务评价统计
+              #three.tab-pane.fade(role='tabpanel')
+                .panel.panel-default
+                  .panel-heading
+                    h3.panel-title 服务评价统计
+                  .panel-body
+                    .rectangleGrid2.clearfix
+                      .rectangle.rectangle-green
+                        span.statisticsTitle 累计评价次数
+                        span.statisticsNum#pj1 200
+                      .rectangle.rectangle-orange
+                        span.statisticsTitle 平均响应速度
+                        span.statisticsNum#pj2 4.6
+                      .rectangle.rectangle-blue
+                        span.statisticsTitle 平均服务态度
+                        span.statisticsNum#pj3 4.7
+                      .rectangle.rectangle-pink
+                        span.statisticsTitle 平均服务质量
+                        span.statisticsNum#pj4 4.7
+
+            .chartFilter2
+              .row.serviceText
+                .col-sm-2.text-right.hl 服务类别:
+                .col-sm-10.pl0
+                  button.buttonNew.active(type='button' name='type' value='a') 全  部
+                    button.buttonNew(type='button' name='type' value='1') 物业报修
+                    button.buttonNew(type='button' name='type' value='2') IT网络报修
+                    button.buttonNew(type='button' name='type' value='4') 猎聘申请
+                    button.buttonNew(type='button' name='type' value='5') 教室预订
+                    button.buttonNew(type='button' name='type' value='6') 会议室预订
+                    button.buttonNew(type='button' name='type' value='7') 广告服务申请
+                    button.buttonNew(type='button' name='type' value='8') 测试申请
+                    button.buttonNew(type='button' name='type' value='9') 著作权登记
+                    button.buttonNew(type='button' name='type' value='10') 入驻申请
+                    button.buttonNew(type='button' name='type' value='3') 企业培训
+            .chartFilter2
+              .row.serviceText
+                .col-sm-2.text-right.hl 时间纬度:
+                .col-sm-10.pl0.clearfix
+                  label.radio-inline.fl
+                    input.dayOrMonth1(type='radio', name='dayOrMonth', value='d', checked)
+                    | 日统计
+                  label.radio-inline.fl
+                    input.dayOrMonth2(type='radio', name='dayOrMonth', value='m')
+                    | 月统计
+                  label.control-label.fl 开始时间
+                  .input-append.date.fl.form_datetime
+                    input#typeBegin(size="16", type="text",name='beginDate',readOnly)
+                    span.add-on
+                      i.icon-th.fa.fa-table.blue
+                  label.control-label.fl 结束时间
+                  .input-append.date.form_datetime.fl
+                    input#typeEnd(size="16",name='endDate', type="text" readOnly)
+                    span.add-on
+                      i.icon-th.fa.fa-table.blue
+              .chartFilterBtn
+                button.searchData.btn.btn-blue#typeBtn 查询
+              // 统计图
+            .chart-pane
+              #serviceType(style='width:100%;height:360px;letter-spacing:1px;')

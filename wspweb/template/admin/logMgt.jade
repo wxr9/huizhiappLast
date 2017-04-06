@@ -1,0 +1,30 @@
+//Created by iris on 16/2/25.
+extends ./layout
+block head
+    title 日志管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/logMgt.js")
+block body
+    .col-xs-9.content
+        .pagetitle 日志管理
+        form#searchForm.select-time(method='', action='')
+            .form-group
+                span 登录时间
+                .input-append.date.form_datetime
+                    input#startDate(size="16", type="text", name='startDate', readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                span 到
+                .input-append.date.form_datetime
+                    input#endDate(size="16", type="text", name="endDate", readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                .username
+                    span 用户名
+                    input#userName(size='20', type="text",name='userName')
+                    button.btn.btn-blue#searchBtn(type="button") 查询
+                    button.btn.btn-blue#clearBtn(type="button") 清除查询
+
+
+        table#logTable(width="100%",cellspacing="0")
+

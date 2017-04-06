@@ -1,0 +1,21 @@
+extends ./layout
+block head
+    title  联系我们设置
+    link(href='/admin/css/index.css', rel='stylesheet')
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/contactUsSetting.js")
+block body
+        // 主内容区
+        .col-sm-8.content
+          .pagetitle 联系我们设置
+          form.form-horizontal
+              .form-group
+                  label.col-sm-2.control-label 菜单名称
+                  .col-sm-4
+                      input.selectRich.form-control(type='text', name="richtextid", readOnly)
+                  a.btn.btn-orange#selectRich 选择富文本
+                  span &nbsp;&nbsp;
+                  a.btn.btn-orange#viewRich 预览
+              .form-groupa
+                  .col-sm-offset-2.col-sm-10
+                      a.btn.btn-blue#saveRich(type='submit') 保存

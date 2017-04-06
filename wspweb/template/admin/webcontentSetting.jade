@@ -1,0 +1,24 @@
+extends ./layout
+block head
+    title  网站内容设置
+    link(href='/admin/css/setting.css', rel='stylesheet')
+block body
+        // 主内容区
+        .col-sm-8.content
+          .pagetitle 网站内容设置
+          .grid-yoriki
+            a(href='/admin/aboutUsSetting.html')
+              img.serviceSettingImg(src='images/serviceSettingImg.png')
+            a.btn.btn-orange(href='/admin/aboutUsSetting.html') 关于我们设置
+          .grid-yoriki
+            a(href='/admin/contactUsSetting.html')
+              img.serviceSettingImg(src='images/serviceSettingImg.png')
+            a.btn.btn-orange(href='/admin/contactUsSetting.html') 联系我们设置
+          .grid-yoriki
+            a(href='/admin/helpCenter.html')
+              img.serviceSettingImg(src='images/serviceSettingImg.png')
+            a.btn.btn-orange(href='/admin/backstageHelpCenter.html?flag=f') 帮助中心设置
+          .grid-yoriki
+            a(href='#')
+              img.serviceSettingImg(src='images/serviceSettingImg.png')
+            a.btn.btn-orange(href='/admin/backstageHelpCenter.html?flag=b') 后台帮助设置

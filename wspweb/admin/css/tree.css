@@ -1,0 +1,63 @@
+.hTree{
+    font-size:14px;
+    white-space: nowrap;
+}
+.hTree dl{
+    overflow: hidden;
+    margin:0;
+}
+.hTree i{
+    font-style:normal;
+}
+.hTree dt{
+    height:24px;
+    border-bottom:1px solid #eee;
+}
+.hTree dt icon{
+    display: inline-block;
+    width:24px;
+}
+.hTree dt .label{
+    display: inline-block;
+    min-width: 300px;
+}
+.hTree i{
+    visibility: hidden;
+    cursor: pointer;
+}
+.hTree dt:hover i{
+    visibility: visible;
+}
+.hTree dt .value{
+    float:right;
+    width:300px;
+}
+.hTree dd{
+}
+.hTree dl.shrink{
+    transition: height 500ms;
+}
+.hTree dl.shrink dd{
+    height:0;
+}
+.hTree label{
+    display: inline-block;
+}
+
+.hTree .label{
+    border:rgba(0,0,0,0) 1px solid;
+    outline:none;
+    padding:0 10px;
+    font-size:14px;
+    line-height:1.5;
+    margin:0 5px;
+    border-radius: 5px;
+}
+.hTree input.edit{
+    border:1px solid #999;
+}
+.hTree icon{
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+}

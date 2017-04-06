@@ -1,0 +1,36 @@
+extends ./layout
+block head
+    title  富文本管理
+    link(rel="stylesheet",href="/admin/css/index.css")
+    script(src="/admin/js/addRichText.js")
+block body
+    .col-xs-9.content
+        .pagetitle 编辑富文本
+        form.form-horizontal#editForm(name="editForm",role="form",enctype="multipart/form-data")
+            div.form-group
+                label.col-sm-2.control-label
+                    span.star
+                    |标题:
+                div.col-sm-7
+                    input.form-control(type="text",name="title")
+            div.form-group
+                label.col-sm-2.control-label 封面图片:
+                div.col-sm-7
+                    input#showImg(type="hidden")
+                    input.form-control#photoUrl(type="file",name="pic")
+                    p(style="font-size:12px;color:#999") *封面图片大小需在500KB以内
+            div.form-group
+                label.col-sm-2.control-label
+                    span.star
+                    |摘要:
+                div.col-sm-7
+                    input.form-control(type="text",name="memo")
+            div.form-group
+                label.col-sm-2.control-label
+                    span.star
+                    |内容:
+                div.col-sm-10
+                    textarea#editor.form-control(rows="10",name="content",width="100%")
+            div.form-group.submitBtn
+                button.btn.btn-blue(type="submit") 确认
+                //button.btn.btn-grey(data-dismiss="modal") 取消

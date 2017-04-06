@@ -1,0 +1,76 @@
+extends ../layout
+block head
+    title  职位申请
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src='/web/js/jobApply.js')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/jobList.html') 职位
+            span &gt;
+            a(href='javascript:void(0)') 职位申请
+    .container.bg_white.huntApply.clearfix
+        .col-xs-11.col-xs-offset-1
+            form.form-horizontal.top50#form(name="form",role="form",method="POST",action="/Jobs/UserJobs/Add")
+                .form-group
+                    .col-xs-10
+                        .col-xs-3.text-right.control-sm-label
+                            span 职位：
+                        .col-xs-9
+                            input.form-control(type='hidden', name="jobsid")
+                            input.form-control(type='text', name="jobName",readonly)
+                .form-group
+                    .col-xs-10
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 姓名：
+                        .col-xs-9
+                            input.form-control(type='text' placeholder='请输入姓名',name='chineseName')
+                .form-group
+                    .col-xs-10
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span E-mail：
+                        .col-xs-9
+                            input.form-control(type='text' placeholder='请输入邮箱',name='email')
+                //.form-group
+                //    .col-xs-10
+                //        .col-xs-3.text-right.control-sm-label
+                //            span.star
+                //            span 公司名称：
+                //        .col-xs-9
+                //            input.form-control(type='text' ,placeholder="请输入公司名称",name='company')
+                .form-group
+                    .col-xs-10
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 联系方式：
+                        .col-xs-9
+                            input.form-control(type='text',name='phone')
+                .form-group
+                    .col-xs-10
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 上传简历：
+                        .col-xs-9
+                            input#fileUpload.form-control(type='file',name='url')
+                            p(style="letter-spacing:1px") 提示：文件格式为.doc/.docx/.pdf/.html/.zip/.rar/.7z/.iso，上限10M;
+                .form-group
+                    .col-xs-10
+                        .col-xs-3.text-right.control-sm-label
+                            span 备注：
+                        .col-xs-9
+                            textarea.form-control(type='text',name='memo')
+                .form-group
+                    .col-xs-8.col-xs-offset-2.text-center
+                        button.btn.btn-blue.submit(type='submit') 提交
+    include ../include/footer
+//
+   Created by Administrator on 2016/3/24.

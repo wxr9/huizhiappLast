@@ -1,0 +1,12 @@
+extends ./layout
+block head
+    title  帮助中心设置
+    link(href='/admin/css/setting.css', rel='stylesheet')
+    script(src="/admin/js/helpCenter.js")
+block body
+    // 主内容区
+    .col-sm-8.content
+        .pagetitle
+          #title 前台帮助中心设置
+          #container(role='main')
+              #tree

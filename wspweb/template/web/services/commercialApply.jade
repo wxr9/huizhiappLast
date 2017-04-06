@@ -1,0 +1,107 @@
+//Created by iris on 16/4/6.
+extends ../layout
+block head
+    title  广告服务申请
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 广告服务申请
+    .container.bg_white.huntApply
+        .col-xs-12
+            p.msg#noticeContent
+        .col-xs-12
+            form.form-horizontal#applyForm(name="applyForm",method='POST')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 姓名：
+                        .col-xs-8
+                            input.form-control(type='text',name='chineseName')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label E-mail：
+                        .col-xs-8
+                            input.form-control(type='text',name='email')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.control-label 公司名称：
+                        .col-xs-8
+                            input.form-control(type='text',name='company')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 联系方式：
+                        .col-xs-8
+                            input.form-control(type='text',name='phone')
+                .form-group#datetimePicker
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 时间选择：
+                        .col-xs-4
+                            span 开始时间:
+                            .input-append.date.form_datetime
+                                input(size="16", type="text", name='beginDate', readOnly)
+                                span.add-on
+                                    i.icon-th.fa.fa-table.blue
+                        .col-xs-4
+                            span 结束时间:
+                            .input-append.date.form_datetime
+                                input(size="16", type="text", name="endDate", readOnly)
+                                span.add-on
+                                    i.icon-th.fa.fa-table.blue
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 广告内容：
+                        .col-xs-8
+                            input.form-control#photoUrl(type="hidden",name="accessory")
+                            p 提示：文件格式为.jpeg/.jpg/.gif/.bmp/.png，上限10M;
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 需求说明：
+                        .col-xs-8
+                            textarea.textarea(name='content')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.control-label 备注：
+                        .col-xs-8
+                            textarea.textarea(name='memo')
+                div.display_n#comment
+                    .col-xs-11.mt11
+                        .col-xs-3.text-right
+                            label.control-label 评价信息：
+                        .col-xs-9
+                            .col-xs-5
+                                p#comment1
+                            .col-xs-2.ratingScore.ratingScore-duration
+                                span#duration
+                                p.ratingText 响应速度
+                            .col-xs-2.ratingScore.ratingScore-attitude
+                                span#attitude
+                                p.ratingText 服务态度
+                            .col-xs-2.ratingScore.ratingScore-quality
+                                span#quality
+                                p.ratingText 服务质量
+                .form-group
+                    .col-xs-12.text-center
+                        button.btn.btn-blue.submit(type='submit') 提交
+    include ../include/footer
+    script(src="/web/js/commercialApply.js")

@@ -1,0 +1,506 @@
+.cardNum{
+    font-size: 20px;
+    letter-spacing: 3px;
+    color: #333333;
+}
+.cardNum span{
+    font-size: 14px;
+    letter-spacing: 2.1px;
+    color: #333333;
+}
+.ml20{
+    margin-left:20px;
+}
+.pb40{
+    padding-bottom: 40px;
+}
+.br_1_d_gray{
+    border-right:1px dashed #d7d7d7;
+}
+.mt10{
+    margin-top:10px;
+}
+.mt30{
+    margin-top:30px;
+}
+.mt40{
+    margin-top:40px;
+}
+.mr20{
+    margin-right:20px;
+}
+/*余额*/
+.balance{
+    border:1px dashed #ffd08b;
+    padding:5px;
+}
+.balance p{
+    background-color: #ffedd3;
+    font-size: 24px;
+    letter-spacing: 2.1px;
+    color: #e68927;
+    padding:10px 0;
+    margin-bottom: 0;
+}
+.helpList{
+    border: solid 1px #e2e2e2;
+    padding:0;
+    list-style: none;
+}
+.helpList p{
+    background-color: #f1f1f1;
+    font-size: 16px;
+    letter-spacing: 2.7px;
+    color: #4a4a4a;
+    padding:10px 0;
+    text-align: center;
+    margin-bottom:0;
+}
+.helpList li{
+    padding-left:10%;
+}
+.helpList li:first-of-type{
+    padding-top:20px;
+}
+.helpList li:last-of-type{
+    padding-bottom:20px;
+}
+.helpList li a{
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: 3.6px;
+    color: #4a90e2;
+}
+/*交易记录*/
+
+.record{
+    list-style: none;
+    height: 50px;
+    background: rgba(247,247,247,0.6);
+    padding-left:0;
+    clear: both;
+    margin-bottom:0;
+}
+.record li{
+    line-height: 50px;
+    width:25%;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 3.6px;
+    color: #999;
+    cursor: pointer;
+    float: left;
+}
+.record>li>a{
+    display:block;
+}
+.record li a:link,.record li a:visited,.record li a:hover,.record li a:active{
+    text-decoration: none;
+    color: #999;
+}
+.record li.active a{color:#4a4a4a;}
+.record li.active{
+    background: rgba(255,255,255,0.6);
+    font-size: 16px;
+    letter-spacing: 3.6px;
+    color: #4a4a4a;
+}
+
+.record1{
+    background:#f7f7f7;
+}
+.record1 li.active{
+    background: #e5e5e5;
+}
+#recordTable.dataTable{
+    margin-top:0;
+}
+#unbindModal .modal-content,#bindModal .modal-content{
+    width:600px;
+}
+
+.img{width:100%;display:block;}
+/*汇智卡充值*/
+.pay .modal-body{
+    padding:30px 30px 0;
+}
+.pay p{
+    font-size: 16px;
+    color: #333333;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+    margin-top:10px;
+    letter-spacing:1.2px;
+}
+.pay p#notice{
+    color: #fa1947;
+    font-weight: normal;
+}
+.pay p span{
+    font-size: 14px;
+    letter-spacing: 2.8px;
+    color: #666666;
+    margin-left:10px;
+}
+.pay .modal-header{
+    background-color:#2c3a49;
+    height:40px;
+    padding:0 15px;
+}
+.pay .modal-header h4{
+    color:#fff;
+    font-size: 16px;
+    letter-spacing: 3.2px;
+    line-height: 40px;
+}
+.pay .modal-body{
+    border-bottom:1px solid #ccc;
+}
+.pay .modal-body,.pay .modal-footer{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.pw40{
+    width:40%;
+}
+.pw80{
+    width:80%;
+}
+.pay ul{
+    height:50px;
+    clear:both;
+    list-style: none;
+    padding-left:0;
+}
+.pay ul li{
+    width:54px;
+    height:40px;
+    float: left;
+    background-color: #ffffff;
+    border: solid 1px #979797;
+    margin-right:10px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+.pay ul li a{
+    color:#333;
+    cursor:pointer;
+}
+.pay ul li.active,.pay ul li:hover{
+    border:2px solid #4a90e2;
+}
+.pay .bind{
+    display: none;
+    margin:20px auto 0;
+    width: 460px;
+    height: 150px;
+    border-radius: 4px;
+    background-color: #7cd1ef;
+}
+.pay .bind h4{
+    font-size: 16px;
+    letter-spacing: 3.2px;
+    color: #31708f;
+    padding:0 10px;
+    width:80%;
+    float:left;
+}
+.pay .bind button.close{
+    padding:2px 8px;
+}
+.pay .tip{
+    font-size: 14px;
+    letter-spacing: 2.8px;
+    color: #31708f;
+    padding:0 10px;
+}
+.pay .bind .btn{
+    margin:20px 0 0 15px;
+    width: 130px;
+    height: 34px;
+    border-radius: 4px;
+    background-color: #3aafda;
+    color:#fff;
+    font-size: 14px;
+    letter-spacing: 2.8px;
+    text-align: center;
+}
+.redpacket{
+    overflow:hidden;
+}
+.redpacket>label{
+    line-height:28px;
+}
+.redpacket>label>input[type='checkbox']{
+    width:18px;
+    height:18px;
+    position: relative;
+    top:2px;
+    margin-right:5px;
+}
+.redpacket .packet-select{
+    background:#eee;
+    float:right;
+    width:215px;
+    padding:0;
+    display:none;
+}
+/*汇智卡余额查询*/
+.query h4{
+    font-size: 32px;
+    letter-spacing: 6.4px;
+    color: #333333;
+    text-align: center;
+    padding:30px 0;
+}
+.query .query_bg{
+    background: url(/web/images/card_bg.jpg) no-repeat;
+    /*background-size:100% 100%;*/
+    padding: 20px 0;
+}
+.query .query_bg h5{
+    margin-top:30px;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: #333333;
+}
+.query .query_bg p{
+    font-size: 16px;
+    letter-spacing: 3.2px;
+    color: #333333;
+    margin:30px 0 10px;
+}
+.query .query_bg p span{
+    font-size: 14px;
+    letter-spacing: 2.8px;
+    color: #666666;
+    margin-left:10px;
+}
+.query .query_bg p a.btn{
+    margin-bottom:50px;
+}
+.query .query_bg p .btn-gray{
+    border:1px solid #979797;
+    font-size: 14px;
+    letter-spacing: 2.8px;
+    color: #333333;
+    margin-left:30px;
+    font-weight: bold;
+}
+.query .query_bg p .btn-gray:hover{
+    color: #333333;
+}
+/*汇智卡余额查询详情*/
+.queryDetail{
+    padding:30px;
+    text-align: center;
+}
+.queryDetail h4{
+    font-size: 32px;
+    letter-spacing: 6.4px;
+    color: #333333;
+    text-align: center;
+}
+.queryDetail .row{
+    margin-bottom:30px;
+}
+.queryDetail .query_bg{
+    background: url(/web/images/card_bg.jpg) no-repeat;
+    background-size: 100% 100%;
+    margin-top:30px;
+    padding-bottom: 30px;
+}
+.queryDetail .cardNum {
+    line-height: 100px;
+}
+.queryDetail .dataTable{
+    margin-top:0;
+}
+.queryDetail .dataTable tr,.queryDetail .dataTable>thead{
+    border:0;
+    background-color: rgba(247, 247, 247, 0.6);
+}
+/*汇智卡绑定的弹窗*/
+.modal-body{
+    padding:0px;
+}
+.modal-body .popul{
+    margin:15px 0;
+}
+.popul .formFooter{
+    border-top:1px solid #e5e5e5;
+    padding:15px 15px 0;
+    text-align: right;
+}
+.popul .formFooter button{
+    margin-left:20px;
+}
+/*交易记录的表格样式*/
+.transaction thead td{
+    font-size: 16px;
+    letter-spacing: 4.1px;
+    color: #666666;
+    text-align: center;
+    line-height: 50px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+.transaction tbody td{
+    font-size: 14px;
+    letter-spacing: 3.6px;
+    color: #666666;
+    text-align: center;
+    line-height:50px;
+    border-bottom: 1px solid #ddd;
+}
+#three .transaction tbody td{
+    line-height:200%;
+}
+#three .transaction tbody td a{
+    cursor:pointer;
+}
+.transaction tbody td.green{
+    color:#0a9315;
+}
+.transaction tbody td.red{
+    color:#e7685a;
+}
+.transaction_bg{
+    background: rgba(247,247,247,0.6);
+}
+.transaction_bg thead td,.transaction_bg tbody td{
+    border-bottom: 0;
+}
+.statusTip{
+    padding:20px;
+}
+
+#chongzhiModal .modal-content{
+    width: 600px;
+    margin-left: -150px;
+}
+/*title*/
+.pageTitleLine{
+    margin:0 auto;
+    background: rgba(255,255,255,0.6);
+}
+.pageTitleDiv{
+    padding: 10px 0;
+}
+.blue{
+    color:#4085ba;
+}
+.gray{
+    color:#9b9b9b;
+}
+/*其他汇智卡查询的验证码*/
+#vimg{
+    width:20%;
+    height:34px;
+    margin-left:5%;
+}
+.display_iBlock{
+    display: inline-block;
+}
+#vimg1{
+    width:50%;
+    height:34px;
+    margin-left:-5%;
+}
+/*隐藏按钮*/
+.card-Info>a{
+    display: none;
+}
+.card-tips{
+    color:#e7685a;
+    padding:20px 0;
+}
+.empty{
+    font-size: 20px;
+    color: #e68927;
+    text-align: center;
+    padding-top: 30px;
+}
+/*** mywiz**/
+.nav-box{
+    margin-left:10px;
+    width:604px;
+    background:#fff;
+    color:#333;
+    font-size:14px;
+    height:280px;
+    float:left;
+    box-shadow: 0 1px 2px #ccc;
+    padding-top:45px;
+}
+.card-box-bg{
+    background:#fff;
+    box-shadow: 0 1px 2px #ccc;
+    width:524px;
+    overflow:hidden;
+    float:left;
+}
+/****************************汇智卡面板wizCard css********************************/
+.card-box{
+    /*padding:40px 46px;*/
+    color:#333;
+    font-size:14px;
+    height:280px;
+    float:left;
+    text-align:center;
+    width:524px;
+}
+.card-Info{
+    width:470px;
+    text-align:center;
+    margin:15px auto;
+}
+.card-title{
+    font-size:20px;
+    padding-right:20px;
+    display:inline-block;
+    width:100%;
+    margin-bottom:15px;
+    margin-top:10px;
+    text-align:left;
+}
+.card-box .tip{
+    padding-top:0;
+}
+.card-title>span{
+    font-size:14px;
+}
+.card-Info .btn{
+    margin-right:8px;
+    font-size: 12px;
+    padding: 4px 8px;
+}
+.card-account{
+    list-style:none;
+    display: inline-block;
+    text-align:center;
+    padding-left:0;
+}
+.card-account .account{
+    display:inline-block;
+    text-align:center;
+    margin:30px 30px 10px;
+}
+.card-account .account>span{
+    line-height:38px;
+}
+.account-m{
+    height:52px;
+    border:1px dashed #ffd08b;
+    padding:4px;
+    width:150px;
+    box-sizing:content-box;
+}
+.account-m>span{
+    display: inline-block;
+    width:100%;
+    line-height:52px;
+    background:#ffedd3;
+    font-size:24px;
+    color:#e68927;
+}
+

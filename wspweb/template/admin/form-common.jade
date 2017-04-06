@@ -1,0 +1,25 @@
+extends ./layout
+block head
+    title 业务办理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/form-common.js")
+block body
+    .col-xs-9.content
+          .pagetitle 业务办理
+          #searchForm.select-time(style="float: left;")
+               .form-group
+                    .username
+                        span 流水号
+                        input(name='sn__contains' ,size='20', aria-controls="table")
+                        button.btn.btn-blue#searchBtn(type="button") 查询
+                        button.btn.btn-blue#clearBtn(type="button") 清除查询
+          div#addRepair.dropdown
+              button.btn.btn-default.dropdown-toggle(type=button, data-toggle="dropdown")
+                |新增
+                span.caret
+              ul.dropdown-menu
+                li
+                  a(href="/web/applyForPropertyRepair.html", target="_blank") 物业报修
+                li
+                  a(href="/web/applyForITRepair.html", target="_blank") IT网络报修
+          table#businessTable(width="100%",cellspacing="0")

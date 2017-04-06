@@ -1,0 +1,38 @@
+extends ../layout
+block head
+    title  查找企业
+block body
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4.modal-title  申请加入企业
+          .modal-body
+            p
+          .modal-footer
+            button.btn.btn-blue#confirmEnterprise(type='button') 确认
+            button.btn.btn-default(type='button', data-dismiss='modal') 取消
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 企业基本信息
+          .searchTitle
+            p 您还没申请加入任何企业
+            p 搜索相关企业，立即申请加入吧
+          form#form.form-horizontal(style='margin:30px 0;')
+            .form-group
+              input#search-hidden-mode.form-control.searchEnterprise(name='search', placeholder='搜索您所在的企业', type='text', data-list='.hidden_mode_list', data-nodata='没有相关数据', autocomplete='on')
+          ul.hidden_mode_list
+            li 搜索结果
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/searchEnterprise.js')

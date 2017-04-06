@@ -1,0 +1,37 @@
+extends ./layout
+block head
+    title 流程跟踪
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/flowTracking.js")
+block body
+    .col-xs-10.content.flowTrack
+        .pagetitle 流程跟踪
+        form#searchForm.select-time(method='', action='')
+            .form-group
+                span 创建时间
+                .input-append.date.form_datetime
+                    input#startDate(size="14", type="text", name='starttime__gte', readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                span 到
+                .input-append.date.form_datetime
+                    input#endDate(size="14", type="text", name="starttime__lte", readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                .username
+                    span 流水号
+                    input(type='search', name='sn__contains' ,size='14', aria-controls="table")
+                    span   服务类型
+                    select#select(style='width:90px;height:28px' name="process__business__id")
+                    button.btn.btn-blue#searchBtn(type="button") 查询
+                    button.btn.btn-blue#clearBtn(type="button") 清除查询
+        ul.nav.nav-tabs
+            li.active
+                a(href="#business", data-toggle="tab") 全部
+            li
+                a(href="#overdue",data-toggle="tab") 逾期
+        div.tab-content
+            .tab-pane.active#business
+                table#businessTable(width="100%",cellspacing="0")
+            .tab-pane#overdue
+                table#overdueTable(width="100%",cellspacing="0")

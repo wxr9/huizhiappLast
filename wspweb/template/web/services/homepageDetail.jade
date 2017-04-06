@@ -1,0 +1,109 @@
+//
+   Created by z on 2016/12/7.
+extends ../layout
+block head
+    title  在线看房
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src="/web/js/homepageDetail.js")
+block body
+    .html-title.service
+    .hp-bg
+        .container
+            .bread-crumb
+                span.icon
+                a(href='/') 首页
+                span &gt;
+                a(href='/web/serviceCenter.html') 服务中心
+                span &gt;
+                a(href='/web/services/homepage.html') 在线看房
+                span &gt;
+                a(href='javascript:void(0)') 在线看房详情
+            .map-pane
+                .map-img
+                div.hp2-map
+                    img(src="/web/images/hp2_map2.jpg" width="770px" height='494px')
+                div.hp2-map#mapMark
+                    img(src="/web/images/hp2_map.png" width="315px" height='494px')
+                    span.mark.mark1.active
+                    span.mark.mark2
+                    span.mark.mark3
+                    span.mark.mark4
+                    span.mark.mark5
+            h3.hp2-title 房源描述
+            table.hp2-building(border="1",width="100%")
+                tbody
+                    tr
+                        th 楼号
+                        td#buildName 一期1号楼
+                    tr
+                        th 层数
+                        td#buildHeight 11
+                    tr
+                        th 层高
+                        td 标准层：4.4米
+                    tr
+                        th 楼板承重
+                        td 底层500kg/平方米，二层及以上300kg/平方米 （部分加固区域800kg/平方米）
+                    tr
+                        th 空调系统
+                        td VRV空调系统安装完毕(高层）
+                    tr
+                        th 供电标准
+                        td 每平方米140W（办公区域）
+                    tr
+                        th 联系电话
+                        td 400-676-1818
+            h3.hp2-title
+                |房型介绍
+                ul#buildingList.building-list
+                    li.active 1层
+                    li 2层
+                    li 3层
+                    li 4-10层
+                    li 11层
+                    li 屋顶层
+            div.hp2-building-type.type-list
+                ul#typeList
+                    li
+                        img(src="/web/images/house11.jpg" width="400px")
+                        p 1层平面图
+                    li
+                        img(src="/web/images/house12.jpg" width="400px")
+                        p 2层平面图
+                    li
+                        img(src="/web/images/house13.jpg" width="400px")
+                        p 3层平面图
+                    li
+                        img(src="/web/images/house14.jpg" width="400px")
+                        p 4-10层平面图
+                    li
+                        img(src="/web/images/house14.jpg" width="400px")
+                        p 11层平面图
+                    li
+                        img(src="/web/images/house16.jpg" width="400px")
+                        p 屋顶层
+            h3.hp2-title 房源图片
+            ul.hp2-building-type#buildingSource
+                li.active
+                    img(src="/web/images/hp2b1.jpg" width="460px")
+                    img(src="/web/images/hp2b2.jpg" width="460px")
+                li
+                    img(src="/web/images/hp2b3.jpg" width="460px")
+                    img(src="/web/images/hp2b4.jpg" width="460px")
+                li
+                    img(src="/web/images/hp2b5.jpg" width="460px")
+                    img(src="/web/images/hp2b6.jpg" width="460px")
+                li
+                    img(src="/web/images/hp2b7.jpg" width="460px")
+            div.hp2-btns#hp2Btns
+                span.active 1
+                span 2
+                span 3
+                span 4
+            div.modal.fade#imageModal
+                .modal-dialog.modal-lg
+                    .modal-content
+                        button.close(data-dismiss="modal")
+                            span &times;
+                        img#img(src="/web/images/hp2_type.png" width="100%")
+include ../include/footer

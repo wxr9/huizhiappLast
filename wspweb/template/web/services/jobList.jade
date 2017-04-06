@@ -1,0 +1,22 @@
+extends ../layout
+block head
+    title  职位申请
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 职位
+    .container.se-bg
+        table#memberTable(width="100%",cellspacing="0")
+            table(cellspacing="0")
+                tbody#userInfo.userInfo
+
+    include ../include/footer
+    script(src="/web/js/jobList.js")
+

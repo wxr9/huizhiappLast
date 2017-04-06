@@ -1,0 +1,132 @@
+//
+   Created by Administrator on 2016/3/29.
+extends ./layout
+block head
+    title 课程管理列表
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/courseMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 课程管理
+        ul.nav.nav-tab.tab-two(role='tablist')
+            li.active(role='presentation')
+                a(href='#course', aria-controls='base', role='tab', data-toggle='tab') 课程
+            li(role='presentation')
+                a(href='#applyDetail', aria-controls='two', role='tab', data-toggle='tab') 报名情况
+        .tab-content
+            #course.tab-pane.fade.in.active(role='tabpanel')
+                div
+                    a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+                table#businessTable(width="100%",cellspacing="0")
+            #applyDetail.tab-pane.fade(role='tabpanel')
+                div
+                    a.operate.upload#export(href='/Cultivate/UserCultivate/Export/List', target="_blank") 导出
+                    span.ml20 用户名
+                    input#searchName(size='20', type="text",name='chineseName')
+                    button.ml20.mt-4.btn.btn-blue#searchBtn(type="button") 查询
+                    button.ml20.mt-4.btn.btn-blue#clearBtn(type="button") 清除查询
+                table#applyTable(width="100%",cellspacing="0")
+                div.modal.fade#applyModal(tabindex="-1")
+                    div.modal-dialog
+                        div.modal-content
+                            div.modal-header
+                                button.close(type="button", data-dismiss="modal")
+                                    span &times;
+                                h4.modal-title 课程报名情况
+                            div.modal-body
+                                table(cellspacing="0")
+                                    tbody#parkInfo.userInfo
+                            div.modal-footer
+                                button.btn.btn-blue(data-dismiss="modal") 关闭
+                div.modal.fade#deleteModal(tabindex="-1")
+                    div.modal-dialog.modal-sm
+                        div.modal-content
+                            div.modal-header
+                                button.close(type="button", data-dismiss="modal")
+                                    span &times;
+                                h4.modal-title 提示
+                            div.modal-body
+                                div.statusTip 您确定删除吗？
+                            div.modal-footer
+                                button.btn.btn-blue#deleteBtn 确认
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#enableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-bodymeet
+                        div.statusTip 您确定启用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#enableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 课程详情
+                    div.modal-body
+                        table(cellspacing="0")
+                            tbody#businessInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 课程添加
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 课程名称:
+                                div.col-sm-7
+                                    input.objectid(type='hidden', name='objectid')
+                                    input.deleteFlag(type='hidden', name='deleteFlag',value='-1')
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 封面图片:
+                                div.col-sm-7
+                                    input#fileUpload.form-control(type="file",name='pic')
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 课程大纲:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="courseOutline")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 主办方:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="sponsor")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 参考价格:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="price")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span 课程简介:
+                                div.col-sm-7
+                                    textarea#editor.form-control(rows="10",name="content",width="100%")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue#submit(type="submit") 保存
+                                button.btn.btn-grey(data-dismiss="modal") 取消

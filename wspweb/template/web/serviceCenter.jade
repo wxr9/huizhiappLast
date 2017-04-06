@@ -1,0 +1,131 @@
+//
+   Created by Administrator on 2016/5/10.
+extends ./layout
+block head
+    title  服务中心
+    link(href='/web/css/fservice.css', rel='stylesheet')
+    script(src="/web/js/serviceNew.js")
+block body
+    .html-title.service
+    .container.filter-data
+        .row
+            input.filter-search(type='text' name='filter-search' data-search placeholder="请输入关键字查询")
+            a.filter-btn.fa.fa-search
+        .row
+            ul.simplefilter
+                li.active(data-filter='all') 全部
+                li(data-filter='1') 生活基础
+                li(data-filter='2') 企业运营
+                li(data-filter='3') 人才服务
+                li(data-filter='4') 企业孵化
+                li(data-filter='5') 技术网络
+        .row
+            .filter-container
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                    a(href="/web/applyForPropertyRepair.html")
+                        img.img-responsive(src='images/sc_propertyRepair.jpg' alt="物业报修")
+                        span.item-desc 物业报修
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                    a(href="/web/applyForITRepair.html")
+                        img.img-responsive(src='images/sc_itRepair.jpg' alt="IT网络报修")
+                        span.item-desc IT网络报修
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                    a(href='#')#card
+                        img.img-responsive(src='images/sc_myhzCard.jpg' alt="汇智卡自助服务")
+                        span.item-desc 汇智卡自助服务
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                    a(href='/web/services/applyCompanyCard.html')
+                        img.img-responsive(src='images/sc_otherhzCard.jpg' alt="汇智卡申请")
+                        span.item-desc 汇智卡申请
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='/web/services/hatchApply.html')
+                        img.img-responsive(src='images/sc_ruzhu.jpg' alt="入驻申请")
+                        span.item-desc 入驻申请
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='/web/services/hatchForm.html')
+                        img.img-responsive(src='images/sc_jizhong.jpg' alt="企业集中登记")
+                        span.item-desc 企业集中登记
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='/web/services/homepage.html')
+                        img.img-responsive(src='images/sc_roomOL.jpg' alt="在线看房")
+                        span.item-desc 在线看房
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='/web/services/queryBill.html')
+                        img.img-responsive(src='images/sc_bill.jpg' alt="综合账单查询")
+                        span.item-desc 综合账单查询
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='/web/services/meetingRoomList.html')
+                        img.img-responsive(src='images/sc_meetingRoom.jpg' alt="会议室预订")
+                        span.item-desc 会议室预定
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='/web/services/commercialApply.html')
+                        img.img-responsive(src='images/sc_ad.jpg' alt="广告服务申请")
+                        span.item-desc 广告服务申请
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="3")
+                    a(href='/web/services/huntApply.html')
+                        img.img-responsive(src='images/sc_hunter.jpg' alt="猎聘申请")
+                        span.item-desc 猎聘申请
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="3")
+                    a(href='/web/services/jobList.html')
+                        img.img-responsive(src='images/sc_findJob.jpg' alt="职位申请")
+                        span.item-desc 职位申请
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='/web/services/classroomList.html')
+                        img.img-responsive(src='images/sc_classroom.jpg' alt="教室预订")
+                        span.item-desc 教室预定
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="3")
+                    a(href='/web/services/myCultivate.html')
+                        img.img-responsive(src='images/sc_personalTrain.jpg' alt="个人培训")
+                        span.item-desc 个人培训
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="3")
+                    a(href='/web/services/companyApply.html')
+                        img.img-responsive(src='images/sc_enterpriseTrain.jpg' alt="企业培训")
+                        span.item-desc 企业培训
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="4")
+                    a(target='_blank' href='http://efuhua.spspvc.com.cn/')
+                        img.img-responsive(src='images/sc_rufu.jpg' alt="入孵申请")
+                        span.item-desc 入孵申请
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="5")
+                    a(href='/web/services/testApply.html')
+                        img.img-responsive(src='images/sc_test.jpg' alt="测试申请")
+                        span.item-desc 测试申请
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="5")
+                    a(href='/web/services/copyrightApply.html')
+                        img.img-responsive(src='images/sc_zhuzuo.jpg' alt="著作权登记")
+                        span.item-desc 著作权登记
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                    a(href='http://www.zj-talentapt.com/' target='-blank')
+                        img.img-responsive(src='images/sc_apartment.jpg' alt="人才公寓")
+                        span.item-desc 人才公寓
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='http://policy.zj-hui.com/' target="_blank")
+                        img.img-responsive(src='images/sc_zjpark.jpg' alt="张江政务")
+                        span.item-desc 张江政务
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="5")
+                    a(href='https://www.wizcloud.com.cn/' target="_blank")
+                        img.img-responsive(src='images/sc_wizcloud.jpg' alt="汇智云")
+                        span.item-desc 汇智云
+                //.col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                //    a(href='/web/services/parkingApply.html' target="_blank")
+                //        img.img-responsive(src='images/sc_parking.jpg' alt="停车申请")
+                //        span.item-desc 停车申请
+                //.col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                //    a(href='/web/services/restaurant.html' target="_blank")
+                //        img.img-responsive(src='images/sc_res.jpg' alt="智慧餐厅")
+                //        span.item-desc 智慧餐厅
+                //.col-xs-6.col-sm-4.col-md-3.filter-item(data-category="5")
+                //    a(href='/web/services/daguanData.html' target="_blank")
+                //        img.img-responsive(src='images/sc_daguan.jpg' alt="达观数据")
+                //        span.item-desc 达观数据
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="1")
+                    a(href='http://4008087799.com:8888/' target="_blank")
+                        img.img-responsive(src='images/sc_fit.jpg' alt="健身中心")
+                        span.item-desc 健身中心
+                .col-xs-6.col-sm-4.col-md-3.filter-item(data-category="2")
+                    a(href='http://www.hzlifecenter.com/about/business.aspx' target="_blank")
+                        img.img-responsive(src='images/sc_huizhi.jpg' alt="商户入住申请")
+                        span.item-desc 商户入住申请
+
+
+    include include/footer
+

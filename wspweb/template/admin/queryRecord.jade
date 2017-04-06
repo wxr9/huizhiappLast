@@ -1,0 +1,41 @@
+//
+   Created by Administrator on 2016/5/19.
+extends ./layout
+block head
+    title 综合查询日志管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/queryRecord.js")
+block body
+    .col-xs-9.content
+        .pagetitle 综合查询日志管理
+        form#searchForm.select-time(method='', action='')
+            .form-group
+                //a.operate.upload(href='/Incubator/UserIncubator/Export/List', target='_blank') 导出
+                span 开始时间
+                .input-append.date.form_datetime
+                    input#startDate(size="16", type="text", name='beginDate', readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                span 到
+                .input-append.date.form_datetime
+                    input#endDate(size="16", type="text", name="endDate", readOnly)
+                    span.add-on
+                        i.icon-th.fa.fa-table.blue
+                .username
+                    button.btn.btn-blue#searchBtn(type="button") 查询
+                    button.btn.btn-blue#clearBtn(type="button") 清除查询
+            table#logTable(width="100%",cellspacing="0")
+        table#businessTable(width="100%",cellspacing="0")
+        //div.modal.fade#infoModal(tabindex="-1")
+        //    div.modal-dialog
+        //        div.modal-content
+        //            div.modal-header
+        //                button.close(type="button", data-dismiss="modal")
+        //                    span &times;
+        //                h4.modal-title 企业注册预约详情
+        //            div.modal-body
+        //                table(cellspacing="0",width="100%")
+        //                    tbody#businessInfo.userInfo
+        //            div.modal-footer
+        //                button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭

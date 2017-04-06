@@ -1,0 +1,42 @@
+extends ../layout
+block head
+    title  账户安全
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 个人中心
+            hr.pageTitleLine
+    .container
+        .row
+            include ../include/sidebar
+            .col-sm-9.mainContent
+                .contentTitle 账户安全
+                ul.col-sm-12.safeList
+                    li.col-sm-12
+                        span.col-sm-4.safeTitle
+                            | 登录密码
+                            i.fa.fa-lock.fa-4
+                        span.col-sm-6.safeData
+                            | 登录账户时的密码
+                            i.fa.fa-info-circle.fa-4(data-toggle='tooltip', data-placement='top', title='请定期更换密码')
+                        a.col-sm-2(href='/web/user/changePassword.html') 修改
+                    hr.col-sm-12
+                    li.col-sm-12
+                        span.col-sm-4.safeTitle
+                            | 手机号码
+                            i.fa.fa-mobile.fa-4
+                        span.col-sm-6.safeData#phone
+                        a.col-sm-2(href='/web/user/bindPhone.html') 修改
+                    hr.col-sm-12
+                    li.col-sm-12
+                        span.col-sm-4.safeTitle
+                            | 绑定邮箱
+                            i.fa.fa-envelope
+                        span.col-sm-6.safeData#email
+                        .col-sm-2#operate
+                            a(href='/web/user/bindEmail.html') 修改
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/accountSafe.js')

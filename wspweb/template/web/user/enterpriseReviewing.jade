@@ -1,0 +1,21 @@
+extends ../layout
+block head
+    title  查找企业
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 企业基本信息
+          .searchTitle
+            p 您已经提交了申请
+            p 您的申请正在审核中......请耐心等待
+            img(src='/web/images/enterpriseReviewing.png')
+    include ../include/footer
+    script(src='/web/js/sidebar.js')

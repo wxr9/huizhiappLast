@@ -1,0 +1,21 @@
+extends ../layout
+block head
+    title  在线看房详情
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src="/web/js/parkListDetail.js")
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/parkList.html') 在线看房
+            span &gt;
+            a(href='javascript:void(0)') 在线看房详情
+    .bodybg
+        .container#cont
+    include ../include/footer
+

@@ -1,0 +1,75 @@
+//
+   Created by Administrator on 2016/5/4.
+
+extends ./layout
+block head
+    title 附件管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    link(rel="stylesheet", href="/admin/css/manage.css")
+    script(src="/admin/js/accessoryMan.js")
+    style.
+        #addForm .tipsHBox>span>span {
+            white-space: normal!important;
+            width: 200px;
+            letter-spacing: 0px;
+            font-size: 12px;
+            line-height:1.5;
+        }
+block body
+    .col-xs-9.content
+        .pagetitle 附件管理
+        div.pageBox
+            a.operate.add(data-toggle="modal" data-target="#addModal") +上传
+            //.searchBox
+            //    label
+            //        | 搜索：
+            //        input#searchBox(type="search" placeholder="标题/作者/摘要")
+            //        i.fa.fa-search
+        table#accessoryList(width="100%",cellspacing="0")
+        div#pagination.paginator.col-md-12
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 上传附件
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                label.col-sm-4.control-label 选择附件:
+                                div.col-sm-7
+                                    input.form-control#file(type="file",name="file")
+                            div.form-group.submitBtn
+                                button.btn.btn-grey(data-dismiss="modal") 关闭
+        div.modal.fade#renameModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 重命名
+                    div.modal-body.text-center
+                        form#renameForm(method='POST')
+                            p.text-center 重命名：
+                                input(type='text',name='name')
+                                input(type='hidden',name='author')
+                                input(type='hidden',name='deleteFlag')
+                                input(type='hidden',name='objectid')
+                                input(type='hidden',name='type')
+                                input(type='hidden',name='url')
+                            p.text-center.mt10
+                                button.btn.btn-blue(type='submit') 确认
+                                button.btn.btn-grey.ml20(data-dismiss="modal") 取消
+        div.modal.fade#delModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        p(style="text-align:center;") 您确定删除吗?
+                    .modal-footer
+                        button.btn.btn-blue#delBtn(type="submit") 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消

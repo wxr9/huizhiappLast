@@ -1,0 +1,117 @@
+extends ../layout
+block head
+    title  个人资料
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-xs-9.mainContent
+          .contentTitle 个人资料
+          form#formYoriki.form-horizontal.personalCenterForm
+            input(type='text', name='userFlag', hidden='true')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label(for='username') 用户名
+                .col-xs-9
+                  input#username.form-control(name='username', type='text', readonly='')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label(for='name') 昵称
+                .col-xs-9
+                  input#name.form-control(name='name', type='text', placeholder='输入您的昵称')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label 性别
+                .col-xs-9
+                  label.radio-inline
+                    input#sex1(type='radio', name='sex', value='1')
+                    | 男
+                  label.radio-inline
+                    input#sex2(type='radio', name='sex', value='2')
+                    | 女
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label(for='realName') 真实姓名
+                .col-xs-9
+                  input#realName.form-control(name='realName', type='text', placeholder='输入您的真实姓名')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label(for='birthday')
+                  span.star
+                  |出生日期
+                .col-xs-9
+                  .input-append.date.form_datetime.dataPickerDay
+                    input#birthday(size="14", type="text", name='birthday',readonly)
+                    span.add-on
+                      i.icon-th.fa.fa-table.blue
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label(for='workYears')
+                  span.star
+                  |工作年限
+                .col-xs-9
+                  input#workYears.form-control(name='workYears', type='number', value='0' placeholder='输入您的工作年限')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label(for='enterpriseInput') 企业名称
+                .col-xs-9
+                  input#enterpriseinput.form-control(name='enterpriseInput', type='text', placeholder='输入您的企业名称')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label
+                  span.star
+                  |国籍
+                .col-xs-9
+                  select.form-control(name='nation')
+            .col-xs-11
+              label.col-xs-3.control-label
+                span.star
+                |户籍地
+              .col-xs-5.form-group
+                select.form-control(id='address1',name='address1')
+              .col-xs-4.form-group
+                select.form-control(name='hometownCity')
+            .col-xs-11
+              label.col-xs-3.control-label
+                span.star
+                |居住地
+              .col-xs-5.form-group
+                select.form-control(id='address3',name='address3')
+              .col-xs-4.form-group
+                select.form-control(name='apartmentCity')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label 婚姻状况
+                .col-xs-9
+                  label.radio-inline
+                    input#marriage1(type='radio', name='marital', value='1')
+                    | 未婚
+                  label.radio-inline
+                    input#marriage2(type='radio', name='marital', value='2')
+                    | 已婚
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label 学历
+                .col-xs-9
+                  select.form-control(name='education')
+            .col-xs-11
+              .form-group
+                label.col-xs-3.control-label 个人签名
+                .col-xs-9
+                  textarea#sign.form-control(name='signature', rows='3', placeholder='140字以内')
+            .col-xs-11
+              hr.formRowLine
+            .form-group
+              .formEndingBtn
+                button.btn.btn-blue(type='submit') 提交
+                button.btn.btn-default#prePage(type='button') 返回
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/bootstrapValidator-logic.js')
+    script(src='/web/js/bootstrapValidator-personalInfo.js')

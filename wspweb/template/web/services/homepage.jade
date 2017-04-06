@@ -1,0 +1,150 @@
+//Created by z on 2016/11/30.
+extends ../layout
+block head
+    title  在线看房
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src="/web/js/homepage.js")
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 在线看房
+        .homepage
+            .col-xs-12
+                .row
+                    .map-pane
+                        div.map-img
+                            img(src='/web/images/hp_view.jpg' width="770px" height="550px" alt="园区全景图")
+                            div#tips
+                                span.tip.tip1.active
+                                    |1号楼
+                                    span (一期)
+                                span.tip.tip2
+                                    |2号楼
+                                    span (一期)
+                                span.tip.tip3
+                                    |3号楼
+                                    span (一期)
+                                span.tip.tip4
+                                    |4号楼
+                                    span (一期)
+                                span.tip.tip5
+                                    |5号楼
+                                    span (一期)
+                        div.map-info
+                            table.title-table
+                                thead
+                                tbody
+                                    tr
+                                        th 园区名称
+                                        th 总建筑面积
+                                    tr
+                                        td 三林园
+                                        td 近50万平米
+                                    tr
+                                        th 总投资额
+                                        th 绿化覆盖率
+                                    tr
+                                        td 40亿
+                                        td 35%
+                            hr.linear-center
+                            ul.map-nav#mapNav
+                                li.active 1#
+                                li 2#
+                                li 3#
+                                li 4#
+                                li 5#
+                            ul.map-nav-info
+                                li
+                                    h4#buildName 一期一号楼
+                                li
+                                    span 层高：
+                                    span 4.4米
+                                li
+                                    span 楼层：
+                                    span#lougao 11层
+                                li
+                                    span 说明：
+                                    span 整栋租/套
+                                li
+                                    span 联系电话：
+                                    span 400-676-1818
+                                li
+                                    a#link(href="/web/services/homepageDetail.html?building=1") 查看详情
+                .row
+                    h2.home-title 交通区位图
+                    .map-pane
+                        div.map-info
+                            h4.map-info-title 地铁站
+                            #stationName
+                                span.active.map-line-title 6号线
+                                span.map-line-title 8号线
+                                span.map-line-title 11号线
+                                span.map-line-title 外环高架路
+                            .map-line-box
+                                .map-line
+                                ul#station
+                                    li
+                                        span.circle
+                                        span 北洋泾路
+                                    li
+                                        span.circle
+                                        span 民生路
+                                    li
+                                        span.circle
+                                        span 源深体育中心
+                                    li
+                                        span.circle
+                                        span 世纪大道
+                                    li
+                                        span.circle
+                                        span 浦电路
+                                    li
+                                        span.circle
+                                        span 蓝村路
+                                    li
+                                        span.circle
+                                        span 上海儿童医学中心
+                                    li
+                                        span.circle
+                                        span 临沂新村
+                                    li
+                                        span.circle
+                                        span 高科西路
+                                    li
+                                        span.circle
+                                        span 东明路
+                                    li
+                                        span.circle
+                                        span 高青路
+                                    li
+                                        span.circle
+                                        span 华夏西路
+                                    li
+                                        span.circle.mark
+                                        span 上南路
+                                    li
+                                        span.circle
+                                        span 灵岩南路
+                                    li
+                                        span.circle
+                                        span 东方体育中心
+
+                        div.map-img
+                            img(src='/web/images/hp_map.jpg' width="789px" alt="园区地图" usemap="#linemap")
+                            .line-mark
+                                span.active
+                                    i
+                                span
+                                    i
+                                span
+                                    i
+                                span
+
+
+    include ../include/footer

@@ -1,0 +1,44 @@
+extends ./layout
+block head
+    title  富文本管理
+    link(rel="stylesheet",href="/admin/css/index.css",type="text/css")
+    script(src="/admin/js/richtextList.js")
+block body
+    .col-xs-9.content
+        .pagetitle 富文本管理
+        div.pageBox
+            a.operate(href="/admin/addRichText.html",target="_blank") +新建富文本
+            //.searchBox
+            //    label
+            //        |搜索：
+            //        input#searchBox(type="search" placeholder="标题/作者/摘要")
+            //        i.fa.fa-search
+        div.richtextList
+
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#enableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定解除禁用吗？
+                    div.modal-footer
+                        button.btn.btn-blue#enableCfm(type="submit") 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        
+
+        

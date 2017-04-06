@@ -1,0 +1,141 @@
+extends ../layout
+block head
+    title  企业基本信息
+block body
+    #leaveEnterpriseModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='leaveEnterpriseModalLabel', aria-hidden='true')
+      .modal-dialog
+        .modal-content
+          .modal-header
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+            h4.modal-title  离开该企业
+          .modal-body
+            p 您确认要离开该企业吗？
+          .modal-footer
+            button.btn.btn-blue#confirmLeave(type='button') 确认
+            button.btn.btn-default(type='button', data-dismiss='modal') 取消
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    .container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 企业基本信息
+          form.form-horizontal.userform.personalCenterForm(style="display:none;",name="showForm",role="form",contenteditable=false)
+              input.form-control.readonly(type="hidden",name="username")
+              input.form-control(type="hidden",name="objectid")
+              input.form-control(type='hidden',name='clmId')
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 企业名称:
+                  div.col-sm-7
+                      input.form-control(type="text",name="name",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 企业简称:
+                  div.col-sm-7
+                      input.form-control(type="text",name="abbreviation",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 入驻年份:
+                  div.col-sm-7
+                      input.form-control(name="intake",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 企业规模:
+                  div.col-sm-7
+                      input.form-control(name="scale",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 所属行业:
+                  div.col-sm-7
+                      input.form-control(name="industry",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 企业性质:
+                  div.col-sm-7
+                      input.form-control(name="type",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 联系人:
+                  div.col-sm-7
+                      input.form-control(type="text",name="contacts",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 联系方式:
+                  div.col-sm-7
+                      input.form-control(type="text",name="contactsinfo",readonly)
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 联系地址:
+                  div.col-sm-7
+                      input.form-control(type="text",name="address",readonly)
+              button.btn.btn-block.btn-red-opacity#leave(type="button" data-toggle="modal" data-target="#leaveEnterpriseModal") 离开该企业
+          form.form-horizontal.userform#companyForm(style="display:none;",name="companyForm",role="form")
+              input.form-control.readonly(type="hidden",name="username")
+              input.form-control(type="hidden",name="objectid")
+              input.form-control(type='hidden',name='clmId')
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |企业名称:
+                  div.col-sm-7
+                      input.form-control(type="text",name="name")
+              div.form-group
+                  label.col-sm-3.control-label
+                      | 企业简称:
+                  div.col-sm-7
+                      input.form-control(type="text",name="abbreviation")
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |入驻年份:
+                  div.col-sm-7
+                      select.dicts.form-control#intake(name="intake")
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |企业规模:
+                  div.col-sm-7
+                      select.form-control#scale(name="scale")
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |所属行业:
+                  div.col-sm-7
+                      select.form-control#industry(name="industry")
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |企业性质:
+                  div.col-sm-7
+                      select.form-control#type(name="type")
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |联系人:
+                  div.col-sm-7
+                      input.form-control(type="text",name="contacts")
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |联系方式:
+                  div.col-sm-7
+                      input.form-control(type="text",name="contactsinfo")
+              div.form-group
+                  label.col-sm-3.control-label
+                      span.star
+                      |联系地址:
+                  div.col-sm-7
+                      input.form-control(type="text",name="address")
+              div.form-group.text-center
+                  button.btn.btn-blue(type="submit") 提交
+
+
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/enterpriseInfo.js')

@@ -1,0 +1,15 @@
+#header.topbar
+      img.logo(src='images/logo.png')
+      ul.loginAndRegister
+        li.dropdown
+          a#dropdownMenu2(data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            img.img-circle(src='/admin/images/defaultFace.png', height='40', width='40', alt='Avatar')
+            i.fa.fa-chevron-down
+          .dropdown-menu.dropdown-menu-right.dropdown-menu-animated(aria-labelledby='dropdownMenu2')
+            .media
+              .media-left
+                //img.img-circle(src='/admin/images/defaultFace.png', height='60', width='60', alt='Avatar')
+              .media-body.media-middle
+                h5.media-heading#loginUserName
+            a.dropdown-item.text-uppercase(href='/admin/changePassword.html') 修改密码
+            a.dropdown-item.text-uppercase.text-muted#logout(href='#') 注销

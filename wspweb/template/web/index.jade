@@ -1,0 +1,115 @@
+extends ./layout
+block head
+    title    汇智e站
+    script(src="/web/js/index.js")
+    link(href="/lib/css/font-awesome.min.css", rel="stylesheet")
+    link(href="/web/css/index.css", rel="stylesheet")
+block body
+    #scrollNextBtn
+    #fullPage
+        #pageVideo.section.active
+            .carousel-box
+                #indexCarousel.carousel.slide(data-ride="carousel",data-interval='3000')
+        #pageActCenter.section
+            .pageHeader
+                #activityTitle.title
+            #page-act
+                .pageBox#activity
+                    .activityImg
+                    ul#activityList
+                        li.img-item
+                        li.img-item
+                        li.img-item
+                        li.img-item
+                        li.img-item
+                        li.img-item
+                        li.img-item
+
+        #pageLifeCenter.section
+            .pageHeader
+                #lifeCenterTitle.title
+            #page-lifeCenter
+                .lifeBox#lifeBox
+                    .lifeBox-item
+                        .life-img
+                        .life-img
+                    .lifeBox-item
+                        .life-mid-img
+                    .lifeBox-item
+                        .life-img
+                        .life-img
+
+        #pageServiceCenter.section
+            .pageHeader
+                #serviceTitle.title
+            ul.service-list
+                li.service-item
+                    a(href="/web/applyForPropertyRepair.html")
+                        .service-img
+                        .service-title 物业报修
+                li.service-item
+                    a(href="/web/applyForITRepair.html")
+                        .service-img.icon-it
+                        .service-title IT报修
+                li.service-item
+                    a(href="/web/services/hatchApply.html")
+                        .service-img.icon-rz
+                        .service-title 入驻申请
+                li.service-item
+                    a(href="http://efuhua.spspvc.com.cn/")
+                        .service-img.icon-rf
+                        .service-title 入孵申请
+                li.service-item
+                    a(href="/web/services/myCultivate.html")
+                        .service-img.icon-px
+                        .service-title 个人培训
+                li.service-item
+                    a(href="/web/services/jobList.html")
+                        .service-img.icon-zw
+                        .service-title 职位申请
+                li.service-item
+                    a(href="/web/services/meetingRoomList.html")
+                        .service-img.icon-hy
+                        .service-title 会议室预订
+                li.service-item
+                    a(href="/web/services/testApply.html")
+                        .service-img.icon-cs
+                        .service-title 测试申请
+        #pageWizCard.section
+            #wizCard
+                .wizCard
+                    img.wizCard-img(src='/web/images/index_card.jpg')
+                    .wizCardBtn
+                        a(href="/web/user/cardDetail.html").cardBtn
+                            i.fa.fa-search
+                            | &nbsp;汇智卡余额查询
+                        a(href="/web/user/cardDetail.html").cardBtn
+                            i.fa.fa-yen
+                            | &nbsp;汇智卡在线充值
+                footer
+                    .footer-nav
+                        .container
+                            //.allSave
+                            //    | 累计在线充值
+                            //    i.fa.fa-yen
+                            //    span#money 100000000000
+                            ul.footerLink
+                                li
+                                    a(href='/web/aboutUs.html') 关于我们
+                                li
+                                    a(href='http://www.spsp.com.cn/News/1.html') 新闻中心
+                                li
+                                    a(href='/web/siteMap.html') 网站地图
+                                li
+                                    a(href='/web/contactUs.html') 联系我们
+                                li
+                                    a(href='/web/helpCenter.html') 帮助中心
+                    .footer-info
+                        .container
+                            .footerInfo
+                                span Copyright © 2014. Shanghai Pudong Software Park Co.,Ltd. All rights reserved
+                                span 上海浦东软件园股份有限公司 ©版权所有 沪ICP备05002644号-6
+                                span Powered by Huizhi Software
+
+
+

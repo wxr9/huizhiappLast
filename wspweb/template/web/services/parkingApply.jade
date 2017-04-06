@@ -1,0 +1,44 @@
+//
+   Created by z on 2016/11/30.
+extends ../layout
+block head
+    title  停车申请
+    link(href='/web/css/apply.css', rel='stylesheet')
+
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 停车申请
+    .container.bg_white.huntApply
+        .col-xs-12
+            form.form-horizontal#applyForm(name="applyForm",method='POST')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 姓名：
+                        .col-xs-8
+                            input.form-control(type='text',name='name')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            span.star
+                            span.control-label 园区选择：
+                        .col-xs-8
+                            select.form-control(name='park')
+                                option(value='') 郭守敬园
+                                option(value='') 祖冲之园
+                                option(value='') 三林园
+                .form-group
+                    .col-xs-11.text-center
+                        button#btn.btn.btn-blue.submit(type='button') 提交
+
+
+    script(src="/web/js/parkingApply.js")
+    include ../include/footer

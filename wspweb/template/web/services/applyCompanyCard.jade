@@ -1,0 +1,90 @@
+extends ../layout
+block head
+    title  企业汇智卡申请
+    link(href='/web/css/apply.css', rel='stylesheet')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 企业汇智卡申请
+    .container.bg_white.huntApply
+        .col-xs-12
+            p.msg#notice
+        .col-xs-12
+            form.form-horizontal#form(name="form",role="form",method="POST")
+                .col-xs-12
+                    label.read
+                        input#mustRead(type='checkbox',name='mustRead')
+                        span 同意
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 申请人：
+                        .col-xs-8
+                            input.form-control(type='text',name='username')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span E-mail：
+                        .col-xs-8
+                            input.form-control(type='text',name='email', placeholder='请输入邮箱')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 公司名称：
+                        .col-xs-8
+                            input.form-control(type='text',name='company',placeholder='请输入公司名称')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 联系方式：
+                        .col-xs-8
+                            input.form-control(type='text',name='contact')
+                .form-group
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span.star
+                                span 附件：
+                        .col-xs-8#attachmentBox
+                            input.form-control#attachment(type='file' name="attachment")
+                            p(style="letter-spacing:1px") 提示：下载须知中的办卡人员信息表，填写完毕后上传。格式为.xls.xlsx。
+                .form-group.check
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span 审核意见：
+                        .col-xs-8
+                            textarea.form-control#suggest(col=20, row=5,readonly)
+                .form-group.check
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label
+                                span 领取时间：
+                        .col-xs-8
+                            input.form-control#getTime(type='text',readonly)
+                .form-group
+                    .col-xs-12.text-center.submitBtn
+                        button.btn.btn-blue.submit#submit(type="submit") 提交
+                        button.btn.btn-blue.submit#stop(type="button") 中止
+
+
+    include ../include/footer
+    script(src="/web/js/applyCompanyCard.js")
+
+//
+   Created by z on 2016/10/27.
+

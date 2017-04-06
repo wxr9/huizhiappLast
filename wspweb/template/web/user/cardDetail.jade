@@ -1,0 +1,49 @@
+//
+   Created by Administrator on 2016/3/31.
+extends ../layout
+block head
+    title  汇智卡
+    link(href='/web/css/card.css', rel='stylesheet')
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 个人中心
+            hr.pageTitleLine
+    .container
+        .row
+            include ../include/sidebar
+            .col-xs-9.mainContent
+                .row.mt40
+                    .col-xs-8.br_1_d_gray.pb40
+                        include ../include/wizCard
+                    ul.col-xs-3.col-xs-offset-1.helpList
+                        p 汇智卡使用帮助
+                        li
+                            a(href='/web/viewRich.html?title=汇智卡办理流程及须知' target='_blank') 办卡流程及须知
+                        li
+                            a(href='/web/viewRich.html?title=汇智卡坏卡换卡业务' target='_blank') 坏卡换卡业务
+                        li
+                            a(href='/web/viewRich.html?title=汇智卡初始密码及重置密码业务' target='_blank') 密码重置业务
+                        li
+                            a(href='/web/viewRich.html?title=汇智卡挂失及解挂业务' target='_blank') 挂失及解挂业务
+                ul.record.record1(role='tablist')
+                    li.active(role='presentation')
+                        a(href='#one', aria-controls='base', role='tab', data-toggle='tab') 主账户交易记录
+                    li(role='presentation')
+                        a(href='#four', aria-controls='base', role='tab', data-toggle='tab') 主账户充值记录
+                    li(role='presentation')
+                        a(href='#two', aria-controls='base', role='tab', data-toggle='tab') 电子钱包交易记录
+                    li(role='presentation')
+                        a(href='#three', aria-controls='base', role='tab', data-toggle='tab') 在线充值订单记录
+                .tab-content
+                    #one.tab-pane.fade.in.active(role='tabpanel')
+                    #two.tab-pane.fade(role='tabpanel')
+                    #three.tab-pane.fade(role='tabpanel')
+                    #four.tab-pane.fade(role='tabpanel')
+
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src="/web/js/cardDetail.js")
+    script(src="/web/js/wizCard.js")

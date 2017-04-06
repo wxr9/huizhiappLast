@@ -1,0 +1,71 @@
+//
+   Created by Administrator on 2016/3/30.
+extends ./layout
+block head
+    title 园区地图列表
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/parkMapMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 园区地图管理
+        div
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+
+        table#businessTable(width="100%",cellspacing="0")
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog.minModel700
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 园区地图详情
+                    div.modal-body
+                        table(cellspacing="0",width="100%")
+                            tbody#parkInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 园区地图添加
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                input.objectid(type='hidden', name='objectid')
+                                label.col-sm-3.control-label
+                                 span.star 名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 园区图片:
+                                div.col-sm-7
+                                    input#fileUpload.form-control(type="file",name="pic")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 园区地址:
+                                div.col-sm-7
+                                    input.form-control(type="files",name="address")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span 园区简介:
+                                div.col-sm-7
+                                    textarea.form-control#editor(type="text",name="content")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 保存
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#deleteModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定删除吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消

@@ -1,0 +1,160 @@
+extends ../layout
+block head
+    title  商户中心
+    link(rel='stylesheet' href='../../web/css/merchant.css')
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+        .container
+            hr.pageTitleLine
+            .pageTitleDiv
+                span.pageTitle 商户中心
+            hr.pageTitleLine
+    .container
+        .col-xs-3
+            nav
+                ul.left-nav
+                    li.active
+                        i.icon.fa.fa-user
+                        a(href="/web/merchant/merchantList.html") 商户信息管理
+                    li
+                        i.icon.fa.fa-home
+                        a(href="/web/merchant/preferentialList.html") 优惠信息管理
+                    li
+                        i.icon.fa.fa-credit-card-alt
+                        a(href="/web/merchant/reply.html") 商户互动记录
+        .col-xs-9
+            .row
+                h3.contentTitle 商户信息
+            .row
+                button.btn.btn-bg-blue(data-toggle='modal',data-target='#infoModal') 查看历史信息
+            div.modal.fade#infoModal(tabindex="-1")
+                div.modal-dialog.modal-lg
+                    div.modal-content
+                        div.modal-header
+                            button.close(type="button", data-dismiss="modal")
+                                span &times;
+                            h4.modal-title 查看历史商户信息
+                        div.modal-body
+                            table#businessTable(width="100%",cellspacing="0")
+                        div.modal-footer
+                            button.btn.btn-default#closeBtn(data-dismiss="modal") 关闭
+            .row
+                form.form.form-horizontal.mer-form#merchantInfo(name="merhcantInfo")
+                    div.form-group.check#check
+                        label.col-sm-offset-1.col-sm-10
+                            span.fa.fa-hourglass-2
+                            span 商户信息正在审核中,暂时无法修改.
+                    div.form-group.check#check1
+                        label.col-sm-offset-1.col-sm-10
+                            span.fa.fa-check-circle
+                            span 商户信息已通过审核,可以通过修改添加新信息.
+                    div.form-group.check#check2
+                        label.col-sm-offset-1.col-sm-10
+                            span.fa.fa-exclamation-circle
+                            span 商户信息未通过审核,请修改后再次提交.
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |商户名称:
+                        div.col-sm-7
+                            input.form-control(type="hidden",name="objectid")
+                            input.form-control(type="hidden",name="isCheck",value='1')
+                            input.form-control(type="text",name="name")
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |营业时间:
+                        div.col-sm-3
+                            span 开始时间:
+                                .input-append.date.form_datetime
+                                    input(size="17", type="text",value="09:00", name='workStartTime')
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                        div.col-sm-3
+                            span 结束时间:
+                                .input-append.date.form_datetime
+                                    input(size="17", type="text", value="22:00", name="workEndTime")
+                                    span.add-on
+                                        i.icon-th.fa.fa-table.blue
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |商户分类:
+                        div.col-sm-7
+                            select#type.form-control(name="type")
+                    div.form-group#childBox(style='display:none;')
+                        label.col-sm-3.control-label
+                            span.star
+                            |商户分类子类:
+                        div.col-sm-7
+                            select#typeChild.form-control(name="childType")
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |商户照片:
+                        div.col-sm-7.upload-box
+                            input.btn.input#input(type="file")
+                            button.btn.btn-bg-blue.fakeInput#fakeInput(type="button")
+                                | 选择图片
+                            button.btn.btn-bg-orange.uploadImg.disabled#uploadImg(type='button')
+                                | 上传图片
+                            span.upload-tip 图片上传成功
+                        div.col-sm-offset-3.col-sm-9
+                            small *支持图片格式:"jpg,jpeg,png",建议图片宽高比为3:2,至少360px*240px；
+                        div.col-sm-offset-3.col-sm-9
+                            input#realInput(type='hidden',name='avar')
+                    div.form-group.image-box
+                        div.col-xs-7.col-xs-offset-1
+                            div(style="width:480px;height:320px;")
+                                img#image.cropImage(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                        div.col-xs-4
+                            div.page-header
+                                | 裁剪预览：
+                            div.preview(style="width:230px;height:153px;background:#eee;")
+                        //div.col-sm-7#image
+                        //    input.form-control#photoUrl(type="file",name="avar")
+                        //div.col-sm-offset-3.col-sm-9
+                        //    small *建议上传图片尺寸宽高比为3:2,至少370px*240px
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |所属园区:
+                        div.col-sm-7
+                            select#park.form-control(name="park")
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |商户类型标签:
+                        div.col-sm-7
+                            select#label.form-control(name="parkType")
+                    div.form-group
+                        label.col-sm-3.control-label 是否特邀商户:
+                        div.col-sm-7
+                            label(style="margin-right:20px;")
+                                input(type='radio' name="isInvite" value='1')
+                                | &nbsp;是
+                            label
+                                input(type='radio' name="isInvite" value = '0')
+                                | &nbsp;否
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |商户地址:
+                        div.col-sm-7
+                            input.form-control(type="text",name="address")
+                    div.form-group
+                        label.col-sm-3.control-label
+                            span.star
+                            |商户电话:
+                        div.col-sm-7
+                            input.form-control(type="text",name="phone")
+                    div.form-group
+                        label.col-sm-3.control-label 商户简介:
+                        div.col-sm-7
+                            textarea.form-control(name="shortIntro",rows='5')
+                    div.form-group.col-sm-offset-1.submit-box.text-center
+                        button.btn.btn-bg-blue(type="submit") 确认
+                            //button.btn.btn-default#cancel 取消
+    include ../include/footer
+    script(src="/web/js/merchantCenter/merchantList.js")
+

@@ -1,0 +1,164 @@
+extends ../layout
+block head
+    title  个人培训报名
+    link(href='/web/css/serviceNew.css', rel='stylesheet')
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src='/web/js/myCultivateForm.js')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='/web/services/myCultivate.html') 个人培训
+            span &gt;
+            a(href='javascript:void(0)') 个人培训报名
+    .container.bg_white.huntApply.clearfix
+        .col-xs-12
+            form.form-horizontal.top50#form(name="form",role="form",method="POST", action="/Cultivate/UserCultivate/Add")
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 姓名：
+                        .col-xs-7
+                            input.form-control(type='text' placeholder='请输入姓名',name='chineseName')
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 性别：
+                        .col-xs-7
+                            label
+                                input(type="radio",name='sex',value='1' checked)
+                                span.spanRadio 男
+                            label
+                                input(type="radio",name='sex',value='2')
+                                span.spanRadio 女
+                .form-group(hidden="hidden")
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 报名课程：
+                        .col-xs-7
+                            input.form-control#courseId(name='courseId',readonly)
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 报名课程：
+                        .col-xs-7
+                            input.form-control#courseName(type='text',readonly)
+                .form-group
+                    .col-xs-12.mt12
+                        .col-xs-3.text-right.control-sm-label
+                            //span.star
+                            span 等级：
+                        .col-xs-7
+                            select.form-control#gradeId(name='gradeId')
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 联系方式：
+                        .col-xs-7
+                            input.form-control(type='text',name='phone')
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            //span.star
+                            span E-mail：
+                        .col-xs-7
+                            input.form-control(type='text' placeholder='请输入邮箱',name='email')
+                .form-group
+                    .col-xs-12.mt12
+                        .col-xs-3.text-right.control-sm-label
+                            span 学历：
+                        .col-xs-7
+                            select.form-control#education(name='educationId')
+                .form-group
+                    .col-xs-12.mt12
+                        .col-xs-3.text-right.control-sm-label
+                            span 工作年限：
+                        .col-xs-7
+                            select.form-control#years(name='workYearId')
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            //span.star
+                            span 公司名称：
+                        .col-xs-7
+                            input.form-control(type='text' placeholder='请输入公司名称',name='company')
+                .form-group
+                    .col-xs-12.mt12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 目前职位：
+                        .col-xs-7
+                            select.form-control#jobTitle(name='jobId')
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            //span.star
+                            span 是否在上海交纳社保：
+                        .col-xs-7
+                            label
+                                input(type="radio",name='socialInsurance',value='1',checked)
+                                span.spanRadio 是
+                            label
+                                input(type="radio",name='socialInsurance',value='-1')
+                                span.spanRadio 否
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 户籍：
+                        .col-xs-7
+                            label
+                                input(type="radio",name='censusRegister',value='1',checked)
+                                span.spanRadio 沪籍
+                            label
+                                input(type="radio",name='censusRegister',value='-1')
+                                span.spanRadio 非沪籍
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span.star
+                            span 上课时间选择：
+                        .col-xs-7
+                            label
+                                input(type="checkbox",name='schoolTimeArray', value="1")
+                                span.week 星期一
+                            label
+                                input(type="checkbox",name='schoolTimeArray', value="2")
+                                span.week  星期二
+                            label
+                                input(type="checkbox",name='schoolTimeArray', value="3")
+                                span.week  星期三
+                            label
+                                input(type="checkbox",name='schoolTimeArray', value="3")
+                                span.week  星期四
+                            label
+                                input(type="checkbox",name='schoolTimeArray', value="5")
+                                span.week  星期五
+                            label
+                                input(type="checkbox",name='schoolTimeArray', value="6")
+                                span.week  星期六
+                            label
+                                input(type="checkbox",name='schoolTimeArray', value="7")
+                                span.week  星期日
+                .form-group
+                    .col-xs-12
+                        .col-xs-3.text-right.control-sm-label
+                            span 备注：
+                        .col-xs-7
+                            textarea.form-control(type='text',name='memo')
+                .form-group
+                    .col-xs-7.col-xs-offset-3.text-center
+                        button.btn.btn-blue.submit(type='submit') 提交
+    include ../include/footer
+//
+   Created by Administrator on 2016/3/23.

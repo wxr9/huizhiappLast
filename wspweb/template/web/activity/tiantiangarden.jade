@@ -1,0 +1,46 @@
+//
+   Created by z on 2016/11/17.
+extends ../layout
+block head
+    title  活动中心
+    link(href='/web/css/activity.css', rel='stylesheet')
+    script(src="/web/js/activitySpecial.js")
+block body
+    .html-title.activity
+    .act-content
+        .tiantian
+            h2.act-title 特惠风暴，会员享不停
+            .info
+                p
+                    span.red 1
+                    |元享天天果园
+                    span.red 15
+                    |元水果礼包（新疆阿克苏冰糖心苹果1个+橙先生脐橙1个+进口香蕉1根）
+            .detail
+                ul
+                    li
+                        span.text-muted 线上领取时间：
+                        | 2016年11月24日-2016年12月8日
+                    li
+                        span.text-muted 兑换时间：
+                        | 2016年11月24日-2016年12月8日
+                        span.red 每周二、四中午11：00-14：00
+                    li
+                        span.text-muted 兑换地点：
+                        span.red 园区第一、第二、第四、第五餐厅
+                    li
+                        span.text-muted 注意事项：
+                        | 天天果园优惠券仅限汇智e站会员领取，并在指定园区餐厅兑换使用，每个餐厅限领50份/天，先到先领
+            .detail-img
+                div.g-img
+                    div
+                        p
+                            a#getFruit.btn.btn-success 立即领取
+                            span.text-muted 天天果园水果礼包水果照 >>
+                         p.tips 已领取用户,可到个人中心通知管理中查看优惠券号码
+                    img(src="/web/images/garden.png" width="400" height="260")
+                div.g-img
+                    img(src="/web/images/garden1.png" width="400" height="120")
+                    img(src="/web/images/garden2.png" width="400" height="120")
+                    img(src="/web/images/garden3.png" width="400" height="120")
+    include ../include/footer

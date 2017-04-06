@@ -1,0 +1,33 @@
+extends ../layout
+block head
+    title  个人培训报名
+    link(href='/web/css/serviceCenter.css', rel='stylesheet')
+    script(src="/web/js/myCultivate.js")
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 个人培训
+    .container
+        ul.classShow.clearfix#cont
+    div.modal.fade#addModal(tabindex="2")
+        div.modal-dialog
+            div.modal-content.modal-contentNew
+                div.modal-header.modal-headerNew
+                    button.close(type="button", data-dismiss="modal")
+                        span &times;
+                    h4.modal-title.modal-titleNew 完善个人资料
+                div.modal-body
+                    p.modal-bodyNewp 您需要完善个人资料,才能报名。
+                div.modal-footer.modal-footerNew
+                    button.btn.btn-blue.btnSize(data-dismiss="modal") 去完善
+                    button.btn.btnSize#closeBtn(data-dismiss="modal") 关闭
+
+    include ../include/footer
+    //   Created by Administrator on 2016/3/18.
+

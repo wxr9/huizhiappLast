@@ -1,0 +1,107 @@
+//
+   Created by Administrator on 2016/3/24.
+extends ./layout
+block head
+    title 职位管理列表
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/postMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 职位管理
+        ul.nav.nav-tab.tab-two(role='tablist')
+            li.active(role='presentation')
+                a(href='#post', aria-controls='base', role='tab', data-toggle='tab') 职位
+            li(role='presentation')
+                a(href='#applyDetail', aria-controls='two', role='tab', data-toggle='tab') 应聘情况
+        .tab-content
+            #post.tab-pane.fade.in.active(role='tabpanel')
+                div
+                    a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+                table#businessTable(width="100%",cellspacing="0")
+            #applyDetail.tab-pane.fade(role='tabpanel')
+                div
+                    a.operate.upload#reset(href='javascript:;') 导出
+                table#applyTable(width="100%",cellspacing="0")
+        div.modal.fade#applyInfoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 应聘详情
+                    div.modal-body
+                        table(cellspacing="0")
+                            tbody#parkInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn2(data-dismiss="modal") 关闭
+        div.modal.fade#disableModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-body
+                        div.statusTip 您确定禁用发布吗？
+                    div.modal-footer
+                        button.btn.btn-blue#disableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#enableModal(tabindex="-1")
+            div.modal-dialog.modal-sm
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 提示
+                    div.modal-bodymeet
+                        div.statusTip 您确定启用发布吗？
+                    div.modal-footer
+                        button.btn.btn-blue#enableCfm 确认
+                        button.btn.btn-grey(data-dismiss="modal") 取消
+        div.modal.fade#infoModal(tabindex="-1")
+            div.modal-dialog
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 职位详情
+                    div.modal-body
+                        table(cellspacing="0")
+                            tbody#businessInfo.userInfo
+                    div.modal-footer
+                        button.btn.btn-blue#closeBtn(data-dismiss="modal") 关闭
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 新增职位
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                input.deleteFlag(type='hidden', name='deleteFlag')
+                                input.objectid(type='hidden', name='objectid')
+                                label.col-sm-3.control-label
+                                    span.star 职位名称:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="name")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 薪资:
+                                div.col-sm-7
+                                    input.form-control(type="string",name="money")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 薪资类别:
+                                div.col-sm-7
+                                    select.form-control#type(type="text",name="moneyTypeId")
+                                        option
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span 职位描述:
+                                div.col-sm-7
+                                    textarea#editor.form-control(rows="10",name="content",width="100%")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 保存
+                                button.btn.btn-grey(data-dismiss="modal") 取消

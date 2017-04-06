@@ -1,0 +1,49 @@
+extends ../layout
+block head
+    title  头像设置
+block body
+    header.jumbotron-purple-sm.center-vertically-sm(role='banner')
+      .container
+        hr.pageTitleLine
+        .pageTitleDiv
+          span.pageTitle 个人中心
+        hr.pageTitleLine
+    #crop-avatar.container
+      .row
+        include ../include/sidebar
+        .col-sm-9.mainContent
+          .contentTitle 头像设置
+          .content
+            form#uploadForm(method="POST", action="/Setting/User/ChangeUserFace", enctype="multipart/form-data" ,data-static="{% static ''%}" target="uploadPhoto")
+              p
+                button.btn-upload.btn-lg 浏览
+                input#cropper-input(type="file", name="upload")
+                | 点击上传图片文件，支持文件格式: JPG,PNG,BMP,GIF
+              .preview-container
+                #cropper-target.image-container.target
+                  img.noavatar(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                .large-wrapper
+                  #preview-large.image-container.large
+                    img.noavatar(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                  p 大图
+                div
+                  #preview-medium.image-container.medium
+                    img.noavatar(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                  p 中等
+                  #preview-small.image-container.small
+                    img.noavatar(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                  p 小图
+              input(type="hidden", name="x", value="{{cropContext.left}}")
+              input(type="hidden", name="y", value="{{cropContext.top}}")
+              input(type="hidden", name="w", value="{{cropContext.width}}")
+              input(type="hidden", name="h", value="{{cropContext.height}}")
+              input.btn.btn-primary.btn-lg.center-block(type="submit",value="上传")
+          iframe#photoUp(name="uploadPhoto",style="display:none;")
+          //- .col-md-3
+          //-     button.btn.btn-primary.btn-block.avatar-save(type='submit') 完成
+          // /.modal
+          // Loading state
+          .loading(aria-label='Loading', role='img', tabindex='-1')
+    include ../include/footer
+    script(src='/web/js/sidebar.js')
+    script(src='/web/js/avatarSetting.js')

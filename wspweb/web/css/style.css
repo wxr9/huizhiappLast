@@ -1,0 +1,724 @@
+/*--------------------------------------------YorikiYan-----------------------------------*/
+
+
+/*Webfont*/
+
+
+/*@font-face {
+    font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}*/
+
+
+/*@font-face {
+    font-family: 'Myriad Set Pro';
+    font-style: normal;
+    font-weight: 200;
+    src: url('/fonts/myriad-set-pro_thin.woff') format('woff');
+}
+@font-face {
+    font-family: 'Myriad Set Pro';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/myriad-set-pro_text.woff') format('woff');
+}
+@font-face {
+    font-family: 'PingHei';
+    font-style: normal;
+    font-weight: normal;
+    src: url('/fonts/PingHei-light.woff') format('woff');
+}*/
+
+
+/*-----------------------------------bootstrap修改-------------------------------------*/
+.container{
+    width:1170px !important;
+}
+
+/*表格*/
+
+.table>thead>tr>th {
+    border-bottom: none;
+}
+.table>thead>tr>th,
+.table>tbody>tr>th,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>tbody>tr>td,
+.table>tfoot>tr>td {
+    border-top: 1px solid #eee;
+}
+
+/*dataTable刷新数据时，不让列宽度改变*/
+
+table.dataTable,
+table.dataTable th,
+table.dataTable td {
+    box-sizing: content-box;
+}
+
+/*------------------------------font-awesone-------------------------------*/
+
+.fa-lg {
+    font-size: 11rem;
+}
+.fa-1 {
+    font-size: 3.6rem;
+}
+.fa-2 {
+    font-size: 2.4rem;
+}
+.fa-3 {
+    font-size: 2rem;
+}
+.fa-4 {
+    font-size: 1.6rem;
+}
+.fa-5 {
+    font-size: 1.4rem;
+}
+.fa-6 {
+    font-size: 1.2rem;
+}
+
+/*-------------------------------------全局---------------------------------*/
+
+
+/*配色*/
+
+
+/*谷歌核心色*/
+
+
+/*
+汇智橙 #FF8A24 汇智蓝 #1E68A7
+红 #E91E63
+蓝 #03A9F4
+*/
+
+html {
+    font-family: 'sans-serif';
+    font-size: 62.5%;
+    font-weight: normal;
+    height: 100%;
+}
+body {
+    font-family:
+    'Pingfang SC',
+    'Helvetica Neue',
+    'Segoe UI',
+    'Helvetica',
+    'Arial',
+    'Lantinghei SC',
+    '微软雅黑',
+    'Heiti SC' ,
+    '华文细黑',
+    'sans-serif';
+    font-size: 1.4em;
+    font-weight: normal;
+    color: #666;
+    line-height: 1.428571429;
+    letter-spacing: .2em;
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    background-color: #fafafa;
+    word-break:break-all;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #333;
+    font-weight: 200;
+}
+/*h1,*/
+/*.h1 {*/
+    /*font-size: 5.4rem;*/
+/*}*/
+/*h2,*/
+/*.h2 {*/
+    /*font-size: 4.5rem;*/
+/*}*/
+/*h3,*/
+/*.h3 {*/
+    /*font-size: 3.6rem;*/
+/*}*/
+/*h4,*/
+/*.h4 {*/
+    /*font-size: 3.2rem;*/
+/*}*/
+/*h5,*/
+/*.h5 {*/
+    /*font-size: 2.7rem;*/
+/*}*/
+/*h6,*/
+/*.h6 {*/
+    /*font-size: 1.8rem;*/
+/*}*/
+/*p {*/
+    /*font-size: 1.6rem;*/
+    /*text-align: justify;*/
+    /*text-justify: inter-ideograph;*/
+/*}*/
+/*small {*/
+    /*font-size: 1.2rem;*/
+/*}*/
+em {
+    font-style: normal;
+}
+
+/*首行缩进*/
+
+.indent {
+    text-indent: 2em;
+}
+
+/*超链接*/
+
+a {
+    color: #0088cc;
+    -webkit-transition: color 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    /*过渡效果-字体颜色变化*/
+    transition: color 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+a:hover {
+    color: rgb(50, 170, 230);
+    text-decoration: none;
+}
+
+/*默认的分割线*/
+
+hr {
+    box-sizing: content-box;
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin-top: -1px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/*默认分割线加深1*/
+
+hr.d1 {
+    box-sizing: content-box;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: -1px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/*可用于title上部，增加设计感*/
+
+hr.designLine {
+    box-sizing: content-box;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin-top: -1px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/*主色调分割线*/
+
+hr.firstColor {
+    box-sizing: content-box;
+    border: 0;
+    border-top: 1px solid #eee;
+    margin-top: -1px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* 水平线（中间开始往两边渐变） */
+
+hr.linear-center {
+    box-sizing: content-box;
+    border: none;
+    height: 1px;
+    background-color: #e3e3e3;
+    background-image: -webkit-linear-gradient(0deg, #fff, #ccc, #fff)
+}
+
+/* 水平线（向右渐变） */
+
+hr.linear-right {
+    box-sizing: content-box;
+    border: none;
+    height: 1px;
+    background-color: #e3e3e3;
+    background-image: -webkit-linear-gradient(0deg, #ccc, #fff)
+}
+
+/* 水平线（向左渐变） */
+
+hr.linear-left {
+    box-sizing: content-box;
+    border: none;
+    height: 1px;
+    background-color: #e3e3e3;
+    background-image: -webkit-linear-gradient(180deg, #ccc, #fff)
+}
+
+/*容器中有右浮动的按钮*/
+
+.has-ftr-btn h1,
+.has-ftr-btn h2,
+.has-ftr-btn h3,
+.has-ftr-btn h4,
+.has-ftr-btn h5,
+.has-ftr-btn h6,
+.has-ftr-btn p {
+    display: inline;
+}
+.has-ftr-btn button {
+    float: right;
+}
+map area {
+    outline: none;
+}
+
+/*--------------------------------------------大背景-----------------------------------------*/
+
+
+/*相对于浏览器屏幕进行定位*/
+
+.fixed-backgroundImage {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    /*background-image: url(/img/xxx);*/
+    background-size: cover;
+    background-position: center;
+}
+
+/*相对于浏览器屏幕进行定位(蒙版)*/
+
+.fixed-opacity-black {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.44);
+}
+
+/*相对于上级非static容器进行定位*/
+
+.absolute-backgroundImage {
+    position: absolute;
+    /*如果不是全屏，不需要以下*/
+    z-index: -2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*如果不是全屏，不需要以上*/
+    /*background-image: url(/img/xxx);*/
+    background-size: cover;
+    background-position: center;
+}
+
+/*相对于上级非static容器进行定位(蒙版)*/
+
+.absolute-opacity-black {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.44);
+}
+
+/*放在section中，用作背景*/
+
+.hero {
+    /*background: url(/img/xxx) no-repeat center center;*/
+    background-size: cover;
+}
+
+/*视差滚动*/
+
+.parallax {
+    background-attachment: fixed !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/*-----------------------------------------排版---------------------------------------*/
+
+
+/*页面分为一屏幕一屏幕的section时的上下间隔*/
+
+.section-fullscreen {
+    height: 100%;
+}
+.section-head {
+    height: 600px;
+}
+.section-padding {
+    padding: 150px 0 150px;
+}
+.section-foot {
+    padding: 150px 0 150px;
+}
+
+/*居中用max-width和margin左右auto实现（文字用text-align）*/
+
+.centerElement {
+    max-width: 70px;
+    margin: 20px auto;
+}
+
+/*flex实现多列等距排列*/
+
+.flexbox-wrap {
+    position: relative;
+    display: -webkit-flex;
+    -moz-display: flex;
+    -ms-display: -ms-flexbox;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    margin: 0 auto;
+    padding: 0;
+    max-width: 1200px;
+    list-style: none;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+.flexbox-wrap .flexbox-item {
+    position: relative;
+    z-index: 1;
+    display: inline;
+    float: inherit;
+    text-align: center;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    flex: 1;
+}
+
+/*----------------------------------按钮---------------------------------*/
+
+
+/*默认按钮*/
+
+.btn-default{
+    color: #666;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    -webkit-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    outline:none;
+}
+.btn-default:hover{
+    color: #666;
+    border: 1px solid #afafaf;
+    background-color: #e6e6e6;
+    outline:none;
+}
+.btn-default:focus{
+    color: #666;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    outline:none;
+}
+.btn-default:disabled {
+    color: #ccc;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    outline:none;
+}
+/*蓝色按钮*/
+.btn-bg-blue{
+    color:#fff;
+    background-color:#258dda;
+    border:1px solid #258dda;
+    -webkit-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+
+}
+.btn-bg-blue:hover,.btn-bg-blue:focus{
+    color:#fff;
+    border:1px solid #1f6ea9;
+    background: #1f6ea9;
+    box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.06);
+}
+.btn-bg-blue:disabled{
+    background-color: rgba(137, 215, 255, 0.71);
+}
+.btn-blue{
+    color: #259dda;
+    border: 1px solid #259dda;
+    background:#fff;
+    -webkit-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.btn-blue:hover{
+    color: #fff;
+    border:1px solid #259dda;
+    background:#259dda;
+    box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.06);
+}
+.btn-blue:focus{
+    color:#fff;
+    border:1px solid #1f90ca;
+    background: #1f90ca;
+    box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.06);
+}
+.btn-blue:disabled{
+    color:#fff;
+    border:none;
+    background: rgb(126, 211, 255);
+}
+
+
+/*橙色按钮*/
+.btn-bg-orange{
+    color:#fff;
+    background-color: #fe8349;
+    border:1px solid #fe8349;
+    -webkit-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+
+}
+.btn-bg-orange:hover,.btn-bg-orange:focus{
+    color:#fff;
+    border:1px solid #ec773f;
+    background-color: #ec773f;
+    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.07);
+}
+.btn-bg-orange:disabled{
+    background-color: #fdba95;
+}
+.btn-orange {
+    color: #fe8349;
+    border: solid 1px #fe8349;
+    background-color:#fff;
+    -webkit-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.btn-orange:hover {
+    color: #ffffff;
+    background-color: #fe8349;
+}
+.btn-orange:focus {
+    background-color: #ec773f;
+    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.07);
+    color:#fff;
+}
+.btn-orange:disabled{
+    backgroud-color:#fdba95;
+    color:#fff;
+}
+/*********red**********/
+.btn-bg-red{
+    color:#fff;
+    background-color: #ff5c5c;
+    border:1px solid #ff5c5c;
+    -webkit-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+
+}
+.btn-bg-red:hover,.btn-bg-red:focus{
+    color:#fff;
+    border:1px solid #ed4d4d;
+    background-color: #ed4d4d;
+    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.06);
+}
+.btn-bg-red:disabled{
+    background-color: #ff9b9b;
+}
+.btn-red{
+    color:#ff5c5c;
+    border: solid 1px #ff5c5c;
+    background-color:#fff;
+    -webkit-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    -moz-transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+    transition: all 0.3s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.btn-red:hover{
+    color:#fff;
+    background-color: #ff5c5c;
+}
+.btn-red:focus{
+    color:#fff;
+    background-color: #ed4d4d;
+    box-shadow: inset 0 1px 0 0 rgba(0, 0, 0, 0.06);
+}
+.btn-red:disabled{
+    color:#fff;
+    background-color: #ff9b9b;
+}
+.btn.btn-big{
+    padding:8px 20px;
+}
+
+/*---------------------------------表单--------------------------------*/
+
+
+/*输入项为焦点时，蓝色框边投影*/
+
+.form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+/*输入项placeholder的样式*/
+
+.form-control::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 1;
+}
+.form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+.form-control:focus::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+}
+.form-control:focus:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+.form-control:focus::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/*---------------------------------------------特效-----------------------------------------*/
+
+/*.blur {*/
+    /*-webkit-filter: blur(4px);*/
+/*}*/
+
+/*框白色阴影*/
+
+.whiteShadow-div {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 12px rgba(255, 255, 255, 1);
+}
+
+/*文字白色阴影*/
+
+.whiteShadow-text {
+    text-shadow: 0 0 12px rgba(255, 255, 255, 1);
+}
+
+/*圆圈*/
+
+.block-circle::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -60px 0 0 -60px;
+    width: 120px;
+    height: 120px;
+    border: 1px solid #F08750;
+    border-radius: 50%;
+    content: '';
+    opacity: 1;
+}
+
+/*向下的箭头*/
+
+.arrow-down:before {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.6);
+    border-left: 2px solid rgba(255, 255, 255, 0.6);
+    content: '';
+    display: block;
+    height: 4em;
+    margin: -1.25em auto 0 auto;
+    width: 4em;
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-transition: border-color 0.2s;
+    transition: border-color 0.2s;
+}
+.arrow-down:hover:before {
+    color: #fff;
+}
+/*统一提交按钮大小*/
+.submit{font-size: 14px;letter-spacing: 2.4px;width:80px;}
+
+/************************* 网站统一标题样式******************************/
+.html-title{
+    width:100%;
+    background-repeat:no-repeat;
+    background-position:center;
+    height:160px;
+    margin-bottom:30px;
+}
+.html-title.service{
+    background-color:#52b3de;
+    background-image:url('/web/images/title_se.jpg');
+}
+.html-title.life{
+    background-color:#ffa31a;
+    background-image:url('/web/images/title_life.jpg');
+}
+.html-title.activity{
+    background-color:#8591ff;
+    background-image:url('/web/images/title_act.jpg');
+}
+.html-title.mywiz{
+    background-color:#ff5c5d;
+    background-image:url('/web/images/title_mywiz.jpg');
+}
+
+/****************************面包屑导航 *********************/
+.bread-crumb{
+    margin-bottom:25px;
+    margin-left:-15px;
+}
+.bread-crumb .icon{
+    position: relative;
+    top: 2px;
+    padding-left:20px;
+    background: url(/web/images/sprite_icon.png) no-repeat -160px -150px;
+}
+.bread-crumb a{
+    font-size:14px;
+    color:#666;
+}
+.bread-crumb a:hover{
+    text-decoration:underline;
+}
+.bread-crumb a:last-child{
+    color:#02aaf5;
+    cursor:default;
+    text-decoration: none;
+}
+.bread-crumb span{
+    font-size:16px;
+    color:#888;
+}

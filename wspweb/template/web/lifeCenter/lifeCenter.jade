@@ -1,0 +1,66 @@
+extends ../layout
+block head
+    title  生活中心
+    link(rel='stylesheet' href='/web/css/lifeCenter.css')
+block body
+    .html-title.life
+    .container
+        .row
+            .col-xs-12.life-header
+                input.searchBox#searchName(placeholder="请输入要查询的商户名称")
+                a.searchBtn.fa.fa-search
+            .col-xs-4#search
+                ul.search-list
+                    li
+                        a(href="#")
+                            span.search-link
+                            span 美食
+                    li
+                        a(href="#")
+                            span.search-link
+                            span 休闲娱乐
+                    li
+                        a(href="#")
+                            span.search-link
+                            span 亲子
+                    li
+                        a(href="#")
+                            span.search-link
+                            span 购物
+                    li
+                        a(href="#")
+                            span.search-link
+                            span 生活
+            .col-xs-8
+                #carousel.carousel.slide(data-ride="carousel",data-interval='5000')
+                    ol.carousel-indicators
+                        li.active(data-target='#carousel' data-slide-to='0')
+                        li(data-target='#carousel' data-slide-to='1')
+                    .carousel-inner
+                        .item.active
+                            a(href='/web/myWiz.html')
+                                img(src='/web/images/Rectangle4.png')
+                            .carousel-caption
+                                h3 默认图片1
+                        .item
+                            img(src='/web/images/Rectangle4.png')
+                            .carousel-caption
+                                h3 默认图片2
+                    a.left.carousel-control(href='#carousel' data-slide='prev')
+                        span.fa.fa-chevron-left
+                    a.right.carousel-control(href='#carousel' data-slide='next')
+                        span.fa.fa-chevron-right
+        .row
+            .col-xs-12.product-info-title
+                .product-mark
+                    span.mark-icon
+                    span 优惠信息
+                .product-more
+                    a(href="/web/lifeCenter/preferentialList.html").btn.btn-default 查看更多
+        .row.product-info#product-info
+            .product-box
+                .product-item.product-item-all
+                    a(href="/web/lifeCenter/merchantList.html").all-link 查看全部
+        .row#product-list
+    include ../include/footer
+    script(src="/web/js/lifeCenter/lifeCenter.js")

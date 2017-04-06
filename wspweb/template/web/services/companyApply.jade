@@ -1,0 +1,122 @@
+extends ../layout
+block head
+    title  企业培训申请
+    link(href='/web/css/apply.css', rel='stylesheet')
+block body
+    .html-title.service
+    .container
+        .bread-crumb
+            span.icon
+            a(href='/') 首页
+            span &gt;
+            a(href='/web/serviceCenter.html') 服务中心
+            span &gt;
+            a(href='javascript:void(0)') 企业培训申请
+    .container.bg_white.huntApply
+        .col-xs-12
+            p.msg#notice
+        .col-xs-12
+            form.form-horizontal#form(name="form",role="form",method="POST")
+                .col-xs-12
+                    label.read
+                        input#mustRead(type='checkbox',name='mustRead')
+                        span 已阅读
+                div.form-group
+                    .col-xs-11
+                        label.col-xs-3.control-label
+                            span.star
+                            span 姓名：
+                        div.col-xs-8
+                            input.form-control(type='text',name='chineseName')
+                div.form-group
+                    .col-xs-11
+                        label.control-label.col-xs-3 E-mail：
+                        div.col-xs-8
+                            input.form-control(type='text',name='email', placeholder='请输入邮箱')
+                div.form-group
+                    .col-xs-11
+                        label.col-xs-3.control-label
+                            span.star
+                            span 公司名称：
+                        div.col-xs-8
+                            input.form-control(type='text',name='company',placeholder='请输入公司名称')
+                div.form-group
+                    .col-xs-11
+                        label.control-label.col-xs-3
+                            span.star
+                            span 联系方式：
+                        div.col-xs-8
+                            input.form-control(type='text',name='phone')
+                div.form-group
+                    .col-xs-11
+                        label.control-label.col-xs-3
+                            span.star
+                            span 公司地址：
+                        div.col-xs-8
+                            input.form-control(type='text',name='companyAddress')
+                div.form-group
+                    .col-xs-11
+                        label.control-label.col-xs-3
+                            span.star
+                            span 业务方向：
+                        div.col-xs-8
+                            select.form-control#businessType(name='businessType')
+                div#cont
+                    .bg_gray.clearfix
+                        .col-xs-11
+                            .mt11.clearfix.form-group
+                                label.control-label.col-xs-3
+                                    span.star
+                                    span 培训需求项目：
+                                .col-xs-8
+                                    select#priojectidArray.form-control(name='priojectidArray')
+                                    p#tip
+                            .mt11.clearfix.form-group
+                                label.control-label.col-xs-3
+                                    span.star
+                                    span 培训项目人数：
+                                .col-xs-8
+                                    input.form-control(type='text',name='peoplesArray')
+                        div.con-sm-2
+                            a.addBtn1.fl(href='javascript:;')
+                                i.fa.fa-plus-circle(aria-hidden="true")
+                            a.delBtn1.fl(href='javascript:;')
+                                i.fa.fa-minus-circle(aria-hidden="true")
+                div.form-group
+                    .col-xs-11
+                        label.control-label.col-xs-3 附件：
+                        div.col-xs-8
+                            input.form-control#accessory(type='file',name='accessory')
+                            p(style="letter-spacing:1px") 提示：文件格式为.doc/.docx/.pdf/.html/.zip/.rar/.7z/.iso，上限10M;
+                div.form-group
+                    .col-xs-11
+                        label.control-label.col-xs-3 培训需求描述：
+                        div.col-xs-8
+                            textarea.form-control(type='text',name='content',rows='5')
+                div.form-group
+                    .col-xs-11
+                        label.control-label.col-xs-3 备注：
+                        .col-xs-8
+                            textarea.form-control(type='text',name='memo',rows='5')
+                div.display_n#comment
+                    .col-xs-11
+                        .col-xs-3.text-right
+                            label.control-label 评价信息：
+                        .col-xs-9
+                            .col-xs-5
+                                p#comment1
+                            .col-xs-2.ratingScore.ratingScore-duration
+                                span#duration
+                                p.ratingText 响应速度
+                            .col-xs-2.ratingScore.ratingScore-attitude
+                                span#attitude
+                                p.ratingText 服务态度
+                            .col-xs-2.ratingScore.ratingScore-quality
+                                span#quality
+                                p.ratingText 服务质量
+                div.form-group
+                    .col-xs-11
+                        .col-xs-8.col-xs-offset-3.text-center
+                            button.btn.btn-blue.submit(type="submit") 提交
+    include ../include/footer
+    script(src="/web/js/companyApply.js")

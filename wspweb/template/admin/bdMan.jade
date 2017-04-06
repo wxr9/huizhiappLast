@@ -1,0 +1,90 @@
+//
+extends ./layout
+block head
+    title 广告栏管理
+    link(rel="stylesheet", href="/admin/css/index.css")
+    script(src="/admin/js/bdMan.js")
+block body
+    .col-xs-9.content
+        .pagetitle 广告栏管理
+        div#adman
+            a.operate#add(data-toggle="modal" data-target="#addModal") +新增
+            a.operate(href='/web/lifeCenter/lifeCenter.html' target="_blank") 预览
+        table#memberTable(width="100%",cellspacing="0")
+        div.modal.fade#addModal(tabindex="-1")
+            div.modal-dialog.modal-lg
+                div.modal-content
+                    div.modal-header
+                        button.close(type="button", data-dismiss="modal")
+                            span &times;
+                        h4.modal-title 发布广告
+                    div.modal-body
+                        form.form-horizontal.userform#addForm(name="addForm")
+                            div.form-group
+                                input.objectid(type='hidden', name='objectid')
+                                input(type='hidden', name='isBan')
+                                label.col-sm-3.control-label
+                                    span.star 标题:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="title")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 排序:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="orderA")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 图片:
+                                div.col-sm-7.upload-box
+                                    input.btn.input#input(type="file")
+                                    button.btn.btn-blue.fakeInput#fakeInput(type="button")
+                                        | 选择图片
+                                    button.btn.btn-orange.uploadImg.disabled#uploadImg(type='button')
+                                        | 上传图片
+                                    span.upload-tip 图片上传成功
+                                div.col-sm-offset-3.col-sm-9
+                                    small *支持图片格式:"jpg,jpeg,png",建议图片尺寸为750*250px；
+                                div.col-sm-offset-3.col-sm-9
+                                    input#realInput(type='hidden',name='imgUrl')
+                            div.form-group.image-box
+                                div.col-xs-8
+                                    div(style="width:580px;")
+                                        img#image.cropImage(src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7")
+                                div.col-xs-4
+                                    div.page-header
+                                        | 裁剪预览：
+                                    div.preview(style="width:255px;height:85px;background:#eee;")
+                                //div.col-sm-7
+                                //    input#fileUpload.form-control(type="file", name='imgUrl')
+                                //    p(style='font-size:12px;') *建议图片尺寸为810*250px
+                            div.form-group
+                                        label.col-sm-3.control-label
+                                            span.star 发布单位:
+                                        div.col-sm-7
+                                            select#type.form-control(name="merchantId")
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span.star 是跳转:
+                                div.col-sm-7
+                                    label
+                                        input(type="radio",name="isShow",value='1')
+                                        | 不跳转
+                                    label
+                                        input(type="radio",name="isShow",value='2')
+                                        | 跳转至链接
+                                    label
+                                        input(type="radio",name="isShow",value='3')
+                                        | 跳转至内容
+                            div.form-group
+                                label.col-sm-3.control-label
+                                    span 内容:
+                                div.col-sm-7
+                                    textarea#editor.form-control(rows="10",name="content",width="100%")
+                            div.form-group
+                                label.col-sm-3.control-label 跳转链接:
+                                div.col-sm-7
+                                    input.form-control(type="text",name="linkA")
+                            div.form-group.submitBtn
+                                button.btn.btn-blue(type="submit") 保存
+                                button.btn.btn-grey(data-dismiss="modal") 取消
+
