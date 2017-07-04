@@ -1,0 +1,20 @@
+/*服务中心*/
+.service-image {
+  height: 4rem !important;
+  width: 4rem !important;
+  border-top: 1rem groove lightslategray;
+}
+
+/*服务维修*/
+.example-input .ant-input {
+  width: 300px;
+  margin: 0 8px 8px -3px;
+  float:left
+}
+.example-input-line {
+  float:left
+}
+
+.drop-down-select{
+  width: 200px;
+}
