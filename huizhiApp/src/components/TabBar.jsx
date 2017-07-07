@@ -65,7 +65,7 @@ const Text = () => (
       />
       <TabPane
         tab={
-          <Link className="tabSelect" to="index/personcenter">
+          <Link className="tabSelect" to="index/pay">
             {/*// TODO-ICON*/}
             <Icon type={require('../assets/home/scan.svg')} className="tabSelect-icon" />
             {/*<img src={require('../assets/17.png')} className="tabSelect_img"/>*/}

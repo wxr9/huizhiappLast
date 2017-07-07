@@ -39,46 +39,8 @@ class Nav extends React.Component {
             top: '0',
             width: '100%',
           }}
-          leftContent={'返回'} mode="light" onLeftClick={() => history.goBack()}
-          rightContent={
-            <Popover
-              mask
-              overlayClassName="fortest"
-              overlayStyle={{ color: 'currentColor' }}
-              visible={this.state.visible}
-              overlay={[
-                       (<Item
-                         key="4" value="scan" icon={<Icon type="ellipsis" size="xs" />}
-                         data-seed="logId"
-                       >刷新</Item>),
-                       (<Item
-                         key="5" value="special" icon={<Icon type="ellipsis" size="xs" />}
-                         style={{ whiteSpace: 'nowrap' }}
-                       >确定</Item>),
-                       (<Item key="6" value="button ct" icon={<Icon type="ellipsis" size="xs" />}>
-                         <span style={{ marginRight: 5 }}>取消</span>
-                       </Item>),
-              ]}
-              align={{
-                overflow: { adjustY: 0, adjustX: 0 },
-                offset: [offsetX, 15],
-              }}
-              onVisibleChange={this.handleVisibleChange}
-              onSelect={this.onSelect}
-            >
-              <div
-                style={{
-                  height: '100%',
-                  padding: '0 0.3rem',
-                  marginRight: '-0.3rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                <Icon type="ellipsis" />
-              </div>
-            </Popover>
-          }
+          leftContent={''} mode="light" onLeftClick={() => history.goBack()}
+
         >
           <div style={{ color: 'white' }}>{this.props.title}</div>
         </NavBar>

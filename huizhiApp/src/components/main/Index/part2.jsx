@@ -53,7 +53,7 @@ class part2 extends React.Component {
           </Link>
         </li>
         <li>
-          <Link className="index_link" to="index/instructionBinding">
+          <Link className="index_link" to="index/instruction">
             {/*// TODO-ICON*/}
             <Icon type={require('../../../assets/home/home-ship.svg')}  className="index_Icon"/>
             {/*<img src={require('../../assets/09.png')} />*/}

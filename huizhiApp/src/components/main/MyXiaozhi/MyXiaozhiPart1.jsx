@@ -3,6 +3,7 @@ import { List, WingBlank, Card, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Link } from 'react-router';
 
+import './MayXiaozhi.less'
 // 我的小智面板
 class MyXiaozhiPart1 extends React.Component {
   constructor(props) {
@@ -16,34 +17,28 @@ class MyXiaozhiPart1 extends React.Component {
     const { getFieldProps } = this.props.form;
 
     return (
-      <WingBlank
-        style={{
-          marginTop: '5px',
-        }} size="sm"
-      >
-        <List>
+        <List className="MyXiaozhi_list">
           <Card>
-            <div style={{textAlign:'center',margin:'10px,10px,10px,0'}}>汇智卡号：1234***9123</div>
-            <div style={{margin:'10px'}}>
+            <div className="MyXiaozhi_cardNo" >汇智卡号：1234***9123</div>
+
               <Flex>
                 <Flex.Item>
-                  <div style={{textAlign:'center'}}>电子钱包余额</div>
-                  <div style={{textAlign:'center',borderWidth:'1px',borderStyle:'dashed',borderColor:'#ffaa00',marginLeft:'15%',marginRight:'15%',marginTop:'5px'}}>
-                    <div style={{margin:'5px',padding:'10px',backgroundColor:'#e1e1e5'}}>***</div>
+                  <div className="MyXiaozhi_money" >电子钱包余额</div>
+                  <div className="MyXiaozhi_money_bg" >
+                    <div className="MyXiaozhi_money_hidden" >***</div>
                   </div>
                 </Flex.Item>
-                <Flex.Item>
-                  <div style={{textAlign:'center'}}>主账户余额</div>
-                  <div style={{textAlign:'center',borderWidth:'1px',borderStyle:'dashed',borderColor:'#ffaa00',marginLeft:'15%',marginRight:'15%',marginTop:'5px'}}>
-                    <div style={{margin:'5px',padding:'10px',backgroundColor:'#e1e1e5'}}>***</div>
+                <Flex.Item  className="MyXiaozhi_Flex">
+                  <div className="MyXiaozhi_money">主账户余额</div>
+                  <div className="MyXiaozhi_money_bg" >
+                    <div className="MyXiaozhi_money_hidden">***</div>
                   </div>
                 </Flex.Item>
               </Flex>
-            </div>
-            <Card.Footer style={{textAlign:'center'}} content={'（以卡内实际金额为准，单位：元）'} />
+
+            <Card.Footer className="MyXiaozhi_money" content={'（以卡内实际金额为准，单位：元）'} />
           </Card>
         </List>
-      </WingBlank>
     );
   }
 }

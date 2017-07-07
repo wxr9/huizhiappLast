@@ -14,17 +14,27 @@ function checkStatus(response) {
   throw error;
 }
 
-/**
- * Requests a URL, returning a promise.
- *
- * @param  {string} url       The URL we want to request
- * @param  {object} [options] The options we want to pass to "fetch"
- * @return {object}           An object containing either "data" or "err"
- */
-export default function request(url, options) {
-  return fetch(url, options)
+//post请求
+export default function request(url,params, options) {
+  return fetch(url, {
+    method: 'POST',
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body: params
+  })
     .then(checkStatus)
     .then(parseJSON)
-    .then(msg => ({ msg }))
-    .catch(success => ({ success }));
+    .then(msg => ({msg}))
+    .catch(success => ({success}));
 }
+
+//get请求
+// export function requestGet(url, options) {
+//   return fetch(url, options)
+//     .then(checkStatus)
+//     .then(parseJSON)
+//     .then(msg => ({ msg }))
+//     .catch(success => ({ success }));
+// }

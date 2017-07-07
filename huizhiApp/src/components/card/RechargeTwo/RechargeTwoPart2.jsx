@@ -2,7 +2,7 @@ import { WingBlank, List, Button, Radio } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
 import { Link } from 'react-router';
-
+import './recharge2.less';
 const RadioItem = Radio.RadioItem;
 
 // 充值（第2步）
@@ -31,21 +31,17 @@ class RechargeTwoPart2 extends React.Component {
     ));
     return (
       <div>
-        <WingBlank>
+        <WingBlank className="recharge-wingBlank">
           <List renderHeader={() => '请选择支付方式'} className="my-list">
             <div>
               {data}
             </div>
           </List>
         </WingBlank>
-        <div className="btn-container" style={{ marginTop: '10px' }}>
+        <div className="btn-container">
           <Link to="RechargeThree">
             <Button
-              className="btn" type="primary" onClick={() => {
-              }}
-              style={{
-                background: '#259dda',
-                fontSize: '1em',
+              className="recharge-next-btn" type="primary" onClick={() => {
               }}
             >确定</Button>
           </Link>

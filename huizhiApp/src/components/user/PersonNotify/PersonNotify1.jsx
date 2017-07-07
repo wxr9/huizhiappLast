@@ -53,11 +53,11 @@ class PersonNotify1 extends React.Component {
               }
             </div>
           </TabPane>
-          <TabPane tab="回应" key="2">
-            <div className="personNotify_par1_div_huiying">
-              选项卡二内容
-            </div>
-          </TabPane>
+          {/*<TabPane tab="回应" key="2">*/}
+            {/*<div className="personNotify_par1_div_huiying">*/}
+              {/*选项卡二内容*/}
+            {/*</div>*/}
+          {/*</TabPane>*/}
         </Tabs>
         <WhiteSpace />
       </div>

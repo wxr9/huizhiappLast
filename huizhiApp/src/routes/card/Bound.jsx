@@ -9,13 +9,11 @@ class Bound extends React.Component {
 
   render() {
     return (
-      <div style={{ marginTop: '20px' }}>
         <div>
           <BoundPart1 />
           <BoundPart2 />
           <BoundPart3 />
         </div>
-      </div>
     );
   }
 }

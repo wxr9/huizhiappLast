@@ -1,79 +1,107 @@
-import { WingBlank, SegmentedControl, Checkbox, Picker, List, Button, Tag } from 'antd-mobile';
-import { createForm } from 'rc-form';
+import {WingBlank, SegmentedControl, Checkbox, Picker, List, Button, Tag} from 'antd-mobile';
+import {createForm} from 'rc-form';
 import React from 'react';
-import { Link } from 'react-router';
+import {Link} from 'react-router';
+
+import './recharge1.less';
+import request from '../../../utils/request';
+import config from '../../../config';
 
 const Item = List.Item;
 const AgreeItem = Checkbox.AgreeItem;
 
 var money = 50;
+var discount = 0;
 const hongbao = [
   {
     label: '49.7元（2017-7-20到期）',
-    value: '49.7',
+    value: 49.7,
   },
   {
     label: '86.7元（2017-7-20到期）',
-    value: '86.7',
+    value: 86.7,
   }
 ];
-
 // 充值
 class RechargePart2 extends React.Component {
+  state={
+    checked:false,
+    disabled:false,
+  }
+
+  //金额选择后将支付的实际金额改变
   onValueChange = (value) => {
-    if (value=='￥50'){
-      money = 50;
-    }else if (value=='￥100'){
-      money = 100;
-    }else if (value=='￥200'){
-      money = 200;
-    }else{
-      money = 500;
+    if (value == '￥50') {
+      money = (50*100 - discount*100)/100;
+    } else if (value == '￥100') {
+      money = (100*100 - discount*100)/100;
+    } else if (value == '￥200') {
+      money = (200*100 - discount*100)/100;
+    } else {
+      money = (500*100 - discount*100)/100;
     }
+    console.log(discount);
     console.log(money);
   }
-  useHongbao(){
-
+  //使用红包的checkbox
+  useHongbao(e) {
+    if(e.target.checked){
+      this.state.disabled=false;
+      console.log("使用红包"+this.state.disabled);
+    }else {
+      this.state.disabled=true;
+      console.log(this.state.disabled);
+    }
+  }
+  onOk(e){
+    discount= e;
+    console.log(discount);
   }
   render() {
-    const { getFieldProps } = this.props.form;
+    const {getFieldProps} = this.props.form;
+    //选择红包金额
+    const rechanrgeMoneys = ['￥50', '￥100', '￥200', '￥500'];
     return (
-      <div>
-        <WingBlank style={{marginTop:'10px'}}>
-          <div>用户名：</div>
+      <form>
+        <WingBlank className="recharge-wingBlank">
+          <div className="recharge-wingBlank-card">用户名：</div>
           <List>
-            <Item disabled="true">ptyh</Item>
+            <Item className="recharge-list-item" disabled="true">ptyh</Item>
           </List>
           <div>充值金额：</div>
-          <SegmentedControl
-            values={['￥50', '￥100', '￥200', '￥500']}
-            style={{ height: '0.8rem'}}
+          <SegmentedControl className="recharge-segment"
+            values={rechanrgeMoneys}
+            {...getFieldProps('segment')}
             onValueChange={this.onValueChange}
           />
-          <AgreeItem data-seed="logId" onChange={this.useHongbao()}>
+          <AgreeItem className="recharge-checkbox-agree"
+                     data-seed="logId"
+                     {...getFieldProps('agreeItem')}
+                     onChange={(e)=>this.useHongbao(e)}>
             使用红包
           </AgreeItem>
-          <Picker disabled={false} data={hongbao} cols={1} {...getFieldProps('district3')} className="forss">
-            <List.Item arrow="horizontal">选择红包（单列）</List.Item>
+          <Picker
+            disabled={this.state.disabled}
+            data={hongbao}
+            cols={1}
+            onOk={(e) => this.onOk(e)}
+            {...getFieldProps('district3')}
+            className="forss">
+            <List.Item className="recharge-list-item" arrow="horizontal">选择红包</List.Item>
           </Picker>
-          <div>实际金额：{money}元</div>
+          <div className="recharge-wingBlank-money">实际金额：{money}元</div>
         </WingBlank>
-        <div className="btn-container" style={{ marginTop: '10px' }}>
+        <div className="recharge-btn-container">
           <Link to="RechargeTwo">
             <Button
-              className="btn" type="primary" onClick={() => {
+              className="recharge-next-btn" type="primary" onClick={() => {
             }}
-              style={{
-                background: '#259dda',
-                fontSize: '1em',
-              }}
             >下一步</Button>
           </Link>
         </div>
-      </div>
+      </form>
     );
   }
 }
-
 const RechargePart2Wrapper = createForm()(RechargePart2);
 export default RechargePart2Wrapper;

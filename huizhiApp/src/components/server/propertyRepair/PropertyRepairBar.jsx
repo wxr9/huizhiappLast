@@ -29,18 +29,18 @@ class ServiceRepairForm extends React.Component {
     return (
       <div>
         <List renderHeader={() => '基本信息'}>
-          <InputItem
+          <InputItem className="server-list-item"
             {...getFieldProps('phone')}
             type="phone"
             placeholder="186 1234 1234"
           >手机号码</InputItem>
-          <InputItem
+          <InputItem className="server-list-item"
             {...getFieldProps('company')}
             clear
             placeholder="请输入公司名称"
             autoFocus
           >公司名称</InputItem>
-          <InputItem
+          <InputItem className="server-list-item"
             {...getFieldProps('fixedPhone')}
             type="phone"
           >固定电话</InputItem>
@@ -77,12 +77,6 @@ class ServiceRepairForm extends React.Component {
           >
             <List.Item arrow="horizontal">报修时间</List.Item>
           </DatePicker>
-          <ImagePicker
-          files={files}
-          onChange={this.onChange}
-          onImageClick={(index, fs) => console.log(index, fs)}
-          selectable={files.length < 5}
-          />
           <TextareaItem
             title="报修描述"
             {...getFieldProps('district9')}
@@ -109,6 +103,14 @@ class ServiceRepairForm extends React.Component {
               });
             }}
           />
+        </List>
+        <List renderHeader={() => '报修照片'}>
+        <ImagePicker
+          files={files}
+          onChange={this.onChange}
+          onImageClick={(index, fs) => console.log(index, fs)}
+          selectable={files.length < 5}
+        />
         </List>
       </div>
     );

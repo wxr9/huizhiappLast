@@ -1,6 +1,7 @@
 import { Steps, WhiteSpace } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
+import './recharge1.less';
 
 const Step = Steps.Step;
 
@@ -22,7 +23,7 @@ class RechargePart1 extends React.Component {
     return (
       <div>
         <WhiteSpace />
-        <Steps current={num} direction="horizontal">{steps}</Steps>
+        <Steps className="recharge-steps" current={num} direction="horizontal">{steps}</Steps>
       </div>
     );
   }

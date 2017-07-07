@@ -29,7 +29,8 @@ class part2 extends React.Component {
               绑定汇智卡
             </Button>
             <Link to="ApplyCard">
-              <Button  type="" inline size="" className="Unbound_apply_card card_none " >
+              <Button  type="" inline size=""
+                       className="Unbound_apply_card card_none " >
                 申请汇智卡
               </Button>
             </Link>

@@ -2,7 +2,7 @@ import { Button } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
 import { Link } from 'react-router';
-
+import './recharge3.less';
 
 // 充值（第3步）
 class RechargeThreePart2 extends React.Component {
@@ -10,14 +10,10 @@ class RechargeThreePart2 extends React.Component {
     const { getFieldProps } = this.props.form;
     return (
       <div>
-        <div className="btn-container" style={{ marginTop: '10px' }}>
+        <div className="btn-container">
           <Link to="/index/MyXiaozhi">
             <Button
-              className="btn" type="primary" onClick={() => {
-              }}
-              style={{
-                background: '#259dda',
-                fontSize: '1em',
+              className="recharge-next-btn" type="primary" onClick={() => {
               }}
             >确定</Button>
           </Link>

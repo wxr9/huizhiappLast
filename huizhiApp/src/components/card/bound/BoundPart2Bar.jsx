@@ -93,7 +93,7 @@ class BoundBar extends React.Component {
                     </div>
                   </li>
                 </Link>
-                <Link className="Unbound_link" to="index/redpacket">
+                <Link className="Unbound_link"to="index/redpacket">
                   <li>
                     <Icon
                       type={require('../../../assets/card/card-red.svg')}
