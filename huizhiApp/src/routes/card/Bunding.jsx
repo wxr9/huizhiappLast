@@ -12,12 +12,11 @@ class Bunding extends React.Component {
         <List className="my-list">
           <Item data-seed="logId">
             <InputItem placeholder="22">汇智卡卡号</InputItem>
-            <div style={{ paddingTop: '1em' }}>
+            <div style={{ paddingTop: '1em' ,textAlign:'center'}}>
               <Link to="index/bound">
                 <Button
                   className="button_blue" type="primary" inline size="large" onClick={() => {
                   }}
-                  style={{ marginLeft: '1.5rem' }}
                 >绑定</Button>
               </Link>
               <Link to="index/unbound">

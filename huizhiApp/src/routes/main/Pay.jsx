@@ -9,7 +9,7 @@ class Pay extends React.Component {
   render() {
 
     return (
-      <div>
+      <div className="codeBar_bg">
         {/*条形码*/}
         <CodeBar/>
         {/*确认支付按钮*/}

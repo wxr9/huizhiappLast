@@ -5,7 +5,7 @@ class UserInstructionTop extends React.Component {
     return (
       <div>
         <img
-          className="service_top_img"
+          className="user-instruction-img"
           src={require('../../../assets/service/service-title.jpg')}/>
       </div>
     );

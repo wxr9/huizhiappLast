@@ -5,15 +5,76 @@ body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, fo
 }
 
 html {
-  color: #333333;
+  color: #333333!important;
+  font-size:50px;
 }
 
 html, body {
   height: 100%;
 }
 
+body{
+  font-size:24px;
+}
+/*设计稿750  适应各手机屏幕*/
+@media screen and (min-width:320px){
+  html{font-size:21.333333333333332px;}
+  body{font-size:12px;}
+}
+
+@media screen and (min-width:360px){
+  html{font-size:24px;}
+  body{font-size:12px;}
+}
+
+@media screen and (min-width:375px){
+  html{font-size:25px;}
+  body{font-size:12px;}
+}
+
+@media screen and (min-width:384px){
+  html{font-size:25.6px;}
+  body{font-size:14px;}
+}
+
+@media screen and (min-width:400px){
+  html{font-size:26.666666666666668px;}
+  body{font-size:14px;}
+}
+
+@media screen and (min-width:414px){
+  html{font-size:27.6px;}
+  body{font-size:14px;}
+}
+
+@media screen and (min-width:424px){
+  html{font-size:28.266666666666667px;}
+  body{font-size:14px;}
+}
+
+@media screen and (min-width:480px){
+  html{font-size:32px;}
+  body{font-size:15.36px;}
+}
+
+@media screen and (min-width:540px){
+  html{font-size:36px;}
+  body{font-size:17.28px;}
+}
+
+@media screen and (min-width:720px){
+  html{font-size:48px;}
+  body{font-size:23.04px;}
+}
+
+@media screen and (min-width:750px){
+  html{font-size:50px;}
+  body{font-size:24px;}
+}
+
+
 body, button, input, select, textarea {
-  font-family: 'Microsoft Yahei', '微软雅黑', \5FAE\8F6F\96C5\9ED1, '宋体', \5b8b\4f53, arial, 'Hiragino Sans GB', Tahoma, Arial, Helvetica;
+  font-family: 'Heiti SC', 'Microsoft YaHei';
 }
 
 ul, ol, li, dl, dd, dt {
@@ -78,16 +139,13 @@ img {
 .button_blue {
   background-color: #259dda
 }
-
 /*灰色按钮*/
 .button_gray {
   background-color: #e1e1e5
 }
 
 /*黄色按钮*/
-.button_yellow {
-  background-color: #f76c07
-}
+.button_yellow{ background-color: #f76c07;padding: 10px}
 
 a {
   color: #108ee9;
@@ -112,10 +170,10 @@ a {
   display: inline-block;
 }
 
-.am-list-item img {
-  height: 80px !important;
-  width: 80px !important;
-}
+/*//.am-list-item img {*/
+/*//  height: 80px !important;*/
+/*//  width: 80px !important;*/
+/*//}*/
 
 .schedule_span {
   font-size: 0.27rem;
@@ -263,185 +321,10 @@ a {
   border: none;
   margin-top: 10px;
   min-height: 1rem !important;
-  padding-bottom: 0px;
+  padding-bottom: 0;
 }
 
-/*------------------------首页样式-----------------*/
-.index {
-  marginTop: 10px;
-}
 
-.index_par2_div {
-  width: 100%;
-  text-align: center;
-  background: rgb(255, 255, 255);
-  clear: left;
-  display: inline-block;
-  margin-top: 10px
-}
-
-.index_par2_div li {
-  width: 25%;
-  float: left;
-  margin: 20px 0px;
-}
-
-.index_par2_div li img {
-  width: 50%;
-  height: auto;
-}
-
-.index_par4 {
-  overflow: hidden;
-}
-
-.index_par4_div {
-  margin-top: 6px;
-  padding-top: 30px;
-  padding-bottom: 16px;
-  width: 100%;
-  text-align: center;
-  padding-left: 3%;
-  padding-right: 3%;
-  background: rgb(255, 255, 255);
-  clear: left;
-  display: inline-block;
-}
-
-.index_par4_div li {
-  position: relative;
-  width: 46%;;
-  float: left;
-}
-
-.index_par4_div li img {
-  width: 100%;
-  height: auto;
-}
-
-.index_bg_div {
-  background-color: #ffffff;
-  width: 100%;
-  height: 60px;
-  filter: alpha(opacity:0.8);
-  opacity: 0.8;
-  position: absolute;
-  bottom: 0px;
-}
-
-.index_font {
-  font-weight: bold;
-  margin-left: 20px;
-  text-align: left;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  position: absolute;
-  color: #333333;
-  bottom: 0px;
-}
-
-.index_link {
-  width: 100%;
-  height: auto;
-  color: #333333;
-}
-
-/*------------------------汇智卡未绑定样式-----------------*/
-.Unbound_content {
-  width: 100%;
-}
-
-.Unbound_content_ul {
-  background-color: #ffffff;
-  list-style: none;
-  width: 100%;
-  border-radius: 10px;
-}
-
-.Unbound_content_ul li {
-  width: 33.1%;
-  background: #fff;
-  float: left;
-  border-bottom: 2px solid #f5f5f9;
-  text-align: center;
-}
-
-.Unbound_content_ul li img {
-  padding-top: 14%;
-  width: 33.1%;
-  height: auto;
-}
-
-.Unbound_content_ul li p {
-  margin: 0 auto;
-  margin-top: 10%;
-  margin-bottom: 14%;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  width: 98%;
-  min-width: 70%;
-}
-
-.Unbound_content_ul li.two {
-  background: #fff;
-  border-left: 2px solid #f5f5f9;
-  border-right: 2px solid #f5f5f9;
-}
-
-.Unbound_part2 {
-  margin-left: 16px;
-  margin-right: 16px
-}
-
-.Unbound_link {
-  color: #333333;
-}
-
-.Unbound_part3 {
-  margin: 10px 16px 10px 16px;
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding-top: 4%;
-  padding-bottom: 4%;
-  padding-left: 2%;
-}
-
-.Unbound_part3 li img {
-  width: 8%;
-  vertical-align: middle;
-  margin-right: 3%;
-}
-
-.Unbound_part3_li {
-  font-size: larger;
-  padding-bottom: 20px;
-  border-bottom: 0.02rem solid #f5f5f9;
-}
-
-.Unbound_part3_div {
-  margin-top: 4%
-}
-
-.circle {
-  text-align: center;
-  float: left;
-  width: 120px;
-  height: 120px; /* background-color: blue; */
-  border-radius: 50%;
-  border: 3px solid #ECECEC;
-}
-
-.circle p {
-  margin-top: 30px;
-  font-size: smaller;
-}
-
-.unBound-list {
-  margin: 8px 16px 4px 16px;
-  border-bottom: 0.2rem solid #f5f5f9;
-}
 
 /*--------------------解绑------------------------------*/
 .Unbunding_part {
@@ -489,25 +372,25 @@ a {
 }
 
 /*--------服务中心-----*/
-.service-image {  height: 4rem !important;  width: 4rem !important;  border-top: 0.05rem solid lightslategray;  }
+/*.service-image {  height: 4rem !important;  width: 4rem !important;  border-top: 0.05rem solid lightslategray;  }*/
 
 /*服务维修*/
-.example-input .ant-input {
-  width: 300px;
-  margin: 0 8px 8px -3px;
-  float: left
-}
+/*.example-input .ant-input {*/
+  /*width: 300px;*/
+  /*margin: 0 8px 8px -3px;*/
+  /*float: left*/
+/*}*/
 
-.example-input-line {
-  float: left
-}
+/*.example-input-line {*/
+  /*float: left*/
+/*}*/
 
-.drop-down-select {
-  width: 200px;
-}
+/*.drop-down-select {*/
+  /*width: 200px;*/
+/*}*/
 /*----------游船预约----------*/
 
-/*--------------------*/
+
 
 .my-carousel .v-item {
   height: 0.72rem;

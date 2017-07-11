@@ -9,41 +9,47 @@ const Text = () => (
   <Card.Header className="Unbound_part2_header"
     title="汇智卡使用帮助"
     thumb={require('../../../assets/card/card-qmark.png')}
-    // thumb={require('../../assets/card-qmark.svg')}
   />
   <Card.Body className="Unbound_part4_cardBody">
     <div style={{float:'left',textAlign:'center'}}>
       <ul >
         <li>
-          <img  src={require('../../../assets/card/card-unbound-help1.png')}/>
-          {/*<div className="Unbound_part4-xz">办卡流程须知</div>*/}
+          <Icon
+            type={require('../../../assets/card/card-unbound-help1.svg')}
+            className="Unbound_img_svg_help"
+          />
         </li>
         <li>
-          <img
-            src={require('../../../assets/card/card-unbound-help.png')}
+          <Icon
+            type={require('../../../assets/card/card-unbound-help.svg')}
             className="Unbound_part4_middle"/>
         </li>
         <li>
-          <img  src={require('../../../assets/card/card-unbound-help2.png')}/>
-          {/*<div className="Unbound_part4-xz">换卡解卡须知</div>*/}
+          <Icon
+            type={require('../../../assets/card/card-unbound-help2.svg')}
+            className="Unbound_img_svg_help"
+          />
         </li>
         <li>
-          <img
-            src={require('../../../assets/card/card-unbound-help.png')}
+          <Icon
+            type={require('../../../assets/card/card-unbound-help.svg')}
+            className="Unbound_part4_middle"/>
+        </li>  <li>
+        <Icon
+          type={require('../../../assets/card/card-unbound-help3.svg')}
+          className="Unbound_img_svg_help"
+        />
+      </li>
+        <li>
+          <Icon
+            type={require('../../../assets/card/card-unbound-help.svg')}
             className="Unbound_part4_middle"/>
         </li>
         <li>
-          <img  src={require('../../../assets/card/card-unbound-help3.png')}/>
-          {/*<div className="Unbound_part4-xz">挂失解挂须知</div>*/}
-       </li>
-        <li>
-          <img
-            src={require('../../../assets/card/card-unbound-help.png')}
-            className="Unbound_part4_middle"/>
-        </li>
-        <li>
-          <img  src={require('../../../assets/card/card-unbound-help4.png')}/>
-          {/*<div className="Unbound_part4-xz">密码重置须知</div>*/}
+          <Icon
+            type={require('../../../assets/card/card-unbound-help4.svg')}
+            className="Unbound_img_svg_help"
+          />
         </li>
       </ul>
     </div>

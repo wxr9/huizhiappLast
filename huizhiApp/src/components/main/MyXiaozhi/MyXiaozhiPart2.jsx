@@ -2,7 +2,9 @@ import React from 'react';
 import { List, WingBlank, Card, Tag, Icon, Tabs } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Link } from 'react-router';
-
+import requestGET from '../../../utils/requestGET';
+import request from '../../../utils/request';
+import config from '../../../config';
 import './MayXiaozhi.less'
 const TabPane = Tabs.TabPane;
 const Item = List.Item;
@@ -13,12 +15,23 @@ class MyXiaozhiPart2 extends React.Component {
     super(props);
     this.state = {
       modal1: false,
+      infoList: []
     };
   }
 
+  componentWillMount () {
+    requestGET(config.myServiceUrl).then((data) => {//从配置文件中读取url
+      console.log(config.myServiceUrl);
+      var infoList = data;
+      this.setState({
+        infoList : infoList
+      })
+      console.log(infoList);
+    });
+  }
   render() {
     const { getFieldProps } = this.props.form;
-
+    const {infolist} = this.props.form;
     return (
       <div>
         <List className="MyXiaozhi_list">

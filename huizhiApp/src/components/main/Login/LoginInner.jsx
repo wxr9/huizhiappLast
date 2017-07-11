@@ -29,16 +29,13 @@ class LoginInner extends React.Component {
           if(reData.success){//登陆成功
             //获取用户的个人信息并存入缓存
             // requestGET(config.userInfoUrl).then((data) => {//从配置文件中读取url
-              var obj = {"username":"ptyh","name":"ptyh","realName":"普通用户","createDate":"2016-08-24 09:00:00","updateDate":"2017-07-06 16:54:26","sex":0,"birthday":null,"enterpriseInput":null,"workYears":0,"settingNation":null,"nation":0,"settingApartmentCity":null,"apartmentCity":0,"settingHometowntCity":null,"hometownCity":0,"settingDict":null,"education":0,"marital":1,"cardid":"00199000008989","phone":"18516518312","email":null,"memberCode":"814987924531250124","approved":false,"userFace":null,"department":555,"userFlag":1,"emailFlag":0,"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true};//data.msg;//待修改，数据获取
-              var userInfo = JSON.stringify(obj);
-              //存入缓存
-              sessionStorage.obj = userInfo;
+            var obj = {"username":"ptyh","name":"ptyh","realName":"普通用户","createDate":"2016-08-24 09:00:00","updateDate":"2017-07-06 16:54:26","sex":0,"birthday":null,"enterpriseInput":null,"workYears":0,"settingNation":null,"nation":0,"settingApartmentCity":null,"apartmentCity":0,"settingHometowntCity":null,"hometownCity":0,"settingDict":null,"education":0,"marital":1,"cardid":"00199000008989","phone":"18516518312","email":null,"memberCode":"814987924531250124","approved":false,"userFace":null,"department":555,"userFlag":1,"emailFlag":0,"accountNonExpired":true,"accountNonLocked":true,"credentialsNonExpired":true,"enabled":true};//data.msg;//待修改，数据获取
+            var userInfo = JSON.stringify(obj);
+            var login = {"username":userName,"pwd":sign};
+            var loginInfo = JSON.stringify(login);
 
-              //从缓存中读取
-              // userInfo = sessionStorage.obj;
-              //json转换为Object对象
-              // reData = JSON.parse(userInfo);
-            // });
+            sessionStorage.userInfo = userInfo;//个人信息存入缓存
+            sessionStorage.loginInfo = loginInfo;//用户登录信息（用户名，MD5加密后的密码）存入缓存
 
             //跳转首页
             window.location.href="#index/Index";

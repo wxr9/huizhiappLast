@@ -3,9 +3,11 @@ import { createForm } from 'rc-form';
 import React from 'react';
 import './recharge2.less';
 const Step = Steps.Step;
-
+import { Link } from 'react-router'
+import '../Recharge/RechargePart2';
 // 充值
 class RechargeTwoPart1 extends React.Component {
+
   render() {
     const { getFieldProps } = this.props.form;
     const num = 1;
@@ -27,6 +29,5 @@ class RechargeTwoPart1 extends React.Component {
     );
   }
 }
-
 const RechargeTwoPart1Wrapper = createForm()(RechargeTwoPart1);
 export default RechargeTwoPart1Wrapper;

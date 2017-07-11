@@ -6,7 +6,7 @@ import InstructionTop from '../../components/server/UserInstruction/UserInstruct
 class UserInstruction extends React.Component {
   render() {
     return (
-      <div>
+      <div className="UserInstruction_div">
         <InstructionTop/>
         <Instruction/>
       </div>

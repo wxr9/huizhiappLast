@@ -8,7 +8,12 @@ class CodeBar extends React.Component {
   }
 
   componentDidMount(){
-    JsBarcode(this._barcodeSVG, "1234567890abcdefghij",
+    //从缓存中读取
+    var userInfo = sessionStorage.userInfo;
+    //json转换为Object对象
+    var reData = JSON.parse(userInfo);
+    //调用条形码生成工具，并将memberCode的值传给条形码
+    JsBarcode(this._barcodeSVG, reData.memberCode,
       {
         format: "CODE128",//选择要使用的条形码类型
         displayValue: true,  //  不显示原始值
@@ -25,7 +30,7 @@ class CodeBar extends React.Component {
     return (
       <div className="codeBar_loc">
         <br/>
-        <label>条形码</label><br/>
+        <label className="codeBar_lable">付款码</label><br/>
         <svg ref={(ref)=>this._barcodeSVG = ref}></svg>
       </div>
     );

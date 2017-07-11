@@ -1,9 +1,13 @@
 import React from 'react';
 import { createForm } from 'rc-form';
-import { List, Picker, InputItem, DatePicker, TextareaItem, ImagePicker } from 'antd-mobile';
+import {List, Picker, InputItem, DatePicker, TextareaItem, ImagePicker, WingBlank, Button} from 'antd-mobile';
+import { Link } from 'react-router';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-
+import request from '../../../utils/request';
+import config from '../../../config';
+import './ITRepair.less'
+const repairChildType = [{label:'其他', value:'其他'}, {label: '灯光', value: '灯光'}];
 const zhNow = moment().locale('zh-cn').utcOffset(8);
 const maxDate = moment('2017-06-29 +0800', 'YYYY-MM-DD Z').utcOffset(8);
 const minDate = moment('1900-01-01 +0800', 'YYYY-MM-DD Z').utcOffset(8);
@@ -22,15 +26,60 @@ class ITRepairForm extends React.Component {
       files,
     });
   }
+  onSubmit = () => {
+    this.props.form.validateFields({ force: true }, (error) => {
+      if (!error) {
+        var repairInfo = this.props.form.getFieldsValue();
+        console.log(repairInfo);
+        console.log(repairInfo.date1);
+        var contact = repairInfo.contact;
+        var company = repairInfo.company;
+        var mobile = repairInfo.fixedPhone;
+        var parkId = repairInfo.parkId;
+        var buildingId = repairInfo.buildingId;
+        var address = repairInfo.address;
+        var repairTypeParent = repairInfo.repairTypeParent;
+        var repairType = repairInfo.repairType;
+        var description = repairInfo.description;
+        var memo = repairInfo.memo;
 
+        //从缓存中读取
+        var userInfo = sessionStorage.obj;
+        //json转换为Object对象
+        var  reData = JSON.parse(userInfo);
+        //读取用户ID
+        // console.log(reData.username);
+        var applicant = reData.username;
+        var params = "contact="+contact+"&company="+company+"&mobile="+mobile+"&parkId="+parkId+"&buildingId="
+          +buildingId+"&address="+address+"&repairTypeParent="+repairTypeParent+"&repairType="+repairType+"&description="
+          +description+"&memo="+memo+"&applicant="+applicant;
+        // console.log(repairInfo);
+        // console.log(params);
+        //post请求
+        // var url = config.userRepairUrl;
+        // console.log(url);
+        request(config.ITRepairUrl,params).then((data) => {//从配置文件中读取url
+          console.log(data);
+          // var data1 = data.msg;
+          // if(data1.success){
+          //   alert(data1.msg);
+          // }else{
+          //   alert(data1.msg);
+          // }
+        });
+      } else {
+        alert('校验失败');
+      }
+    });
+  }
   render() {
     const { getFieldProps } = this.props.form;
     const { files } = this.state;
     return (
-      <div>
+      <form className="ITRepair_div">
         <List renderHeader={() => '基本信息'} >
           <InputItem className="server-list-item"
-            {...getFieldProps('phone')}
+            {...getFieldProps('contact')}
             type="phone"
             placeholder="186 1234 1234"
           >手机号码</InputItem>
@@ -47,10 +96,10 @@ class ITRepairForm extends React.Component {
         </List>
 
         <List renderHeader={() => '区域信息'}>
-          <Picker data={park} cols={1} {...getFieldProps('park')} className="forss">
+          <Picker data={park} cols={1} {...getFieldProps('parkId')} className="forss">
             <List.Item arrow="horizontal">园区</List.Item>
           </Picker>
-          <Picker data={floor} cols={1} {...getFieldProps('floor')} className="forss">
+          <Picker data={floor} cols={1} {...getFieldProps('buildingId')} className="forss">
             <List.Item arrow="horizontal">楼宇</List.Item>
           </Picker>
           <InputItem
@@ -62,8 +111,11 @@ class ITRepairForm extends React.Component {
         </List>
 
         <List renderHeader={() => '报修信息'}>
-          <Picker data={repair} cols={1} {...getFieldProps('repair')} className="forss">
+          <Picker data={repair} cols={1} {...getFieldProps('repairTypeParent')} className="forss">
             <List.Item arrow="horizontal">报修类别</List.Item>
+          </Picker>
+          <Picker data={repairChildType} cols={1} {...getFieldProps('repairType')} className="forss">
+            <List.Item arrow="horizontal">报修子类</List.Item>
           </Picker>
           <DatePicker
             mode="date"
@@ -79,7 +131,7 @@ class ITRepairForm extends React.Component {
           </DatePicker>
           <TextareaItem
             title="报修描述"
-            {...getFieldProps('district9')}
+            {...getFieldProps('description')}
             placeholder="100字以内"
             data-seed="logId"
             autoHeight
@@ -92,7 +144,7 @@ class ITRepairForm extends React.Component {
           />
           <TextareaItem
             title="备注"
-            {...getFieldProps('district9')}
+            {...getFieldProps('memo')}
             placeholder="100字以内"
             data-seed="logId"
             autoHeight
@@ -104,7 +156,7 @@ class ITRepairForm extends React.Component {
             }}
           />
         </List>
-        <List renderHeader={() => '报修照片'}>
+        <List renderHeader={() => '报修照片'} className="ITRepair_photo">
           <ImagePicker
             files={files}
             onChange={this.onChange}
@@ -112,7 +164,12 @@ class ITRepairForm extends React.Component {
             selectable={files.length < 5}
           />
         </List>
-      </div>
+        <div className="ITRepair_div_btn">
+            <Button
+              className="ITRepair_btn" type="primary" inline onClick={this.onSubmit}
+            >提交</Button>
+        </div>
+      </form>
     );
   }
 }

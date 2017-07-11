@@ -5,6 +5,11 @@ import RechargeTwoPart2 from '../../components/card/RechargeTwo/RechargeTwoPart2
 
 // 充值（第2步）
 class RechargeTwo extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props.location.query);
+  }
+
   render() {
     const { getFieldProps } = this.props.form;
     return (

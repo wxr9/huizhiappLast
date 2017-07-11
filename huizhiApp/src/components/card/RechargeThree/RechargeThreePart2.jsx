@@ -1,4 +1,4 @@
-import { Button } from 'antd-mobile';
+import { Button ,WingBlank} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
 import { Link } from 'react-router';
@@ -10,14 +10,13 @@ class RechargeThreePart2 extends React.Component {
     const { getFieldProps } = this.props.form;
     return (
       <div>
-        <div className="btn-container">
           <Link to="/index/MyXiaozhi">
-            <Button
-              className="recharge-next-btn" type="primary" onClick={() => {
-              }}
-            >确定</Button>
+            <WingBlank>
+                <Button
+                  className="recharge-btn-next" type="primary" onClick={this.onSubmit} inline
+                >确定</Button>
+            </WingBlank>
           </Link>
-        </div>
       </div>
     );
   }

@@ -6,20 +6,20 @@
   background: rgb(255, 255, 255);
   clear: left;
   display: inline-block;
-  margin-top: 10px
+  margin-top: 10px;
 }
 
 .@{index-less}_par2_div li {
   width: 25%;
   float: left;
-  margin: 20px 0;
+  margin: 16px 0;
 }
 
 
-.@{index-less}_par2_div li img {
-  width: 50%;
-  height: auto;
-}
+//.@{index-less}_par2_div li img {
+//  width: 100%;
+//  height: auto;
+//}
 
 
 .@{index-less}_par3 {
@@ -54,7 +54,7 @@
   background-color: #ffffff;
   width: 100%;
   height: 60px;
-  opacity: 0.8;
+  opacity: 0.6;
   position: absolute;
   bottom: 0;
 }
@@ -79,8 +79,10 @@
 
 /*svg图片样式--TODO*/
 .@{index-less}_Icon{
-  width:0.85rem;
-  height:0.85rem;
+  //width: 60%;
+  //height: auto;
+  height: 0.87rem;
+  width: 0.87rem;
 }
 
 .@{index-less}_img_banner{
@@ -110,4 +112,18 @@
 }
 .am-carousel-wrap-dot-active>span{
   background: #259dda!important;
+}
+.my-drawer {
+  //position: relative;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar {
+  background-color: #fff;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.my-drawer .am-drawer-sidebar .div-siderbar {
+  width: 6rem;
+  padding: 0;
 }

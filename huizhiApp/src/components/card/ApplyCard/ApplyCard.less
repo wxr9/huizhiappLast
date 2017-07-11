@@ -1,5 +1,9 @@
 @ApplyCard-less: ApplyCard;
 
+.@{ApplyCard-less}_div{
+  margin-top: 20%;
+}
+
 .@{ApplyCard-less}_card{
   border: 1PX solid #36C6DE;
 }
@@ -7,11 +11,14 @@
 .@{ApplyCard-less}_img {
   width: 100%;
   height: auto;
+  position: fixed;
+  z-index: 2;
+  top:0;
 }
 
 .@{ApplyCard-less}_body{
   background-color: #ffffff;
-  height: 100%;
+  height: 80%;
 }
 
 .@{ApplyCard-less}_InputItem{
@@ -39,4 +46,7 @@
   margin-top: 20px;
   text-align:center;
   padding-bottom:30px;
+}
+.ApplyCard_InputItem .am-input-control{
+  margin-left: 0.8rem;
 }

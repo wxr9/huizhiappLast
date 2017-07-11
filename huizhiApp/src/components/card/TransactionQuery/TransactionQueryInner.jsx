@@ -2,11 +2,32 @@ import {Table, WingBlank, Card, List, Tabs} from 'antd-mobile';
 import {createForm} from 'rc-form';
 import React from 'react';
 import './TransactionQueryInner.less';
+import config from '../../../config';
+import requestGET from '../../../utils/requestGET';
+import request from '../../../utils/request';
+
 const TabPane = Tabs.TabPane;
 const Item = List.Item;
 
 // 交易明细
 class TransactionQueryInner extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modal1: false,
+      perNoList: []
+    };
+  }
+  componentWillMount () {
+    var params = "merchantNo=000006666666666"+"&cardNo=00199000008989"+"&endDate="+"&memberNo=ptyh"+"&queryNum="+"&startDate="+"&tranType=01";
+    request(config.queryTransDetails,params).then((data) => {//从配置文件中读取url
+      var infoList = data;
+      this.setState({
+        infoList : infoList
+      })
+      console.log(infoList);
+    });
+  }
   render() {
     const {getFieldProps} = this.props.form;
     const data = [

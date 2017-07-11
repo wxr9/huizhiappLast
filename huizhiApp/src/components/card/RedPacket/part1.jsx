@@ -2,7 +2,12 @@ import React from 'react';
 import { List, Switch, WingBlank, Card, Flex, Tag, Icon, Tabs } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Link } from 'react-router';
+import requestGET from '../../../utils/requestGET';
+import request from '../../../utils/request';
+import config from '../../../config';
 import './RedPacket.less';
+
+
 const TabPane = Tabs.TabPane;
 
 // 红包
@@ -11,21 +16,29 @@ class part1 extends React.Component {
     super(props);
     this.state = {
       modal1: false,
-      perNoList: []
+      validInfoList: [],
+      invalidInfoList: []
     };
   }
   componentWillMount () {
-    fetch('http://localhost:3003/RedPacket')
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          perNoList: res
-        });
-      });
+    requestGET(config.validRedPacketUrl).then((data) => {//从配置文件中读取url
+      var validInfoList = data;
+      this.setState({
+        infoList : validInfoList
+      })
+      console.log(validInfoList);
+    });
+
+    requestGET(config.invalidRedPAcketUrl).then((data) => {//从配置文件中读取url
+      var invalidInfoList = data;
+      this.setState({
+        infoList : invalidInfoList
+      })
+      console.log(invalidInfoList);
+    });
   }
   render() {
     const { getFieldProps } = this.props.form;
-    const {perNoList} = this.state;
     return (
       <form>
         <List>
@@ -41,19 +54,6 @@ class part1 extends React.Component {
                       <List
                         className="RedPacket_list"
                       >
-                        {
-                          perNoList.map((perNo) => {
-                            return (
-                              <div className="packet">
-                                <div className="packet_money">
-                                  <span className="yuan">¥</span><span className="big">{perNo.amount}</span><span className="yuan">元</span>
-                                </div>
-                                <div className="packet_time">{perNo.time}
-                                </div>
-                              </div>
-                            );
-                          })
-                        }
                         <div className="packet">
                           <div className="packet_money">
                             <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>
@@ -83,19 +83,6 @@ class part1 extends React.Component {
                       <List
                         className="RedPacket_list"
                       >
-                        {
-                          perNoList.map((perNo) => {
-                            return (
-                              <div className="packet">
-                                <div className="packet_money">
-                                  <span className="yuan">¥</span><span className="big">{perNo.amount}</span><span className="yuan">元</span>
-                                </div>
-                                <div className="packet_time">{perNo.time}
-                                </div>
-                              </div>
-                            );
-                          })
-                        }
                         <div className="packet">
                           <div className="packet_money">
                             <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>

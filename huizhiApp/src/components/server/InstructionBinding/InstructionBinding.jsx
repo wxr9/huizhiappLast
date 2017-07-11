@@ -6,7 +6,7 @@ import './binding.less';
 class InstructionBinding extends React.Component {
   render() {
     return (
-      <List>
+      <List className="instruction_list">
         <div className="instruction-binding-warp">
           <Item wrap>
             <div className="instruction-binding-item">

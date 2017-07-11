@@ -2,7 +2,9 @@ import React from 'react';
 import { List, WingBlank, Card, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Link } from 'react-router';
-
+import requestGET from '../../../utils/requestGET';
+import request from '../../../utils/request';
+import config from '../../../config';
 import './MayXiaozhi.less'
 // 我的小智面板
 class MyXiaozhiPart1 extends React.Component {
@@ -10,16 +12,35 @@ class MyXiaozhiPart1 extends React.Component {
     super(props);
     this.state = {
       modal1: false,
+      infoList: [],
+      cardId:[]
     };
   }
-
+  componentWillMount () {
+    //从缓存中读取
+    var userInfo = sessionStorage.userInfo;
+    //json转换为Object对象
+    var  reData = JSON.parse(userInfo);
+    var cardid = reData.cardid;
+    this.setState({
+      cardId : cardid
+    });
+    var params ="cardNo=00199000008989&memberNo=814987924531250124";
+    request(config.cardBalanceUrl,params).then((data) => {//从配置文件中读取url
+      var infoList = data;
+      this.setState({
+        infoList : infoList
+      })
+      console.log(infoList);
+    })
+  }
   render() {
     const { getFieldProps } = this.props.form;
-
+    const {cardId} = this.state;
     return (
         <List className="MyXiaozhi_list">
           <Card>
-            <div className="MyXiaozhi_cardNo" >汇智卡号：1234***9123</div>
+            <div className="MyXiaozhi_cardNo" >汇智卡号：{cardId}</div>
 
               <Flex>
                 <Flex.Item>

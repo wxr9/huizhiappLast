@@ -15,12 +15,14 @@ class PersonCenter1 extends React.Component {
           </Flex>
           <WhiteSpace size="lg" />
           <Flex style={{ width: '100%', textAlign: 'center' }}>
-            <Flex.Item><img src={require('../../../assets/user/user-test.png')} alt="图片" /></Flex.Item>
+            <Flex.Item><img src={require('../../../assets/user/user-test.png')} style={{width: '20%',
+              height: 'auto'}} alt="图片" /></Flex.Item>
           </Flex>
           <WhiteSpace size="lg" />
-          <Flex style={{ width: '100%', textAlign: 'center' }}>
-            <Flex.Item>传说秒杀一切</Flex.Item>
-          </Flex>
+
+            <Flex style={{ width: '100%', textAlign: 'center' }}>
+              <Flex.Item>传说秒杀一切</Flex.Item>
+            </Flex>
           <WhiteSpace size="xl" />
         </div>
     );

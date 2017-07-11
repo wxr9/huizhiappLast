@@ -46,7 +46,7 @@ class lead_1 extends React.Component {
             </a>
           ))}
         </Carousel>
-        <Link className="index_link" to="login">
+        <Link className="index_link" to="index/Index">
           <div className="lead_skip">跳过</div>
         </Link>
       </div>

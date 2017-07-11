@@ -20,10 +20,10 @@ class Wrap extends React.Component {
           style={{
             position: 'absolute',
             top: '0rem',
-            bottom: '1.2rem',
             width: '100%',
             overflow: 'auto',
-            paddingBottom: '20px',
+            backgroundColor:'#ffffff',
+            height:'100%'
           }}
         >
           {this.props.children}
@@ -35,7 +35,8 @@ class Wrap extends React.Component {
                top: '4%',
                left: '4%',
                width:'2.4%',
-               height:'auto'
+               height:'auto',
+               zIndex:'3'
              }} onClick={() => history.goBack()}/>
       </div>
     );

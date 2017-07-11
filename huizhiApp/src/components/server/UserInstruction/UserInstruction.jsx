@@ -12,11 +12,11 @@ class UserInstruction extends React.Component {
     display2: '',
   }
   componentWillMount(){
-    if(!sessionStorage.obj){
+    if(!sessionStorage.userInfo){
       console.log("未登录，请登录！");
     }else {
       //从缓存中读取
-      var userInfo = sessionStorage.obj;
+      var userInfo = sessionStorage.userInfo;
       //json转换为Object对象
       var reData = JSON.parse(userInfo);
 
@@ -33,7 +33,7 @@ class UserInstruction extends React.Component {
   }
   render() {
     return (
-      <List>
+      <List className="UserInstruction_list">
         <div className="instruction-binding-warp">
           <Item wrap>
             <div className="instruction-binding-item">

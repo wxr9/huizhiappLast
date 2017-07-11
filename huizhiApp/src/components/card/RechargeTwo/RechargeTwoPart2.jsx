@@ -2,7 +2,11 @@ import { WingBlank, List, Button, Radio } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
 import { Link } from 'react-router';
+
 import './recharge2.less';
+import request from '../../../utils/request';
+import config from '../../../config';
+
 const RadioItem = Radio.RadioItem;
 
 // 充值（第2步）
@@ -40,10 +44,11 @@ class RechargeTwoPart2 extends React.Component {
         </WingBlank>
         <div className="btn-container">
           <Link to="RechargeThree">
-            <Button
-              className="recharge-next-btn" type="primary" onClick={() => {
-              }}
-            >确定</Button>
+            <WingBlank>
+                <Button
+                  className="recharge-btn-next" type="primary" onClick={this.onSubmit} inline
+                >确定</Button>
+            </WingBlank>
           </Link>
         </div>
       </div>

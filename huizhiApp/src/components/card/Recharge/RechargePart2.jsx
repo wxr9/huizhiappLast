@@ -6,11 +6,11 @@ import {Link} from 'react-router';
 import './recharge1.less';
 import request from '../../../utils/request';
 import config from '../../../config';
-
 const Item = List.Item;
 const AgreeItem = Checkbox.AgreeItem;
 
-var money = 50;
+// var money = 50;
+//折扣金额
 var discount = 0;
 const hongbao = [
   {
@@ -24,43 +24,68 @@ const hongbao = [
 ];
 // 充值
 class RechargePart2 extends React.Component {
-  state={
-    checked:false,
-    disabled:false,
+  state = {
+    checked: false,
+    disabled: false,
+    money : 50,
+    reMoney:50,
+    selectedIndex:0
+  }
+
+  onChange = (e) => {
+    var selectedIndex = e.nativeEvent.selectedSegmentIndex;
+    this.setState({
+      selectedIndex: selectedIndex
+    })
   }
 
   //金额选择后将支付的实际金额改变
   onValueChange = (value) => {
-    if (value == '￥50') {
-      money = (50*100 - discount*100)/100;
-    } else if (value == '￥100') {
-      money = (100*100 - discount*100)/100;
-    } else if (value == '￥200') {
-      money = (200*100 - discount*100)/100;
-    } else {
-      money = (500*100 - discount*100)/100;
-    }
-    console.log(discount);
-    console.log(money);
+    var money = 0;
+    var reMoney = parseInt(value.trim().substring(1,value.length));
+    money = (reMoney * 100 - discount * 100) / 100;
+    this.setState({
+      reMoney: reMoney,
+      money:money
+    })
   }
   //使用红包的checkbox
   useHongbao(e) {
-    if(e.target.checked){
-      this.state.disabled=false;
-      console.log("使用红包"+this.state.disabled);
-    }else {
-      this.state.disabled=true;
+    if (e.target.checked) {
+      this.state.disabled = false;
+      console.log("使用红包" + this.state.disabled);
+    } else {
+      this.state.disabled = true;
       console.log(this.state.disabled);
     }
   }
-  onOk(e){
-    discount= e;
-    console.log(discount);
+//选择器点击确定
+  onOk(e) {
+    discount = e;
+    var actMoney = (this.state.reMoney*100-discount*100)/100;
+    this.setState({
+      money: actMoney
+    })
   }
+
+
   render() {
     const {getFieldProps} = this.props.form;
+    const {money,selectedIndex} = this.state;
+
     //选择红包金额
     const rechanrgeMoneys = ['￥50', '￥100', '￥200', '￥500'];
+	//红包列表
+    const hongbao = [
+      {
+        label: '49.7元（2017-7-20到期）',
+        value: 49.7,
+      },
+      {
+        label: '86.7元（2017-7-20到期）',
+        value: 86.7,
+      }
+    ];
     return (
       <form>
         <WingBlank className="recharge-wingBlank">
@@ -70,14 +95,14 @@ class RechargePart2 extends React.Component {
           </List>
           <div>充值金额：</div>
           <SegmentedControl className="recharge-segment"
-            values={rechanrgeMoneys}
-            {...getFieldProps('segment')}
-            onValueChange={this.onValueChange}
+                            selectedIndex={selectedIndex}
+                            values={rechanrgeMoneys}
+                            onChange={this.onChange}
+                            onValueChange={this.onValueChange}
           />
           <AgreeItem className="recharge-checkbox-agree"
                      data-seed="logId"
-                     {...getFieldProps('agreeItem')}
-                     onChange={(e)=>this.useHongbao(e)}>
+                     onChange={(e) => this.useHongbao(e)}>
             使用红包
           </AgreeItem>
           <Picker
@@ -91,12 +116,13 @@ class RechargePart2 extends React.Component {
           </Picker>
           <div className="recharge-wingBlank-money">实际金额：{money}元</div>
         </WingBlank>
-        <div className="recharge-btn-container">
-          <Link to="RechargeTwo">
-            <Button
-              className="recharge-next-btn" type="primary" onClick={() => {
-            }}
-            >下一步</Button>
+        <div className="recharge-btn-container" style={{textAlign:'center'}}>
+          <Link to={{pathname:"RechargeTwo",query:{money:money,hongbao:hongbao}}}>
+            <WingBlank>
+                <Button
+                  className="recharge-btn-next" type="primary" onClick={this.onSubmit} inline
+                >下一步</Button>
+            </WingBlank>
           </Link>
         </div>
       </form>

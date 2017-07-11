@@ -24,6 +24,7 @@ import Bunding from './routes/card/Bunding';
 import PersonInfo from './routes/user/PersonInfo';
 import ChangePhoneNo from './routes/user/ChangePhoneNo';
 import PersonCenter from './routes/user/PersonCenter';
+import PersonCenter_UnLogin from './routes/user/PersonCenter_UnLogin';
 import PersonNotify from './routes/user/PersonNotify';
 import UserPay from './routes/user/UserPay';
 import UserInfo from './routes/user/UserInfo';
@@ -46,6 +47,7 @@ import Pay from './routes/main/Pay';
 
 import Top from './components/Top'
 import GoBack from './components/GoBack'
+import Wrap_two from './components/Wrap_two'
 // 管理所有页面的路由功能
 function RouterConfig({ history }) {
   return (
@@ -56,6 +58,8 @@ function RouterConfig({ history }) {
         <Route path="ApplyCard" breadName="申请汇智卡" component={ApplyCard} />
         <Route path="index/instruction" component={UserInstruction} />
         <Route path="index/instructionBinding" component={InstructionBinding} />
+          <Route path="index/itRepair" breadName="IT报修" component={ITRepair} />
+          <Route path="index/propertyRepair" breadName="物业报修" component={PropertyRepair} />
         </Route>
       </Route>
 
@@ -67,10 +71,12 @@ function RouterConfig({ history }) {
         <Route path="service" breadName="服务中心" component={Service} />
         <Route path="pay" breadName="扫码支付" component={Pay} />
         <Route path="boatOrder" breadName="游船预约" component={BoatOrder} />
+        <Route path="personcenter" breadName="个人中心" component={PersonCenter} />
+        <Route path="personcenter_UnLogin" breadName="个人中心" component={PersonCenter_UnLogin} />
       </Route>
       </Route>
 
-      <Route path="/" component={Wrap}>
+      <Route components={Wrap_two}>
         <Route path="login" breadName="登录" component={Login} />
         <Route path="ForgetPwdOne" breadName="忘记密码" component={ForgetPwdOne} />
         <Route path="ForgetPwdTwo" breadName="忘记密码" component={ForgetPwdTwo} />
@@ -82,22 +88,20 @@ function RouterConfig({ history }) {
         <Route path="Recharge" breadName="充值" component={Recharge} />
         <Route path="RechargeTwo" breadName="充值" component={RechargeTwo} />
         <Route path="RechargeThree" breadName="充值" component={RechargeThree} />
+      </Route>
 
+      <Route path="/" component={Wrap}>
         <Route path="/index" component={WrapTab}>
-
-          <Route path="propertyRepair" breadName="物业报修" component={PropertyRepair} />
-
-
+          {/*<Route path="propertyRepair" breadName="物业报修" component={PropertyRepair} />*/}
           <Route path="unbunding" breadName="解绑" component={Unbunding} />
           <Route path="unbound" breadName="汇智卡未绑定" component={Unbound} />
           <Route path="bound" breadName="汇智卡已绑定" component={Bound} />
           <Route path="bunding" breadName="绑定" component={Bunding} />
-          <Route path="itRepair" breadName="IT报修" component={ITRepair} />
+          {/*<Route path="itRepair" breadName="IT报修" component={ITRepair} />*/}
           <Route path="userinfo" component={UserInfo} />
           <Route path="personnel" component={Personnel} />
           <Route path="activedetail" breadName="活动详情" component={ActiveDetail} />
           <Route path="personinfo" breadName="个人信息" component={PersonInfo} />
-          <Route path="personcenter" breadName="个人中心" component={PersonCenter} />
           <Route path="personnotify" breadName="个人消息中心" component={PersonNotify} />
           <Route path="UserPay" breadName="支付记录" component={UserPay} />
           <Route path="redpacket" breadName="红包管理" component={RedPacket} />

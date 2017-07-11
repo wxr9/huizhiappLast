@@ -28,10 +28,25 @@ class RegisterStepOneInner extends React.Component {
   }
   //验证用户名的格式是否正确
   validateAccount = (rule, value, callback) => {
-    if (value && value.length >= 8) {
+    var reg = /^[a-zA-Z][a-zA-Z0-9]{7,19}$/i;
+    var r = value.match(reg);
+    if(r==null){
+      callback(new Error('用户名,字母开头，长度为为8-20位，且只能含有字母和数字'));
+    }{
       callback();
-    } else {
-      callback(new Error('用户名至少8个字符'));
+    }
+  }
+  validatePassword = (rule, value, callback) => {
+    var rn = /\d+/g; //数字测试
+    var ra = /[a-zA-Z]/g; //字母测试
+    if (value && value.length >= 8) {
+      if(rn.test(value) && ra.test(value)) {
+        callback();
+      }else{
+        callback(new Error('密码需包含数字和字母'));
+      }
+    }else{
+      callback(new Error('新密码至少8个字符'));
     }
   }
   getMessageCode = () =>{
@@ -96,7 +111,17 @@ class RegisterStepOneInner extends React.Component {
         </List>
         <List className="register-as-list">
           <InputItem className="register-list-item"
-            {...getFieldProps('password')}
+                     {...getFieldProps('password',{
+                       rules:[
+                         { required: true, message: '请填写密码' },
+                         { validator: this.validatePassword },
+                       ]
+                     })}
+                     clear
+                     error={!!getFieldError('password')}
+                     onErrorClick={() => {
+                       alert(getFieldError('password').join('、'));
+                     }}
             type="password"
             placeholder="请填写密码"
           />
@@ -132,7 +157,6 @@ class RegisterStepOneInner extends React.Component {
               style={{ }} alt="image"
               onClick={this.changeImg}
             />
-
           </Link>
         </div>
         <List className="register-input-code">

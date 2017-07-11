@@ -5,7 +5,7 @@ class InstructionBinding extends React.Component {
     return (
       <div>
         <img
-          className="service_top_img"
+          className="instruction-binding-img"
           src={require('../../../assets/service/service-title.jpg')}/>
       </div>
     );

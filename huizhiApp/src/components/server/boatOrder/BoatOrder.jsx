@@ -1,7 +1,7 @@
 import React from 'react';
-import { List, InputItem, DatePicker } from 'antd-mobile';
-import { createForm } from 'rc-form';
-import { Link } from 'react-router';
+import {List, InputItem, DatePicker} from 'antd-mobile';
+import {createForm} from 'rc-form';
+import {Link} from 'react-router';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import './boatOrder.less';
@@ -9,6 +9,9 @@ import './boatOrder.less';
 const zhNow = moment().locale('zh-cn').utcOffset(8);
 const maxDate = moment('2020-06-29 +0800', 'YYYY-MM-DD Z').utcOffset(8);
 const minDate = moment('2017-06-29 +0800', 'YYYY-MM-DD Z').utcOffset(8);
+
+const maxTime = moment('14:00 +0800', 'HH:mm Z').utcOffset(8);
+const minTime = moment('01:00 +0800', 'HH:mm Z').utcOffset(8);
 const Item = List.Item;
 
 // 游船预约
@@ -41,19 +44,19 @@ class BoatOrderBar extends React.Component {
         alert(reData.msg);
         this.props.form.resetFields();
       }
-    }); 
+    });
   }
 
   render() {
-    const { getFieldProps } = this.props.form;
+    const {getFieldProps} = this.props.form;
     return (
       <form>
         <List className="date-picker-list">
           <InputItem className="server-list-item"
-            {...getFieldProps('username')}
-            clear
-            placeholder="请输入预约人"
-            autoFocus
+                     {...getFieldProps('username')}
+                     clear
+                     placeholder="请输入预约人"
+                     autoFocus
           >用户名</InputItem>
 
           <InputItem
@@ -81,12 +84,25 @@ class BoatOrderBar extends React.Component {
           >
             <List.Item arrow="horizontal">预约日期</List.Item>
           </DatePicker>
-
-          <DatePicker mode="startTime" {...getFieldProps('dingStartTime')} minuteStep={5}>
-            <List.Item arrow="horizontal">预约开始时间(local time)</List.Item>
+          <DatePicker
+            mode="time"
+            {...getFieldProps('startTime', {
+              initialValue: zhNow,
+            })}
+            minDate={minTime}
+            maxDate={maxTime}
+          >
+            <List.Item arrow="horizontal">时间(CST)，限定上下限</List.Item>
           </DatePicker>
-          <DatePicker mode="endTime" {...getFieldProps('dingEndTime')} minuteStep={5}>
-            <List.Item arrow="horizontal">预约结束时间(local time)</List.Item>
+          <DatePicker
+            mode="time"
+            {...getFieldProps('endTime', {
+              initialValue: zhNow,
+            })}
+            minDate={minTime}
+            maxDate={maxTime}
+          >
+            <List.Item arrow="horizontal">时间(CST)，限定上下限</List.Item>
           </DatePicker>
           <InputItem
             {...getFieldProps('dingNumber', {
@@ -107,8 +123,9 @@ class BoatOrderBar extends React.Component {
             <Link>
               <img
                 src="http://222.73.203.71:8080/WiseAuth/AuthImageServlet" className="verify-code-image"
-                style={{ }} alt="image"
-                onClick={() => {}}
+                style={{}} alt="image"
+                onClick={() => {
+                }}
               />
 
             </Link>
