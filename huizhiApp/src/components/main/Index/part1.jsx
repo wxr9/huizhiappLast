@@ -1,40 +1,22 @@
-/**
- * 首页第一部分--轮播图
- */
 import React from 'react';
 import {Link} from 'react-router';
-import {Carousel, WhiteSpace, WingBlank, Drawer, Icon} from 'antd-mobile';
+import {Carousel, WhiteSpace, WingBlank, Icon} from 'antd-mobile';
+
 import requestGET from '../../../utils/requestGET';
 import config from '../../../config';
 import './index.less'
-import PersonCenter1 from '../../user/PersonCenter/PersonCenter1';
-import PersonCenterUnLogin from '../../user/PersonCenter/PersonCenter_UnLogin';
-import PersonCenter2 from '../../user/PersonCenter/PersonCenter2';
 
+/**
+ * 首页第一部分--轮播图
+ */
 class part1 extends React.Component {
-  state = {
-    banner: [],
-    open: false,
-    display:'none',
-    display2:'',
-  }
-  onOpenChange = (...args) => {
-    if(sessionStorage.userInfo){
-      console.log("已登录！");
-      this.setState({
-        display:'',
-        display2:'none',
-      });
-    }else {
-      console.log("未登录，请登录！");
-      this.setState({
-        display:'none',
-        display2:'',
-      });
+  constructor (props) {
+    super(props);
+    this.state = {
+      banner: [],
     }
-    console.log(args);
-    this.setState({ open: !this.state.open });
   }
+
   componentWillMount() {
     var page = 0;
     var pageSize = 0;
@@ -50,29 +32,16 @@ class part1 extends React.Component {
   }
 
   componentDidMount() {
-    // simulate img loading
     setTimeout(() => {
       this.setState({
-        //banner: banner
         data: ['home-p2', 'home-p2', 'home-p2'],
       });
     }, 50);
   }
 
   render() {
-    const sidebar = (<div className="div-siderbar">
-      <div style={{display:this.state.display}}>
-      <PersonCenter1/>
-      </div>
-      <div style={{display:this.state.display2}}>
-        <PersonCenterUnLogin/>
-      </div>
-      <PersonCenter2/>
-    </div>);
     const {banner} = this.state;
-    // const hProp = this.state.initialHeight ? { height: this.state.initialHeight } : {};
-    const url = "http://222.73.203.71:8080/";
-    //console.log({banner});
+
     return (
       <div>
       <Carousel
@@ -89,11 +58,9 @@ class part1 extends React.Component {
             <a key={li}>
               <img
                 className="index_img_banner"
-                src={url+li.imgUrl}
-              //src={require(`../../../assets/home/${ii || 'home-p2'}.jpg`)}
+                src={config.httpUrl+li.imgUrl}
                alt="icon"
                onLoad={() => {
-                 // fire window resize event to change height
                  window.dispatchEvent(new Event('resize'));
                  this.setState({
                    initialHeight: null,
@@ -103,15 +70,6 @@ class part1 extends React.Component {
           </a>
           ))}
       </Carousel>
-        <Drawer
-          className="my-drawer"
-          style={{ minHeight: document.documentElement.clientHeight - 200 }}
-          enableDragHandle
-          contentStyle={{ color: '#A6A6A6', textAlign: 'center', paddingTop: 42 }}
-          sidebar={sidebar}
-          open={this.state.open}
-          onOpenChange={this.onOpenChange}
-        />
       </div>
     );
   }

@@ -1,10 +1,11 @@
 import React from 'react';
-import { List, Button } from 'antd-mobile';
+import { List, Button ,Modal} from 'antd-mobile';
 import { Link } from 'react-router';
 
 import './instruction.less';
 
 const Item = List.Item;
+const prompt = Modal.prompt;
 
 class UserInstruction extends React.Component {
   state={
@@ -31,7 +32,30 @@ class UserInstruction extends React.Component {
       }
     }
   }
+  /*不同意，页面跳回*/
+  jumpService =()=>{
+    window.location.href = "#index/service";
+  }
+  /*同意，页面跳转*/
+  jumpBoatOrder =()=>{
+    window.location.href = "#index/boatOrder";
+  }
   render() {
+    const array1 = [
+      {
+        text: '绑定',
+        onPress: cardid => new Promise((resolve) => {
+          //Toast.info('onPress promise', 1);
+          setTimeout(() => {
+            resolve();
+            // console.log(`value:${cardid}`);
+            // console.log(this);
+            this.boundCard(cardid);
+          }, 1000);
+        }),
+      },
+      { text: '取消' },
+    ];
     return (
       <List className="UserInstruction_list">
         <div className="instruction-binding-warp">
@@ -47,26 +71,24 @@ class UserInstruction extends React.Component {
             六,上海浦东软件园,作为公益服务项目,上海浦东软件园,作为公益服务项目,上海浦东软件园,作为公益服务项目<br />
             </span>
             <div className="user-instruction-button" style={{display:this.state.display1}}>
-              <Link to="index/service">
+              {/*<Link to="index/service">*/}
                 <Button
-                  className="btn1" type="default" inline size="small" onClick={() => {
-                  }}
+                  className="btn1" type="default" inline size="small" onClick={this.jumpService}
                 >不同意</Button>
-              </Link>
-              <Link to="index/boatOrder">
+              {/*</Link>*/}
+              {/*<Link to="index/boatOrder">*/}
                 <Button
-                  className="btn2" type="primary" inline size="small" onClick={() => {
-                  }}
+                  className="btn2" type="primary" inline size="small" onClick={this.jumpBoatOrder}
                 >同意协议</Button>
-              </Link>
+              {/*</Link>*/}
             </div>
             <div className="instruction-binding-btn" style={{display:this.state.display2}}>
-              <Link to="index/bunding">
                 <Button
-                  className="btn" type="primary" inline size="small" onClick={() => {
-                }}
+
+                  className="btn" type="primary" inline size="small"
+                  onClick={() => prompt('请输入您的卡号', '', array1)}
+
                 >请先绑定卡</Button>
-              </Link>
             </div>
           </Item>
         </div>

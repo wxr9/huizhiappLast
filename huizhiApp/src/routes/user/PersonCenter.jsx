@@ -6,11 +6,26 @@ import PersonCenter_1 from "../../components/user/PersonCenter/PersonCenter1";
 import PersonCenter_2 from "../../components/user/PersonCenter/PersonCenter2";
 // 个人中心
 class PersonCenter extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      userInfo: [],
+    };
+  }
+
+  componentWillMount () {
+    //从缓存中读取用户个人信息
+    var userInfo = JSON.parse(sessionStorage.userInfo);
+    this.setState({
+      userInfo: userInfo
+    })
+  }
+
   render() {
     return (
       <div>
-        <PersonCenter_1/>
-        <PersonCenter_2/>
+        <PersonCenter_1 {...this.state.userInfo}/>
+        <PersonCenter_2 />
       </div>
     );
   }

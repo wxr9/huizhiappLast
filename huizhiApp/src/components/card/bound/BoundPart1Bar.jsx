@@ -21,6 +21,7 @@ class BoundBar extends React.Component {
     //json转换为Object对象
     var  reData = JSON.parse(userInfo);
     var cardid = reData.cardid;
+    cardid = cardid.substring(4,8)+"***"+cardid.substring(10,14);
     this.setState({
       cardId : cardid
     })

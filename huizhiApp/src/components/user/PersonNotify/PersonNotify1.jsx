@@ -1,10 +1,12 @@
 import React from 'react';
 import { List, Badge, Flex, WhiteSpace, Tabs, Card } from 'antd-mobile';
 import { Link } from 'react-router';
-import requestGET from '../../../utils/requestGET';
-import request from '../../../utils/request';
+import axios from 'axios';
+import Qs from 'qs';
 import config from '../../../config';
 import './PersonNotify.less';
+
+var infoList = [];
 
 const TabPane = Tabs.TabPane;
 // 个人消息中心第一部分--标签页选卡项
@@ -17,13 +19,25 @@ class PersonNotify1 extends React.Component {
   }
 
   componentWillMount () {
-    requestGET(config.notificationUrl).then((data) => {//从配置文件中读取url
-      var infoList = data;
-      this.setState({
-        infoList : infoList
-      })
-      console.log(infoList);
+    axios.get(config.notificationUrl).then(function(response){//从配置文件中读取url，GET请求
+      console.log(config.notificationUrl);
+      console.log("notificationUrl response",response);
+      infoList = [];
+      var dataList = response.data.result;
+      for (var i=0; i<dataList.length; i++){
+        infoList.push(dataList[i]);
+      }
+      console.log("infoList",infoList);
     });
+  }
+  componentDidMount(){
+    console.log("componentDidMount",infoList);
+    this.setState({
+      infoList: infoList
+    })
+  }
+  componentDidUpdate(){
+    console.log("componentDidUpdate",this.state.infoList);
   }
   render() {
     const {infoList} = this.state;
@@ -32,19 +46,19 @@ class PersonNotify1 extends React.Component {
         <Tabs>
           <TabPane tab={<div><div>通知</div><div className="index_tishi2">88</div></div>} key="1">
             <div>
-              <Card style={{ margin: '5px 8px', padding: '5px 5px' }}>
+              <Card className="personNotify_par1_card">
                 <Card.Header
-                  style={{ height: '18px', color: 'blue' }}
+                  className="personNotify_par1_cardHeader"
                   title={
                     <div>
-                      <Flex style={{ width: '100%', fontSize: '20px ' }}>
-                        <Flex.Item style={{ color: '#3DA6DD' }}>业务处理提醒</Flex.Item>
-                        <Flex.Item style={{ width: '300px' }}>2017-7-10 13:41:24</Flex.Item>
+                      <Flex className="personNotify_par1_Flex">
+                        <Flex.Item className="personNotify_par1_Flex_color" >业务处理提醒</Flex.Item>
+                        <Flex.Item className="personNotify_par1_Flex_width" >2017-7-10 13:41:24</Flex.Item>
                       </Flex>
                     </div>}
                 />
                 <Card.Body>
-                  <div>hehe</div>
+                  <div>上海浦东软件园,作为公益服务项目,上海浦东软件园,作为公益服务项目,上海浦东软件园,作为公益服务项目</div>
                 </Card.Body>
               </Card>
             </div>

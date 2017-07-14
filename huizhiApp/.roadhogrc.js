@@ -7,6 +7,7 @@ const svgSpriteDirs = [
 export default {
   "svgSpriteLoaderDirs": svgSpriteDirs,
   "entry": "src/index.js",
+  "publicPath": "./",
   "disableCSSModules": true,
   "env": {
     "development": {
@@ -30,7 +31,6 @@ export default {
       "iOS >= 8", "Android >= 4"
     ]
   },
-
   extraPostCSSPlugins: [
     pxtorem({
       rootValue: 100,

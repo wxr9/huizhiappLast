@@ -2,8 +2,8 @@ import React from 'react';
 import { List, WingBlank, Card, Flex } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Link } from 'react-router';
-import requestGET from '../../../utils/requestGET';
-import request from '../../../utils/request';
+import axios from 'axios';
+import Qs from 'qs';
 import config from '../../../config';
 import './MayXiaozhi.less'
 // 我的小智面板
@@ -22,17 +22,23 @@ class MyXiaozhiPart1 extends React.Component {
     //json转换为Object对象
     var  reData = JSON.parse(userInfo);
     var cardid = reData.cardid;
+    cardid = cardid.substring(4,8)+"***"+cardid.substring(10,14);
     this.setState({
       cardId : cardid
     });
     var params ="cardNo=00199000008989&memberNo=814987924531250124";
-    request(config.cardBalanceUrl,params).then((data) => {//从配置文件中读取url
-      var infoList = data;
-      this.setState({
-        infoList : infoList
-      })
-      console.log(infoList);
-    })
+    var data = {
+      cardNo: '00199000008989',
+      memberNo: 'ptyh'
+    };
+    axios.post(config.cardBalanceUrl,Qs.stringify(data)).then(function(response){//从配置文件中读取url，GET请求
+      console.log("cardBalanceUrl response",response);
+    //   var dataList = response.data.result;
+    //   console.log("infoList",infoList);
+    //   for (var i=0; i<dataList.length; i++){
+    //     infoList.push(dataList[i]);
+    //   }
+    });
   }
   render() {
     const { getFieldProps } = this.props.form;

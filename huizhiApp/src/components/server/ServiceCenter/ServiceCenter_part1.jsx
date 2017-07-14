@@ -35,7 +35,7 @@ class ServiceCenter_part1 extends React.Component {
         var userInfo = JSON.parse(sessionStorage.userInfo);
         var cardId = userInfo.cardid;
 
-        if(cardId == "" || cardId.length == 0 || cardId == undefined){
+        if( cardId == null|| cardId == "" || cardId == undefined){
           url3 = "index/unbound";
         }
       }

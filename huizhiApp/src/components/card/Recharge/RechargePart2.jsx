@@ -116,7 +116,7 @@ class RechargePart2 extends React.Component {
           </Picker>
           <div className="recharge-wingBlank-money">实际金额：{money}元</div>
         </WingBlank>
-        <div className="recharge-btn-container" style={{textAlign:'center'}}>
+        <div className="recharge-btn-container">
           <Link to={{pathname:"RechargeTwo",query:{money:money,hongbao:hongbao}}}>
             <WingBlank>
                 <Button

@@ -11,7 +11,7 @@ class UserPay1 extends React.Component {
   render() {
     return (
       <div className="userPay_par1_div">
-        <Item style={{ padding: '5px', borderBottom: '1px  solid  #E3E3E3 ', margin: '0px 20px' }}>
+        <Item className="userPay_par1_Item" >
           <Flex>
             <Flex.Item>
               <Flex>
@@ -20,15 +20,15 @@ class UserPay1 extends React.Component {
                     今天 <Brief>12:25</Brief>
                   </Item>
                 </Flex.Item>
-                <Flex.Item style={{ textAlign: 'right' }}>
-                  <Item style={{ textAlign: 'right' }}>
-                    <img src={require('../../../assets/user/user-test.png')} alt="图片" />
+                <Flex.Item className="userPay_par1_Flex">
+                  <Item className="userPay_par1_Flex">
+                    <img src={require('../../../assets/user/user-test-no.png')} alt="图片" />
                   </Item>
                 </Flex.Item>
               </Flex>
             </Flex.Item>
             <Flex.Item>
-              <Flex>
+              <Flex className="userPay_par1_right">
                 <Flex.Item>
                   <Item>
                     -16.00 <Brief>吉萨坎大哈健康啥就开始的话</Brief>
@@ -38,26 +38,26 @@ class UserPay1 extends React.Component {
             </Flex.Item>
           </Flex>
         </Item>
-        <Item style={{ padding: '5px', borderBottom: '1px  solid  #E3E3E3 ', margin: '0px 20px' }} >
+        <Item className="userPay_par1_Item" >
           <Flex>
             <Flex.Item>
-              <Flex>
+              <Flex >
                 <Flex.Item>
                   <Item>
                     今天 <Brief>12:25</Brief>
                   </Item>
                 </Flex.Item>
-                <Flex.Item style={{ textAlign: 'right' }}>
-                  <Item style={{ textAlign: 'right' }}>
-                    <img src={require('../../../assets/user/user-test.png')} alt="图片" />
+                <Flex.Item className="userPay_par1_Flex">
+                  <Item className="userPay_par1_Flex">
+                    <img src={require('../../../assets/user/user-test-no.png')} alt="图片" />
                   </Item>
                 </Flex.Item>
               </Flex>
             </Flex.Item>
             <Flex.Item>
-              <Flex>
-                <Flex.Item>
-                  <Item>
+              <Flex className="userPay_par1_right">
+                <Flex.Item >
+                  <Item >
                     -16.00 <Brief>吉萨坎大哈健康啥就开始的话</Brief>
                   </Item>
                 </Flex.Item>

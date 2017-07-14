@@ -3,21 +3,101 @@ import {createForm} from 'rc-form';
 import {List, Picker, InputItem, DatePicker, TextareaItem, ImagePicker, WingBlank, Button} from 'antd-mobile';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
-import request from '../../../utils/request';
+import Qs from 'qs';
+import axios from 'axios';
 import config from '../../../config';
 import './PropertyRepair.less';
+
 const zhNow = moment().locale('zh-cn').utcOffset(8);
 const maxDate = moment('2017-06-29 +0800', 'YYYY-MM-DD Z').utcOffset(8);
 const minDate = moment('1900-01-01 +0800', 'YYYY-MM-DD Z').utcOffset(8);
-const park = [{label: '祖冲之路', value: '祖冲之路'}, {label: '金京路', value: '金京路'}];
-const floor = [{label: 'A座', value: 'A座'}, {label: 'B座', value: 'B座'}, {label: 'C座', value: 'C座'}];
-const repair = [{label: '照明', value: '照明'}, {label: '灯光', value: '灯光'}, {label: '其他', value: '其他'}];
+
 const image = [];
-const repairChildType = [{label:'其他', value:'其他'}, {label: '灯光', value: '灯光'}];
+
+var parkId = [];
+var buildingTemp = [];
+var repairType = [];
+var repairTypeTemp = [];
+
 
 class ServiceRepairForm extends React.Component {
-  state = {
-    files: image,
+  constructor (props) {
+    super(props);
+    this.state = {
+      userInfo: [],
+      files: image,
+    };
+  }
+  componentWillMount () {
+    //从缓存中读取用户个人信息
+    var userInfo = JSON.parse(sessionStorage.userInfo);
+    this.setState({
+      userInfo : userInfo
+    })
+
+    /*获取园区和楼宇信息*/
+    var proUrl = config.parkUrl;
+    axios.get(proUrl).then(function(response){//一级
+      const proList = response.data.result;
+      var proData = "";
+      for (var i=0; i<proList.length; i++){
+        proData = proList[i];
+        const proObj={};
+        proObj.label = proData.name;
+        proObj.value = proData.objectid;
+        axios.get(config.buildingUrl.replace("{ParentId}",proData.objectid)).then(function(response){//二级
+          buildingTemp = [];
+          var buildingList = response.data.result;
+          var buildingData = "";
+          for (var j=0; j<buildingList.length; j++) {
+            buildingData = buildingList[j];
+            var buildingObj = {};
+            buildingObj.label = buildingData.name;
+            buildingObj.value = buildingData.objectid;
+            buildingTemp.push(buildingObj);
+          }
+          proObj.children = buildingTemp;
+          parkId.push(proObj);
+        });
+      }
+    });
+    /*获取报修信息*/
+    var proUrl = config.parentIdExceptTopUrl;
+    axios.get(proUrl).then(function(response){//一级
+      const proList = response.data.result;
+      var proData = "";
+      for (var i=0; i<proList.length; i++){
+        proData = proList[i];
+        const proObj={};
+        proObj.label = proData.name;
+        proObj.value = proData.objectid;
+        axios.get(config.settingDictUrl.replace("{ParentId}",proData.objectid)).then(function(response){//二级
+          repairTypeTemp = [];
+          var repairTypeList = response.data.result;
+          var repairTypeData = "";
+          for (var j=0; j<repairTypeList.length; j++) {
+            repairTypeData = repairTypeList[j];
+            var repairTypeobj = {};
+            repairTypeobj.label = repairTypeData.name;
+            repairTypeobj.value = repairTypeData.objectid;
+            repairTypeTemp.push(repairTypeobj);
+          }
+          proObj.children = repairTypeTemp;
+          repairType.push(proObj);
+        });
+      }
+    });
+  }
+  componentDidMount(){
+    this.setState({
+      park : parkId,
+      repairType: repairType,
+    })
+  }
+  _onChange(evt){
+    this.setState({
+      value: evt.target.value
+    })
   }
   onChange = (files, type, index) => {
     console.log(files, type, index);
@@ -30,41 +110,57 @@ class ServiceRepairForm extends React.Component {
       if (!error) {
         var repairInfo = this.props.form.getFieldsValue();
         console.log(repairInfo);
-        console.log(repairInfo.date1);
-        var contact = repairInfo.contact;
+        var date = repairInfo.date1._d;
+        var createDate = date.toISOString().slice(0,19).replace("T"," ").replace("-","/").replace("-","/");
+        console.log(createDate);
+        var fixPhone = repairInfo.fixPhone.replace(" ","").replace(" ","");
+        console.log(fixPhone);
         var company = repairInfo.company;
-        var mobile = repairInfo.fixedPhone;
-        var parkId = repairInfo.parkId;
-        var buildingId = repairInfo.buildingId;
+        var phone = repairInfo.phone.replace(" ","").replace(" ","");
+        console.log(phone);
+        var parkId = repairInfo.area[0];
+        var buildingId = repairInfo.area[1];
         var address = repairInfo.address;
-        var repairTypeParent = repairInfo.repairTypeParent;
-        var repairType = repairInfo.repairType;
+        var repairType = repairInfo.repairType[0];
+        var repairTypeConfm = repairInfo.repairType[1];
         var description = repairInfo.description;
         var memo = repairInfo.memo;
-
+        var typeId = 1;
         //从缓存中读取
-        var userInfo = sessionStorage.obj;
+        var userInfo = sessionStorage.userInfo;
         //json转换为Object对象
         var  reData = JSON.parse(userInfo);
         //读取用户ID
         // console.log(reData.username);
         var applicant = reData.username;
-        var params = "contact="+contact+"&company="+company+"&mobile="+mobile+"&parkId="+parkId+"&buildingId="
-          +buildingId+"&address="+address+"&repairTypeParent="+repairTypeParent+"&repairType="+repairType+"&description="
-          +description+"&memo="+memo+"&applicant="+applicant;
-        // console.log(repairInfo);
-        // console.log(params);
-        //post请求
-        // var url = config.userRepairUrl;
-        // console.log(url);
-        request(config.userRepairUrl,params).then((data) => {//从配置文件中读取url
-          console.log(data);
-          // var data1 = data.msg;
-          // if(data1.success){
-          //   alert(data1.msg);
-          // }else{
-          //   alert(data1.msg);
-          // }
+        var data = {
+          repairType: repairType,
+          company: company,
+          description:description,
+          address:address,
+          parkId:parkId,
+          buildingId:buildingId,
+          repairTypeConfm:repairTypeConfm,
+          contact:fixPhone,
+          mobile:phone,
+          applicant:applicant,
+          memo:memo,
+          createDate:createDate,
+          typeId:typeId,
+          acceptDate:createDate,
+          voice_url:'',
+          appointDate:createDate,
+          descriptionConfm:'',
+          photo_url:''
+        };
+        console.log(data);
+        axios.post(config.userRepairUrl,Qs.stringify(data)).then(function(response){//从配置文件中读取url，GET请求
+          console.log("userRepairUrl response",response);
+          if(response.data.success){
+            window.location.href="#/index/Index";
+          }else{
+            alert(response.msg);
+          }
         });
       } else {
         alert('校验失败');
@@ -73,33 +169,42 @@ class ServiceRepairForm extends React.Component {
   }
   render() {
     const {getFieldProps} = this.props.form;
-    const {files} = this.state;
+    const {files,userInfo} = this.state;
     return (
       <form className="PropertyRepair_div">
         <List renderHeader={() => '基本信息'}>
           <InputItem className="server-list-item"
-                     {...getFieldProps('contact')}
+                     {...getFieldProps('phone',{
+                       // initialValue: userInfo.phone,
+                     })}
+                     clear
                      type="phone"
                      placeholder="186 1234 1234"
           >手机号码</InputItem>
           <InputItem className="server-list-item"
-                     {...getFieldProps('company')}
+                     {...getFieldProps('company',{
+                       initialValue: userInfo.enterpriseInput,
+                     })}
                      clear
                      placeholder="请输入公司名称"
                      autoFocus
           >公司名称</InputItem>
           <InputItem className="server-list-item"
-                     {...getFieldProps('fixedPhone')}
-                     type="phone"
+                     {...getFieldProps('fixPhone')}
+                     type="number"
+                     maxLength="8"
           >固定电话</InputItem>
         </List>
 
         <List renderHeader={() => '区域信息'}>
-          <Picker data={park} cols={1} {...getFieldProps('parkId')} className="forss">
-            <List.Item arrow="horizontal">园区</List.Item>
-          </Picker>
-          <Picker data={floor} cols={1} {...getFieldProps('buildingId')} className="forss">
-            <List.Item arrow="horizontal">楼宇</List.Item>
+          <Picker extra="请选择(可选)" cols={2}
+                  data={parkId}
+                  title="选择园区和楼宇"
+                  {...getFieldProps('area')}
+                  onOk={e => console.log('ok', e)}
+                  onDismiss={e => console.log('dismiss', e)}
+          >
+            <List.Item arrow="horizontal">园区/楼宇</List.Item>
           </Picker>
           <InputItem
             {...getFieldProps('address')}
@@ -110,11 +215,14 @@ class ServiceRepairForm extends React.Component {
         </List>
 
         <List renderHeader={() => '报修信息'}>
-          <Picker data={repair} cols={1} {...getFieldProps('repairTypeParent')} className="forss">
-            <List.Item arrow="horizontal">报修类别</List.Item>
-          </Picker>
-          <Picker data={repairChildType} cols={1} {...getFieldProps('repairType')} className="forss">
-            <List.Item arrow="horizontal">报修子类</List.Item>
+          <Picker extra="请选择(可选)" cols={2}
+                  data={repairType}
+                  title="选择报修类别和子类"
+                  {...getFieldProps('repairType')}
+                  onOk={e => console.log('ok', e)}
+                  onDismiss={e => console.log('dismiss', e)}
+          >
+            <List.Item arrow="horizontal">报修类别/子类</List.Item>
           </Picker>
           <DatePicker
             mode="date"

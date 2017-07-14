@@ -1,4 +1,4 @@
-import { List, InputItem, WingBlank, Button } from 'antd-mobile';
+import { List, InputItem, WingBlank, Button, Modal} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
 import { Link } from 'react-router';
@@ -7,7 +7,10 @@ import crypto from  'crypto';
 import config from '../../../config';
 import requestGET from '../../../utils/requestGET';
 import request from '../../../utils/request';
+import axios from 'axios';
+import Qs from 'qs';
 
+const alert = Modal.alert;
 const codeImg = "http://222.73.203.71:8080/WiseAuth/AuthImageServlet";
 // 注册页内部组件
 class RegisterStepOneInner extends React.Component {
@@ -29,13 +32,14 @@ class RegisterStepOneInner extends React.Component {
   //验证用户名的格式是否正确
   validateAccount = (rule, value, callback) => {
     var reg = /^[a-zA-Z][a-zA-Z0-9]{7,19}$/i;
-    var r = value.match(reg);
+    var r = reg.test(value);
     if(r==null){
       callback(new Error('用户名,字母开头，长度为为8-20位，且只能含有字母和数字'));
     }{
       callback();
     }
   }
+  /*验证密码*/
   validatePassword = (rule, value, callback) => {
     var rn = /\d+/g; //数字测试
     var ra = /[a-zA-Z]/g; //字母测试
@@ -49,6 +53,16 @@ class RegisterStepOneInner extends React.Component {
       callback(new Error('新密码至少8个字符'));
     }
   }
+  /*验证手机号*/
+  validatePhoneNo = (rule, value, callback) => {
+    value = value.replace(" ","").replace(" ","");
+    var re = /^1[34578]\d{9}$/;
+    if(re.test(value)){
+      callback();
+    }else{
+      callback(new Error('手机号格式错误！'));
+    }
+  }
   getMessageCode = () =>{
     this.props.form.validateFields({ force: true }, (error) => {
       if(!error){
@@ -59,8 +73,9 @@ class RegisterStepOneInner extends React.Component {
         var url = config.getPhoneCode + phone + '/' + code;
         // console.log(code+phone);
         console.log(url);
-        requestGET(url).then((data) => {//从配置文件中读取url
-          console.log(data);
+        axios.get(url).then(function(response){//从配置文件中读取url，GET请求
+          console.log(url);
+          console.log("Register response",response);
         });
       }
     });
@@ -71,16 +86,32 @@ class RegisterStepOneInner extends React.Component {
         var registerInfo = this.props.form.getFieldsValue();
         console.log(registerInfo);
         var username = registerInfo.username;
-        var password = registerInfo.password;
-        var repassword = registerInfo.repassword;
+        // var password = registerInfo.password;
+        var password = crypto.createHash('md5').update(registerInfo.password,'').digest('hex');
+        // var repassword = registerInfo.repassword;
+        var repassword = crypto.createHash('md5').update(registerInfo.repassword,'').digest('hex');
         var phone = registerInfo.phoneNo;
         phone=phone.replace(" ","").replace(" ","");
         var code = registerInfo.messageCode;
         var params = "username="+username+"&password="+password+"&phone="+phone+"&code="+code;
+        var data = {
+          username: username,
+          password: password,
+          phone:phone,
+          code:code
+        };
         console.log(params);
         //post请求
-        request(config.registerUrl,params).then((data) => {//从配置文件中读取url
-          console.log(data);
+        // request(config.registerUrl,params).then((data) => {//从配置文件中读取url
+        //   console.log(data);
+        // });
+        axios.post(config.registerUrl,Qs.stringify(data)).then(function(response){//从配置文件中读取url，GET请求
+          console.log("registerUrl response",response);
+          if(response.data.success){
+            window.location.href = "#index/Index";
+          }else{
+            alert(response.data.msg);
+          }
         });
       } else {
         alert('校验失败');
@@ -96,16 +127,17 @@ class RegisterStepOneInner extends React.Component {
           {/*用户名输入栏，并添加验证*/}
           <InputItem className="register-list-item"
             {...getFieldProps('username',{
-              rules:[
-                { required: true, message: '请填写用户名' },
-                { validator: this.validateAccount },
-              ]
-            })}
-            clear
-            error={!!getFieldError('username')}
-            onErrorClick={() => {
-              alert(getFieldError('username').join('、'));
-            }}
+                      rules:[
+                        { required: true, message: '请填写用户名' },
+                        { validator: this.validateAccount },
+                      ]
+                    })}
+                    clear
+                    error={!!getFieldError('username')}
+                    onErrorClick={() => {
+                      alert(getFieldError('username').join('、'));
+                    }}
+                     maxLength = "20"
             placeholder="请填写用户名"
           />
         </List>
@@ -146,7 +178,17 @@ class RegisterStepOneInner extends React.Component {
           <List className="register-as-list">
             <InputItem className="register-list-item"
               type="phone"
-              {...getFieldProps('phoneNo')}
+              {...getFieldProps('phoneNo',{
+                          rules:[
+                            { required: true, message: '请确认密码' },
+                            { validator: this.validatePhoneNo },
+                          ]
+                        })}
+                       clear
+                       error={!!getFieldError('phoneNo')}
+                       onErrorClick={() => {
+                         alert(getFieldError('phoneNo').join('、'));
+                       }}
               placeholder="请输入手机号"
             />
           </List>
@@ -154,7 +196,7 @@ class RegisterStepOneInner extends React.Component {
           <Link>
             <img
               src={imgUrl} className="register-verify-code-image"
-              style={{ }} alt="image"
+             alt="image"
               onClick={this.changeImg}
             />
           </Link>

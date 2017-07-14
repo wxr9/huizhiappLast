@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import {Link} from 'react-router';
-import { Carousel, WhiteSpace, WingBlank,Icon } from 'antd-mobile';
+import { Carousel,WhiteSpace, WingBlank,Icon } from 'antd-mobile';
 
 import requestGET from "../../../utils/requestGET";
 import config from  "../../../config";

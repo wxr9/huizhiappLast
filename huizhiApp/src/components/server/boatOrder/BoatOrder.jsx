@@ -1,21 +1,50 @@
 import React from 'react';
-import {List, InputItem, DatePicker} from 'antd-mobile';
+import {List, InputItem, DatePicker,WingBlank,Button} from 'antd-mobile';
 import {createForm} from 'rc-form';
 import {Link} from 'react-router';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
 import './boatOrder.less';
+import config from '../../../config';
+import requestGET from '../../../utils/requestGET';
+import request from '../../../utils/request';
+import axios from 'axios';
+import Qs from 'qs';
 
 const zhNow = moment().locale('zh-cn').utcOffset(8);
 const maxDate = moment('2020-06-29 +0800', 'YYYY-MM-DD Z').utcOffset(8);
 const minDate = moment('2017-06-29 +0800', 'YYYY-MM-DD Z').utcOffset(8);
 
 const maxTime = moment('14:00 +0800', 'HH:mm Z').utcOffset(8);
-const minTime = moment('01:00 +0800', 'HH:mm Z').utcOffset(8);
+const minTime = moment('10:00 +0800', 'HH:mm Z').utcOffset(8);
 const Item = List.Item;
 
 // 游船预约
 class BoatOrderBar extends React.Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      imgUrl: config.codeImgUrl,
+      userInfo: [],
+    };
+  }
+
+  changeImg = () =>{
+    var nowDate = new Date().getTime();
+    console.log(nowDate);
+    var ImgUrl = config.codeImgUrl + "?" +nowDate;
+    this.setState({
+      imgUrl : ImgUrl
+    })
+  }
+  componentWillMount () {
+    //从缓存中读取用户个人信息
+    var userInfo = JSON.parse(sessionStorage.userInfo);
+    this.setState({
+      userInfo : userInfo
+    })
+  }
   onSubmit = () => {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
@@ -24,18 +53,43 @@ class BoatOrderBar extends React.Component {
         var username = orderInfo.username;
         var company = orderInfo.company;
         var mobile = orderInfo.mobile;
-        var dingStartTime = orderInfo.dingStartTime;
+        // var dingStartTime = orderInfo.dingStartTime;
         var dingNumber = orderInfo.dingNumber;
         var code = orderInfo.code;
 
-        var params = "username=" + username + "&company=" + company
-          + "&mobile=" + mobile + "&dingStartTime=" + dingStartTime
-          + "&dingNumber=" + dingNumber + "&code=" + code;
-        //post请求
-        request(config.boatOrder,params).then((data) => {//从配置文件中读取url
-          var reData = data.msg;
-          if(reData.success) {//成功
+        var dingDate = orderInfo.dingDate._d;
+        dingDate = dingDate.toISOString().slice(0,10);
 
+
+        var startTime = orderInfo.startTime._d;
+        startTime = startTime.toISOString().slice(11,16);
+
+        var endTime = orderInfo.endTime._d;
+        endTime = endTime.toISOString().slice(11,16);
+
+
+        // var params = "username=" + username + "&company=" + company
+        //   + "&mobile=" + mobile + "&dingStartTime=" + dingStartTime
+        //   + "&dingNumber=" + dingNumber + "&code=" + code;
+        var orderData = {
+          email:this.state.userInfo.email,
+          username: username,
+          company: company,
+          mobile: mobile,
+          dingStartTime:dingDate+" "+startTime+":00",
+          dingEndTime:dingDate+" "+endTime+":00",
+          dingNumber:dingNumber,
+          name:this.state.userInfo.realName,
+        };
+        console.log(orderData);
+        //post请求
+        // request(config.boatOrder,params).then((data) => {//从配置文件中读取url
+        //   var reData = data.msg;
+        axios.post(config.boatOrder,Qs.stringify(orderData)).then(function(response){//从配置文件中读取url，POST请求
+          var reData = response.data;
+          console.log(reData);
+          if(reData.success) {//成功
+            console.log("6666666");
             //跳转页面
             window.location.href="#index/Index";
           }
@@ -49,11 +103,14 @@ class BoatOrderBar extends React.Component {
 
   render() {
     const {getFieldProps} = this.props.form;
+    const {imgUrl,userInfo} = this.state;
     return (
       <form>
         <List className="date-picker-list">
           <InputItem className="server-list-item"
-                     {...getFieldProps('username')}
+                     {...getFieldProps('username',{
+                       initialValue: userInfo.username,
+                     })}
                      clear
                      placeholder="请输入预约人"
                      autoFocus
@@ -67,16 +124,20 @@ class BoatOrderBar extends React.Component {
           >所属公司</InputItem>
 
           <InputItem
-            {...getFieldProps('mobile')}
+            {...getFieldProps('mobile',{
+              initialValue: userInfo.phone,
+            })}
+            clear
             type="phone"
             placeholder="186 1234 1234"
+            autoFocus
           >手机号码</InputItem>
 
           <DatePicker
             mode="date"
             title="选择日期"
             extra="请选择"
-            {...getFieldProps('date', {
+            {...getFieldProps('dingDate', {
               initialValue: zhNow,
             })}
             minDate={minDate}
@@ -122,10 +183,9 @@ class BoatOrderBar extends React.Component {
           <div className="verify-code-right">
             <Link>
               <img
-                src="http://222.73.203.71:8080/WiseAuth/AuthImageServlet" className="verify-code-image"
-                style={{}} alt="image"
-                onClick={() => {
-                }}
+                src={imgUrl} className="verify-code-image"
+                alt="image"
+                onClick={this.changeImg}
               />
 
             </Link>
@@ -135,7 +195,11 @@ class BoatOrderBar extends React.Component {
               <div className="boatOrder-blank"/>
             </Item>
           </List>
-
+          <WingBlank>
+                <Button
+                  className="boatOrder_submit" type="primary" onClick={() => {this.onSubmit()}}
+                >提交</Button>
+          </WingBlank>
         </List>
       </form>
     );

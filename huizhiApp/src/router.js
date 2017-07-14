@@ -16,10 +16,10 @@ import TransactionQuery from './routes/card/TransactionQuery';
 import Recharge from './routes/card/Recharge';
 import RechargeTwo from './routes/card/RechargeTwo';
 import RechargeThree from './routes/card/RechargeThree';
-import Unbunding from './routes/card/Unbunding';
+// import Unbunding from './routes/card/Unbunding';
 import Unbound from './routes/card/Unbound';
 import Bound from './routes/card/Bound';
-import Bunding from './routes/card/Bunding';
+// import Bunding from './routes/card/Bunding';
 
 import PersonInfo from './routes/user/PersonInfo';
 import ChangePhoneNo from './routes/user/ChangePhoneNo';
@@ -48,6 +48,8 @@ import Pay from './routes/main/Pay';
 import Top from './components/Top'
 import GoBack from './components/GoBack'
 import Wrap_two from './components/Wrap_two'
+import Notice from './components/card/Unbound/Notice'
+
 // 管理所有页面的路由功能
 function RouterConfig({ history }) {
   return (
@@ -60,6 +62,8 @@ function RouterConfig({ history }) {
         <Route path="index/instructionBinding" component={InstructionBinding} />
           <Route path="index/itRepair" breadName="IT报修" component={ITRepair} />
           <Route path="index/propertyRepair" breadName="物业报修" component={PropertyRepair} />
+          <Route path="index/boatOrder" breadName="游船预约" component={BoatOrder} />
+          <Router path="notice" breaName="须知" component={Notice}/>
         </Route>
       </Route>
 
@@ -70,9 +74,10 @@ function RouterConfig({ history }) {
         <Route path="ActiveCenter" breadName="活动中心" component={ActiveCenter} />
         <Route path="service" breadName="服务中心" component={Service} />
         <Route path="pay" breadName="扫码支付" component={Pay} />
-        <Route path="boatOrder" breadName="游船预约" component={BoatOrder} />
         <Route path="personcenter" breadName="个人中心" component={PersonCenter} />
         <Route path="personcenter_UnLogin" breadName="个人中心" component={PersonCenter_UnLogin} />
+        <Route path="unbound" breadName="汇智卡未绑定" component={Unbound} />
+        <Route path="bound" breadName="汇智卡已绑定" component={Bound} />
       </Route>
       </Route>
 
@@ -92,12 +97,8 @@ function RouterConfig({ history }) {
 
       <Route path="/" component={Wrap}>
         <Route path="/index" component={WrapTab}>
-          {/*<Route path="propertyRepair" breadName="物业报修" component={PropertyRepair} />*/}
-          <Route path="unbunding" breadName="解绑" component={Unbunding} />
-          <Route path="unbound" breadName="汇智卡未绑定" component={Unbound} />
-          <Route path="bound" breadName="汇智卡已绑定" component={Bound} />
-          <Route path="bunding" breadName="绑定" component={Bunding} />
-          {/*<Route path="itRepair" breadName="IT报修" component={ITRepair} />*/}
+          {/*<Route path="unbunding" breadName="解绑" component={Unbunding} />*/}
+          {/*<Route path="bunding" breadName="绑定" component={Bunding} />*/}
           <Route path="userinfo" component={UserInfo} />
           <Route path="personnel" component={Personnel} />
           <Route path="activedetail" breadName="活动详情" component={ActiveDetail} />

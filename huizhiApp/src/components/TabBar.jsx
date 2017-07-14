@@ -13,7 +13,8 @@ class Text extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      url: "index/MyXiaozhi",
+      url1: "index/MyXiaozhi",
+      url2:"index/pay",
     };
   }
 
@@ -23,13 +24,28 @@ class Text extends React.Component {
       //跳转登录界面
       var login = "login";
       this.setState({
-        url: login
+        url1: login,
+        url2:login,
+      })
+    }else {
+      var url1 =  "index/MyXiaozhi";
+      //从缓存中读取用户个人信息
+      if(sessionStorage.userInfo != undefined){
+        var userInfo = JSON.parse(sessionStorage.userInfo);
+        var cardId = userInfo.cardid;
+
+        if( cardId == null|| cardId == "" || cardId == undefined){
+          url1 = "index/unbound";
+        }
+      }
+      this.setState({
+        url1 : url1
       })
     }
   }
 
   render() {
-    const { url } = this.state;
+    const { url1,url2 } = this.state;
     return (
       <div className="nav-tab">
         <Tabs
@@ -79,7 +95,7 @@ class Text extends React.Component {
           />
           <TabPane
             tab={
-              <Link className="tabSelect" to={url}>
+              <Link className="tabSelect" to={url1}>
                 {/*// TODO-ICON*/}
                 <Icon type={require('../assets/home/myxz.svg')} className="tabSelect-icon"  />
                 {/*<img src={require('../assets/16.png')} className="tabSelect_img"/>*/}
@@ -88,7 +104,7 @@ class Text extends React.Component {
           />
           <TabPane
             tab={
-              <Link className="tabSelect" to="index/pay">
+              <Link className="tabSelect" to={url2}>
                 {/*// TODO-ICON*/}
                 <Icon type={require('../assets/home/scan.svg')} className="tabSelect-icon" />
                 {/*<img src={require('../assets/17.png')} className="tabSelect_img"/>*/}

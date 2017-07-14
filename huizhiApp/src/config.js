@@ -8,7 +8,6 @@ var URLConfig = {
   recharge:commonUrl + 'BizPayment/CardReCharge',//充值接口(暂时是这个，也许要改。post方法)
   rechargeDiscount:commonUrl + 'BizPayment/CardReChargeDiscount',//计算折扣金额接口(暂时是这个，也许要改。post方法)
   boatOrder:commonUrl + 'HuizhiBoat/BoatApply/Add',//游船预约接口(暂时是这个，也许要改。post方法)
-  userRepairUrl:commonUrl+'UserRepair/Add',//物业报修
   getPhoneCode:commonUrl+"Public/Phone/SendCode/",//获取手机验证码
   registerUrl:commonUrl+"Login/register",//注册
   codeImgUrl:commonUrl+"WiseAuth/AuthImageServlet",//图片验证码
@@ -19,6 +18,7 @@ var URLConfig = {
   invalidRedPAcketUrl:commonUrl+"RedPacket/User/Invalid/List",//过期和已使用红包
   cardBalanceUrl:commonUrl+"BizPayment/QueryCardBalance",//获取账户金额
   myServiceUrl:commonUrl+"workflow/api/processinstances/my_apply/list/1/10",//获取我的服务列表
+  myOrderUrl:commonUrl+"HuizhiBoat/BoatApply/Me/List/1/10",//获取我的服务列表
   changePasswordUrl:commonUrl+"Setting/User/ChangePassword",//修改密码提交
   editUserUrl:commonUrl+"Setting/User/CompleteUserInfo",//用户信息编辑
   eduDicUrl:commonUrl+"Setting/SettingDict/0/0?type=education",//学历数据字典
@@ -31,6 +31,14 @@ var URLConfig = {
   notificationUrl:commonUrl+"Notification/1/10",//消息通知
   ITRepairUrl:commonUrl+"ITRepair/Add",//IT报修
   queryTransDetails:commonUrl+"BizPayment/QueryTransDetails",//交易明细
+  NoticeUrl:commonUrl+"Setting/RichText/ByTitle/Edit?title={title}",//须知
+  editUserInfoUrl:commonUrl+"Setting/User/CompleteUserInfo",//修改用户信息
+  parkUrl:commonUrl+"Setting/Park/0/0",//获取园区信息
+  buildingUrl:commonUrl+"Setting/Building/BuildingByParkId/0/0/{ParentId}",//获取楼宇信息
+  parentIdExceptTopUrl:commonUrl+"Setting/SettingDict/ParentIdExceptTop/List/0/0?type=repairsCommFlag",//获取物业报修父类
+  settingDictUrl:commonUrl+"Setting/SettingDict/ParentId/0/0/{ParentId}",//获取报修子类
+  ITrepairsUrl:commonUrl+"Setting/SettingDict/ParentIdExceptTop/List/0/0?type=ITrepairsFlag",//获取IT报修父类
+  userRepairUrl:commonUrl+"UserRepair/Add",//报修地址
 };
 
 export default URLConfig;

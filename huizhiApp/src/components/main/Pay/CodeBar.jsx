@@ -19,9 +19,9 @@ class CodeBar extends React.Component {
         displayValue: true,  //  不显示原始值
         // background: '#4b8b7f',  //  背景色
         // lineColor: 'rgba(255,255,255,0.5)', // 线条颜色
-        width:2.8,  // 线条宽度
+        width:4,  // 线条宽度
         height:200,//条形码高度
-        fontSize:50//原始值字体大小
+        fontSize:36//原始值字体大小
       }
     );
   }
@@ -30,7 +30,7 @@ class CodeBar extends React.Component {
     return (
       <div className="codeBar_loc">
         <br/>
-        <label className="codeBar_lable">付款码</label><br/>
+        <label className="codeBar_lable">扫码付款</label><br/>
         <svg ref={(ref)=>this._barcodeSVG = ref}></svg>
       </div>
     );

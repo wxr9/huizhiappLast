@@ -4,6 +4,8 @@ import React from 'react';
 import { Link } from 'react-router';
 import '../RegisterStepOne/register.less';
 import crypto from  'crypto';
+import axios from 'axios';
+import Qs from 'qs';
 import request from '../../../utils/request';
 import config from '../../../config';
 const alert = Modal.alert;
@@ -13,7 +15,7 @@ class ChangePwdInner extends React.Component {
     var rn = /\d+/g; //数字测试
     var ra = /[a-zA-Z]/g; //字母测试
     if (value && value.length >= 8) {
-      if(!(rn.test(value) && ra.test(value))) {
+      if(rn.test(value) && ra.test(value)) {
         callback();
       }else{
         callback(new Error('密码需包含数字和字母'));
@@ -46,17 +48,20 @@ class ChangePwdInner extends React.Component {
         }else{
           alert("两次输入的密码不相等！");
         }
-        var params = "username="+username+"&oldpassword="+oldPassword+"&password="+password+"&confirmPassword="+newRePassword;
+        var params = "username="+username+"&oldpassword="+oldPassword+"&password="+password;
         console.log(params);
-        //post请求
-        request(config.changePasswordUrl,params).then((data) => {//从配置文件中读取url
-          var reData = data;
-          console.log(reData);
-          if(reData.success){//登陆成功
-            // window.location.href="#index/Index";
-          }else{//x修改密码失败
-            alert(reData.msg);
-            this.props.form.resetFields();
+        var data = {
+          username: username,
+          password: password,
+          oldpassword: oldPassword
+        };
+
+        axios.post(config.changePasswordUrl,Qs.stringify(data)).then(function(response){//从配置文件中读取url，GET请求
+          console.log("changePhoneUrl response",response);
+          if(response.data.success){
+            window.location.href="#index/Index";
+          }else{
+            alert(response.data.msg);
           }
         });
       }else{
@@ -74,6 +79,7 @@ class ChangePwdInner extends React.Component {
               {...getFieldProps('oldPassword')}
               type="password"
               placeholder="请输入原密码"
+              maxLength = "20"
             />
           </List>
           <List className="register-as-list">
@@ -89,6 +95,7 @@ class ChangePwdInner extends React.Component {
                        onErrorClick={() => {
                          alert(getFieldError('newPassword').join('、'));
                        }}
+                       maxLength = "20"
               type="password"
               placeholder="请输入修改密码"
             />
@@ -99,7 +106,7 @@ class ChangePwdInner extends React.Component {
                          {...getFieldProps('newRePassword',{
                            rules: [
                              { required: true, message: '两次密码不相等' },
-                             { validator: this.validateNewRePassword },
+                             { validator: this.validateNewPassword },
                            ],
                          })}
                          clear
@@ -107,6 +114,7 @@ class ChangePwdInner extends React.Component {
                          onErrorClick={() => {
                            alert(getFieldError('newRePassword').join('、'));
                          }}
+                         maxLength = "20"
                 type="password"
                 placeholder="再次确认修改密码"
               />

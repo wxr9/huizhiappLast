@@ -12,25 +12,25 @@ class PersonInfo1 extends React.Component {
           <Link to="index/userinfo">
             <List.Item extra="" arrow="horizontal">
               {/* TODO-ICON */}
-              <Badge text={0} style={{ marginLeft: 12 }}><Icon type={require('../../../assets/user/user-info.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">个人资料</span>
+              <Badge text={0} className="personInfo_par1_Badge"><Icon type={require('../../../assets/user/user-info.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">个人资料</span>
             </List.Item>
           </Link>
           <Link to="index/activedetail">
             <List.Item extra="" arrow="horizontal">
               {/* TODO-ICON */}
-              <Badge text={0} style={{ marginLeft: 12 }}><Icon type={require('../../../assets/user/user-set.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">头像设置</span>
+              <Badge text={0}  className="personInfo_par1_Badge"><Icon type={require('../../../assets/user/user-set.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">头像设置</span>
             </List.Item>
           </Link>
           <Link to="ChangePwd">
             <List.Item extra="" arrow="horizontal">
               {/* TODO-ICON */}
-              <Badge text={0} style={{ marginLeft: 12 }}><Icon type={require('../../../assets/user/user-pwd.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">修改密码</span>
+              <Badge text={0}  className="personInfo_par1_Badge"><Icon type={require('../../../assets/user/user-pwd.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">修改密码</span>
             </List.Item>
           </Link>
           <Link to="ChangePhoneNo">
             <List.Item extra="" arrow="horizontal">
               {/* TODO-ICON */}
-              <Badge text={0} style={{ marginLeft: 12 }}><Icon type={require('../../../assets/user/user-phone.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">修改手机号</span>
+              <Badge text={0}  className="personInfo_par1_Badge"><Icon type={require('../../../assets/user/user-phone.svg')} className="tabSelect-icon" /></Badge><span className="personInfo_par1_span">修改手机号</span>
             </List.Item>
           </Link>
         </div>

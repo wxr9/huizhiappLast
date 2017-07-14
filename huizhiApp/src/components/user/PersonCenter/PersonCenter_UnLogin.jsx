@@ -10,22 +10,25 @@ class PersonCenter1 extends React.Component {
     return (
       <div className="personCenter_par1_div">
         <WhiteSpace size="lg" />
-        <Flex style={{ width: '100%', textAlign: 'center' }}>
+        <Flex  className="personCenter_par1_Flex">
           <Flex.Item>个人中心</Flex.Item>
         </Flex>
         <WhiteSpace size="lg" />
-        <Flex style={{ width: '100%', textAlign: 'center' }}>
-          <Flex.Item><img src={require('../../../assets/user/user-none.png')} style={{width: '20%',
-            height: 'auto'}} alt="图片" /></Flex.Item>
+        <Flex className="personCenter_par1_Flex">
+          <Flex.Item>
+            <img
+              src={require('../../../assets/user/user-none.png')}
+              className="personCenter_par1_png" alt="图片" />
+          </Flex.Item>
         </Flex>
         <WhiteSpace size="lg" />
 
-        <Flex style={{ width: '100%', textAlign: 'center' ,display:'block'}}>
+        <Flex className="personCenter_UnLogin_Flex">
             <Link to="login">
-              <span style={{color:'#fff'}}>登录</span>
+              <span className="personCenter_UnLogin_color" >登录</span>
             </Link>
             <Link to="RegisterStepOne">
-              <span style={{color:'#fff',marginLeft:'0.6rem'}}>注册</span>
+              <span className="personCenter_UnLogin_re" >注册</span>
             </Link>
           </Flex>
           <WhiteSpace size="xl" />

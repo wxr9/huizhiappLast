@@ -4,6 +4,9 @@ import { Link } from 'react-router';
 const Item = List.Item;
 import './binding.less';
 class InstructionBinding extends React.Component {
+  jump =()=>{
+    window.location.href="#index/bunding";
+  }
   render() {
     return (
       <List className="instruction_list">
@@ -20,12 +23,9 @@ class InstructionBinding extends React.Component {
             六,上海浦东软件园,作为公益服务项目,上海浦东软件园,作为公益服务项目,上海浦东软件园,作为公益服务项目<br />
             </span><div>
             <div className="instruction-binding-btn">
-              <Link to="index/bunding">
                 <Button
-                  className="btn" type="primary" inline size="small" onClick={() => {
-                }}
+                  className="btn" type="primary" inline size="small" onClick={this.jump}
                 >请先绑定卡</Button>
-              </Link>
             </div>
           </div>
           </Item>

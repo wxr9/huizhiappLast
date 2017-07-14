@@ -5,8 +5,8 @@ import { Link } from 'react-router';
 import config from '../../../config';
 import './contact.less';
 
-import requestGET from '../../../utils/requestGET';
-import request from '../../../utils/request';
+import axios from 'axios';
+import Qs from 'qs';
 
 const alert = Modal.alert;
 
@@ -41,13 +41,9 @@ class ChangePhoneNoInner extends React.Component {
         // var url = config.getPhoneCode + phone;
         // console.log(code+phone);
         console.log(url);
-        requestGET(url).then((data) => {//从配置文件中读取url
+        axios.get(url).then(function(response){//从配置文件中读取url，GET请求
           console.log(url);
-          console.log(data);
-          var reData = data.msg;
-          if(!reData.success){
-            alert(reData.msg);
-          }
+          console.log("getPhoneCode response",response);
         });
       }
     });
@@ -66,20 +62,21 @@ class ChangePhoneNoInner extends React.Component {
         var username = reData.username;
         var phone = info.phoneNo;
         phone=phone.replace(" ","").replace(" ","");
-        var code = info.code;
+        var code = info.messageCode;
         var params = "username="+username+"&phone="+phone+"&code="+code;
         console.log(params);
-        //post请求
-        request(config.changePhoneUrl,params).then((data) => {//从配置文件中读取url
-          console.log(data);
-          var rsData = data.msg;
-          // if(rsData.success){//修改联系方式成功
-          //   //跳转首页
-          //   window.location.href="#index/Index";
-          // }else{//修改联系方式失败
-          //   alert(reData.msg);
-          //   this.props.form.resetFields();
-          // }
+        var data = {
+          username: username,
+          phone: phone,
+          code:code
+        };
+        axios.post(config.changePhoneUrl,Qs.stringify(data)).then(function(response){//从配置文件中读取url，GET请求
+          console.log("changePhoneUrl response",response);
+          if(response.data.success){
+              window.location.href = "#index/Index";
+          }else{
+            alert(response.data.msg);
+          }
         });
       } else {
         alert('校验失败');
@@ -102,7 +99,7 @@ class ChangePhoneNoInner extends React.Component {
           <Link>
             <img
               src={imgUrl} className="contact-verify-code-image"
-              style={{ }} alt="image"
+              alt="image"
               onClick={this.changeImg}
             />
 

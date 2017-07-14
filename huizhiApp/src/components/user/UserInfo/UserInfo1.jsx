@@ -1,26 +1,27 @@
-import { List, Picker, WingBlank, Button, InputItem, DatePicker, TextareaItem, Select, Cascader } from 'antd-mobile';
+import { Modal,List, Picker, WingBlank, Button, InputItem, DatePicker, TextareaItem, Select, Cascader } from 'antd-mobile';
 import React from 'react';
 import { createForm } from 'rc-form';
 import moment from 'moment';
 import 'moment/locale/zh-cn';
+import Qs from 'qs';
 
-import request from '../../../utils/request';
 import config from '../../../config';
-import dropDown from '../../../utils/dropDownUtil';
+import axios from 'axios';
+import './UserInfo.less'
 
+const alert = Modal.alert;
 const zhNow = moment().locale('zh-cn').utcOffset(8);
-const maxDate = moment('2017-06-29 +0800', 'YYYY-MM-DD Z').utcOffset(8);
-const minDate = moment('1900-01-01 +0800', 'YYYY-MM-DD Z').utcOffset(8);
+const maxDate = moment('2017/06/29 +0800', 'YYYY/MM/DD Z').utcOffset(8);
+const minDate = moment('1900/01/01 +0800', 'YYYY/MM/DD Z').utcOffset(8);
 const gmtNow = moment().utcOffset(0);
-const sex = [{ label: '男', value: '1' }, { label: '女', value: '2' }];
-const marry = [{ label: '已婚', value: '2' }, { label: '未婚', value: '1' }];
-const dis = [[{ label: '上海', value: '1' }, { label: '浙江', value: '2' }],
-  [{ label: '上海市', value: '3' }, { label: '杭州', value: '4' }]];
-var education = dropDown(config.eduDicUrl);
-var nation = dropDown(config.nationDicUrl);
-// var city = dropDown(config.cityDicUrl);
+const sex = [{ label: '男', value: 1 }, { label: '女', value: 2 }];
+const marry = [{ label: '已婚', value: 2 }, { label: '未婚', value: 1 }];
 
 var count = 0;
+var educationArr = [];
+var cityArr = [];
+var nationArr = [];
+var cityArrTemp = [];
 
 class UserInfo1 extends React.Component {
 
@@ -28,6 +29,9 @@ class UserInfo1 extends React.Component {
     super(props);
     this.state = {
       userInfo: [],
+      education : [],
+      nation : [],
+      city : []
     };
   }
 
@@ -38,35 +42,104 @@ class UserInfo1 extends React.Component {
     this.setState({
       userInfo : userInfo
     })
+
+    //城市获取
+    var proUrl = config.cityDicUrl.replace("{ParentId}","1000001");
+    axios.get(proUrl).then(function(response){//一级菜单获取
+      const proList = response.data.result;//异步获取数据，必须定义为const
+      var proData = "";
+      for (var i=0; i<proList.length; i++){
+        proData = proList[i];
+        const proObj={};//异步获取数据，必须定义为const
+        proObj.label = proData.name;
+        proObj.value = proData.objectid;
+        axios.get(config.cityDicUrl.replace("{ParentId}",proData.objectid)).then(function(response){//二级菜单获取
+          cityArrTemp = [];
+          var cityList = response.data.result;
+          var cityData = "";
+          for (var j=0; j<cityList.length; j++) {
+            cityData = cityList[j];
+            var cityObj = {};
+            cityObj.label = cityData.name;
+            cityObj.value = cityData.objectid;
+            cityArrTemp.push(cityObj);
+          }
+          proObj.children = cityArrTemp;
+          cityArr.push(proObj);
+        });
+      }
+    });
+
+    //学历获取
+    axios.get(config.eduDicUrl).then(function(response){//从配置文件中读取url，GET请求
+      var  dataList = response.data.result;
+      var data = "";
+      for (var i=0; i<dataList.length; i++){
+        data = dataList[i];
+        var obj={};
+        obj.label = data.name;
+        obj.value = data.objectid;
+        educationArr.push(obj);
+      }
+    });
+
+    //国籍获取
+    axios.get(config.nationDicUrl).then(function(response){//从配置文件中读取url，GET请求
+      var  dataList = response.data.result;
+      var data = "";
+      for (var i=0; i<dataList.length; i++){
+        data = dataList[i];
+        var obj={};
+        obj.label = data.name;
+        obj.value = data.objectid;
+        nationArr.push(obj);
+      }
+    });
   }
+  componentDidMount(){
+    this.setState({
+      education : educationArr,
+      nation : nationArr,
+      city : cityArr,
+    })
+  }
+
   //提交
   onSubmit = () => {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         var userInfo = this.props.form.getFieldsValue();
-        console.log(userInfo);
-        // console.log(userInfo.userName);
-        // console.log(userInfo.nickName);
-        // console.log(userInfo. sex[0]);
-        // console.log(userInfo.realName);
-        // alert(userInfo.birthDay._d);
-        // console.log(userInfo.workYear);
-        // console.log(userInfo.nation[0]);
-        // console.log(userInfo.area);
-        // console.log(userInfo.isMarry[0]);
-        // console.log(userInfo.education[0]);
+        console.log("userInfo",userInfo);
+        var birthDay = userInfo.birthDay._d.toISOString().slice(0,10).toString().replace("-","/").replace("-","/");
+        // console.log(birthDay);
+
+        var data = {
+          username: userInfo.userName,
+          name: userInfo.nickName,
+          sex: userInfo.sex[0],
+          hometownCity: userInfo.area[1],
+          birthday: birthDay,
+          enterpriseInput: userInfo.companyName,
+          education: userInfo.education[0],
+          marital: userInfo.isMarry[0],
+          nation: userInfo.nation[0],
+          signature: userInfo.perSignature,
+          realName: userInfo.realName,
+          apartmentCity: userInfo.residence[1],
+          workyears: userInfo.workYear
+        };
+        console.log("data",data);
         // post请求
-        var params = "username=ptyh&apartmentCity=510000&education=353&nation=6&hometownCity=510000&workyears=2&sex=1&userFlag=2&marital=1&birthday=1991-10-15&enterpriseInput=kufu";
-        console.log(params);
-        request(config.editUserUrl,params).then((data) => {//从配置文件中读取url
-          var reData = data;
-          console.log(reData);
-          // if(reData.success){//提交成功
-          //
-          // }else{//提交失败
-          //   alert(reData.msg);
-          //   // this.props.form.resetFields();//重置表单的值
-          // }
+        axios.post(config.editUserInfoUrl,Qs.stringify(data)).then(function(response){//从配置文件中读取url，POST请求
+          var reData = response.data;
+          if(reData.success){//保存成功
+            //跳转首页
+            window.location.href="#index/Index";
+          }else{
+            alert(reData.msg);
+          }
+        }).catch(function(error){
+          console.log(error);
         });
       } else {
         alert('校验失败');
@@ -87,8 +160,7 @@ class UserInfo1 extends React.Component {
       <form>
         <div>
           <List
-            className="date-picker-list"
-            style={{ backgroundColor: 'white' }}
+            className="date-picker-list UserInfo_div_list"
           >
           <InputItem
             {...getFieldProps('userName',{
@@ -98,12 +170,11 @@ class UserInfo1 extends React.Component {
             placeholder="请输入用户名"
             autoFocus
             editable={false}
-            // value={userInfo.username}
           >用户名</InputItem>
 
           <InputItem
             {...getFieldProps('nickName',{
-              initialValue: userInfo.username,
+              initialValue: userInfo.name,
             })}
             clear
             placeholder="请输入昵称"
@@ -111,12 +182,15 @@ class UserInfo1 extends React.Component {
             autoFocus
           >昵称</InputItem>
 
-          <Picker data={sex} cols={1} {...getFieldProps('sex')} className="forss">
+          <Picker data={sex} className="forss" cols={1}
+                  {...getFieldProps('sex',{
+                    initialValue: [ userInfo.sex],
+                  })}>
             <List.Item arrow="horizontal">性别</List.Item>
           </Picker>
           <InputItem
             {...getFieldProps('realName', {
-              initialValue: '普通用户',
+              initialValue: userInfo.realName,
             })}
             clear
             placeholder="请输入真实姓名"
@@ -145,47 +219,60 @@ class UserInfo1 extends React.Component {
             maxLength="2"
             type="number"
           >工作年限</InputItem>
-          <Picker data={nation} cols={1} {...getFieldProps('nation')} className="forss">
+          <Picker data={this.state.nation} cols={1}  className="forss"
+                  {...getFieldProps('nation',{
+            initialValue: [ userInfo.settingNation.objectid ],
+          })}>
             <List.Item arrow="horizontal">国籍</List.Item>
           </Picker>
-          <Picker
-            data={dis}
-            title="选择地区"
-            {...getFieldProps('area')}
-            cascade={false}
-            extra="请选择"
-            value={this.state.sValue}
-            onChange={v => this.setState({ sValue: v })}
+          <Picker extra="请选择" cols={2}
+                    data={cityArr}
+                    title="选择地区"
+                    {...getFieldProps('area',{
+                      initialValue: [ userInfo.settingHometowntCity.settingCity.objectid, userInfo.settingHometowntCity.objectid ],
+                    })}
+                    onOk={e => console.log('ok', e)}
+                    onDismiss={e => console.log('dismiss', e)}
           >
             <List.Item arrow="horizontal">户籍地</List.Item>
           </Picker>
-          <Picker
-            data={dis}
-            title="选择地区"
-            {...getFieldProps('residence')}
-            cascade={false}
-            extra="请选择"
-            value={this.state.sValue}
-            onChange={v => this.setState({ sValue: v })}
+          <Picker extra="请选择" cols={2}
+                    data={cityArr}
+                    title="选择地区"
+                    {...getFieldProps('residence',{
+                      initialValue: [ userInfo.settingApartmentCity.settingCity.objectid, userInfo.settingApartmentCity.objectid ],
+                    })}
+                    onOk={e => console.log('ok', e)}
+                    onDismiss={e => console.log('dismiss', e)}
           >
             <List.Item arrow="horizontal">居住地</List.Item>
           </Picker>
           <InputItem
-            {...getFieldProps('companyName')}
+            {...getFieldProps('companyName',{
+              initialValue: userInfo.enterpriseInput,
+            })}
             clear
             placeholder="请输入企业名称"
             autoFocus
           >企业名称</InputItem>
 
-          <Picker data={marry} cols={1} {...getFieldProps('isMarry')} className="forss">
+          <Picker data={marry} cols={1} className="forss"
+                  {...getFieldProps('isMarry',{
+            initialValue: [ userInfo.marital],
+          })}>
             <List.Item arrow="horizontal">婚否</List.Item>
           </Picker>
-          <Picker className="forss" data={education} cols={1} {...getFieldProps('education')}>
+          <Picker className="forss" data={this.state.education} cols={1}
+                  {...getFieldProps('education',{
+                    initialValue: [userInfo.settingDict.objectid],
+                  })}>
             <List.Item arrow="horizontal">学历</List.Item>
           </Picker>
           <TextareaItem
             title="个性签名"
-            {...getFieldProps('perSignature')}
+            {...getFieldProps('perSignature',{
+              initialValue: userInfo.signature,
+            })}
             placeholder="请输入个性签名"
             data-seed="logId"
             autoHeight

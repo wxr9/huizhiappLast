@@ -2,12 +2,13 @@ import React from 'react';
 import { List, Switch, WingBlank, Card, Flex, Tag, Icon, Tabs } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import { Link } from 'react-router';
-import requestGET from '../../../utils/requestGET';
-import request from '../../../utils/request';
+import axios from 'axios';
 import config from '../../../config';
 import './RedPacket.less';
 
-
+var validInfoList = [];
+var invalidInfoList = [];
+var count = 0;
 const TabPane = Tabs.TabPane;
 
 // 红包
@@ -21,29 +22,51 @@ class part1 extends React.Component {
     };
   }
   componentWillMount () {
-    requestGET(config.validRedPacketUrl).then((data) => {//从配置文件中读取url
-      var validInfoList = data;
-      this.setState({
-        infoList : validInfoList
-      })
-      console.log(validInfoList);
+    axios.get(config.validRedPacketUrl).then(function(response){//从配置文件中读取url，GET请求
+      console.log(config.validRedPacketUrl);
+      console.log("validRedPacketUrl response",response);
+      validInfoList = [];
+      var dataList = response.data;
+      for (var i=0; i<dataList.length; i++){
+        validInfoList.push(dataList[i]);
+      }
+      console.log("validInfoList",validInfoList);
+      // this.setState({
+      //   validInfoList: validInfoList,
+      //   invalidInfoList: invalidInfoList
+      // })
     });
-
-    requestGET(config.invalidRedPAcketUrl).then((data) => {//从配置文件中读取url
-      var invalidInfoList = data;
-      this.setState({
-        infoList : invalidInfoList
-      })
-      console.log(invalidInfoList);
+    axios.get(config.invalidRedPAcketUrl).then(function(response){//从配置文件中读取url，GET请求
+      console.log(config.invalidRedPAcketUrl);
+      console.log("invalidRedPacketUrl response",response);
+      invalidInfoList = [];
+      var dataList = response.data;
+      for (var i=0; i<dataList.length; i++){
+        invalidInfoList.push(dataList[i]);
+      }
+      console.log("invalidInfoList",invalidInfoList);
     });
+  }
+  componentDidMount(){
+    console.log("validInfoList componentDidMount",validInfoList);
+    console.log("invalidInfoList componentDidMount",invalidInfoList);
+    this.setState({
+      validInfoList: validInfoList,
+      invalidInfoList: invalidInfoList
+    })
+  }
+  componentDidUpdate(){
+    console.log("componentDidUpdate",this.state.validInfoList);
+    console.log("componentDidUpdate",this.state.invalidInfoList);
   }
   render() {
     const { getFieldProps } = this.props.form;
+    const {validInfoList,invalidInfoList} = this.state;
     return (
       <form>
-        <List>
-          <img className="RedPacket_img" src={require('../../../assets//mine/mine-p1.jpg')} alt="图片" />
-        </List>
+        {/*<List>*/}
+          {/*<img className="RedPacket_img" src={require('../../../assets//mine/mine-p1.jpg')} alt="图片" />*/}
+        {/*</List>*/}
         <WingBlank>
           <List>
             <Card>
@@ -54,27 +77,21 @@ class part1 extends React.Component {
                       <List
                         className="RedPacket_list"
                       >
-                        <div className="packet">
-                          <div className="packet_money">
-                            <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>
-                          </div>
-                          <div className="packet_time">2016.11.22-2017.11.23
-                          </div>
-                        </div>
-                        <div className="packet">
-                          <div className="packet_money">
-                            <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>
-                          </div>
-                          <div className="packet_time">2016.11.22-2017.11.23
-                          </div>
-                        </div>
-                        <div className="packet">
-                          <div className="packet_money">
-                            <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>
-                          </div>
-                          <div className="packet_time">2016.11.22-2017.11.23
-                          </div>
-                        </div>
+                        {
+                          validInfoList.map((data) => {
+                              count = count + 1;
+                              return (
+                                <div className="packet" key={count}>
+                                  <div className="packet_money">
+                                    <span className="yuan">¥</span><span className="big">{data.sum}</span><span className="yuan">元</span>
+                                  </div>
+                                  <div className="packet_time">{data.createTime}
+                                  </div>
+                                </div>
+                              );
+                            }
+                          )
+                        }
                       </List>
                     </div>
                   </TabPane>
@@ -83,27 +100,21 @@ class part1 extends React.Component {
                       <List
                         className="RedPacket_list"
                       >
-                        <div className="packet">
-                          <div className="packet_money">
-                            <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>
-                          </div>
-                          <div className="packet_time">2016.11.22-2017.11.23
-                          </div>
-                        </div>
-                        <div className="packet">
-                          <div className="packet_money">
-                            <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>
-                          </div>
-                          <div className="packet_time">2016.11.22-2017.11.23
-                          </div>
-                        </div>
-                        <div className="packet">
-                          <div className="packet_money">
-                            <span className="yuan">¥</span><span className="big">50.0</span><span className="yuan">元</span>
-                          </div>
-                          <div className="packet_time">2016.11.22-2017.11.23
-                          </div>
-                        </div>
+                        {
+                          invalidInfoList.map((data) => {
+                              count = count + 1;
+                              return (
+                                <div className="packet" key={count}>
+                                  <div className="packet_money">
+                                    <span className="yuan">¥</span><span className="big">{data.sum}</span><span className="yuan">元</span>
+                                  </div>
+                                  <div className="packet_time">{data.createTime}
+                                  </div>
+                                </div>
+                              );
+                            }
+                          )
+                        }
                       </List>
                     </div>
                   </TabPane>
