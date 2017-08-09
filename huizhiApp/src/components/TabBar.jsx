@@ -1,11 +1,14 @@
 import React from 'react';
-import { Tabs,Icon} from 'antd-mobile';
+import { Tabs, Icon, TabBar, Modal } from 'antd-mobile';
 import { Link } from 'react-router';
+import getUserInfo from '../utils/getUserInfo';
+import requestGET from '../utils/requestGET';
+import config from '../config';
 
 const TabPane = Tabs.TabPane;
+const alert = Modal.alert;
 
 function callback(key) {
-  console.log(key);
 }
 
 class Text extends React.Component {
@@ -15,41 +18,94 @@ class Text extends React.Component {
     this.state = {
       url1: "index/MyXiaozhi",
       url2:"index/pay",
+      key:"1"
     };
+
   }
 
   componentWillMount () {
+    //获取用户的个人信息并存入缓存
+    requestGET(config.userInfoUrl).then((data) => {//从配置文件中读取url
+      var userInfo = JSON.stringify(data);
+      localStorage.userInfo = userInfo;//个人信息存入缓存
+      //从缓存中读取用户个人信息
+      if(localStorage.userInfo){
+        var userInfo = JSON.parse(localStorage.userInfo);
+        this.setState({
+          userInfo: userInfo
+        });
+      }
+    });
+    if(this.props.location.pathname=="/index/Index"){
+      this.setState({
+        key :"1"
+      });
+    }else if(this.props.location.pathname=="/index/service"){
+      this.setState({
+        key : "2"
+      })
+    }else if(this.props.location.pathname=="/index/ActiveCenter"){
+      this.setState({
+        key : "3"
+      })
+    }else if(this.props.location.pathname=="/index/MyXiaozhi"){
+      this.setState({
+        key : "4"
+      })
+    }else if(this.props.location.pathname=="/index/pay"){
+      this.setState({
+        key : "5"
+      })
+    }
     //缓存中无用户登录信息则需先登录
-    if(sessionStorage.loginInfo == undefined) {
+    if(localStorage.loginInfo == undefined) {
       //跳转登录界面
       var login = "login";
       this.setState({
-        url1: login,
-        url2:login,
+        url1: login+"?url=index/MyXiaozhi",
+        url2:login+"?url=index/Index",
       })
     }else {
       var url1 =  "index/MyXiaozhi";
       //从缓存中读取用户个人信息
-      if(sessionStorage.userInfo != undefined){
-        var userInfo = JSON.parse(sessionStorage.userInfo);
-        var cardId = userInfo.cardid;
-
-        if( cardId == null|| cardId == "" || cardId == undefined){
-          url1 = "index/unbound";
-        }
-      }
+      // if(localStorage.userInfo != undefined){
+      //   var userInfo = JSON.parse(localStorage.userInfo);
+      //   var cardId = userInfo.cardid;
+      //
+      //   if( cardId == null|| cardId == "" || cardId == undefined){
+      //     url1 = "index/unbound";
+      //   }
+      // }
       this.setState({
         url1 : url1
       })
     }
   }
 
+  payUrl= () =>{
+    if(localStorage.loginInfo === undefined) {
+      //跳转登录界面
+      window.location.href = "#login"
+    }else if(localStorage.userInfo !== undefined){
+      let userInfo = JSON.parse(localStorage.userInfo);
+      let cardId = userInfo.cardid;
+      if( cardId === null|| cardId === "" || cardId === undefined){
+        alert("未绑卡，请先绑卡！","要去绑卡吗？", [
+          { text: '去绑卡', onPress: () => window.location.href = "#index/Bound" },
+          { text: '取消', onPress: () => console.log('cancel') },
+        ]);
+      }else{
+        window.location.href = "#index/pay"
+      }
+    }
+  };
+
   render() {
     const { url1,url2 } = this.state;
     return (
       <div className="nav-tab">
         <Tabs
-          defaultActiveKey="1" animated={false} onChange={callback}
+          defaultActiveKey= {this.state.key} animated={false} onChange={callback}
           style={{
             backgroundColor: 'white',
             position: 'fixed',
@@ -64,9 +120,7 @@ class Text extends React.Component {
           <TabPane
             tab={
               <Link className="tabSelect" to="index/Index">
-                {/*// TODO-ICON*/}
                 <Icon type={require('../assets/home/first.svg')} className="tabSelect-icon" />
-                {/*<img src={require('../assets/13.png')} className="tabSelect_img" />*/}
                 <div >首页</div>
               </Link>
             } key="1"
@@ -75,9 +129,7 @@ class Text extends React.Component {
           <TabPane
             tab={
               <Link className="tabSelect" to="index/service">
-                {/*// TODO-ICON*/}
                 <Icon type={require('../assets/home/server.svg')} className="tabSelect-icon" />
-                {/*<img src={require('../assets/14.png')} className="tabSelect_img" />*/}
                 <div >服务中心</div>
               </Link>
             } key="2"
@@ -87,27 +139,21 @@ class Text extends React.Component {
           <TabPane
             tab={
               <Link className="tabSelect" to="index/ActiveCenter">
-                {/*// TODO-ICON*/}
                 <Icon type={require('../assets/home/active.svg')} className="tabSelect-icon" />
-                {/*<img src={require('../assets/15.png')} className="tabSelect_img"/>*/}
                 <div >活动中心</div>
               </Link>} key="3"
           />
           <TabPane
             tab={
               <Link className="tabSelect" to={url1}>
-                {/*// TODO-ICON*/}
                 <Icon type={require('../assets/home/myxz.svg')} className="tabSelect-icon"  />
-                {/*<img src={require('../assets/16.png')} className="tabSelect_img"/>*/}
                 <div >我的小智</div>
               </Link>} key="4"
           />
           <TabPane
             tab={
-              <Link className="tabSelect" to={url2}>
-                {/*// TODO-ICON*/}
+              <Link className="tabSelect" onClick={() =>this.payUrl()}>
                 <Icon type={require('../assets/home/scan.svg')} className="tabSelect-icon" />
-                {/*<img src={require('../assets/17.png')} className="tabSelect_img"/>*/}
                 <div >扫码支付</div>
               </Link>} key="5"
           />

@@ -4,15 +4,15 @@ import React from 'react';
 
 import './ApplyCard.less'
 
+/**
+ *  申请汇智卡顶部图片
+ */
 class ApplyCard_top extends React.Component {
-
   render() {
     return (
-          <div>
             <img
               className="ApplyCard_img"
-              src={require('../../../assets/card/card-apply.jpg')}/>
-          </div>
+              src={require('../../../assets/service/service-title.jpg')}/>
     );
   }
 }

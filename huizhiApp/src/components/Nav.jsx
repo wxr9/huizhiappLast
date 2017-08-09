@@ -1,26 +1,29 @@
 import React from 'react';
 import { NavBar, Icon, Popover } from 'antd-mobile';
-const Item = Popover.Item;
+
 class Nav extends React.Component {
   state = {
     visible: false,
     selected: '',
   };
-  onSelect = (opt) => {
-    // console.log(opt.props.value);
-    this.setState({
-      visible: false,
-      selected: opt.props.value,
-    });
-  };
-  handleVisibleChange = (visible) => {
-    this.setState({
-      visible,
-    });
-  };
+
+  backClick(){
+    //从缓存中读取
+    let userInfo = localStorage.userInfo;
+    if(userInfo !== undefined){
+      if (this.props.location.pathname === "/index/Bound") {
+        window.location.href = "#index/Index"
+      }else if (this.props.location.pathname === "/RechargeThree") {
+        window.location.href = "#index/Bound"
+      }else{
+        this.props.history.goBack();
+      }
+    }else{
+      window.location.href = '#/index/Index';
+    }
+  }
 
   render() {
-    console.log(this.props);
     const { history } = this.props;
     let offsetX = -10; // just for pc demo
     if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
@@ -32,14 +35,14 @@ class Nav extends React.Component {
           style={{
             fontSize: '20px',
             backgroundColor: '#259dda',
-            // height: '90px',
-            // lineHeight: '90px',
+            height:'0.9rem',
             color: 'white',
             position: 'fixed',
             top: '0',
             width: '100%',
+            paddingTop: '0.5rem'
           }}
-          leftContent={''} mode="light" onLeftClick={() => history.goBack()}
+          leftContent={''} mode="light" onLeftClick={() => this.backClick()}
 
         >
           <div style={{ color: 'white' }}>{this.props.title}</div>

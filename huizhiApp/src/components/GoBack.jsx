@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {Icon} from 'antd-mobile';
 
 
 class Wrap extends React.Component {
@@ -8,7 +8,6 @@ class Wrap extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { history } = this.props;
     let offsetX = -10; // just for pc demo
     if (/(iPhone|iPad|iPod|iOS|Android)/i.test(navigator.userAgent)) {
@@ -28,16 +27,21 @@ class Wrap extends React.Component {
         >
           {this.props.children}
         </div>
+        <div
+          style={{
+            width:'23%',
+            position: 'fixed',
+            top: '6%',
+            left: '4%',
+            zIndex:'3'}}
+             onClick={() => history.goBack()}>
+          <Icon
+            type={require('../assets/home/goBack.svg')}
+            style={{
+              height: '0.36rem',
+              width: '0.36rem'}}/>
+        </div>
 
-        <img src={require('../assets/home/goBack.png')}
-             style={{
-               position: 'fixed',
-               top: '4%',
-               left: '4%',
-               width:'2.4%',
-               height:'auto',
-               zIndex:'3'
-             }} onClick={() => history.goBack()}/>
       </div>
     );
   }

@@ -10,7 +10,7 @@ class RechargeThreePart2 extends React.Component {
     const { getFieldProps } = this.props.form;
     return (
       <div>
-          <Link to="/index/MyXiaozhi">
+          <Link to="/index/Bound">
             <WingBlank>
                 <Button
                   className="recharge-btn-next" type="primary" onClick={this.onSubmit} inline

@@ -8,10 +8,13 @@ class Text extends React.Component {
 
     return (
       <Card
-        className="Unbound_part2 card_none">
+        className="Unbound_part2 card_none Unbound_part4_bottom">
         <Card.Header className="Unbound_part2_header"
-          title="汇智卡使用帮助"
-          thumb={require('../../../assets/card/card-qmark.png')}
+                     title="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;汇智卡使用帮助"
+        />
+        <Icon
+          type={require('../../../assets/card/card-qmark.svg')}
+          className="help_icon"
         />
         <Card.Body className="Unbound_part4_cardBody">
           <div>

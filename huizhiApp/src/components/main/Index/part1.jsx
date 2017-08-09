@@ -18,13 +18,8 @@ class part1 extends React.Component {
   }
 
   componentWillMount() {
-    var page = 0;
-    var pageSize = 0;
-    var url = config.BannerUrl + "/" + page + "/" + pageSize;
-    //console.log(url);
-    requestGET(url).then((data) => {//从配置文件中读取url
-      var banner = data.msg.result;
-      console.log(banner+'----');
+    requestGET(config.BannerUrl).then((data) => {//从配置文件中读取url
+      var banner = data.result;
       this.setState({
         banner: banner
       })
@@ -45,13 +40,11 @@ class part1 extends React.Component {
     return (
       <div>
       <Carousel
-        className="my-carousel"
+        className="my-carousel index_Carousel"
         autoplay={true}
         infinite
         selectedIndex={0}
         swipeSpeed={35}
-        beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-        afterChange={index => console.log('slide to', index)}
       >
         {
           banner.map((li) => (

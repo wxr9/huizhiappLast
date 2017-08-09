@@ -14,12 +14,24 @@ class ActiveCenter1 extends React.Component {
     super(props);
   }
   render() {
-    const {details,image,title,createTime} = this.props;
+    const {mobileUrl,image,title,startTime,needLogin} = this.props;
+    //判断该活动是否需要登录
+    var activeDetails;
+    var loginInfo = localStorage.loginInfo;
+    if(needLogin == 1 ){
+      if(loginInfo != undefined){
+        activeDetails = mobileUrl;
+      }else{
+        activeDetails = "#login?url=index/ActiveCenter"
+      }
+    }else{
+      activeDetails = mobileUrl;
+    }
     return (
       <div className="activeCenter_par1_div">
         <WingBlank>
-                <a href={details} >
-                  <Card className="activeCenter_index_menu">
+                <a href={activeDetails} >
+                  <Card className="activeCenter_index_menu" style={{ border:0 }}>
                     <Item
                       thumb={<div><img src={config.httpUrl+image} alt="图片" /></div>}
                     >
@@ -27,12 +39,13 @@ class ActiveCenter1 extends React.Component {
                       <Brief>
                         {/* TODO-ICON */}
                         <Icon type={require('../../../assets/active/active-label1.svg')} className="tabSelect-icon" />
-                        <span>{createTime}</span>
+                        <span>{startTime}</span>
                       </Brief>
                     </Item>
                   </Card>
                 </a>
         </WingBlank>
+
       </div>
     );
   }

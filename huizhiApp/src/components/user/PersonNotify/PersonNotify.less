@@ -10,11 +10,14 @@
 .@{personNotify-less}_par1_card{
   margin: 5px 8px;
   padding: 5px 5px;
+  min-height: 0.4rem;
+  border: none;
 }
 
 .@{personNotify-less}_par1_cardHeader{
-  height: 18px;
-  color: blue
+  height: 0.4rem;
+  color: #259dda;
+  min-height: 0.4rem;
 }
 
 .@{personNotify-less}_par1_Flex{
@@ -22,9 +25,66 @@
   font-size: 20px;
 }
 .@{personNotify-less}_par1_Flex_color{
-  color: #3DA6DD;
+  color: #259dda;
+  font-size: 1.3em;
 }
 
 .@{personNotify-less}_par1_Flex_width{
-  width: 300px;
+  width: 4rem;
+  font-size: 1.3em;
+}
+.@{personNotify-less}_circle{
+  position: absolute;
+  width: 0.12rem;
+  height: 0.12rem;
+  background: #259dda;
+  border-radius: 0.06rem;
+  top: 0.32rem;
+  left: 0.08rem;
+}
+.@{personNotify-less}_notice{
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  right: 0;
+  top: 1.4rem;
+  color: #ff5b05;
+}
+.@{personNotify-less}_notice_top{
+   overflow-y: scroll;
+   -webkit-overflow-scrolling: touch;
+  height: 12.2rem;
+}
+.@{personNotify-less}_notice_top .am-list-body{
+  margin-top: 0.2rem;
+  background-color: #f5f5f9;
+}
+
+.personNotify_del_icon{
+  position: absolute;
+  right: 0.2rem;
+  top: 0.24rem;
+}
+.personNotify_par1_card .am-card-body{
+  font-size: 0.9em;
+  min-height: auto;
+}
+
+//重写通知管理提示 数字居中 超出99条未读显示99+
+.tiShi , .tiShi.am-list-item-middle .am-list-line ,.tiShi .am-list-line .am-list-extra{
+  position: fixed;
+  top: 0.6rem;
+  left: 4.6rem;
+  z-index: 202;
+  min-height: 0!important;
+  background-color: transparent;
+}
+//重写个人中心通知提示 数字居中 超出99条未读显示99+
+.tiShi_personCenter , .tiShi_personCenter.am-list-item-middle .am-list-line ,.tiShi_personCenter .am-list-line .am-list-extra{
+  position: fixed;
+  top: 6.4rem;
+  right: 3.3rem;
+  z-index: 202;
+  min-height: 0!important;
+  background-color: transparent;
 }

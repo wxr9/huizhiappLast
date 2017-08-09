@@ -1,22 +1,61 @@
-import {List, InputItem, WingBlank, Checkbox, Card, Button,Modal} from 'antd-mobile';
+import {List, InputItem, WingBlank, Checkbox, Card, Button,Modal,Toast} from 'antd-mobile';
 import {createForm} from 'rc-form';
 import React from 'react';
 import {Link} from 'react-router';
 
-import request from '../../../utils/request';
+import requestGET from '../../../utils/requestGET';
+import request from '../../../utils/requestPOST';
 import config from '../../../config';
+
 const AgreeItem = Checkbox.AgreeItem;
 const alert = Modal.alert;
-// 申请汇智卡
+
+/**
+ *  申请汇智卡表单部分
+ */
 class ApplyCardPart2 extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
       checked:false,
-      disable:false,
+      disabled:false,//勾选同意须知
+      applyCardInfo:{},//已申请卡信息
+      isApplyCard:false,//是否已申请卡
+      submitDisabled:"",//已申请按钮不可用
     };
   }
-  /*------同意须知--------*/
+  componentWillMount () {
+    requestGET(config.ApplyCardInfoUrl).then((data) => {//从配置文件中读取url
+      console.log(data);
+      if(data.total > 0){//已申请卡
+        let applyCardInfo = data.result[0];
+        console.log(applyCardInfo);
+        this.setState({
+          applyCardInfo: applyCardInfo,
+          isApplyCard:true,
+          submitDisabled:"disabled",
+        });
+        console.log(this.state.applyCardInfo);
+      }else {
+        //从缓存中读取用户个人信息
+        let userInfo = JSON.parse(localStorage.userInfo);
+        console.log(userInfo);
+        let applyCardInfo ={};
+        applyCardInfo.username = userInfo.username;
+        applyCardInfo.email = userInfo.email;
+        applyCardInfo.company = userInfo.enterpriseInput;
+        // applyCardInfo.realname = userInfo.realName;
+        applyCardInfo.idcard = '';
+        applyCardInfo.contact = userInfo.phone;
+        this.setState({
+          applyCardInfo: applyCardInfo,
+          isApplyCard:false,
+          submitDisabled:"",
+        });
+      }
+    });
+  }
+  //同意须知
   agreeApply(e){
     if(e.target.checked){
       this.state.disabled=true;
@@ -26,105 +65,106 @@ class ApplyCardPart2 extends React.Component {
       console.log(this.state.disabled);
     }
   }
-  /*----------表单验证------------*/
 
+  /*----------表单验证部分-start-----------*/
   /*身份证号验证*/
   validateIdCard = (rule, value, callback) => {
-    var city={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江 ",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北 ",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏 ",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外 "};
-    var tip = "";
-    var pass= true;
-
-    if(!value || !/^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i.test(value)){
-      tip = "身份证号格式错误";
-      pass = false;
+    let re = /^\d{17}(\d|X)$/;
+    if(re.test(value)){
+      callback();
+    }else{
+      callback(new Error('身份证格式错误！'));
     }
-
-    else if(!city[value.substr(0,2)]){
-      tip = "地址编码错误";
-      pass = false;
-    }
-    else{
-      //18位身份证需要验证最后一位校验位
-      if(value.length == 18){
-        value = value.split('');
-        //∑(ai×Wi)(mod 11)
-        //加权因子
-        var factor = [ 7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2 ];
-        //校验位
-        var parity = [ 1, 0, 'X', 9, 8, 7, 6, 5, 4, 3, 2 ];
-        var sum = 0;
-        var ai = 0;
-        var wi = 0;
-        for (var i = 0; i < 17; i++)
-        {
-          ai = value[i];
-          wi = factor[i];
-          sum += ai * wi;
-        }
-        var last = parity[sum % 11];
-        if(parity[sum % 11] != value[17]){
-          tip = "校验位错误";
-          pass =false;
-        }
-      }
-    }
-    if(!pass){
-      callback(new Error(tip));
-    };
-    callback();
-  }
+  };
 
   /*邮箱验证*/
   validateEmail = (rule, value, callback) => {
-    var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+    let re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
     if(re.test(value)){
       callback();
     }else{
       callback(new Error('邮箱格式错误！'));
     }
-  }
-/*手机号验证*/
+  };
+  /*手机号验证*/
   validatePhone = (rule, value, callback) => {
-    value = value.replace(" ","").replace(" ","");
-    var re = /^1[34578]\d{9}$/;
+    let re = /^1[34578]\d{9}$/;
     if(re.test(value)){
       callback();
     }else{
       callback(new Error('手机号格式错误！'));
     }
-  }
-
-  /*----form提交---*/
-  onSubmit = () => {
-    var state = this.state.disabled;
-    if(state){
-      this.props.form.validateFields({ force: true }, (error) => {
-        if (!error) {
-          var applyInfo = this.props.form.getFieldsValue();
-          var username = applyInfo.username;
-          var email = applyInfo.email;
-          var company = applyInfo.company;
-          var phone = applyInfo.phone;
-          var realname = applyInfo.realname;
-          var IdCard = applyInfo.IdCard;
-          var params = "username="+username+"&email="+email+"&company="+company+
-            "&phone="+phone+"&realname="+realname+"&IdCard="+IdCard;
-          request(config.applyAddUrl,params).then((data) => {//从配置文件中读取url
-            var reData = data.msg;
-            if(reData.success){//提交成功
-              window.location.href="#index/bound";     //已绑定汇智卡
-            }else {
-              alert('提交失败');
-            }
-          })
-        }
-      })
+  };
+  /*验证公司*/
+  validateCompany = (rule, value, callback) => {
+    // value = value.replace(" ","").replace(" ","");
+    let re = /[`~!@#$%^&*()_\-+=<>?:"{}|,.\/;'\\[\]·~！@#￥%……&*（）——\-+={}|《》？：“”【】、；‘’，。、\s+]/im;
+    if(!re.test(value)){
+      callback();
     }else{
-      alert("请勾选同意须知");
+      callback(new Error('公司名包含特殊字符！'));
     }
   };
+  /*----------表单验证部分-end-----------*/
+
+  /*----------表单提交部分-start---------*/
+  onSubmit = () => {
+    if (this.state.isApplyCard) {
+      alert("您已申请过卡，不可再次申请！");
+    } else {
+
+      let state = this.state.disabled;
+      if (state) {
+        this.props.form.validateFields({force: true}, (error) => {
+          if (!error) {
+            let applyInfo = this.props.form.getFieldsValue();
+            let username = applyInfo.username;
+            let email = applyInfo.email;
+            let company = applyInfo.company;
+            let phone = applyInfo.phone;
+            let realname = applyInfo.realname;
+            let IdCard = applyInfo.IdCard;
+            let params = "username=" + username + "&email=" + email + "&company=" + company +
+              "&phone=" + phone + "&realname=" + realname + "&IdCard=" + IdCard;
+            let data = {
+              username: username,
+              email: email,
+              company: company,
+              contact: phone,
+              realname: realname,
+              idcard: IdCard
+            };
+            console.log(data);
+            //轻提示，1秒后消失
+            Toast.loading('提交中...', 0);
+              request(config.applyAddUrl, data).then((data) => {//从配置文件中读取url
+                if (data.success) {//提交成功
+                  Toast.hide();
+                  alert("申请已提交，请耐心等待结果。");
+                  window.location.href = "#index/unbound";     //已绑定汇智卡
+                } else {
+                  Toast.hide();
+                  alert(data.msg);
+                }
+              })
+          }
+        })
+      } else {
+        alert("请勾选同意须知");
+      }
+    }
+  };
+  /*----------表单提交部分-end---------*/
+
   render() {
     const { getFieldProps, getFieldError } = this.props.form;
+    const { applyCardInfo, submitDisabled } = this.state;
+    let realName = "";
+    let idcard = "";
+    if(submitDisabled === "disabled"){
+      realName = applyCardInfo.realname;
+      idcard = applyCardInfo.idcard;
+    }
     return (
       <form>
         <div>
@@ -139,6 +179,7 @@ class ApplyCardPart2 extends React.Component {
               <InputItem
                 className="ApplyCard_InputItem"
                 {...getFieldProps('username',{
+                  initialValue: applyCardInfo.username,
                   rules:[
                     { required: true, message: '请输入用户名' },
                     { validator: this.validateUsername },
@@ -157,6 +198,7 @@ class ApplyCardPart2 extends React.Component {
               <InputItem
                 className="ApplyCard_InputItem"
                 {...getFieldProps('email',{
+                  initialValue: applyCardInfo.email,
                   rules:[
                     { required: true, message: '请输入邮箱' },
                     { validator: this.validateEmail },
@@ -168,12 +210,13 @@ class ApplyCardPart2 extends React.Component {
                   alert(getFieldError('email').join('、'));
                 }}
                 placeholder="请输入邮箱"
-              ><span className="ApplyCard_label_color">*</span> E-mail</InputItem>
+              ><span className="ApplyCard_label_color">*</span>E-mail</InputItem>
             </List>
             <List className="ApplyCard_List">
               <InputItem
                 className="ApplyCard_InputItem"
                 {...getFieldProps('company',{
+                  initialValue: applyCardInfo.company,
                   rules:[
                     { required: true, message: '请输入公司名称' },
                     { validator: this.validateCompany },
@@ -184,7 +227,7 @@ class ApplyCardPart2 extends React.Component {
                 onErrorClick={() => {
                   alert(getFieldError('company').join('、'));
                 }}
-                maxLength = "100"
+                maxLength = "30"
                 placeholder="请输入公司名称"
               ><span className="ApplyCard_label_color">*</span> 公司名称</InputItem>
             </List>
@@ -192,6 +235,7 @@ class ApplyCardPart2 extends React.Component {
               <InputItem
                 className="ApplyCard_InputItem"
                 {...getFieldProps('phone',{
+                  initialValue: applyCardInfo.contact,
                   rules:[
                     { required: true, message: '请输入手机号' },
                     { validator: this.validatePhone },
@@ -202,7 +246,8 @@ class ApplyCardPart2 extends React.Component {
                 onErrorClick={() => {
                   alert(getFieldError('phone').join('、'));
                 }}
-                type="phone"
+                type="number"
+                maxLength="11"
                 placeholder="请输入手机号"
               ><span className="ApplyCard_label_color">*</span> 联系方式</InputItem>
             </List>
@@ -210,6 +255,7 @@ class ApplyCardPart2 extends React.Component {
               <InputItem
                 className="ApplyCard_InputItem"
                 {...getFieldProps('realname',{
+                  initialValue: realName,
                   rules:[
                     { required: true, message: '请输入真实姓名' },
                     { validator: this.validateRealname },
@@ -224,10 +270,12 @@ class ApplyCardPart2 extends React.Component {
                 placeholder="请输入真实姓名"
               ><span className="ApplyCard_label_color">*</span> 真实姓名</InputItem>
             </List>
+            <p className="ApplyCard_p">提示：真实姓名需与身份证上一致</p>
             <List className="ApplyCard_List">
               <InputItem
                 className="ApplyCard_InputItem"
                 {...getFieldProps('IdCard',{
+                  initialValue: idcard,
                   rules:[
                     { required: true, message: '请输入身份证号' },
                     { validator: this.validateIdCard },
@@ -244,12 +292,10 @@ class ApplyCardPart2 extends React.Component {
             </List>
 
             <div className="ApplyCard_div_btn">
-              {/*<Link to="index/unbound">*/}
-                <Button
-                  className="ApplyCard_btn" ref="ApplyCard_btn" type="primary"
-                  inline onClick={this.onSubmit}
+                <Button disabled = { this.state.submitDisabled }
+                  className="boatOrder_submit" ref="ApplyCard_btn" type="primary"
+                   onClick={this.onSubmit}
                 >提交</Button>
-              {/*</Link>*/}
             </div>
           </WingBlank>
         </div>

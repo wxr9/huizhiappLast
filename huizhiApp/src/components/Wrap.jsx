@@ -12,7 +12,7 @@ class Wrap extends React.Component {
         <div
           style={{
             position: 'absolute',
-            top: '0.9rem',
+            top: '1.4rem',
             bottom: '1.2rem',
             width: '100%',
             overflow: 'auto',

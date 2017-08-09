@@ -6,7 +6,7 @@ class BoatOrderTop extends React.Component {
       <div>
         <img
           className="boatOrder_top_img"
-          src={require('../../../assets/service/service-title.jpg')}/>
+          src={require('../../../assets/service/service-boat.jpg')}/>
       </div>
     );
   }

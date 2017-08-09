@@ -8,16 +8,38 @@
 }
 
 .@{PropertyRepair-less}_div{
-  margin-top: 20%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 12.2rem;
+  position: fixed;
+  width: 100%;
+  top: 1.4rem;
 }
 
-.@{PropertyRepair-less}_btn{
-  background-color:#259dda;
-  font-size: 1em;
-}
-.@{PropertyRepair-less}_div_btn{
-  margin-top: 20px;
-  text-align:center;
-  padding-bottom:30px;
-}
+//.@{PropertyRepair-less}_btn{
+//  background-color:#259dda;
+//  font-size: 1em;
+//  width: 96%;
+//}
+//.@{PropertyRepair-less}_div_btn{
+//  margin-top: 20px;
+//  text-align:center;
+//  padding-bottom:30px;
+//}
 
+.PropertyRepair-list-item .am-input-label,
+.PropertyRepair-list-item .am-input-control input,
+.PropertyRepair_picker .am-list-item .am-list-line .am-list-content ,
+.PropertyRepair_TextareaItem .am-textarea-label,
+.PropertyRepair_picker .am-list-item .am-list-line .am-list-extra,
+.PropertyRepair_TextareaItem .am-textarea-control textarea
+{
+  color: #333333!important;
+  font-size: 0.32rem!important;
+}
+.Repair_mShu{
+  position: absolute;
+  left: 0.3rem;
+  z-index: 1;
+  top: 2.1rem;
+}

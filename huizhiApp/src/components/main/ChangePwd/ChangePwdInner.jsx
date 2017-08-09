@@ -1,4 +1,4 @@
-import { List, InputItem, WingBlank, Button ,Modal} from 'antd-mobile';
+import { List, InputItem, WingBlank, Button , Modal, Toast} from 'antd-mobile';
 import { createForm } from 'rc-form';
 import React from 'react';
 import { Link } from 'react-router';
@@ -6,7 +6,7 @@ import '../RegisterStepOne/register.less';
 import crypto from  'crypto';
 import axios from 'axios';
 import Qs from 'qs';
-import request from '../../../utils/request';
+import request from '../../../utils/requestGET';
 import config from '../../../config';
 const alert = Modal.alert;
 // 修改密码页内部组件
@@ -24,50 +24,67 @@ class ChangePwdInner extends React.Component {
       callback(new Error('新密码至少8个字符'));
     }
   }
-  onSubmit = () => {
-    this.props.form.validateFields({ force: true }, (error) => {
-      if (!error) {
-        var info = this.props.form.getFieldsValue();
-        console.log(info);
-        var oldPassword = info.oldPassword;
-        var oldPassword = crypto.createHash('md5').update(oldPassword,'').digest('hex');
-        var newPassword = info.newPassword;
-        var newPassword = crypto.createHash('md5').update(newPassword,'').digest('hex');
-        var newRePassword = info.newRePassword;
-        var newRePassword = crypto.createHash('md5').update(newRePassword,'').digest('hex');
-        //从缓存中读取
-        var userInfo = sessionStorage.userInfo;
-        //json转换为Object对象
-        var  reData = JSON.parse(userInfo);
-        //读取用户ID
-        // console.log(reData.username);
-        var username = reData.username;
-        var password;
-        if(newPassword == newRePassword){
-          password =  newPassword;
-        }else{
-          alert("两次输入的密码不相等！");
-        }
-        var params = "username="+username+"&oldpassword="+oldPassword+"&password="+password;
-        console.log(params);
-        var data = {
-          username: username,
-          password: password,
-          oldpassword: oldPassword
-        };
 
-        axios.post(config.changePasswordUrl,Qs.stringify(data)).then(function(response){//从配置文件中读取url，GET请求
-          console.log("changePhoneUrl response",response);
-          if(response.data.success){
-            window.location.href="#index/Index";
-          }else{
-            alert(response.data.msg);
+  onSubmit = () => {
+    //轻提示，1秒后消失
+      this.props.form.validateFields({force: true}, (error) => {
+        if (!error) {
+          var info = this.props.form.getFieldsValue();
+          console.log(info);
+          var oldPassword = info.oldPassword;
+          var oldPassword = crypto.createHash('md5').update(oldPassword, '').digest('hex');
+          var newPassword = info.newPassword;
+          var newPassword = crypto.createHash('md5').update(newPassword, '').digest('hex');
+          var newRePassword = info.newRePassword;
+          var newRePassword = crypto.createHash('md5').update(newRePassword, '').digest('hex');
+          //从缓存中读取
+          var userInfo = localStorage.userInfo;
+          //json转换为Object对象
+          var reData = JSON.parse(userInfo);
+          //读取用户ID
+          // console.log(reData.username);
+          var username = reData.username;
+          var password;
+          if (newPassword == newRePassword) {
+            password = newPassword;
+          } else {
+            alert("新密码和确认密码不相同！");
+            return;
           }
-        });
-      }else{
-        alert('校验失败');
-      }
-    });
+          var params = "username=" + username + "&oldpassword=" + oldPassword + "&password=" + password;
+          console.log(params);
+          var data = {
+            username: username,
+            password: password,
+            oldpassword: oldPassword
+          };
+          Toast.loading('提交中...', 0);
+          axios.post(config.changePasswordUrl, Qs.stringify(data)).then(function (response) {//从配置文件中读取url，GET请求
+            console.log("changePhoneUrl response", response);
+            if (response.data.success) {
+              var logininfo = localStorage.loginInfo;
+              //json转换为Object对象
+              var reData = JSON.parse(logininfo);
+              var userloginInfo = {"username": reData.username};
+              userloginInfo = JSON.stringify(userloginInfo);
+              localStorage.userloginInfo = userloginInfo;//保存用户的账号密码
+              localStorage.removeItem("userInfo");
+              localStorage.removeItem("loginInfo");
+              localStorage.removeItem("lastUrl");
+              Toast.hide();
+              alert(response.data.msg, '', [
+                {text: '确认', onPress: () => window.location.href = "#login", style: {fontWeight: 'bold'}},
+              ]);
+            } else {
+              Toast.hide();
+              //pc端为写死的，此处同样写死
+              alert("原密码错误，修改失败!");
+            }
+          });
+        } else {
+          alert('校验失败');
+        }
+      });
   }
   render() {
     // const { getFieldProps } = this.props.form;
@@ -97,7 +114,7 @@ class ChangePwdInner extends React.Component {
                        }}
                        maxLength = "20"
               type="password"
-              placeholder="请输入修改密码"
+              placeholder="请输入新密码"
             />
           </List>
           <List className="register-as-list">

@@ -13,13 +13,13 @@ class RechargeTwoPart1 extends React.Component {
     const num = 1;
     const steps = [{
       title: '金额',
-      description: '金额描述',
+      // description: '金额描述',
     }, {
       title: '支付方式',
-      description: '描述',
+      // description: '描述',
     }, {
       title: '支付成功',
-      description: '描述',
+      // description: '描述',
     }].map((s, i) => <Step key={i} title={s.title} description={s.description} />);
     return (
       <div>

@@ -1,6 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
+import { Modal } from 'antd-mobile';
 import './server.less';
+
+const alert = Modal.alert;
 
 class ServiceCenter_part1 extends React.Component {
   constructor (props) {
@@ -10,33 +13,67 @@ class ServiceCenter_part1 extends React.Component {
       url2: "index/instruction",
       url3: "index/Bound",
       url4: "index/itRepair",
-      url5: "Recharge",
-      url6: "index/unbound",
+      url6: "index/pay",
     };
   }
 
+  rechargeUrl= () =>{
+    if(localStorage.loginInfo === undefined) {
+      //跳转登录界面
+      window.location.href = "#login"
+    }else if(localStorage.userInfo !== undefined){
+      let userInfo = JSON.parse(localStorage.userInfo);
+      let cardId = userInfo.cardid;
+      if( cardId === null|| cardId === "" || cardId === undefined){
+        alert("未绑卡，请先绑卡！","要去绑卡吗？", [
+          { text: '去绑卡', onPress: () => window.location.href = "#index/Bound" },
+          { text: '取消', onPress: () => console.log('cancel') },
+        ]);
+      }else{
+        window.location.href = "#Recharge"
+      }
+    }
+  };
+
+  payUrl= () =>{
+    if(localStorage.loginInfo === undefined) {
+      //跳转登录界面
+      window.location.href = "#login"
+    }else if(localStorage.userInfo !== undefined){
+      let userInfo = JSON.parse(localStorage.userInfo);
+      let cardId = userInfo.cardid;
+      if( cardId === null|| cardId === "" || cardId === undefined){
+        alert("未绑卡，请先绑卡！","要去绑卡吗？", [
+          { text: '去绑卡', onPress: () => window.location.href = "#index/Bound" },
+          { text: '取消', onPress: () => console.log('cancel') },
+        ]);
+      }else{
+        window.location.href = "#index/pay"
+      }
+    }
+  };
+
   componentWillMount () {
     //缓存中无用户登录信息则需先登录
-    if(sessionStorage.loginInfo == undefined) {
+    if(localStorage.loginInfo == undefined) {
       //跳转登录界面
       var login = "login";
       this.setState({
-        url1: login,
-        url2: login,
-        url3: login,
-        url4: login,
-        url5: login,
-        url6: login
+        url1: login+"?url=index/propertyRepair",
+        url2: login+"?url=index/instruction",
+        url3: login+"?url=index/Bound",
+        url4: login+"?url=index/itRepair",
+        url6: login+"?url=index/pay"
       })
     }else {
       var url3 =  "index/Bound";
       //从缓存中读取用户个人信息
-      if(sessionStorage.userInfo != undefined){
-        var userInfo = JSON.parse(sessionStorage.userInfo);
+      if(localStorage.userInfo != undefined){
+        var userInfo = JSON.parse(localStorage.userInfo);
         var cardId = userInfo.cardid;
 
         if( cardId == null|| cardId == "" || cardId == undefined){
-          url3 = "index/unbound";
+          url3 = "index/Bound";
         }
       }
       this.setState({
@@ -46,7 +83,7 @@ class ServiceCenter_part1 extends React.Component {
   }
 
   render() {
-    const { url1,url2,url3,url4,url5,url6 } = this.state;
+    const { url1,url2,url3,url4,url6 } = this.state;
 
     return (
       <div className="server-center-bg">
@@ -84,14 +121,14 @@ class ServiceCenter_part1 extends React.Component {
               }}
             />
           </Link>
-          <Link to={url5}>
+          <Link onClick={() =>this.rechargeUrl()}>
             <img
               className="server-right-image" src={require('../../../assets/service/service-p4.jpg')} alt="image"
               onClick={() => {
               }}
             />
           </Link>
-          <Link to={url6}>
+          <Link onClick={() =>this.payUrl()}>
             <img
               className="server-right-image" src={require('../../../assets/service/service-p6.jpg')} alt="image"
               onClick={() => {

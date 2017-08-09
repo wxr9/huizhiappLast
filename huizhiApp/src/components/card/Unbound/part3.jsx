@@ -1,17 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router';
-import { Card,WhiteSpace,WingBlank,Button,Grid,Icon} from 'antd-mobile';
+import { Card, WhiteSpace, WingBlank, Button, Grid, Icon, Modal} from 'antd-mobile';
 
 import './unbound.less'
 
+const alert = Modal.alert;
+
 class part3 extends React.Component {
+  showAlert(){
+    alert("未绑卡，请先绑卡！");
+  }
 
   render() {
     return (
       <div>
         <Card className=" Unbound_part2 card_none">
           <div >
-            <div className="Unbound_content ">
+            <div className="Unbound_content " onClick={()=>this.showAlert()}>
               <ul className="Unbound_content_ul clearfix">
 
                 <Link className="Unbound_link">

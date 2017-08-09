@@ -1,41 +1,9 @@
-import fetch from 'dva/fetch';
+import axios from 'axios';
 
-function parseJSON(response) {
-  return response.json();
-}
-
-function checkStatus(response) {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  }
-
-  const error = new Error(response.statusText);
-  error.response = response;
-  throw error;
-}
-
-//post请求
-// export default function request(url,params, options) {
-//   return fetch(url, {
-//     method: 'POST',
-//     mode: "cors",
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded"
-//     },
-//     body: params
-//   })
-//     .then(checkStatus)
-//     .then(parseJSON)
-//     .then(msg => ({msg}))
-//     .catch(success => ({success}));
-// }
-
-//get请求
-export default function requestGet(url, options) {
-  return fetch(url, {
-    method: 'GET'
-  }).then(checkStatus)
-    .then(parseJSON)
-    .then(msg => ({ msg }))
-    .catch(success => ({ success }));
+export default function requestGet(url) {
+  return axios.get(url).then(function(response){//从配置文件中读取url，GET请求
+    return response.data;
+  }).catch(function (error) {
+    console.log(error);
+  });
 }

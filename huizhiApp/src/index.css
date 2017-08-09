@@ -127,7 +127,10 @@ img {
   word-break: break-all;
   word-wrap: break-word;
 }
-
+p{
+  word-wrap:break-word;
+  word-break:normal;
+}
 /*单行文字超出显示省略号*/
 .omg {
   overflow: hidden;
@@ -148,7 +151,7 @@ img {
 .button_yellow{ background-color: #f76c07;padding: 10px}
 
 a {
-  color: #108ee9;
+  color: #259dda;
 }
 
 .nav-tab .am-tabs-bar .am-tabs-tab {
@@ -180,37 +183,48 @@ a {
   text-overflow: ellipsis;
 }
 
-.index_tishi {
-  height: 25px;
-  width: 25px;
-  /*padding: 3px 3px;*/
-  border-radius: 25px;
-  line-height: 25px;
-  font-size: 15px;
-  margin-left: 100px;
-  text-align: center;
-  color: white;
-  background: red;
-  position: absolute;
-  top: 20px;
-  left: 0px;
-  z-index: 2;
-}
-
+/*.index_tishi {*/
+  /*height: 25px;*/
+  /*width: 25px;*/
+  /*!*padding: 3px 3px;*!*/
+  /*border-radius: 25px;*/
+  /*line-height: 25px;*/
+  /*font-size: 15px;*/
+  /*margin-left: 100px;*/
+  /*text-align: center;*/
+  /*color: white;*/
+  /*background: red;*/
+  /*position: absolute;*/
+  /*top: 20px;*/
+  /*left: 0px;*/
+  /*z-index: 2;*/
+/*}*/
+/*通知管理的提示dot*/
 .index_tishi2 {
-  height: 25px;
-  width: 25px;
-  /*padding: 3px 3px;*/
-  border-radius: 25px;
-  line-height: 25px;
-  font-size: 15px;
-  margin-left: 300px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 0.36rem;
+  line-height: 0.36rem;
+  width: 0.48rem;
+  min-width: 0.18rem;
+  border-radius: 0.24rem;
+  /*padding: 0 0.08rem;*/
   text-align: center;
-  color: white;
-  background: red;
-  position: absolute;
-  top: 20px;
-  left: 0px;
+  font-size: 0.24rem;
+  color: #fff;
+  background-color: #ff5b05;
+  white-space: nowrap;
+  -webkit-transform: translateX(-45%);
+  transform: translateX(-45%);
+  -webkit-transform-origin: -10% center;
+  transform-origin: -10% center;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC",
+  "Hiragino Sans GB", "Microsoft YaHei", "\5FAE\8F6F\96C5\9ED1", SimSun, sans-serif;
+  /*width: 0.3rem;*/
+  position: fixed;
+  top: 0.8rem;
+  left: 4.8rem;
   z-index: 2;
 }
 
@@ -231,7 +245,7 @@ a {
 }
 
 .am-list-item .am-list-line .am-list-extra {
-  color: #000 !important;
+  color: #333 !important;
 }
 
 .notice_dta {
@@ -274,7 +288,7 @@ a {
 }
 
 .am-checkbox-agree .am-checkbox-agree-label {
-  margin-left: 0px !important;
+  margin-left: 0 !important;
 }
 
 .update_pwd .am-list-item .am-list-line .am-list-extra {
@@ -293,8 +307,8 @@ a {
 }
 
 .index_list .am-checkbox-agree {
-  padding-top: 0px;
-  padding-bottom: 0px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 .index_list .am-checkbox-agree .am-checkbox {
@@ -324,28 +338,24 @@ a {
   padding-bottom: 0;
 }
 
-
-
-/*--------------------解绑------------------------------*/
+/*-------解绑--------*/
 .Unbunding_part {
   margin-left: 16px;
   margin-right: 16px;
 }
 
-/*------------已绑定-------------*/
+/*------已绑定--------*/
 .bound-left {
   display: inline;
   float: left;
   text-align: center;
   margin-left: 0.8rem;
 }
-
 .bound-right {
   display: inline;
   text-align: center;
   padding-left: 4em;
 }
-
 .bound-font-left {
   text-align: center;
   background-color: #bfcaa1;
@@ -353,7 +363,6 @@ a {
   width: 2rem;
   padding-top: 1em;
 }
-
 .bound-font-right {
   text-align: center;
   background-color: #bfcaa1;
@@ -363,7 +372,6 @@ a {
   padding-top: 1em;
   margin-right: 2.5em;
 }
-
 .bound-font-bottom {
   float: left;
   width: 4.5rem;
@@ -371,36 +379,72 @@ a {
   margin-left: 1rem;
 }
 
-/*--------服务中心-----*/
-/*.service-image {  height: 4rem !important;  width: 4rem !important;  border-top: 0.05rem solid lightslategray;  }*/
 
-/*服务维修*/
-/*.example-input .ant-input {*/
-  /*width: 300px;*/
-  /*margin: 0 8px 8px -3px;*/
-  /*float: left*/
-/*}*/
-
-/*.example-input-line {*/
-  /*float: left*/
-/*}*/
-
-/*.drop-down-select {*/
-  /*width: 200px;*/
-/*}*/
-/*----------游船预约----------*/
-
-
-
+/*重写轮播dot位置和颜色*/
 .my-carousel .v-item {
   height: 0.72rem;
   line-height: 0.72rem;
   padding-left: 0.2rem;
 }
-
 .am-carousel-wrap-dot-active > span {
   background: #259dda;
 }
+.carousel_max .am-carousel-wrap-dot > span{
+  margin: 0 0.14rem;
+}
+.carousel_max .slider-decorator-0 {
+  bottom: 0.5rem!important;
+}
 
-
-
+/*重写安卓alert*/
+.am-modal.am-modal-android .am-modal-content .am-modal-header{
+  text-align: center!important;
+  display: inline-block!important;
+}
+.am-modal.am-modal-android .am-modal-content{
+  border-radius: 0.20rem!important;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-footer{
+  text-align: center;
+  display: inline-block;
+  width: 100%;
+   padding-bottom: 0!important;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-body{
+  border-bottom: 1px solid #ddd;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-v .am-modal-button{
+  width: 100%;
+  padding: 0!important;
+   margin-left: 0!important;
+  height: auto!important;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-v{
+  padding: 0!important;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-header .am-modal-title{
+  margin: 0;
+  font-size: 0.36rem!important;
+  line-height: 1;
+  text-align: center;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-body {
+  font-size: 0.28rem!important;
+  color: #888!important;
+  height: 100%!important;
+  overflow: auto;
+  text-align: center!important;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-h{
+  padding: 0!important;
+  width: 100%;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-h .am-modal-button{
+  width: 50%;
+  padding: 0!important;
+  margin-left:0!important;
+}
+.am-modal.am-modal-android .am-modal-content .am-modal-footer .am-modal-button-group-h .am-modal-button:first-child{
+  color: #000!important;
+  border-right: 1PX solid #ddd!important;
+}

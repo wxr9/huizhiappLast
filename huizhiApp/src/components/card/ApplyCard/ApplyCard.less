@@ -1,3 +1,6 @@
+/**
+ *  申请汇智卡页面样式
+ */
 @ApplyCard-less: ApplyCard;
 
 .@{ApplyCard-less}_div{
@@ -17,8 +20,12 @@
 }
 
 .@{ApplyCard-less}_body{
-  background-color: #ffffff;
-  height: 80%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 12.2rem;
+  position: fixed;
+  width: 100%;
+  top: 1.4rem;
 }
 
 .@{ApplyCard-less}_InputItem{
@@ -28,25 +35,59 @@
 .@{ApplyCard-less}_pad{
   padding: 20px 0;
 }
+
 .@{ApplyCard-less}_p{
  font-size:28px;
 }
+
 .@{ApplyCard-less}_List{
   margin-top: 10px;
 }
+
 .@{ApplyCard-less}_label_color{
   color: #f00;
+  display: inline-block;
+  width: 30px;
+
 }
 
 .@{ApplyCard-less}_btn{
   background-color:#259dda;
   font-size: 1em;
 }
+
 .@{ApplyCard-less}_div_btn{
   margin-top: 20px;
   text-align:center;
   padding-bottom:30px;
 }
+
 .ApplyCard_InputItem .am-input-control{
-  margin-left: 0.8rem;
+  margin-left: 0.4rem;
+}
+
+.@{ApplyCard-less}_html ol li{
+  padding: 8px;
+  font-size: 0.9em;
+  color: #333333;
+  list-style-type:decimal;
+  list-style-position:inside;
+}
+
+.@{ApplyCard-less}_html p{
+  padding: 8px;
+  font-size: 0.9em;
+  color: #333333;
+  margin-left: 0!important;
+}
+
+.ApplyCard_InputItem .am-input-label.am-input-label-5{
+  width: 2rem;
+}
+
+.ApplyCard_p{
+  font-size: smaller;
+  color: #888;
+  padding-left: 2.8rem;
+
 }

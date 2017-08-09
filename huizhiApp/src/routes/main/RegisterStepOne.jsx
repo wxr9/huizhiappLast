@@ -7,7 +7,7 @@ class RegisterStepOne extends React.Component {
   render() {
     const { getFieldProps } = this.props.form;
     return (
-      <div>
+      <div className="register_div">
         <RegisterOneInner/>
       </div>
     );

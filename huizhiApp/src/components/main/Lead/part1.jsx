@@ -64,7 +64,7 @@ class lead_1 extends React.Component {
     return (
       <div>
         <Carousel
-          className="my-carousel"
+          className="my-carousel carousel_max"
           autoplay={false}
           infinite={false}
           selectedIndex={0}
@@ -90,10 +90,10 @@ class lead_1 extends React.Component {
 
             />
             {/*<Link className="index_link" to="index/Index">*/}
-              <div className=" lead_tiYan">
-                  <Button className="lead_btn" onClick={this.jumpIndex}>
-                    <span className="lead_tiYan_font">立即体验</span>
-                  </Button>
+              <div className=" lead_tiYan" onClick={this.jumpIndex}>
+                  {/*<Button className="lead_btn" onClick={this.jumpIndex}>*/}
+                    {/*<span className="lead_tiYan_font">立即体验</span>*/}
+                  {/*</Button>*/}
               </div>
             {/*</Link>*/}
           </div>

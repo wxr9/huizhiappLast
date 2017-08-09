@@ -8,16 +8,39 @@
 }
 
 .@{ITRepair-less}_div{
-  margin-top: 20%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height: 12.2rem;
+  position: fixed;
+  width: 100%;
+  top: 1.4rem;
 }
 
-.@{ITRepair-less}_btn{
-  background-color:#259dda;
-  font-size: 1em;
-}
-.@{ITRepair-less}_div_btn{
-  margin-top: 60px;
-  text-align:center;
-  padding-bottom:30px;
+//.@{ITRepair-less}_btn{
+//  background-color:#259dda;
+//  font-size: 1em;
+//  width: 92%;
+//}
+//.@{ITRepair-less}_div_btn{
+//  margin-top: 60px;
+//  text-align:center;
+//  padding-bottom:30px;
+//}
+
+.ITRepair-list-item .am-input-label,
+.ITRepair-list-item .am-input-control input,
+.ITRepair_TextareaItem .am-textarea-label,
+.ITRepair_picker .am-list-item .am-list-line .am-list-content,
+.ITRepair_picker .am-list-item .am-list-line .am-list-extra,
+.ITRepair_TextareaItem .am-textarea-control textarea
+{
+  color: #333333!important;
+  font-size: 0.32rem!important;
 }
 
+.it_mShu{
+  position: absolute;
+  left: 0.3rem;
+  z-index: 1;
+  top: 1.2rem;
+}
